@@ -1,1 +1,1 @@
-Sitemap: https://ci-cmg.github.io/SoundscapesWebsite/content/sitemap.xml
+Sitemap: https://ci-cmg.github.io/SoundscapesWebsite/sitemap.xml
