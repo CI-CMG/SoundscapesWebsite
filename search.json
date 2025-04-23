@@ -30,11 +30,11 @@
     ]
   },
   {
-    "objectID": "index.html#what-is-a-soundscape",
-    "href": "index.html#what-is-a-soundscape",
+    "objectID": "index.html#visualizing-ocean-sound",
+    "href": "index.html#visualizing-ocean-sound",
     "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
-    "section": "What is a soundscape?",
-    "text": "What is a soundscape?\n\n\nSoundscapes are complex -- representing all the types of sounds present at a given time and location and influenced by the weather. Sound is measured in terms of frequency (or pitch of the sound) and intensity or how low the sound is. One way to  visualize a soundscape is to separate into known contributions. In the plot below, the colored lines represent seasonal differences, vertical lines indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to expected range based on when only wind noise is present [Hildebrand et al 2021]. We can track these different contributions over time to understand how soundscape are changing.  We can also compare across locations.",
+    "section": "Visualizing Ocean Sound",
+    "text": "Visualizing Ocean Sound\n\n\nSoundscapes are complex -- representing all the types of sounds present at a given time and location and influenced by the weather. Sound is measured in terms of frequency (or pitch of the sound) and intensity or how low the sound is. One way to  visualize a soundscape is to separate into known contributions. In the plot below, the colored lines represent seasonal differences, vertical lines indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to expected range based on when only wind noise is present [Hildebrand et al 2021]. We can track these different contributions over time to understand how soundscape are changing.  We can also compare across locations.",
     "crumbs": [
       "Home"
     ]
