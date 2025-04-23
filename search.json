@@ -56,7 +56,7 @@
     "section": "",
     "text": "Site\nPrimary.monitoring.purpose\nOceanographic.Setting\nDepth\nSeasonality\nKnown.biological.sounds\nVessel.Traffic.Setting\nLatitude\nLongitude\nTotalDays\nStartDate\nInformation\n\n\nPM01\nInformation for the proposed designation of Papahānaumokuākea Marine National Monument as a Sanctuary\nA remote bank at the eastern end of the Monument’s boundary with relatively high humpback whale densities.\n~65\ntropical- wet (nov-apr) and dry (may--oct)\nhumpback whales\nvessel use and naval activities are detected in this area but not well understood\n22.66241\n-161.04201\n347\n2020-03-31 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM01\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpback whales\nlimited vessel traffic acousticsl detected\n23.75794\n-166.33467\n526\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM02\n\n\nPM05\nSanctSound Monitoring site: 2019-10-01 to 2020-05-19\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.156\n256\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM05\n\n\nPM08\nSanctSound Monitoring site: August 26, 2019 and August 22, 2020\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM08",
     "crumbs": [
-      "Pacific Islands"
+      "Papahānaumokuākea"
     ]
   },
   {
@@ -66,7 +66,7 @@
     "section": "",
     "text": "Site\nPrimary.monitoring.purpose\nOceanographic.Setting\nDepth\nSeasonality\nKnown.biological.sounds\nVessel.Traffic.Setting\nLatitude\nLongitude\nTotalDays\nStartDate\nInformation\n\n\nPM01\nInformation for the proposed designation of Papahānaumokuākea Marine National Monument as a Sanctuary\nA remote bank at the eastern end of the Monument’s boundary with relatively high humpback whale densities.\n~65\ntropical- wet (nov-apr) and dry (may--oct)\nhumpback whales\nvessel use and naval activities are detected in this area but not well understood\n22.66241\n-161.04201\n347\n2020-03-31 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM01\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpback whales\nlimited vessel traffic acousticsl detected\n23.75794\n-166.33467\n526\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM02\n\n\nPM05\nSanctSound Monitoring site: 2019-10-01 to 2020-05-19\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.156\n256\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM05\n\n\nPM08\nSanctSound Monitoring site: August 26, 2019 and August 22, 2020\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM08",
     "crumbs": [
-      "Pacific Islands"
+      "Papahānaumokuākea"
     ]
   },
   {
@@ -76,7 +76,7 @@
     "section": "Soundscape Overview for Papahānaumokuākea National Monument",
     "text": "Soundscape Overview for Papahānaumokuākea National Monument\n\n\nSoundscapes are complex -- representing all the types of sounds present at a given time and location and influenced by the weather. **How do we visualize this information?** Let's start with the main contributions to a soundscape: the colored lines represent **seasonal differences**, vertical lines indicate different sound **sources of interest** and what frequency(s) represents the source, and the black lines bound the soundscape to **expected range** based on when only wind noise is present. We can track these different contributions over time to understand how soundscape are changing.  We can also compare across locations.\n\n**A visualization of ocean sound.** Seasonal summary of measured sound levels (colored lines) shown as median hourly values over all available data. Vertical lines indicate representative frequencies for different sound sources. The bottom bar shows how the data are distributed in the different wind categories: low &lt; 5 m/s, med 5-10 m/s, high &gt;10 m/s. Dotted lines are modeled wind noise at this depth based on [Hildebrand et al 2021].\n\n\n\n\n\n\nHow was this calculated?\n  \n  The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n    Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n    \n      Close\n      \n      \n      \n        How does my sanctuary compare?\n        \n        \n        No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n        \n          Close",
     "crumbs": [
-      "Pacific Islands"
+      "Papahānaumokuākea"
     ]
   },
   {
@@ -86,7 +86,7 @@
     "section": "What are the latest conditions in ocean sound?",
     "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic, changing with season and annual differences in sources (wind, biologics, and human-activity). Comparing annual ocean sound levels provides insights on trends in ocean noise: **Are levels lower in the most recent year of monitoring?** Efforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be be reflected in the annual data. Typically, a more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels.",
     "crumbs": [
-      "Pacific Islands"
+      "Papahānaumokuākea"
     ]
   },
   {
@@ -96,7 +96,7 @@
     "section": "How often is ocean sound above wind noise?",
     "text": "How often is ocean sound above wind noise?\n\n\nIn many marine environments, ships are transiting the region for a variety of purposes (e.g. transporting goods, harvesting ocean resources, and carrying tourists). When these ships are transiting noise is added to the soundscape, particularly in the lower frequencies. Therefore we use 100 Hz as an indicator of ship noise in the soundscape. \n\n\n\n\n\n\n\n  Table of results\n  \n  \n  ADD DESCRIPTION\n  \n  \n    Close",
     "crumbs": [
-      "Pacific Islands"
+      "Papahānaumokuākea"
     ]
   },
   {
@@ -150,6 +150,13 @@
     ]
   },
   {
+    "objectID": "content/acknowledgements.html",
+    "href": "content/acknowledgements.html",
+    "title": "Acknowledgments",
+    "section": "",
+    "text": "This repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland."
+  },
+  {
     "objectID": "content/publishing.html",
     "href": "content/publishing.html",
     "title": "Publishing",
@@ -178,11 +185,54 @@
     "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
   },
   {
-    "objectID": "content/acknowledgements.html",
-    "href": "content/acknowledgements.html",
-    "title": "Acknowledgments",
+    "objectID": "content/oc.html",
+    "href": "content/oc.html",
+    "title": "Papahānaumokuākea National Monument Soundscape Report",
     "section": "",
-    "text": "This repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland."
+    "text": "Site\nPrimary.monitoring.purpose\nOceanographic.Setting\nDepth\nSeasonality\nKnown.biological.sounds\nVessel.Traffic.Setting\nLatitude\nLongitude\nTotalDays\nStartDate\nInformation\n\n\nPM01\nInformation for the proposed designation of Papahānaumokuākea Marine National Monument as a Sanctuary\nA remote bank at the eastern end of the Monument’s boundary with relatively high humpback whale densities.\n~65\ntropical- wet (nov-apr) and dry (may--oct)\nhumpback whales\nvessel use and naval activities are detected in this area but not well understood\n22.66241\n-161.04201\n347\n2020-03-31 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM01\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpback whales\nlimited vessel traffic acousticsl detected\n23.75794\n-166.33467\n526\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM02\n\n\nPM05\nSanctSound Monitoring site: 2019-10-01 to 2020-05-19\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.156\n256\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM05\n\n\nPM08\nSanctSound Monitoring site: August 26, 2019 and August 22, 2020\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM08",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#where-are-we-listening",
+    "href": "content/oc.html#where-are-we-listening",
+    "title": "Papahānaumokuākea National Monument Soundscape Report",
+    "section": "",
+    "text": "Site\nPrimary.monitoring.purpose\nOceanographic.Setting\nDepth\nSeasonality\nKnown.biological.sounds\nVessel.Traffic.Setting\nLatitude\nLongitude\nTotalDays\nStartDate\nInformation\n\n\nPM01\nInformation for the proposed designation of Papahānaumokuākea Marine National Monument as a Sanctuary\nA remote bank at the eastern end of the Monument’s boundary with relatively high humpback whale densities.\n~65\ntropical- wet (nov-apr) and dry (may--oct)\nhumpback whales\nvessel use and naval activities are detected in this area but not well understood\n22.66241\n-161.04201\n347\n2020-03-31 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM01\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpback whales\nlimited vessel traffic acousticsl detected\n23.75794\n-166.33467\n526\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM02\n\n\nPM05\nSanctSound Monitoring site: 2019-10-01 to 2020-05-19\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.156\n256\n2019-10-01 00:00:00\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM05\n\n\nPM08\nSanctSound Monitoring site: August 26, 2019 and August 22, 2020\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive\nhttps://sanctsound.portal.axds.co/#sanctsound/sanctuary/papah%C4%81naumoku%C4%81kea/site/PM08",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#soundscape-overview-for-papahānaumokuākea-national-monument",
+    "href": "content/oc.html#soundscape-overview-for-papahānaumokuākea-national-monument",
+    "title": "Papahānaumokuākea National Monument Soundscape Report",
+    "section": "Soundscape Overview for Papahānaumokuākea National Monument",
+    "text": "Soundscape Overview for Papahānaumokuākea National Monument\n\n\nSoundscapes are complex -- representing all the types of sounds present at a given time and location and influenced by the weather. **How do we visualize this information?** Let's start with the main contributions to a soundscape: the colored lines represent **seasonal differences**, vertical lines indicate different sound **sources of interest** and what frequency(s) represents the source, and the black lines bound the soundscape to **expected range** based on when only wind noise is present. We can track these different contributions over time to understand how soundscape are changing.  We can also compare across locations.\n\n**A visualization of ocean sound.** Seasonal summary of measured sound levels (colored lines) shown as median hourly values over all available data. Vertical lines indicate representative frequencies for different sound sources. The bottom bar shows how the data are distributed in the different wind categories: low &lt; 5 m/s, med 5-10 m/s, high &gt;10 m/s. Dotted lines are modeled wind noise at this depth based on [Hildebrand et al 2021].\n\n\n\n\n\n\nHow was this calculated?\n  \n  The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n    Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n    \n      Close\n      \n      \n      \n        How does my sanctuary compare?\n        \n        \n        No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n        \n          Close",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#what-are-the-latest-conditions-in-ocean-sound",
+    "href": "content/oc.html#what-are-the-latest-conditions-in-ocean-sound",
+    "title": "Papahānaumokuākea National Monument Soundscape Report",
+    "section": "What are the latest conditions in ocean sound?",
+    "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic, changing with season and annual differences in sources (wind, biologics, and human-activity). Comparing annual ocean sound levels provides insights on trends in ocean noise: **Are levels lower in the most recent year of monitoring?** Efforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be be reflected in the annual data. Typically, a more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels.",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#how-often-is-ocean-sound-above-wind-noise",
+    "href": "content/oc.html#how-often-is-ocean-sound-above-wind-noise",
+    "title": "Papahānaumokuākea National Monument Soundscape Report",
+    "section": "How often is ocean sound above wind noise?",
+    "text": "How often is ocean sound above wind noise?\n\n\nIn many marine environments, ships are transiting the region for a variety of purposes (e.g. transporting goods, harvesting ocean resources, and carrying tourists). When these ships are transiting noise is added to the soundscape, particularly in the lower frequencies. Therefore we use 100 Hz as an indicator of ship noise in the soundscape. \n\n\n\n\n\n\n\n  Table of results\n  \n  \n  ADD DESCRIPTION\n  \n  \n    Close",
+    "crumbs": [
+      "Olympic Coast"
+    ]
   },
   {
     "objectID": "content/sb.html",
