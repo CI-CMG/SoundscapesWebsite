@@ -205,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="where-are-we-listening" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="where-are-we-listening">Where are we listening?</h2>
-<div id="31c1108c" class="cell" data-execution_count="2">
+<div id="8c08932d" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 NOAA's Office of National Marine Sanctuaries (ONMS) maintains a nationally coordinated underwater sound monitoring network across the National Marine Sanctuary System, known as  <a href="https://sanctuaries.noaa.gov/science/monitoring/sound/">ONMS Sound</a>. ONMS sound works with partners to monitor off the US East Coast, in the Gulf of Mexico, off the West Coast and in the Pacific Islands region. Ocean Sound monitoring sites are located in strategic locations within sanctuary boundaries and records continuously. Audio recordings and standardized sound measurements are available through the NOAA National Centers for Environmental Information's Passive Acoustic Archive. Explore the acoustic monitoring sites <a href="https://www.ncei.noaa.gov/maps/passive-acoustic-data/">here</a>. 
 </div>
@@ -231,7 +231,7 @@ The <a href="https://stellwagen.noaa.gov">Stellwagen Bank National Marine Sanctu
 </div>
 <section id="ocean-sound-monitoring-sites" class="level3">
 <h3 class="anchored" data-anchor-id="ocean-sound-monitoring-sites">Ocean sound monitoring sites</h3>
-<div id="0d3e6f2b" class="cell" data-execution_count="3">
+<div id="0385f1fd" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
@@ -313,7 +313,7 @@ The <a href="https://stellwagen.noaa.gov">Stellwagen Bank National Marine Sanctu
 </section>
 <section id="soundscape-overview-for-stellwagen-bank-national-marine-sanctuary" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="soundscape-overview-for-stellwagen-bank-national-marine-sanctuary">Soundscape Overview for Stellwagen Bank National Marine Sanctuary</h2>
-<div id="aabda9ff" class="cell" data-execution_count="4">
+<div id="2a5d371d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 Soundscapes are complex -- representing all the types of sounds present at a given time and location and influenced by the weather. **How do we visualize this information?** Let's start with the main contributions to a soundscape: the colored lines represent **seasonal differences**, vertical lines indicate different sound **sources of interest** and what frequency(s) represents the source, and the black lines bound the soundscape to **expected range** based on when only wind noise is present. We can track these different contributions over time to understand how soundscape are changing.  We can also compare across locations.
 <br><br>
@@ -360,7 +360,7 @@ Soundscapes are complex -- representing all the types of sounds present at a giv
 </section>
 <section id="what-are-the-latest-conditions-in-ocean-sound" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="what-are-the-latest-conditions-in-ocean-sound">What are the latest conditions in ocean sound?</h2>
-<div id="d39331ad" class="cell" data-execution_count="5">
+<div id="c5a7006a" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 Soundscapes are dynamic, changing with season and annual differences in sources (wind, biologics, and human-activity). Comparing annual ocean sound levels provides insights on trends in ocean noise: **Are levels lower in the most recent year of monitoring?** Efforts to reduce noise are underway on global to local scales though <a href="https://pubs.aip.org/asa/jasa/article/156/5/3534/3321836">vessel speed reduction strategies</a> and engineering solutions, and these efforts may be be reflected in the annual data. Typically, a more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels.
 </div>
@@ -385,7 +385,7 @@ Soundscapes are dynamic, changing with season and annual differences in sources 
 </section>
 <section id="how-often-is-ocean-sound-above-wind-noise" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="how-often-is-ocean-sound-above-wind-noise">How often is ocean sound above wind noise?</h2>
-<div id="c79178b1" class="cell" data-execution_count="6">
+<div id="ffcc44cd" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 In many marine environments, ships are transiting the region for a variety of purposes (e.g. transporting goods, harvesting ocean resources, and carrying tourists). When these ships are transiting noise is added to the soundscape, particularly in the lower frequencies. Therefore we use 100 Hz as an indicator of ship noise in the soundscape. 
 </div>
@@ -402,31 +402,6 @@ In many marine environments, ships are transiting the region for a variety of pu
                     function sb03Freq() {
                         var imgElement = document.getElementById('Freq');
                         imgElement.src = "https://github.com/CI-CMG/SoundscapeScenes/blob/main/ONMS-Sound/report/plot_sb03_Exceed100.jpg?raw=true";
-                    }
-                    </script>
-        
-</div>
-</div>
-</section>
-<section id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
-<h2 class="anchored" data-anchor-id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape">How much noise do nearby ships contribute to the soundscape?</h2>
-<div id="add0413e" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display">
-Sound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby. Ships are considered nearby if transiting within 10 km of the monitoring location. In some cases, multiple ships are transiting nearby to further segment the ocean sound data into categories of high, medium, low vessel presence. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.
-</div>
-<div class="cell-output cell-output-display">
-<button onclick="sb01TimeSeries()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03TimeSeries()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://github.com/CI-CMG/SoundscapeScenes/blob/main/ONMS-Sound/report/plot_sb01_AISTimeSeries.jpg?raw=true" width="700" id="TimeSeries">
-                    <script>
-                    function sb01TimeSeries() {
-                        var imgElement = document.getElementById('TimeSeries');
-                        imgElement.src = "https://github.com/CI-CMG/SoundscapeScenes/blob/main/ONMS-Sound/report/plot_sb01_AISTimeSeries.jpg?raw=true";
-                    }
-                    </script>
-        
-                    <script>
-                    function sb03TimeSeries() {
-                        var imgElement = document.getElementById('TimeSeries');
-                        imgElement.src = "https://github.com/CI-CMG/SoundscapeScenes/blob/main/ONMS-Sound/report/plot_sb03_AISTimeSeries.jpg?raw=true";
                     }
                     </script>
         
@@ -458,6 +433,15 @@ Sound levels increase when ships are transiting nearby a monitoring locations be
     </button>
                 
 </dialog></div>
+</div>
+</section>
+<section id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
+<h2 class="anchored" data-anchor-id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape">How much noise do nearby ships contribute to the soundscape?</h2>
+<p>Can I add text here??</p>
+<div id="e394f46b" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+Sound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby. Ships are considered nearby if transiting within 10 km of the monitoring location. In some cases, multiple ships are transiting nearby to further segment the ocean sound data into categories of high, medium, low vessel presence. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.
+</div>
 </div>
 </section>
 
