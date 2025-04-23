@@ -319,7 +319,7 @@
     "href": "content/sb.html#how-much-noise-do-nearby-ships-contribute-to-the-soundscape",
     "title": "Stellwagen Bank National Marine Sanctuary Soundscape Report",
     "section": "How much noise do nearby ships contribute to the soundscape?",
-    "text": "How much noise do nearby ships contribute to the soundscape?\nCan I add text here??\n\n\nSound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby. Ships are considered nearby if transiting within 10 km of the monitoring location. In some cases, multiple ships are transiting nearby to further segment the ocean sound data into categories of high, medium, low vessel presence. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.",
+    "text": "How much noise do nearby ships contribute to the soundscape?\nCan I add text here?? Instead of using the table\n\n\nSound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby. Ships are considered nearby if transiting within 10 km of the monitoring location. In some cases, multiple ships are transiting nearby to further segment the ocean sound data into categories of high, medium, low vessel presence. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.",
     "crumbs": [
       "Stellwagen Bank"
     ]
