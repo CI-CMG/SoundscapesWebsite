@@ -401,7 +401,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="where-are-we-listening" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="where-are-we-listening">Where are we listening?</h2>
-<div id="f7e05bfd" class="cell" data-execution_count="2">
+<div id="fb3603bd" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 The <a href="https://stellwagen.noaa.gov/&quot;">Stellwagen Bank National Marine Sanctuary</a>  is a wild ocean  place near an urban world, sits east of Boston, Massachusetts between Cape Ann and Cape Cod.  Historically important as a fishing ground, New England’s only national marine sanctuary now reigns as  a premier whale watching destination and continues to support commercial and recreational fishing.
 <br><br>
@@ -412,7 +412,7 @@ Current ocean sound monitoring and analysis is maintained at four sites within S
 </div>
 <section id="ocean-sound-monitoring-sites" class="level3">
 <h3 class="anchored" data-anchor-id="ocean-sound-monitoring-sites">Ocean sound monitoring sites</h3>
-<div id="721accc5" class="cell" data-execution_count="3">
+<div id="ebc3dab0" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div style="overflow-x: auto;">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -491,7 +491,7 @@ Current ocean sound monitoring and analysis is maintained at four sites within S
 </section>
 <section id="seasonal-soundscape-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="seasonal-soundscape-conditions">Seasonal soundscape conditions</h2>
-<div id="6692c965" class="cell" data-execution_count="4">
+<div id="c781a829" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <b>Here are some questions to consider when viewing the graph(s) below </b>
 <br style="line-height: 1.5;">
@@ -510,6 +510,17 @@ If so, this indicates constant noise from distant and nearby shipping traffic is
 <div class="cell-output cell-output-display">
 <button onclick="sb01Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_SeasonalSPL.jpg" width="700" id="Seasons" onclick="toggleSeasons()">
                     <script>
+                    function toggleSeasons() {
+                        var imgElement = document.getElementById('Seasons');
+                        if (!document.fullscreenElement) {
+                            imgElement.requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }
+                    </script>
+    
+                    <script>
                     function sb01Seasons() {
                         var imgElement = document.getElementById('Seasons');
                         imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_SeasonalSPL.jpg";
@@ -523,17 +534,6 @@ If so, this indicates constant noise from distant and nearby shipping traffic is
                     }
                     </script>
         
-                    <script>
-                    function toggleSeasons() {
-                        var imgElement = document.getElementById('Seasons');
-                        if (!document.fullscreenElement) {
-                            imgElement.requestFullscreen();
-                        } else {
-                            document.exitFullscreen();
-                        }
-                    }
-                    </script>
-    
 </div>
 <div class="cell-output cell-output-display">
 
@@ -559,7 +559,7 @@ If so, this indicates constant noise from distant and nearby shipping traffic is
 </section>
 <section id="what-are-the-latest-conditions-in-ocean-sound" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="what-are-the-latest-conditions-in-ocean-sound">What are the latest conditions in ocean sound?</h2>
-<div id="62516ffa" class="cell" data-execution_count="5">
+<div id="5513ffb5" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 Soundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. 
 <br><br>
@@ -569,6 +569,17 @@ Are levels lower in the most recent year of monitoring in any of the frequencies
 </div>
 <div class="cell-output cell-output-display">
 <button onclick="sb01YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_YearSPL.jpg" width="700" id="YearSPL" onclick="toggleYearSPL()">
+                    <script>
+                    function toggleYearSPL() {
+                        var imgElement = document.getElementById('YearSPL');
+                        if (!document.fullscreenElement) {
+                            imgElement.requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }
+                    </script>
+    
                     <script>
                     function sb01YearSPL() {
                         var imgElement = document.getElementById('YearSPL');
@@ -583,9 +594,22 @@ Are levels lower in the most recent year of monitoring in any of the frequencies
                     }
                     </script>
         
+</div>
+</div>
+</section>
+<section id="how-often-is-ocean-sound-above-wind-noise" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
+<h2 class="anchored" data-anchor-id="how-often-is-ocean-sound-above-wind-noise">How often is ocean sound above wind noise?</h2>
+<div id="a3f1ab6b" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+Wind has a predictable influence on <a href="https://pubs.aip.org/asa/jasa/article/149/6/4516/1059383/An-empirical-model-for-wind-generated-ocean-noise">ocean sound levels</a>.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. 
+<br><br>
+The resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). 
+</div>
+<div class="cell-output cell-output-display">
+<button onclick="sb01Freq()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03Freq()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_Exceed100.jpg" width="700" id="Freq" onclick="toggleFreq()">
                     <script>
-                    function toggleYearSPL() {
-                        var imgElement = document.getElementById('YearSPL');
+                    function toggleFreq() {
+                        var imgElement = document.getElementById('Freq');
                         if (!document.fullscreenElement) {
                             imgElement.requestFullscreen();
                         } else {
@@ -594,19 +618,6 @@ Are levels lower in the most recent year of monitoring in any of the frequencies
                     }
                     </script>
     
-</div>
-</div>
-</section>
-<section id="how-often-is-ocean-sound-above-wind-noise" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
-<h2 class="anchored" data-anchor-id="how-often-is-ocean-sound-above-wind-noise">How often is ocean sound above wind noise?</h2>
-<div id="71ace818" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-Wind has a predictable influence on <a href="https://pubs.aip.org/asa/jasa/article/149/6/4516/1059383/An-empirical-model-for-wind-generated-ocean-noise">ocean sound levels</a>.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. 
-<br><br>
-The resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). 
-</div>
-<div class="cell-output cell-output-display">
-<button onclick="sb01Freq()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03Freq()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_Exceed100.jpg" width="700" id="Freq" onclick="toggleFreq()">
                     <script>
                     function sb01Freq() {
                         var imgElement = document.getElementById('Freq');
@@ -621,17 +632,6 @@ The resulting metric is the percent time above wind and can be used to compare c
                     }
                     </script>
         
-                    <script>
-                    function toggleFreq() {
-                        var imgElement = document.getElementById('Freq');
-                        if (!document.fullscreenElement) {
-                            imgElement.requestFullscreen();
-                        } else {
-                            document.exitFullscreen();
-                        }
-                    }
-                    </script>
-    
 </div>
 <div class="cell-output cell-output-display">
 
@@ -641,6 +641,17 @@ The resulting metric is the percent time above wind and can be used to compare c
   <dialog id="infoModal3">
   <p>Percent Time Above Wind Noise</p>
   <button onclick="sb01MonthTable()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03MonthTable()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/table_sb01_AboveWind.jpg" width="700" id="MonthTable" onclick="toggleMonthTable()">
+                    <script>
+                    function toggleMonthTable() {
+                        var imgElement = document.getElementById('MonthTable');
+                        if (!document.fullscreenElement) {
+                            imgElement.requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }
+                    </script>
+    
                     <script>
                     function sb01MonthTable() {
                         var imgElement = document.getElementById('MonthTable');
@@ -655,17 +666,6 @@ The resulting metric is the percent time above wind and can be used to compare c
                     }
                     </script>
         
-                    <script>
-                    function toggleMonthTable() {
-                        var imgElement = document.getElementById('MonthTable');
-                        if (!document.fullscreenElement) {
-                            imgElement.requestFullscreen();
-                        } else {
-                            document.exitFullscreen();
-                        }
-                    }
-                    </script>
-    
   <button style="background-color: #FFFFFF;" onclick="document.getElementById('infoModal3').close()">
     Close
     </button>
@@ -677,9 +677,20 @@ The resulting metric is the percent time above wind and can be used to compare c
 <h2 class="anchored" data-anchor-id="ocean-sound-indicators">Ocean sound indicators</h2>
 <section id="how-do-sound-levels-vary-at-125-hz" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-sound-levels-vary-at-125-hz">How do sound levels vary at 125 Hz?</h3>
-<div id="1952664b" class="cell" data-execution_count="7">
+<div id="fa703f48" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <button onclick="sb01SoundLevelVariance()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03SoundLevelVariance()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_125Hz.jpg" width="700" id="SoundLevelVariance" onclick="toggleSoundLevelVariance()">
+                    <script>
+                    function toggleSoundLevelVariance() {
+                        var imgElement = document.getElementById('SoundLevelVariance');
+                        if (!document.fullscreenElement) {
+                            imgElement.requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }
+                    </script>
+    
                     <script>
                     function sb01SoundLevelVariance() {
                         var imgElement = document.getElementById('SoundLevelVariance');
@@ -694,9 +705,20 @@ The resulting metric is the percent time above wind and can be used to compare c
                     }
                     </script>
         
+</div>
+</div>
+</section>
+<section id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape" class="level3">
+<h3 class="anchored" data-anchor-id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape">How much noise do nearby ships contribute to the soundscape?</h3>
+<div id="dcde0187" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+Sound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby.  Ships are considered nearby if transiting within 10 km of the monitoring location. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.
+</div>
+<div class="cell-output cell-output-display">
+<button onclick="sb01Histogram()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03Histogram()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_AIShist.jpg" width="700" id="Histogram" onclick="toggleHistogram()">
                     <script>
-                    function toggleSoundLevelVariance() {
-                        var imgElement = document.getElementById('SoundLevelVariance');
+                    function toggleHistogram() {
+                        var imgElement = document.getElementById('Histogram');
                         if (!document.fullscreenElement) {
                             imgElement.requestFullscreen();
                         } else {
@@ -705,17 +727,6 @@ The resulting metric is the percent time above wind and can be used to compare c
                     }
                     </script>
     
-</div>
-</div>
-</section>
-<section id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape" class="level3">
-<h3 class="anchored" data-anchor-id="how-much-noise-do-nearby-ships-contribute-to-the-soundscape">How much noise do nearby ships contribute to the soundscape?</h3>
-<div id="5dfb6f56" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display">
-Sound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby.  Ships are considered nearby if transiting within 10 km of the monitoring location. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.
-</div>
-<div class="cell-output cell-output-display">
-<button onclick="sb01Histogram()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb01</button><button onclick="sb03Histogram()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;">sb03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_sb01_AIShist.jpg" width="700" id="Histogram" onclick="toggleHistogram()">
                     <script>
                     function sb01Histogram() {
                         var imgElement = document.getElementById('Histogram');
@@ -730,17 +741,6 @@ Sound levels increase when ships are transiting nearby a monitoring locations be
                     }
                     </script>
         
-                    <script>
-                    function toggleHistogram() {
-                        var imgElement = document.getElementById('Histogram');
-                        if (!document.fullscreenElement) {
-                            imgElement.requestFullscreen();
-                        } else {
-                            document.exitFullscreen();
-                        }
-                    }
-                    </script>
-    
 </div>
 </div>
 </section>
