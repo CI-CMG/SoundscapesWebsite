@@ -1,115 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
-    "section": "",
-    "text": "Ocean sound is critical for the survival of many marine animals because it is a primary means of communication, orientation and navigation, finding food, avoiding predators, and choosing mates. Many of the things people do offshore also introduce sound underwater. Some sounds we produce are purposeful aids to research, exploration, navigation and defense. Other sound is produced as a byproduct of our use of vessels or construction of infrastructure. We can use sound to track how people are using offshore spaces, just as we track marine animals. Human activities that produce underwater sounds can also negatively impact animals by reducing their ability to hear prey, predators, and each other.\n\nU.S. national marine sanctuaries are home to many acoustically active marine animals and understanding their presence as well as the impacts of noise is a conservation priority. Monitoring ocean sound provides key insight to understanding ecosystem dynamics, detecting environmental changes, and managing the impacts of noise pollution on marine organisms.\n\nThe purpose of these sanctuary soundscape reports is to provide updated information on ocean sound conditions where the Office of National Marine Sanctuaries (ONMS) is continuously monitoring ocean sound. These web-based reports prioritize general acoustic conditions over longer periods of time. In addition, if results are available for specific sources of sound, or shorter time periods, they are included as ocean sound indicators.  \n\nLearn more about the diversity of ocean sounds at  Discovery of Sound in the Sea.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#why-are-we-monitoring-ocean-sound",
-    "href": "index.html#why-are-we-monitoring-ocean-sound",
-    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
-    "section": "",
-    "text": "Ocean sound is critical for the survival of many marine animals because it is a primary means of communication, orientation and navigation, finding food, avoiding predators, and choosing mates. Many of the things people do offshore also introduce sound underwater. Some sounds we produce are purposeful aids to research, exploration, navigation and defense. Other sound is produced as a byproduct of our use of vessels or construction of infrastructure. We can use sound to track how people are using offshore spaces, just as we track marine animals. Human activities that produce underwater sounds can also negatively impact animals by reducing their ability to hear prey, predators, and each other.\n\nU.S. national marine sanctuaries are home to many acoustically active marine animals and understanding their presence as well as the impacts of noise is a conservation priority. Monitoring ocean sound provides key insight to understanding ecosystem dynamics, detecting environmental changes, and managing the impacts of noise pollution on marine organisms.\n\nThe purpose of these sanctuary soundscape reports is to provide updated information on ocean sound conditions where the Office of National Marine Sanctuaries (ONMS) is continuously monitoring ocean sound. These web-based reports prioritize general acoustic conditions over longer periods of time. In addition, if results are available for specific sources of sound, or shorter time periods, they are included as ocean sound indicators.  \n\nLearn more about the diversity of ocean sounds at  Discovery of Sound in the Sea.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#overview-of-ocean-sound-monitoring-effort",
-    "href": "index.html#overview-of-ocean-sound-monitoring-effort",
-    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
-    "section": "Overview of ocean sound monitoring effort",
-    "text": "Overview of ocean sound monitoring effort\n\n\nNOAA's Office of National Marine Sanctuaries (ONMS) maintains a nationally coordinated underwater sound monitoring network across the National Marine Sanctuary System, known as ONMS Sound. ONMS Sound works with partners to monitor ONMS regions: East Coast, West Coast, and in the Pacific Islands. ONMS Sound monitoring sites record in strategic locations within sanctuary boundaries. Recordings and standardized sound measurements are available through the NOAA National Centers for Environmental Information's Passive Acoustic Archive. Explore the acoustic monitoring sites using the NCEI Passive Acoustic Data Map Viewer.\n\n\n\n\n\n\nSummary of ONMS Sound data available through NCEI Passive Acoustic Data Archive Google Cloud Platform",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#understanding-ocean-sound",
-    "href": "index.html#understanding-ocean-sound",
-    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
-    "section": "Understanding ocean sound",
-    "text": "Understanding ocean sound\n\n\nSoundscapes are complex – representing a variety of sounds from different sources present at a given time and location, and influenced by the weather.  \nEach sanctuary has unique soundscapes, or combinations of sounds present at any given time. We can track soundscape conditions over time and across sites. We can also use ocean sound data to track indicators of species presence and human activity.\n\n\n\n\n\n                    \n    \n\n\nImage: Aline Design for NOAA\n\nExplore results for a specific sanctuary by clicking on sanctuary show on the navigation on the left panel.\n\n\n\nSeasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. The example graphic below shows how we can track soundscape conditions over seasons. \n\nSound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines indicate sound sources  of interest at the known frequency(s), and the black lines bound the soundscape to expected range of intensity based on when only wind noise is present. \n\n\n\n                    \n    \n\n\n\n\nSoundscape comparison\n\n\nNo one soundscape is is the same. We can compare soundscapes across sites in similar habitats, depths, or vessel traffic patterns. The in the graphic below is from the Sanctuary Soundscape Monitoring Project. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System. Data collected during this dedicated period provide insights on how soundscapes compare.  Black line represents the location of interest compared to monitoring sites in similar conditions. \n\n\n\n                    \n    \n\n\n\n\nOcean sound indicators\n\n\nTracking individual sources of sound within a soundscape can provide an indicator for those sources. While these reports prioritize general soundscape conditions over longer periods of time, if results are available for specific sources of sound, or shorter time periods, the most recent results are summarized to provide information on when the sounds are present, either during day or across a year. The National Marine Fisheries Service maintains analysis of marine mammal presence from passive acoustic monitoring data.  a within U.S. waters, including sanctuaries.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#what-are-we-learning",
-    "href": "index.html#what-are-we-learning",
-    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
-    "section": "What are we learning?",
-    "text": "What are we learning?\n\n\nCollaborative partnerships help us gain key insights on sanctuary resources and conditions from ocean sound data by leveraging ecological and technological expertise. Here are a few recent examples:\n\nZang, E., Lammers, M., Pack, A., and Hatch, L. (2024). Impulsive sounds produced by humpback whale surface active behavior recorded on acoustic tags and bottom‐moored recorders. Marine Mammal Science, 40(1), 302-308.\n\nMcKenna, M. F., Rowell, T. J., Margolina, T., Baumann-Pickering, S., Solsona-Berga, A., Adams, J. D., ... & Hatch, L. T. (2024). Understanding vessel noise across a network of marine protected areas. Environmental Monitoring and Assessment, 196(4), 369.\n\nMadrigal, B. C., Kügler, A., Zang, E., Lammers, M., Hatch, L. T., and Pacini, A. F. (2024).  Comparing the underwater soundscape of the Hawaiian Islands Humpback Whale National Marine Sanctuary and potential influences of the COVID-19 pandemic. Frontiers in Marine Science, 11, 1342454. \n\nKim, E. B., Frasier, K. E., McKenna, M. F., Kok, A., Peavey Reeves, L. E., Oestreich, W. K., ... & Baumann-Pickering, S. (2023). Soundscape learning: An automatic method for separating fish chorus in marine soundscapes. The Journal of the Acoustical Society of America, 153(3), 1710-1722.\n\nLammers, M.O., Goodwin B., Kügler, A., Zang, E.J., Harvey, M., Margolina, T., Martinez, J.A., Merkens, K. and Hatch, L.T. (2023). The occurrence of humpback whales across the Hawaiian archipelago revealed by fixed and mobile acoustic monitoring . Front. Mar. Sci. 10:1083583. \n\nMcKenna, M. F., Baumann-Pickering, S., Kok, A. C., Oestreich, W. K., Adams, J. D., Barkowski, J., ... & Hatch, L. T. (2021). Advancing the interpretation of shallow water marine soundscapes. Frontiers in Marine Science, 8, 719258.\n\nDeAngelis, A. I., Van Parijs, S. M., Barkowski, J., Baumann-Pickering, S., Burger, K., Davis, G. E., ... & Hatch, L. (2022).  Exploring marine mammal presence across seven US national marine sanctuaries. Frontiers in Remote Sensing, 3, 970401.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "content/cb.html",
-    "href": "content/cb.html",
-    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
-    "section": "",
-    "text": "The Cordell Bank National Marine Sanctuary....\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nNRS11\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n37.88\n-123.43\n1433\n2015-10-17 00:00:00",
-    "crumbs": [
-      "Cordell Bank"
-    ]
-  },
-  {
-    "objectID": "content/cb.html#where-are-we-listening",
-    "href": "content/cb.html#where-are-we-listening",
-    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
-    "section": "",
-    "text": "The Cordell Bank National Marine Sanctuary....\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nNRS11\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n37.88\n-123.43\n1433\n2015-10-17 00:00:00",
-    "crumbs": [
-      "Cordell Bank"
-    ]
-  },
-  {
-    "objectID": "content/cb.html#seasonal-soundscape-conditions",
-    "href": "content/cb.html#seasonal-soundscape-conditions",
-    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
-    "section": "Seasonal soundscape conditions",
-    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent **seasonal differences**, vertical lines indicate sound **sources  of interest** at the known frequency(s), and the black lines bound the soundscape to **expected range** of intensity based on when only wind noise is present. \nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\n\n                    \n    \n\n\n\n                How was this calculated?\n            \n                The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n                Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n                \n                    Close\n                \n            \n                \n                    How does my sanctuary compare?\n                \n            \n                No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n                \n                    Close",
-    "crumbs": [
-      "Cordell Bank"
-    ]
-  },
-  {
-    "objectID": "content/cb.html#what-are-the-latest-conditions-in-ocean-sound",
-    "href": "content/cb.html#what-are-the-latest-conditions-in-ocean-sound",
-    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
-    "section": "What are the latest conditions in ocean sound?",
-    "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. \n\nEfforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be  reflected in the annual data. A more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels and this annual summary provides initial insight.\n\nAre levels lower in the most recent year of monitoring in any of the frequencies of interest?",
-    "crumbs": [
-      "Cordell Bank"
-    ]
-  },
-  {
-    "objectID": "content/cb.html#how-often-is-ocean-sound-above-wind-noise",
-    "href": "content/cb.html#how-often-is-ocean-sound-above-wind-noise",
-    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
-    "section": "How often is ocean sound above wind noise?",
-    "text": "How often is ocean sound above wind noise?\n\n\nWind has a predictable influence on ocean sound levels.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. \n\nThe resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). \n\n\n\n                    \n    \n\n\n\n\n  Table of results\n  \n  \n  Percent Time Above Wind Noise\n  \n                    \n    \n  \n    Close",
-    "crumbs": [
-      "Cordell Bank"
-    ]
-  },
-  {
-    "objectID": "content/cb.html#ocean-sound-indicators",
-    "href": "content/cb.html#ocean-sound-indicators",
-    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
-    "section": "Ocean sound indicators",
-    "text": "Ocean sound indicators\n\nHow much noise do nearby ships contribute to the soundscape?\n\n\nSound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby.  Ships are considered nearby if transiting within 10 km of the monitoring location. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.",
-    "crumbs": [
-      "Cordell Bank"
-    ]
-  },
-  {
     "objectID": "content/sb.html",
     "href": "content/sb.html",
     "title": "Stellwagen Bank National Marine Sanctuary Soundscape Report",
@@ -134,7 +24,7 @@
     "href": "content/sb.html#seasonal-soundscape-conditions",
     "title": "Stellwagen Bank National Marine Sanctuary Soundscape Report",
     "section": "Seasonal soundscape conditions",
-    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent **seasonal differences**, vertical lines indicate sound **sources  of interest** at the known frequency(s), and the black lines bound the soundscape to **expected range** of intensity based on when only wind noise is present. \nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\nsb01sb03\n                    \n    \n                    \n        \n                    \n        \n\n\n\n                How was this calculated?\n            \n                The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n                Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n                \n                    Close\n                \n            \n                \n                    How does my sanctuary compare?\n                \n            \n                No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n                \n                    Close",
+    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines and shaded area indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to expected range of intensity based on when only wind noise is present. \n\nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\nsb01sb03\n                    \n    \n                    \n        \n                    \n        \n\n\n\n                How was this calculated?\n            \n                The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n                Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n                \n                    Close\n                \n            \n                \n                    How does my sanctuary compare?\n                \n            \n                No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n                \n                    Close",
     "crumbs": [
       "Stellwagen Bank"
     ]
@@ -170,92 +60,64 @@
     ]
   },
   {
-    "objectID": "content/oc.html",
-    "href": "content/oc.html",
-    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "objectID": "content/cb.html",
+    "href": "content/cb.html",
+    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
     "section": "",
-    "text": "The Olympic Coast National Marine Sanctuary (OCNMS)....\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nOC02\nTo monitor a site that supports seasonally high abundances of Atlantic cod and is located near a region of elevated commercial vessel activity.\nnan\nnan\nnan\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n48.49\n-125\nnan\nnan\n\n\nOC01\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC03\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC04\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nNRS03\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nnan\n47.77\n−125.52\nnan\nnan",
+    "text": "The Cordell Bank National Marine Sanctuary....\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nNRS11\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n37.88\n-123.43\n1433\n2015-10-17 00:00:00",
     "crumbs": [
-      "Olympic Coast"
+      "Cordell Bank"
     ]
   },
   {
-    "objectID": "content/oc.html#where-are-we-listening",
-    "href": "content/oc.html#where-are-we-listening",
-    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "objectID": "content/cb.html#where-are-we-listening",
+    "href": "content/cb.html#where-are-we-listening",
+    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
     "section": "",
-    "text": "The Olympic Coast National Marine Sanctuary (OCNMS)....\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nOC02\nTo monitor a site that supports seasonally high abundances of Atlantic cod and is located near a region of elevated commercial vessel activity.\nnan\nnan\nnan\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n48.49\n-125\nnan\nnan\n\n\nOC01\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC03\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC04\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nNRS03\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nnan\n47.77\n−125.52\nnan\nnan",
+    "text": "The Cordell Bank National Marine Sanctuary....\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nNRS11\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n37.88\n-123.43\n1433\n2015-10-17 00:00:00",
     "crumbs": [
-      "Olympic Coast"
+      "Cordell Bank"
     ]
   },
   {
-    "objectID": "content/oc.html#seasonal-soundscape-conditions",
-    "href": "content/oc.html#seasonal-soundscape-conditions",
-    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "objectID": "content/cb.html#seasonal-soundscape-conditions",
+    "href": "content/cb.html#seasonal-soundscape-conditions",
+    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
     "section": "Seasonal soundscape conditions",
-    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent **seasonal differences**, vertical lines indicate sound **sources  of interest** at the known frequency(s), and the black lines bound the soundscape to **expected range** of intensity based on when only wind noise is present. \nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\n\n                    \n    \n\n\n\nHow was this calculated?\n  \n  The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n    Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n    \n      Close\n      \n      \n      \n        How does my sanctuary compare?\n        \n        \n        No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n        \n          Close",
+    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines and shaded area indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to expected range of intensity based on when only wind noise is present. \n\nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\n\n                    \n    \n\n\n\n                How was this calculated?\n            \n                The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n                Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n                \n                    Close\n                \n            \n                \n                    How does my sanctuary compare?\n                \n            \n                No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n                \n                    Close",
     "crumbs": [
-      "Olympic Coast"
+      "Cordell Bank"
     ]
   },
   {
-    "objectID": "content/oc.html#what-are-the-latest-conditions-in-ocean-sound",
-    "href": "content/oc.html#what-are-the-latest-conditions-in-ocean-sound",
-    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "objectID": "content/cb.html#what-are-the-latest-conditions-in-ocean-sound",
+    "href": "content/cb.html#what-are-the-latest-conditions-in-ocean-sound",
+    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
     "section": "What are the latest conditions in ocean sound?",
     "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. \n\nEfforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be  reflected in the annual data. A more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels and this annual summary provides initial insight.\n\nAre levels lower in the most recent year of monitoring in any of the frequencies of interest?",
     "crumbs": [
-      "Olympic Coast"
+      "Cordell Bank"
     ]
   },
   {
-    "objectID": "content/oc.html#how-often-is-ocean-sound-above-wind-noise",
-    "href": "content/oc.html#how-often-is-ocean-sound-above-wind-noise",
-    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "objectID": "content/cb.html#how-often-is-ocean-sound-above-wind-noise",
+    "href": "content/cb.html#how-often-is-ocean-sound-above-wind-noise",
+    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
     "section": "How often is ocean sound above wind noise?",
     "text": "How often is ocean sound above wind noise?\n\n\nWind has a predictable influence on ocean sound levels.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. \n\nThe resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). \n\n\n\n                    \n    \n\n\n\n\n  Table of results\n  \n  \n  Percent Time Above Wind Noise\n  \n                    \n    \n  \n    Close",
     "crumbs": [
-      "Olympic Coast"
+      "Cordell Bank"
     ]
   },
   {
-    "objectID": "content/oc.html#ocean-sound-indicators",
-    "href": "content/oc.html#ocean-sound-indicators",
-    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "objectID": "content/cb.html#ocean-sound-indicators",
+    "href": "content/cb.html#ocean-sound-indicators",
+    "title": "Cordell Bank National Marine Sanctuary Soundscape Report",
     "section": "Ocean sound indicators",
     "text": "Ocean sound indicators\n\nHow much noise do nearby ships contribute to the soundscape?\n\n\nSound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby.  Ships are considered nearby if transiting within 10 km of the monitoring location. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.",
     "crumbs": [
-      "Olympic Coast"
+      "Cordell Bank"
     ]
-  },
-  {
-    "objectID": "content/publishing.html",
-    "href": "content/publishing.html",
-    "title": "Publishing",
-    "section": "",
-    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
-  },
-  {
-    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "title": "Publishing",
-    "section": "Turn on GitHub Pages for your repo",
-    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
-  },
-  {
-    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "title": "Publishing",
-    "section": "Do your first publish to gh-pages",
-    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
-  },
-  {
-    "objectID": "content/publishing.html#dont-like-using-gh-pages",
-    "href": "content/publishing.html#dont-like-using-gh-pages",
-    "title": "Publishing",
-    "section": "Don’t like using gh-pages?",
-    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
   },
   {
     "objectID": "content/acknowledgements.html",
@@ -263,126 +125,6 @@
     "title": "Acknowledgments",
     "section": "",
     "text": "This repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland."
-  },
-  {
-    "objectID": "content/mb.html",
-    "href": "content/mb.html",
-    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
-    "section": "",
-    "text": "The Monterey Bay National Marine Sanctuary (MBNMS) offers some of the best wildlife viewing in the world! This \"Serengeti of the Sea\" stretches along the central coast from San Francisco to Cambria and includes pristine beaches, jewel-like tide pools, lush kelp forests, steep canyons and an offshore seamount teeming with life—from tiny shrimp to giant blue whales.\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project. However, a long history of underwater acoustic monitoring has occurred in this sanctuary [1]. Further, the Monterey Bay Aquarium Research Institute (MBARI) supports a continuous real-time monitoring effort within the sanctuary that began in 2015, known as the Soundscape Listening Room. \n\nCollectively, these underwater sound monitoring efforts have provided key insights on cryptic species, whale migration patterns and drivers, methods for detecting fish sounds, and steady rise in ocean noise levels, to highlight a few.\n\n\n\n                    \n    \n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nMB01\nTo monitor nearshore patterns in ocean noise\nContinental shelf (&lt;200m), near Monterey Bay submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.8\n-121.98\n1010\n2018-11-15 00:00:00\n\n\nMB02\nTo monitor fish acoustic activity in important commercial and recreational fishing ground\nContinental shelf (&lt;200m), adjacent to kelp forest ecosystems\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.65\n-121.91\n581\n2018-11-15 00:00:00\n\n\nMB03\nTo continue long-history of monitoring trends in ocean noise, including vessel speed reduction\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and dolphins\nnan\nIn the middle of offshore transit lanes for commercial shipping traffic\n36.37\n-122.31\n1546\n2020-10-02 00:00:00\n\n\nMBARI-MARS\nTo monitor trends in marine mammal species presence and behavior and vessel speed reduction\nContinental slope (&gt;200m), within submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales, fish, and dolphins\nnan\nDistant transiting commercial shipping traffic and nearby research activity\n36.71\n-122.19\n2920\n2015-07-28 00:00:00",
-    "crumbs": [
-      "Monterey Bay"
-    ]
-  },
-  {
-    "objectID": "content/mb.html#where-are-we-listening",
-    "href": "content/mb.html#where-are-we-listening",
-    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
-    "section": "",
-    "text": "The Monterey Bay National Marine Sanctuary (MBNMS) offers some of the best wildlife viewing in the world! This \"Serengeti of the Sea\" stretches along the central coast from San Francisco to Cambria and includes pristine beaches, jewel-like tide pools, lush kelp forests, steep canyons and an offshore seamount teeming with life—from tiny shrimp to giant blue whales.\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project. However, a long history of underwater acoustic monitoring has occurred in this sanctuary [1]. Further, the Monterey Bay Aquarium Research Institute (MBARI) supports a continuous real-time monitoring effort within the sanctuary that began in 2015, known as the Soundscape Listening Room. \n\nCollectively, these underwater sound monitoring efforts have provided key insights on cryptic species, whale migration patterns and drivers, methods for detecting fish sounds, and steady rise in ocean noise levels, to highlight a few.\n\n\n\n                    \n    \n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nMB01\nTo monitor nearshore patterns in ocean noise\nContinental shelf (&lt;200m), near Monterey Bay submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.8\n-121.98\n1010\n2018-11-15 00:00:00\n\n\nMB02\nTo monitor fish acoustic activity in important commercial and recreational fishing ground\nContinental shelf (&lt;200m), adjacent to kelp forest ecosystems\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.65\n-121.91\n581\n2018-11-15 00:00:00\n\n\nMB03\nTo continue long-history of monitoring trends in ocean noise, including vessel speed reduction\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and dolphins\nnan\nIn the middle of offshore transit lanes for commercial shipping traffic\n36.37\n-122.31\n1546\n2020-10-02 00:00:00\n\n\nMBARI-MARS\nTo monitor trends in marine mammal species presence and behavior and vessel speed reduction\nContinental slope (&gt;200m), within submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales, fish, and dolphins\nnan\nDistant transiting commercial shipping traffic and nearby research activity\n36.71\n-122.19\n2920\n2015-07-28 00:00:00",
-    "crumbs": [
-      "Monterey Bay"
-    ]
-  },
-  {
-    "objectID": "content/mb.html#seasonal-soundscape-conditions",
-    "href": "content/mb.html#seasonal-soundscape-conditions",
-    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
-    "section": "Seasonal soundscape conditions",
-    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent **seasonal differences**, vertical lines indicate sound **sources  of interest** at the known frequency(s), and the black lines bound the soundscape to **expected range** of intensity based on when only wind noise is present. \nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\nmb01mb02\n                    \n    \n                    \n        \n                    \n        \n\n\n\n                How was this calculated?\n            \n                The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n                Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n                \n                    Close\n                \n            \n                \n                    How does my sanctuary compare?\n                \n            \n                No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n                \n                    Close",
-    "crumbs": [
-      "Monterey Bay"
-    ]
-  },
-  {
-    "objectID": "content/mb.html#what-are-the-latest-conditions-in-ocean-sound",
-    "href": "content/mb.html#what-are-the-latest-conditions-in-ocean-sound",
-    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
-    "section": "What are the latest conditions in ocean sound?",
-    "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. \n\nEfforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be  reflected in the annual data. A more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels and this annual summary provides initial insight.\n\nAre levels lower in the most recent year of monitoring in any of the frequencies of interest? \n\n\nmb01mb02",
-    "crumbs": [
-      "Monterey Bay"
-    ]
-  },
-  {
-    "objectID": "content/mb.html#how-often-is-ocean-sound-above-wind-noise",
-    "href": "content/mb.html#how-often-is-ocean-sound-above-wind-noise",
-    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
-    "section": "How often is ocean sound above wind noise?",
-    "text": "How often is ocean sound above wind noise?\n\n\nWind has a predictable influence on ocean sound levels.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. \n\nThe resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). \n\n\nmb01mb02\n                    \n    \n                    \n        \n                    \n        \n\n\n\n\n  Table of results\n  \n  \n  Percent Time Above Wind Noise\n  mb01mb02\n                    \n    \n                    \n        \n                    \n        \n  \n    Close",
-    "crumbs": [
-      "Monterey Bay"
-    ]
-  },
-  {
-    "objectID": "content/mb.html#ocean-sound-indicators",
-    "href": "content/mb.html#ocean-sound-indicators",
-    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
-    "section": "Ocean sound indicators",
-    "text": "Ocean sound indicators\n\nWhen do fish choruses contribute to the soundscape?\n\n\nOnly results from sites with species detections included in this section.",
-    "crumbs": [
-      "Monterey Bay"
-    ]
-  },
-  {
-    "objectID": "content/pi.html",
-    "href": "content/pi.html",
-    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
-    "section": "",
-    "text": "Papahānaumokuākea National Marine Sanctuary  (PNMS) is the largest sanctuary in the National Marine Sanctuary System, encompassesing 582,570 square miles of Pacific Ocean waters in Hawaiʻi, providing protection to nationally significant natural, cultural, and historical resources. The sanctuary is comprised of several interconnected ecosystems, such as coral islands surrounded by shallow reefs, low-light mesophotic reefs with extensive algal beds, open ocean waters connected to the greater North Pacific Ocean, deep-water habitats such as abyssal plains 16,400 feet below sea level, and deep reef habitat characterized by seamounts, banks, and shoals. The sanctuary is co-extensive with the marine portions of Papahānaumokuākea Marine National Monument and is a UNESCO World Heritage Site.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nPM01\nmonitor marine mammals and fish presence, especially the relatively high densities of humpback whales in this region\nA remote bank at the eastern end of the sanctuary's boundary\n~65\nhumpback season (Dec-May), minke whale presence (late Fall to late Spring)\nmysticetes, humpbacks, fish, odontocetes, other, snapping shrimp\nvessel use and naval activities are detected in this area but not well understood\n22.66\n-161.04\n347\n2020-03-31 00:00:00\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpbacks, fish, snapping shrimp, odontocetes, mysticetes\nlimited vessel noise acoustically detected\n23.76\n-166.33\n526\n2019-10-01 00:00:00\n\n\nPM05\nSanctuary Soundscape Monitoring site\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.16\n256\n2019-10-01 00:00:00\n\n\nPM08\nSanctuary Soundscape Monitoring site\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive",
-    "crumbs": [
-      "Papahānaumokuākea"
-    ]
-  },
-  {
-    "objectID": "content/pi.html#where-are-we-listening",
-    "href": "content/pi.html#where-are-we-listening",
-    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
-    "section": "",
-    "text": "Papahānaumokuākea National Marine Sanctuary  (PNMS) is the largest sanctuary in the National Marine Sanctuary System, encompassesing 582,570 square miles of Pacific Ocean waters in Hawaiʻi, providing protection to nationally significant natural, cultural, and historical resources. The sanctuary is comprised of several interconnected ecosystems, such as coral islands surrounded by shallow reefs, low-light mesophotic reefs with extensive algal beds, open ocean waters connected to the greater North Pacific Ocean, deep-water habitats such as abyssal plains 16,400 feet below sea level, and deep reef habitat characterized by seamounts, banks, and shoals. The sanctuary is co-extensive with the marine portions of Papahānaumokuākea Marine National Monument and is a UNESCO World Heritage Site.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nPM01\nmonitor marine mammals and fish presence, especially the relatively high densities of humpback whales in this region\nA remote bank at the eastern end of the sanctuary's boundary\n~65\nhumpback season (Dec-May), minke whale presence (late Fall to late Spring)\nmysticetes, humpbacks, fish, odontocetes, other, snapping shrimp\nvessel use and naval activities are detected in this area but not well understood\n22.66\n-161.04\n347\n2020-03-31 00:00:00\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpbacks, fish, snapping shrimp, odontocetes, mysticetes\nlimited vessel noise acoustically detected\n23.76\n-166.33\n526\n2019-10-01 00:00:00\n\n\nPM05\nSanctuary Soundscape Monitoring site\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.16\n256\n2019-10-01 00:00:00\n\n\nPM08\nSanctuary Soundscape Monitoring site\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive",
-    "crumbs": [
-      "Papahānaumokuākea"
-    ]
-  },
-  {
-    "objectID": "content/pi.html#seasonal-soundscape-conditions",
-    "href": "content/pi.html#seasonal-soundscape-conditions",
-    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
-    "section": "Seasonal soundscape conditions",
-    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent **seasonal differences**, vertical lines indicate sound **sources  of interest** at the known frequency(s), and the black lines bound the soundscape to **expected range** of intensity based on when only wind noise is present. \nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\n\n                    \n    \n\n\n\nHow was this calculated?\n  \n  The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n    Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n    \n      Close\n      \n      \n      \n        How does my sanctuary compare?\n        \n        \n        No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n        \n          Close",
-    "crumbs": [
-      "Papahānaumokuākea"
-    ]
-  },
-  {
-    "objectID": "content/pi.html#what-are-the-latest-conditions-in-ocean-sound",
-    "href": "content/pi.html#what-are-the-latest-conditions-in-ocean-sound",
-    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
-    "section": "What are the latest conditions in ocean sound?",
-    "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. \n\nEfforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be  reflected in the annual data. A more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels and this annual summary provides initial insight.\n\nAre levels lower in the most recent year of monitoring in any of the frequencies of interest?",
-    "crumbs": [
-      "Papahānaumokuākea"
-    ]
-  },
-  {
-    "objectID": "content/pi.html#how-often-is-ocean-sound-above-wind-noise",
-    "href": "content/pi.html#how-often-is-ocean-sound-above-wind-noise",
-    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
-    "section": "How often is ocean sound above wind noise?",
-    "text": "How often is ocean sound above wind noise?\n\n\nWind has a predictable influence on ocean sound levels.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. \n\nThe resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). \n\n\n\n                    \n    \n\n\n\n\n  Table of results\n  \n  \n  Percent Time Above Wind Noise\n  \n                    \n    \n  \n    Close",
-    "crumbs": [
-      "Papahānaumokuākea"
-    ]
-  },
-  {
-    "objectID": "content/pi.html#ocean-sound-indicators",
-    "href": "content/pi.html#ocean-sound-indicators",
-    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
-    "section": "Ocean sound indicators",
-    "text": "Ocean sound indicators",
-    "crumbs": [
-      "Papahānaumokuākea"
-    ]
   },
   {
     "objectID": "content/index_test.html#when-where-why-are-we-listening",
@@ -439,5 +181,263 @@
     "title": "Soundscape Monitoring Report for Stellwagen Bank National Marine Sanctuary",
     "section": "What are we learning?",
     "text": "What are we learning?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
+    "section": "",
+    "text": "Ocean sound is critical for the survival of many marine animals because it is a primary means of communication, orientation and navigation, finding food, avoiding predators, and choosing mates. Many of the things people do offshore also introduce sound underwater. Some sounds we produce are purposeful aids to research, exploration, navigation and defense. Other sound is produced as a byproduct of our use of vessels or construction of infrastructure. We can use sound to track how people are using offshore spaces, just as we track marine animals. Human activities that produce underwater sounds can also negatively impact animals by reducing their ability to hear prey, predators, and each other.\n\nU.S. national marine sanctuaries are home to many acoustically active marine animals and understanding their presence as well as the impacts of noise is a conservation priority. Monitoring ocean sound provides key insight to understanding ecosystem dynamics, detecting environmental changes, and managing the impacts of noise pollution on marine organisms.\n\nThe purpose of these sanctuary soundscape reports is to provide updated information on ocean sound conditions where the Office of National Marine Sanctuaries (ONMS) is continuously monitoring ocean sound. These web-based reports prioritize general acoustic conditions over longer periods of time. In addition, if results are available for specific sources of sound, or shorter time periods, they are included as ocean sound indicators.  \n\nLearn more about the diversity of ocean sounds at  Discovery of Sound in the Sea.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#why-are-we-monitoring-ocean-sound",
+    "href": "index.html#why-are-we-monitoring-ocean-sound",
+    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
+    "section": "",
+    "text": "Ocean sound is critical for the survival of many marine animals because it is a primary means of communication, orientation and navigation, finding food, avoiding predators, and choosing mates. Many of the things people do offshore also introduce sound underwater. Some sounds we produce are purposeful aids to research, exploration, navigation and defense. Other sound is produced as a byproduct of our use of vessels or construction of infrastructure. We can use sound to track how people are using offshore spaces, just as we track marine animals. Human activities that produce underwater sounds can also negatively impact animals by reducing their ability to hear prey, predators, and each other.\n\nU.S. national marine sanctuaries are home to many acoustically active marine animals and understanding their presence as well as the impacts of noise is a conservation priority. Monitoring ocean sound provides key insight to understanding ecosystem dynamics, detecting environmental changes, and managing the impacts of noise pollution on marine organisms.\n\nThe purpose of these sanctuary soundscape reports is to provide updated information on ocean sound conditions where the Office of National Marine Sanctuaries (ONMS) is continuously monitoring ocean sound. These web-based reports prioritize general acoustic conditions over longer periods of time. In addition, if results are available for specific sources of sound, or shorter time periods, they are included as ocean sound indicators.  \n\nLearn more about the diversity of ocean sounds at  Discovery of Sound in the Sea.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#overview-of-ocean-sound-monitoring-effort",
+    "href": "index.html#overview-of-ocean-sound-monitoring-effort",
+    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
+    "section": "Overview of ocean sound monitoring effort",
+    "text": "Overview of ocean sound monitoring effort\n\n\nNOAA's Office of National Marine Sanctuaries (ONMS) maintains a nationally coordinated underwater sound monitoring network across the National Marine Sanctuary System, known as ONMS Sound. ONMS Sound works with partners to monitor ONMS regions: East Coast, West Coast, and in the Pacific Islands. ONMS Sound monitoring sites record in strategic locations within sanctuary boundaries. Recordings and standardized sound measurements are available through the NOAA National Centers for Environmental Information's Passive Acoustic Archive. Explore the acoustic monitoring sites using the NCEI Passive Acoustic Data Map Viewer.\n\n\n\n\n\n\nSummary of ONMS Sound data available through NCEI Passive Acoustic Data Archive Google Cloud Platform",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#understanding-ocean-sound",
+    "href": "index.html#understanding-ocean-sound",
+    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
+    "section": "Understanding ocean sound",
+    "text": "Understanding ocean sound\n\n\nSoundscapes are complex – representing a variety of sounds from different sources present at a given time and location, and influenced by the weather.  \nEach sanctuary has unique soundscapes, or combinations of sounds present at any given time. We can track soundscape conditions over time and across sites. We can also use ocean sound data to track indicators of species presence and human activity.\n\n\n\n\n\n                    \n    \n\n\nImage: Aline Design for NOAA\n\nExplore results for a specific sanctuary by clicking on sanctuary show on the navigation on the left panel.\n\n\n\nSeasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. The example graphic below shows how we can track soundscape conditions over seasons. \n\nSound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines indicate sound sources  of interest at the known frequency(s), and the black lines bound the soundscape to expected range of intensity based on when only wind noise is present. \n\n\n\n                    \n    \n\n\n\n\nSoundscape comparison\n\n\nNo one soundscape is is the same. We can compare soundscapes across sites in similar habitats, depths, or vessel traffic patterns. The in the graphic below is from the Sanctuary Soundscape Monitoring Project. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System. Data collected during this dedicated period provide insights on how soundscapes compare.  Black line represents the location of interest compared to monitoring sites in similar conditions. \n\n\n\n                    \n    \n\n\n\n\nOcean sound indicators\n\n\nTracking individual sources of sound within a soundscape can provide an indicator for those sources. While these reports prioritize general soundscape conditions over longer periods of time, if results are available for specific sources of sound, or shorter time periods, the most recent results are summarized to provide information on when the sounds are present, either during day or across a year. The National Marine Fisheries Service maintains analysis of marine mammal presence from passive acoustic monitoring data.  a within U.S. waters, including sanctuaries.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#what-are-we-learning",
+    "href": "index.html#what-are-we-learning",
+    "title": "Ocean Sound Monitoring in U.S. National Marine Sanctuaries",
+    "section": "What are we learning?",
+    "text": "What are we learning?\n\n\nCollaborative partnerships help us gain key insights on sanctuary resources and conditions from ocean sound data by leveraging ecological and technological expertise. Here are a few recent examples:\n\nZang, E., Lammers, M., Pack, A., and Hatch, L. (2024). Impulsive sounds produced by humpback whale surface active behavior recorded on acoustic tags and bottom‐moored recorders. Marine Mammal Science, 40(1), 302-308.\n\nMcKenna, M. F., Rowell, T. J., Margolina, T., Baumann-Pickering, S., Solsona-Berga, A., Adams, J. D., ... & Hatch, L. T. (2024). Understanding vessel noise across a network of marine protected areas. Environmental Monitoring and Assessment, 196(4), 369.\n\nMadrigal, B. C., Kügler, A., Zang, E., Lammers, M., Hatch, L. T., and Pacini, A. F. (2024).  Comparing the underwater soundscape of the Hawaiian Islands Humpback Whale National Marine Sanctuary and potential influences of the COVID-19 pandemic. Frontiers in Marine Science, 11, 1342454. \n\nKim, E. B., Frasier, K. E., McKenna, M. F., Kok, A., Peavey Reeves, L. E., Oestreich, W. K., ... & Baumann-Pickering, S. (2023). Soundscape learning: An automatic method for separating fish chorus in marine soundscapes. The Journal of the Acoustical Society of America, 153(3), 1710-1722.\n\nLammers, M.O., Goodwin B., Kügler, A., Zang, E.J., Harvey, M., Margolina, T., Martinez, J.A., Merkens, K. and Hatch, L.T. (2023). The occurrence of humpback whales across the Hawaiian archipelago revealed by fixed and mobile acoustic monitoring . Front. Mar. Sci. 10:1083583. \n\nMcKenna, M. F., Baumann-Pickering, S., Kok, A. C., Oestreich, W. K., Adams, J. D., Barkowski, J., ... & Hatch, L. T. (2021). Advancing the interpretation of shallow water marine soundscapes. Frontiers in Marine Science, 8, 719258.\n\nDeAngelis, A. I., Van Parijs, S. M., Barkowski, J., Baumann-Pickering, S., Burger, K., Davis, G. E., ... & Hatch, L. (2022).  Exploring marine mammal presence across seven US national marine sanctuaries. Frontiers in Remote Sensing, 3, 970401.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "content/pi.html",
+    "href": "content/pi.html",
+    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
+    "section": "",
+    "text": "Papahānaumokuākea National Marine Sanctuary  (PNMS) is the largest sanctuary in the National Marine Sanctuary System, encompassesing 582,570 square miles of Pacific Ocean waters in Hawaiʻi, providing protection to nationally significant natural, cultural, and historical resources. The sanctuary is comprised of several interconnected ecosystems, such as coral islands surrounded by shallow reefs, low-light mesophotic reefs with extensive algal beds, open ocean waters connected to the greater North Pacific Ocean, deep-water habitats such as abyssal plains 16,400 feet below sea level, and deep reef habitat characterized by seamounts, banks, and shoals. The sanctuary is co-extensive with the marine portions of Papahānaumokuākea Marine National Monument and is a UNESCO World Heritage Site.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nPM01\nmonitor marine mammals and fish presence, especially the relatively high densities of humpback whales in this region\nA remote bank at the eastern end of the sanctuary's boundary\n~65\nhumpback season (Dec-May), minke whale presence (late Fall to late Spring)\nmysticetes, humpbacks, fish, odontocetes, other, snapping shrimp\nvessel use and naval activities are detected in this area but not well understood\n22.66\n-161.04\n347\n2020-03-31 00:00:00\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpbacks, fish, snapping shrimp, odontocetes, mysticetes\nlimited vessel noise acoustically detected\n23.76\n-166.33\n526\n2019-10-01 00:00:00\n\n\nPM05\nSanctuary Soundscape Monitoring site\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.16\n256\n2019-10-01 00:00:00\n\n\nPM08\nSanctuary Soundscape Monitoring site\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive",
+    "crumbs": [
+      "Papahānaumokuākea"
+    ]
+  },
+  {
+    "objectID": "content/pi.html#where-are-we-listening",
+    "href": "content/pi.html#where-are-we-listening",
+    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
+    "section": "",
+    "text": "Papahānaumokuākea National Marine Sanctuary  (PNMS) is the largest sanctuary in the National Marine Sanctuary System, encompassesing 582,570 square miles of Pacific Ocean waters in Hawaiʻi, providing protection to nationally significant natural, cultural, and historical resources. The sanctuary is comprised of several interconnected ecosystems, such as coral islands surrounded by shallow reefs, low-light mesophotic reefs with extensive algal beds, open ocean waters connected to the greater North Pacific Ocean, deep-water habitats such as abyssal plains 16,400 feet below sea level, and deep reef habitat characterized by seamounts, banks, and shoals. The sanctuary is co-extensive with the marine portions of Papahānaumokuākea Marine National Monument and is a UNESCO World Heritage Site.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nPM01\nmonitor marine mammals and fish presence, especially the relatively high densities of humpback whales in this region\nA remote bank at the eastern end of the sanctuary's boundary\n~65\nhumpback season (Dec-May), minke whale presence (late Fall to late Spring)\nmysticetes, humpbacks, fish, odontocetes, other, snapping shrimp\nvessel use and naval activities are detected in this area but not well understood\n22.66\n-161.04\n347\n2020-03-31 00:00:00\n\n\nPM02\nA historical acoustic monitoring site where previously and newly collected data can be leveraged for long-term comparisons of the soundscape and whale chorusing levels.\nA remote bank on French Frigate Shoals\n~35\ntropical- wet and dry\nhumpbacks, fish, snapping shrimp, odontocetes, mysticetes\nlimited vessel noise acoustically detected\n23.76\n-166.33\n526\n2019-10-01 00:00:00\n\n\nPM05\nSanctuary Soundscape Monitoring site\nA remote bank on Hawaiian Ridge\n~33\ntropical- wet (nov-apr) and dry (may--oct)\ndamsel fish, dolphin, fish chorus, minke whale, snapping shrimp\nno vessels acoustically detected\n24.83\n-168.16\n256\n2019-10-01 00:00:00\n\n\nPM08\nSanctuary Soundscape Monitoring site\nA remote bank near Pearl and Hermes Atoll\nnan\ntropical- wet and dry\nhumpback whales\nno vessels acoustically detected\n27.71\n-175.54\nNot in archive\nNot in archive",
+    "crumbs": [
+      "Papahānaumokuākea"
+    ]
+  },
+  {
+    "objectID": "content/pi.html#seasonal-soundscape-conditions",
+    "href": "content/pi.html#seasonal-soundscape-conditions",
+    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
+    "section": "Seasonal soundscape conditions",
+    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines and shaded area indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to expected range of intensity based on when only wind noise is present. \n\nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\n\n                    \n    \n\n\n\nHow was this calculated?\n  \n  The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n    Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n    \n      Close\n      \n      \n      \n        How does my sanctuary compare?\n        \n        \n        No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n        \n          Close",
+    "crumbs": [
+      "Papahānaumokuākea"
+    ]
+  },
+  {
+    "objectID": "content/pi.html#what-are-the-latest-conditions-in-ocean-sound",
+    "href": "content/pi.html#what-are-the-latest-conditions-in-ocean-sound",
+    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
+    "section": "What are the latest conditions in ocean sound?",
+    "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. \n\nEfforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be  reflected in the annual data. A more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels and this annual summary provides initial insight.\n\nAre levels lower in the most recent year of monitoring in any of the frequencies of interest?",
+    "crumbs": [
+      "Papahānaumokuākea"
+    ]
+  },
+  {
+    "objectID": "content/pi.html#how-often-is-ocean-sound-above-wind-noise",
+    "href": "content/pi.html#how-often-is-ocean-sound-above-wind-noise",
+    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
+    "section": "How often is ocean sound above wind noise?",
+    "text": "How often is ocean sound above wind noise?\n\n\nWind has a predictable influence on ocean sound levels.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. \n\nThe resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). \n\n\n\n                    \n    \n\n\n\n\n  Table of results\n  \n  \n  Percent Time Above Wind Noise\n  \n                    \n    \n  \n    Close",
+    "crumbs": [
+      "Papahānaumokuākea"
+    ]
+  },
+  {
+    "objectID": "content/pi.html#ocean-sound-indicators",
+    "href": "content/pi.html#ocean-sound-indicators",
+    "title": "Papahānaumokuākea National Marine Sanctuary Soundscape Report",
+    "section": "Ocean sound indicators",
+    "text": "Ocean sound indicators",
+    "crumbs": [
+      "Papahānaumokuākea"
+    ]
+  },
+  {
+    "objectID": "content/publishing.html",
+    "href": "content/publishing.html",
+    "title": "Publishing",
+    "section": "",
+    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
+  },
+  {
+    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "title": "Publishing",
+    "section": "Turn on GitHub Pages for your repo",
+    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
+  },
+  {
+    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "title": "Publishing",
+    "section": "Do your first publish to gh-pages",
+    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
+  },
+  {
+    "objectID": "content/publishing.html#dont-like-using-gh-pages",
+    "href": "content/publishing.html#dont-like-using-gh-pages",
+    "title": "Publishing",
+    "section": "Don’t like using gh-pages?",
+    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
+  },
+  {
+    "objectID": "content/mb.html",
+    "href": "content/mb.html",
+    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
+    "section": "",
+    "text": "The Monterey Bay National Marine Sanctuary (MBNMS) offers some of the best wildlife viewing in the world! This \"Serengeti of the Sea\" stretches along the central coast from San Francisco to Cambria and includes pristine beaches, jewel-like tide pools, lush kelp forests, steep canyons and an offshore seamount teeming with life—from tiny shrimp to giant blue whales.\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project. However, a long history of underwater acoustic monitoring has occurred in this sanctuary [1]. Further, the Monterey Bay Aquarium Research Institute (MBARI) supports a continuous real-time monitoring effort within the sanctuary that began in 2015, known as the Soundscape Listening Room. \n\nCollectively, these underwater sound monitoring efforts have provided key insights on cryptic species, whale migration patterns and drivers, methods for detecting fish sounds, and steady rise in ocean noise levels, to highlight a few.\n\n\n\n                    \n    \n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nMB01\nTo monitor nearshore patterns in ocean noise\nContinental shelf (&lt;200m), near Monterey Bay submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.8\n-121.98\n1010\n2018-11-15 00:00:00\n\n\nMB02\nTo monitor fish acoustic activity in important commercial and recreational fishing ground\nContinental shelf (&lt;200m), adjacent to kelp forest ecosystems\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.65\n-121.91\n581\n2018-11-15 00:00:00\n\n\nMB03\nTo continue long-history of monitoring trends in ocean noise, including vessel speed reduction\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and dolphins\nnan\nIn the middle of offshore transit lanes for commercial shipping traffic\n36.37\n-122.31\n1546\n2020-10-02 00:00:00\n\n\nMBARI-MARS\nTo monitor trends in marine mammal species presence and behavior and vessel speed reduction\nContinental slope (&gt;200m), within submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales, fish, and dolphins\nnan\nDistant transiting commercial shipping traffic and nearby research activity\n36.71\n-122.19\n2920\n2015-07-28 00:00:00",
+    "crumbs": [
+      "Monterey Bay"
+    ]
+  },
+  {
+    "objectID": "content/mb.html#where-are-we-listening",
+    "href": "content/mb.html#where-are-we-listening",
+    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
+    "section": "",
+    "text": "The Monterey Bay National Marine Sanctuary (MBNMS) offers some of the best wildlife viewing in the world! This \"Serengeti of the Sea\" stretches along the central coast from San Francisco to Cambria and includes pristine beaches, jewel-like tide pools, lush kelp forests, steep canyons and an offshore seamount teeming with life—from tiny shrimp to giant blue whales.\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project. However, a long history of underwater acoustic monitoring has occurred in this sanctuary [1]. Further, the Monterey Bay Aquarium Research Institute (MBARI) supports a continuous real-time monitoring effort within the sanctuary that began in 2015, known as the Soundscape Listening Room. \n\nCollectively, these underwater sound monitoring efforts have provided key insights on cryptic species, whale migration patterns and drivers, methods for detecting fish sounds, and steady rise in ocean noise levels, to highlight a few.\n\n\n\n                    \n    \n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nMB01\nTo monitor nearshore patterns in ocean noise\nContinental shelf (&lt;200m), near Monterey Bay submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.8\n-121.98\n1010\n2018-11-15 00:00:00\n\n\nMB02\nTo monitor fish acoustic activity in important commercial and recreational fishing ground\nContinental shelf (&lt;200m), adjacent to kelp forest ecosystems\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and fish\nnan\nFrequent recreational activity– whale watching and fishing\n36.65\n-121.91\n581\n2018-11-15 00:00:00\n\n\nMB03\nTo continue long-history of monitoring trends in ocean noise, including vessel speed reduction\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales and dolphins\nnan\nIn the middle of offshore transit lanes for commercial shipping traffic\n36.37\n-122.31\n1546\n2020-10-02 00:00:00\n\n\nMBARI-MARS\nTo monitor trends in marine mammal species presence and behavior and vessel speed reduction\nContinental slope (&gt;200m), within submarine canyon\nnan\nSeasonal patterns driven by upwelling, with known sounds from baleen whales, fish, and dolphins\nnan\nDistant transiting commercial shipping traffic and nearby research activity\n36.71\n-122.19\n2920\n2015-07-28 00:00:00",
+    "crumbs": [
+      "Monterey Bay"
+    ]
+  },
+  {
+    "objectID": "content/mb.html#seasonal-soundscape-conditions",
+    "href": "content/mb.html#seasonal-soundscape-conditions",
+    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
+    "section": "Seasonal soundscape conditions",
+    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines and shaded area indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to expected range of intensity based on when only wind noise is present. \n\nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\nmb01mb02\n                    \n    \n                    \n        \n                    \n        \n\n\n\n                How was this calculated?\n            \n                The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n                Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n                \n                    Close\n                \n            \n                \n                    How does my sanctuary compare?\n                \n            \n                No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n                \n                    Close",
+    "crumbs": [
+      "Monterey Bay"
+    ]
+  },
+  {
+    "objectID": "content/mb.html#what-are-the-latest-conditions-in-ocean-sound",
+    "href": "content/mb.html#what-are-the-latest-conditions-in-ocean-sound",
+    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
+    "section": "What are the latest conditions in ocean sound?",
+    "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. \n\nEfforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be  reflected in the annual data. A more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels and this annual summary provides initial insight.\n\nAre levels lower in the most recent year of monitoring in any of the frequencies of interest? \n\n\nmb01mb02",
+    "crumbs": [
+      "Monterey Bay"
+    ]
+  },
+  {
+    "objectID": "content/mb.html#how-often-is-ocean-sound-above-wind-noise",
+    "href": "content/mb.html#how-often-is-ocean-sound-above-wind-noise",
+    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
+    "section": "How often is ocean sound above wind noise?",
+    "text": "How often is ocean sound above wind noise?\n\n\nWind has a predictable influence on ocean sound levels.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. \n\nThe resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). \n\n\nmb01mb02\n                    \n    \n                    \n        \n                    \n        \n\n\n\n\n  Table of results\n  \n  \n  Percent Time Above Wind Noise\n  mb01mb02\n                    \n    \n                    \n        \n                    \n        \n  \n    Close",
+    "crumbs": [
+      "Monterey Bay"
+    ]
+  },
+  {
+    "objectID": "content/mb.html#ocean-sound-indicators",
+    "href": "content/mb.html#ocean-sound-indicators",
+    "title": "Monterey Bay National Marine Sanctuary Soundscape Report",
+    "section": "Ocean sound indicators",
+    "text": "Ocean sound indicators\n\nWhen do fish choruses contribute to the soundscape?\n\n\nOnly results from sites with species detections included in this section.",
+    "crumbs": [
+      "Monterey Bay"
+    ]
+  },
+  {
+    "objectID": "content/oc.html",
+    "href": "content/oc.html",
+    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "section": "",
+    "text": "The Olympic Coast National Marine Sanctuary (OCNMS)....\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nOC02\nTo monitor a site that supports seasonally high abundances of Atlantic cod and is located near a region of elevated commercial vessel activity.\nnan\nnan\nnan\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n48.49\n-125\nnan\nnan\n\n\nOC01\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC03\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC04\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nNRS03\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nnan\n47.77\n−125.52\nnan\nnan",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#where-are-we-listening",
+    "href": "content/oc.html#where-are-we-listening",
+    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "section": "",
+    "text": "The Olympic Coast National Marine Sanctuary (OCNMS)....\n\nOcean sound monitoring coordinated by ONMS began in 2018 through the Sanctuary Soundscape Monitoring Project.\n\n\n\n\n\n\n\n\n\n\nSite (link to data portal)\nPrimary Monitoring Purpose\nOceanographic Setting\nDepth (m)\nSeasonality\nKnown biological sounds\nVessel Traffic Setting\nLatitude\nLongitude\nTotal Recording Days\nStart Date\n\n\nOC02\nTo monitor a site that supports seasonally high abundances of Atlantic cod and is located near a region of elevated commercial vessel activity.\nnan\nnan\nnan\nnan\nConstant large vessel activity - in traffic fan approaching San Fran/Oakland\n48.49\n-125\nnan\nnan\n\n\nOC01\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC03\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nOC04\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\nnan\n\n\nNRS03\nTo continue long-history of monitoring trends in ocean noise, including cetacean species presence and vessel movement\nContinental slope (&gt;200m), exposed to deep-water\nnan\nSeasonal patterns driven by known sounds from baleen whales\nnan\nnan\n47.77\n−125.52\nnan\nnan",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#seasonal-soundscape-conditions",
+    "href": "content/oc.html#seasonal-soundscape-conditions",
+    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "section": "Seasonal soundscape conditions",
+    "text": "Seasonal soundscape conditions\n\n\nSeason is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. Sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines and shaded area indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to expected range of intensity based on when only wind noise is present. \n\nHere are some questions to consider when viewing the graph(s) below \n\n(1)Which season has the highest sound levels?\n\n\n(2) Are there peaks in the sound levels for any of the sounds of interest?\n\n\n(3) Are the low-frequency sound levels outside the expected range for wind noise?\n\n\n\n                    \n    \n\n\n\nHow was this calculated?\n  \n  The median power spectral densities (PSD) for all hours across all years are calculated from calibrated audio data using community software tools:\n    Triton Soundscape Metrics, MANTA, or PyPAM. Triton software calculates the one-third octave band sound pressure levels by integration of PSD levels with a 1 Hz/1 second resolution and a median was used to calculate hourly values over no less than 1,800 1-s values for that hour and converted to decibels (dB re 1 μPa). MANTA and PYPAM software calculates power spectral density (PSD) levels per minute (μPa²) within the hybrid milledecade frequency bands. PAMscapes was used to calculate the median for each hour within one-third octave bands. These values were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).\n    \n      Close\n      \n      \n      \n        How does my sanctuary compare?\n        \n        \n        No one soundscape is alike and we can use other sites in similar oceanographic settings (e.g. nearshore or offshore) to compare conditions. From 2018-2022, the U.S. National Oceanic and Atmospheric Administration (NOAA) and the U.S. Navy engaged in a multi-year effort to monitor underwater sound within the U.S. National Marine Sanctuary System, known Sanctuary SoundScape Monitoring Project. Data collected during this dedicated period provide initial insights on how soundscapes compare.\n        \n          Close",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#what-are-the-latest-conditions-in-ocean-sound",
+    "href": "content/oc.html#what-are-the-latest-conditions-in-ocean-sound",
+    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "section": "What are the latest conditions in ocean sound?",
+    "text": "What are the latest conditions in ocean sound?\n\n\nSoundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels provides insights on trends in ocean noise. \n\nEfforts to reduce noise are underway on global to local scales though vessel speed reduction strategies and engineering solutions, and these efforts may be  reflected in the annual data. A more focused analysis is necessary to tease apart the multiple drivers of ocean sound levels and this annual summary provides initial insight.\n\nAre levels lower in the most recent year of monitoring in any of the frequencies of interest?",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#how-often-is-ocean-sound-above-wind-noise",
+    "href": "content/oc.html#how-often-is-ocean-sound-above-wind-noise",
+    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "section": "How often is ocean sound above wind noise?",
+    "text": "How often is ocean sound above wind noise?\n\n\nWind has a predictable influence on ocean sound levels.  When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape.  For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby. \n\nThe resulting metric is the percent time above wind and can be used to compare conditions over years and seasons (see Table of Results). \n\n\n\n                    \n    \n\n\n\n\n  Table of results\n  \n  \n  Percent Time Above Wind Noise\n  \n                    \n    \n  \n    Close",
+    "crumbs": [
+      "Olympic Coast"
+    ]
+  },
+  {
+    "objectID": "content/oc.html#ocean-sound-indicators",
+    "href": "content/oc.html#ocean-sound-indicators",
+    "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
+    "section": "Ocean sound indicators",
+    "text": "Ocean sound indicators\n\nHow much noise do nearby ships contribute to the soundscape?\n\n\nSound levels increase when ships are transiting nearby a monitoring locations because of noise produced by the ship. Ocean sound data can be segmented into time periods when a ship is transiting nearby to understand how much noise is added when a ship is nearby.  Ships are considered nearby if transiting within 10 km of the monitoring location. Nearby ship presence is tracked using Automatic Identification System (AIS) data which most ships are required to transmit.",
+    "crumbs": [
+      "Olympic Coast"
+    ]
   }
 ]
