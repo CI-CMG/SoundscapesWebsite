@@ -359,8 +359,8 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#ocean-sound-monitoring-sites" id="toc-ocean-sound-monitoring-sites" class="nav-link" data-scroll-target="#ocean-sound-monitoring-sites">Ocean sound monitoring sites</a></li>
   </ul></li>
-  <li><a href="#seasonal-soundscape-conditions" id="toc-seasonal-soundscape-conditions" class="nav-link" data-scroll-target="#seasonal-soundscape-conditions">Seasonal soundscape conditions</a></li>
   <li><a href="#annual-soundscape-conditions" id="toc-annual-soundscape-conditions" class="nav-link" data-scroll-target="#annual-soundscape-conditions">Annual soundscape conditions</a></li>
+  <li><a href="#seasonal-soundscape-conditions" id="toc-seasonal-soundscape-conditions" class="nav-link" data-scroll-target="#seasonal-soundscape-conditions">Seasonal soundscape conditions</a></li>
   <li><a href="#daily-soundscape-conditions" id="toc-daily-soundscape-conditions" class="nav-link" data-scroll-target="#daily-soundscape-conditions">Daily soundscape conditions</a></li>
   <li><a href="#ocean-sound-indicators" id="toc-ocean-sound-indicators" class="nav-link" data-scroll-target="#ocean-sound-indicators">Ocean sound indicators</a>
   <ul class="collapse">
@@ -401,7 +401,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="where-are-we-listening" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="where-are-we-listening">Where are we listening?</h2>
-<div id="828608ce" class="cell" data-execution_count="2">
+<div id="6fb33988" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 Ocean sound monitoring in <a href="https://montereybay.noaa.gov/" target="_blank">Monterey Bay National Marine Sanctuary</a> (MBNMS) coordinated by ONMS began in 2018 through the <a href=" https://sanctsound.ioos.us/s_mbnms.html">Sanctuary Soundscape Monitoring Project</a>. This sanctuary has a long history of underwater acoustic monitoring dating back to measurements in the 1950s by the U.S. Navy near Point Sur Ridge. The Monterey Bay Aquarium Research Institute (MBARI) supports a continuous real-time monitoring effort within the sanctuary that began in 2015, known as the <a href="https://www.mbari.org/project/soundscape-listening-room/&quot;" target="_blank">Soundscape Listening Room</a>. 
 <br><br>
@@ -412,7 +412,7 @@ Current ONMS ocean sound monitoring and analysis is maintained at four locations
 </div>
 <section id="ocean-sound-monitoring-sites" class="level3">
 <h3 class="anchored" data-anchor-id="ocean-sound-monitoring-sites">Ocean sound monitoring sites</h3>
-<div id="88c52e1d" class="cell" data-execution_count="3">
+<div id="7b9a9003" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div style="overflow-x: auto;">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -489,9 +489,49 @@ Current ONMS ocean sound monitoring and analysis is maintained at four locations
 </div>
 </section>
 </section>
+<section id="annual-soundscape-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
+<h2 class="anchored" data-anchor-id="annual-soundscape-conditions">Annual soundscape conditions</h2>
+<div id="cb75f7e3" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+Soundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels over time can track changes in ocean noise and its contributors. 
+ <br><br>
+Efforts to reduce noise impacts to marine animals are underway on local to global scales. Strategies can include avoidance of times and areas with high vulnerability, changing the operation of a noise source (e.g., by slowing down) or through the design and use of alternative, quieter sources (vessel speed reduction strategies. The effectiveness of these approaches, and the scales over which they are effective, can be tracked through comprehensive monitoring efforts. A focused analysis is often necessary to tease apart the multiple drivers of ocean sound levels, however, annual summaries provide initial insights to overall patterns.
+ <br><br>
+ Are levels lower in the most recent year of monitoring in any of the frequencies of interest?
+</div>
+<div class="cell-output cell-output-display">
+<button onclick="mb01YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">mb01</button><button onclick="mb02YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">mb02</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_mb01_YearSPL.jpg" width="700" id="YearSPL" onclick="toggleYearSPL()">
+                    <script>
+                    function toggleYearSPL() {
+                        var imgElement = document.getElementById('YearSPL');
+                        if (!document.fullscreenElement) {
+                            imgElement.requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }
+                    </script>
+    
+                    <script>
+                    function mb01YearSPL() {
+                        var imgElement = document.getElementById('YearSPL');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_mb01_YearSPL.jpg";
+                    }
+                    </script>
+        
+                    <script>
+                    function mb02YearSPL() {
+                        var imgElement = document.getElementById('YearSPL');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_mb02_YearSPL.jpg";
+                    }
+                    </script>
+        
+</div>
+</div>
+</section>
 <section id="seasonal-soundscape-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="seasonal-soundscape-conditions">Seasonal soundscape conditions</h2>
-<div id="0b8ee141" class="cell" data-execution_count="4">
+<div id="16a51d18" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 Season is typically a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. As shown on the graphic(s) below, sound is measured in terms of frequency (or pitch of the sound) on the x-axis and intensity (or how loud the sound is) in decibels on the y-axis. The colored lines represent seasonal differences, vertical lines /shaded areas indicate sound sources of interest at the known frequency(s), and the black lines bound the soundscape to the expected range of intensity based on when only wind noise is present.
  <br style="line-height: 1;">
@@ -553,46 +593,6 @@ Season is typically a main driver of soundscape differences: wind and weather pa
 </div>
 </div>
 </section>
-<section id="annual-soundscape-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
-<h2 class="anchored" data-anchor-id="annual-soundscape-conditions">Annual soundscape conditions</h2>
-<div id="9d5287d6" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
-Soundscapes are dynamic and change with season and annual differences in sources that are present. Comparing annual ocean sound levels over time can track changes in ocean noise and its contributors. 
- <br><br>
-Efforts to reduce noise impacts to marine animals are underway on local to global scales. Strategies can include avoidance of times and areas with high vulnerability, changing the operation of a noise source (e.g., by slowing down) or through the design and use of alternative, quieter sources (vessel speed reduction strategies. The effectiveness of these approaches, and the scales over which they are effective, can be tracked through comprehensive monitoring efforts. A focused analysis is often necessary to tease apart the multiple drivers of ocean sound levels, however, annual summaries provide initial insights to overall patterns.
- <br><br>
- Are levels lower in the most recent year of monitoring in any of the frequencies of interest?
-</div>
-<div class="cell-output cell-output-display">
-<button onclick="mb01YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">mb01</button><button onclick="mb02YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">mb02</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_mb01_YearSPL.jpg" width="700" id="YearSPL" onclick="toggleYearSPL()">
-                    <script>
-                    function toggleYearSPL() {
-                        var imgElement = document.getElementById('YearSPL');
-                        if (!document.fullscreenElement) {
-                            imgElement.requestFullscreen();
-                        } else {
-                            document.exitFullscreen();
-                        }
-                    }
-                    </script>
-    
-                    <script>
-                    function mb01YearSPL() {
-                        var imgElement = document.getElementById('YearSPL');
-                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_mb01_YearSPL.jpg";
-                    }
-                    </script>
-        
-                    <script>
-                    function mb02YearSPL() {
-                        var imgElement = document.getElementById('YearSPL');
-                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_mb02_YearSPL.jpg";
-                    }
-                    </script>
-        
-</div>
-</div>
-</section>
 <section id="daily-soundscape-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="daily-soundscape-conditions">Daily soundscape conditions</h2>
 </section>
@@ -600,7 +600,7 @@ Efforts to reduce noise impacts to marine animals are underway on local to globa
 <h2 class="anchored" data-anchor-id="ocean-sound-indicators">Ocean sound indicators</h2>
 <section id="how-often-is-ocean-sound-above-wind-noise" class="level3">
 <h3 class="anchored" data-anchor-id="how-often-is-ocean-sound-above-wind-noise">How often is ocean sound above wind noise?</h3>
-<div id="afbdd4b1" class="cell" data-execution_count="7">
+<div id="13546764" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 Wind has a predictable influence on <a href="https://pubs.aip.org/asa/jasa/article/149/6/4516/1059383/An-empirical-model-for-wind-generated-ocean-noise  target=" _blank"="">ocean sound levels</a>. When sound levels deviate from the expected based on wind speed and depth of the monitoring site, other sources are present in the soundscape. A time series of these deviations provides insight on how often other sources are present in the soundscape. For example, the time series below shows deviations at 100 Hz, a frequency band that can be dominated by vessels transiting nearby.
  <br><br>
@@ -676,7 +676,7 @@ The resulting metric is the percent of the time that levels of sound are louder 
 </section>
 <section id="when-do-fish-choruses-contribute-to-the-soundscape" class="level3">
 <h3 class="anchored" data-anchor-id="when-do-fish-choruses-contribute-to-the-soundscape">When do fish choruses contribute to the soundscape?</h3>
-<div id="657f5011" class="cell" data-execution_count="8">
+<div id="6a8bcf9d" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 Only results from sites with species detections included in this section.
 </div>
