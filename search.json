@@ -330,7 +330,7 @@
     "href": "content/oc.html#test-image-query",
     "title": "Olympic Coast National Marine Sanctuary Soundscape Report",
     "section": "Test image query",
-    "text": "Test image query\n\ndisplay(HTML(gf.makeButtonsFit(['OC02', 'HI08'], \"plot_***-***status.jpg\", \"FOI\")))\n\nplot_OC02-***status.jpg\n['plot_OC02-', 'status.jpg']\nplot_HI08-***status.jpg\n['plot_HI08-', 'status.jpg']\n\n\nOC02HI08",
+    "text": "Test image query\n\n\nOC02HI08",
     "crumbs": [
       "Olympic Coast"
     ]
