@@ -452,7 +452,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="ocean-sound-monitoring" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-monitoring">Ocean Sound Monitoring</h2>
-<div id="6234e590" class="cell" data-execution_count="2">
+<div id="822a1a9f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 The <a href="https://americansamoa.noaa.gov/" target="_blank">National Marine Sanctuary of American Samoa</a> (NMSAS) is comprised of six protected areas, covering 13,581 square miles of nearshore coral reef and offshore open ocean waters across the Samoan Archipelago. The sanctuary protects extensive coral reefs, including some of the oldest and largest Porites coral heads in the world, along with deep-water reefs, hydrothermal vent communities, and rare marine archaeological resources.
  <br><br>
@@ -461,7 +461,7 @@ Previous underwater sound monitoring efforts focused on characterizing the under
 </div>
 <section id="summary-of-monitoring-sites" class="level3">
 <h3 class="anchored" data-anchor-id="summary-of-monitoring-sites">Summary of monitoring sites</h3>
-<div id="b159b423" class="cell" data-execution_count="3">
+<div id="552ab05d" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div style="overflow-x: scroll;">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -527,14 +527,14 @@ Previous underwater sound monitoring efforts focused on characterizing the under
 </section>
 <section id="ocean-sound-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-conditions">Ocean Sound Conditions</h2>
-<div id="9c73bfc7" class="cell" data-execution_count="4">
+<div id="dbdc1a06" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 Soundscapes vary across years, seasons, and even within a day. Differences are driven by shifts in wind and weather patterns, migration and behavior of animals, and patterns in human activities. We track how sound levels change in different frequencies using standardized soundscape metrics to understand these changes. Seasonal and annual percentiles of all the data are used to define typical conditions.
 </div>
 </div>
 <section id="what-are-the-seasonal-patterns-across-frequencies" class="level3">
 <h3 class="anchored" data-anchor-id="what-are-the-seasonal-patterns-across-frequencies">What are the seasonal patterns across frequencies?</h3>
-<div id="4893b458" class="cell" data-execution_count="5">
+<div id="abef8e5e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 Season is often a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. As shown on the graphic(s) below, we can visualize the differences by looking at the variation across <b>frequency</b> (pitch of the sound in Hertz) shown on the x-axis and <b>intensity</b> (how loud the sound is in decibels) shown on the y-axis. The colored lines represent <b>seasonal categories</b>, vertical lines are the start of a frequency range that continues over the shaded area that a <b>sound source of interest</b> can be heard, and the black lines bound the soundscape to expected range of intensity based on when only <b>wind noise</b>is present.
  <br style="line-height: 1;">
@@ -564,13 +564,16 @@ Season is often a main driver of soundscape differences: wind and weather patter
 
                 <button style="background-color: #FFFFFF;" onclick="document.getElementById('infoModal').showModal()">How was this calculated?</button>
             <dialog id="infoModal">
-                <p>Processing audio to calibrated sound levels (aka soundscape metrics) involves multiple steps to get a specified time frequency data product. Data processed during the Sanctuary Soundscape Project used the <a href="https://github.com/MarineBioAcousticsRC/Triton/tree/master" target="_blank">Triton Soundscape Remora</a> and data processed for the ONMS sound used <a href="https://pubs.aip.org/asa/jel/article/1/1/011203/219719" target="_blank">MANTA</a> or <a href="https://github.com/lifewatch/pypam" target="_blank">PyPAM </a>. Both processes calculated power spectral density (PSD) levels as the median of mean-square pressure amplitude (μPa2) with a resolution of 1 Hz/1. Triton used 0% overlap in spectral decompositions and MANTA/PyPAM used 50% overlap, resulting in slight differences in values. 
+                <p>Processing audio to calibrated sound levels (aka soundscape metrics) involves multiple steps to get a specified time frequency data product. All comparisons in the ONMS soundscape inventory reports are hourly power spectral densities in 1 Hz for each third-octave band center frequency. 
  <br style="line-height: .5;">
-Triton then calculated PSD levels per hour as the median of mean-square pressure amplitude (μPa2) with a resolution of 1 Hz/1 second from 20 Hz to 24,000 Hz over no less than 1800 seconds in each hour and converted to decibels (dB re 1 μPa2/Hz). Third-octave band sound pressure levels (TOLs) were calculated by integration of PSD levels over each octave band with nominal center frequencies. 
+Data processed during the Sanctuary Soundscape Project (pre- 2022 ONMS Sound data) used the <a href="https://github.com/MarineBioAcousticsRC/Triton/tree/master" target="_blank">Triton Soundscape Remora</a> and data processed for the ONMS sound used either <a href="https://pubs.aip.org/asa/jel/article/1/1/011203/219719" target="_blank">MANTA</a> or <a href="https://github.com/lifewatch/pypam" target="_blank">PyPAM </a>. Both processing softwares calculated power spectral density (PSD) levels as the median of mean-square pressure amplitude (μPa2). Triton outputs a resolution of 1 Hz/1-sec. MANTA and PyPAM outputs a resolution of hybrid milli-decidade per second. Triton uses 0% overlap in spectral decompositions and MANTA/PyPAM uses 50% overlap, resulting in slight differences in values between these processing softwares. 
  <br style="line-height: .5;">
-MANTA and PyPAM did the same calculation as Triton to get PSD levels from 1 Hz/1 second PSDs but at a 1-minute resolution and within the hybrid millie-decide bands. This difference in time resolution impacts the comparability of the results, and caution should be used when reviewing results that include SanctSound Triton generated hourly data.  Compatibility between PyPAM and Manata were verified.
+Triton then calculated PSD levels per hour as the median of mean-square pressure amplitude (μPa2) with a resolution of 1 Hz from 20 Hz to 24,000 Hz over no less than 1800 seconds in each hour and converted to decibels (dB re 1 μPa2/Hz). Third-octave band sound pressure levels (TOLs) then were calculated by integration of PSD levels over each octave band with nominal center frequencies. 
  <br style="line-height: .5;">
-For the MANTA and PyPAM results PAMscapes was used to calculate the median for each hour within one-third octave bands. Hourly TOLs were then converted to 1-Hz resolution to match the wind model results by converting to pressure and dividing by the band width before converting back to sound spectrum levels in decibels (dB re 1 μPa/Hz).  
+MANTA and PyPAM did the same calculation as Triton to get PSD levels from 1 Hz/1 sec PSDs to hourly but at a 1-minute resolution and within the hybrid millie-decide bands. This difference in time averaging impacts the comparability of the results, and caution should be used when reviewing results that include SanctSound Triton generated hourly data (e.g. TOL_1h.csv). Compatibility between PyPAM and Manata were verified.
+ <br style="line-height: .5;">
+For the MANTA and PyPAM results <a href="https://github.com/TaikiSan21/PAMscapes" target="_blank">PAMscapes</a> was used to calculate one-third octave bands (using createOctaveLevel(hmdData, type='tol') and then the median for each hour within binSoundscapeData(cDataTOL, bin = "1hour", method = c("median")). Hourly data were then matched with an estimate of wind speed at that location using matchGFS in PAMscapes. Hourly TOLs were then converted back to 1-Hz resolution to match the wind model results (dB re 1 μPa/Hz).  
+
 
 
 
@@ -595,7 +598,7 @@ For the MANTA and PyPAM results PAMscapes was used to calculate the median for e
 </section>
 <section id="how-are-ocean-sound-conditions-changing-across-years" class="level3">
 <h3 class="anchored" data-anchor-id="how-are-ocean-sound-conditions-changing-across-years">How are ocean sound conditions changing across years?</h3>
-<div id="a99cf61d" class="cell" data-execution_count="6">
+<div id="a74fb016" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 Comparing annual ocean sound levels over time can track changes in ocean noise and its contributors. Efforts to reduce noise impacts to marine animals are underway on local to global scales. Strategies can include avoidance of times and areas with high vulnerability, changing the operation of a noise source (e.g., by slowing down) or through the design and use of alternative, quieter sources (vessel speed reduction strategies. The effectiveness of these approaches, and the scales over which they are effective, can be tracked through comprehensive monitoring efforts. A focused analysis is often necessary to tease apart the multiple drivers of ocean sound levels, however, annual summaries provide initial insights to overall patterns.
 <br style="line-height: .5;">
@@ -623,7 +626,7 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
 </section>
 <section id="how-often-are-sources-of-interest-likely-present" class="level3">
 <h3 class="anchored" data-anchor-id="how-often-are-sources-of-interest-likely-present">How often are sources of interest likely present?</h3>
-<div id="aedf788e" class="cell" data-execution_count="7">
+<div id="4be1c722" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 When sound levels deviate from expected based on wind speed and depth of the monitoring site, other sources are likely present in the soundscape. While this metric does not distinguish between types of sources (e.g. vocalizing species or human activity), it does indicate what percent of the time the soundscape contains sounds of interest to resource managers. When shifts in this metric are observed, further analysis is recommended to understand what is driving the shifts in patterns. For example, are species shifting the timing of their presence in the area? 
 </div>
@@ -645,7 +648,7 @@ When sound levels deviate from expected based on wind speed and depth of the mon
 </section>
 <section id="are-sounds-of-interest-within-typical-range" class="level3">
 <h3 class="anchored" data-anchor-id="are-sounds-of-interest-within-typical-range">Are sounds of interest within typical range?</h3>
-<div id="d37ce11b" class="cell" data-execution_count="8">
+<div id="4ae586c7" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 In some soundscapes, we can use specific frequencies as indicators for the presence of a source of interest (e.g. species presence and behavior). Monitoring sites are often chosen because a known source is present and we want to track that source. These sources need to be the dominant sound energy contributor to the specific frequency or frequency range. For example, seasonal migration of humpback whales to Hawaiian Islands results in soundscapes dominated by their calling. At sites near commercial shipping lanes, 63 Hz and 125 Hz are used as an indicator for ship noise. Only frequencies that have been identified as reliable for tracking a source of interest are shown below. 
 </div>
@@ -654,14 +657,14 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
 </section>
 <section id="ocean-sound-indicators" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-indicators">Ocean Sound Indicators</h2>
-<div id="22b2c23d" class="cell" data-execution_count="9">
+<div id="22769357" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 We can use long-term monitoring of ocean sound to derive and track indicators of ocean conditions. These indicators track the status and trend of habitat condition, species presence, human-use patterns, and management activities.  There are many analytical methods used to generate ocean sound indicators. Below are ocean sound indicators relevant to the sanctuary and available for <a href="https://sanctuarywatch.ioos.us/" target="_blank"> condition tracking</a>. 
 </div>
 </div>
 <section id="when-do-whales-contribute-to-the-soundscape-indicating-their-presence-nearby" class="level3">
 <h3 class="anchored" data-anchor-id="when-do-whales-contribute-to-the-soundscape-indicating-their-presence-nearby">When do whales contribute to the soundscape, indicating their presence nearby?</h3>
-<div id="2ead847e" class="cell" data-execution_count="10">
+<div id="897ebd0d" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 The National Marine Fisheries Service (NMFS) maintains <a href="https://passiveacoustics.fisheries.noaa.gov/pacm/#/" target="_blank">the analysis of acoustic presence of many whale species from passive acoustic monitoring data </a> within U.S. waters, including ONMS sites. Visit the interactive website to explore spatial and temporal patterns in different species. 
 </div>
