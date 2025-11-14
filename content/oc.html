@@ -455,7 +455,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="ocean-sound-monitoring" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-monitoring">Ocean Sound Monitoring</h2>
-<div id="64d57de6" class="cell" data-execution_count="2">
+<div id="d14b1425" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 Ocean sound monitoring in <a href="https://olympiccoast.noaa.gov/" target="_blank">Olympic Coast National Marine Sanctuary</a> (OCNMS) and surrounding region has a long history, including efforts by the U.S. Navy and the NOAA Northwest Fisheries Science Center, who have maintained national security and protected endangered species like the Southern Resident Killer Whales. Extensive co-located acoustic telemetry sensors track important prey species, like salmon, and complements underwater sound recordings to more fully characterize the OCNMS ecosystems. 
 <br><br>
@@ -467,7 +467,7 @@ Current ONMS ocean sound monitoring and analysis is is maintained at two sites. 
 </div>
 <section id="summary-of-monitoring-sites" class="level3">
 <h3 class="anchored" data-anchor-id="summary-of-monitoring-sites">Summary of monitoring sites</h3>
-<div id="4f9160bc" class="cell" data-execution_count="3">
+<div id="a74aec1f" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div style="overflow-x: scroll;">
 <table class="caption-top table table-sm table-striped small">
@@ -520,14 +520,14 @@ Current ONMS ocean sound monitoring and analysis is is maintained at two sites. 
 </section>
 <section id="ocean-sound-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-conditions">Ocean Sound Conditions</h2>
-<div id="769a8ef0" class="cell" data-execution_count="4">
+<div id="30915e34" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 Soundscapes vary across years, seasons, and even within a day. Differences are driven by shifts in wind and weather patterns, migration and behavior of animals, and patterns in human activities. We track how sound levels change in different frequencies using standardized soundscape metrics to understand these changes. Seasonal and annual percentiles of all the data are used to define typical conditions.
 </div>
 </div>
 <section id="what-are-the-seasonal-patterns-across-frequencies" class="level3">
 <h3 class="anchored" data-anchor-id="what-are-the-seasonal-patterns-across-frequencies">What are the seasonal patterns across frequencies?</h3>
-<div id="0f0dfacc" class="cell" data-execution_count="5">
+<div id="b9f62778" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 Season is often a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. As shown on the graphic(s) below, we can visualize the differences by looking at the variation across <b>frequency</b> (pitch of the sound in Hertz) shown on the x-axis and <b>intensity</b> (how loud the sound is in decibels) shown on the y-axis. The colored lines represent <b>seasonal categories</b>, vertical lines are the start of a frequency range that continues over the shaded area that a <b>sound source of interest</b> can be heard, and the black lines bound the soundscape to expected range of intensity based on when only <b>wind noise</b>is present.
  <br style="line-height: 1;">
@@ -540,7 +540,7 @@ Season is often a main driver of soundscape differences: wind and weather patter
  (3) Are the low-frequency sound levels outside the expected range for wind noise?
 </div>
 <div class="cell-output cell-output-display">
-<img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_SeasonalSPL.jpg" width="700" id="Seasons" onclick="this.requestFullscreen()">
+<button id="OC02Seasonsbutton" onclick="OC02Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">OC02</button><button id="NRS03Seasonsbutton" onclick="NRS03Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_SeasonalSPL.jpg" width="700" id="Seasons" onclick="this.requestFullscreen()">
                     <script>
                     function toggleSeasons() {
                         var imgElement = document.getElementById('Seasons');
@@ -552,6 +552,28 @@ Season is often a main driver of soundscape differences: wind and weather patter
                     }
                     </script>
     
+                    <script>
+                    function OC02Seasons() {
+                        var imgElement = document.getElementById('Seasons');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_SeasonalSPL.jpg";
+                        const thisButton = document.getElementById('OC02Seasonsbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonNRS03 = document.getElementById('NRS03Seasonsbutton');
+                        otherButtonNRS03.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS03Seasons() {
+                        var imgElement = document.getElementById('Seasons');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS03_SeasonalSPL.jpg";
+                        const thisButton = document.getElementById('NRS03Seasonsbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonOC02 = document.getElementById('OC02Seasonsbutton');
+                        otherButtonOC02.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
 </div>
 <div class="cell-output cell-output-display">
 
@@ -585,7 +607,7 @@ For the MANTA and PyPAM results <a href="https://github.com/TaikiSan21/PAMscapes
 </section>
 <section id="how-are-ocean-sound-conditions-changing-across-years" class="level3">
 <h3 class="anchored" data-anchor-id="how-are-ocean-sound-conditions-changing-across-years">How are ocean sound conditions changing across years?</h3>
-<div id="cc9c1b0c" class="cell" data-execution_count="6">
+<div id="833640b9" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 Comparing annual ocean sound levels over time can track changes in ocean noise and its contributors. Efforts to reduce noise impacts to marine animals are underway on local to global scales. Strategies can include avoidance of times and areas with high vulnerability, changing the operation of a noise source (e.g., by slowing down) or through the design and use of alternative, quieter sources (vessel speed reduction strategies. The effectiveness of these approaches, and the scales over which they are effective, can be tracked through comprehensive monitoring efforts. A focused analysis is often necessary to tease apart the multiple drivers of ocean sound levels, however, annual summaries provide initial insights to overall patterns.
 <br style="line-height: .5;">
@@ -596,7 +618,7 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
 (2) Are there peaks in the sound levels for any of the sounds of interest? Do they differ across years?
 </div>
 <div class="cell-output cell-output-display">
-<img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_YearSPL.jpg" width="700" id="YearSPL" onclick="this.requestFullscreen()">
+<button id="OC02YearSPLbutton" onclick="OC02YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">OC02</button><button id="NRS03YearSPLbutton" onclick="NRS03YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_YearSPL.jpg" width="700" id="YearSPL" onclick="this.requestFullscreen()">
                     <script>
                     function toggleYearSPL() {
                         var imgElement = document.getElementById('YearSPL');
@@ -608,17 +630,39 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
                     }
                     </script>
     
+                    <script>
+                    function OC02YearSPL() {
+                        var imgElement = document.getElementById('YearSPL');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_YearSPL.jpg";
+                        const thisButton = document.getElementById('OC02YearSPLbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonNRS03 = document.getElementById('NRS03YearSPLbutton');
+                        otherButtonNRS03.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS03YearSPL() {
+                        var imgElement = document.getElementById('YearSPL');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS03_YearSPL.jpg";
+                        const thisButton = document.getElementById('NRS03YearSPLbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonOC02 = document.getElementById('OC02YearSPLbutton');
+                        otherButtonOC02.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
 </div>
 </div>
 </section>
 <section id="how-often-are-sources-of-interest-likely-present" class="level3">
 <h3 class="anchored" data-anchor-id="how-often-are-sources-of-interest-likely-present">How often are sources of interest likely present?</h3>
-<div id="f6be816c" class="cell" data-execution_count="7">
+<div id="27f7b0a1" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 When sound levels deviate from expected based on wind speed and depth of the monitoring site, other sources are likely present in the soundscape. While this metric does not distinguish between types of sources (e.g. vocalizing species or human activity), it does indicate what percent of the time the soundscape contains sounds of interest to resource managers. When shifts in this metric are observed, further analysis is recommended to understand what is driving the shifts in patterns. For example, are species shifting the timing of their presence in the area? Note that any missing bars in the graphic below indicate no sound recording effort for that month.
 </div>
 <div class="cell-output cell-output-display">
-<img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AboveWind.jpg" width="700" id="SourcePresent" onclick="this.requestFullscreen()">
+<button id="OC02SourcePresentbutton" onclick="OC02SourcePresent()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">OC02</button><button id="NRS03SourcePresentbutton" onclick="NRS03SourcePresent()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AboveWind.jpg" width="700" id="SourcePresent" onclick="this.requestFullscreen()">
                     <script>
                     function toggleSourcePresent() {
                         var imgElement = document.getElementById('SourcePresent');
@@ -630,17 +674,39 @@ When sound levels deviate from expected based on wind speed and depth of the mon
                     }
                     </script>
     
+                    <script>
+                    function OC02SourcePresent() {
+                        var imgElement = document.getElementById('SourcePresent');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AboveWind.jpg";
+                        const thisButton = document.getElementById('OC02SourcePresentbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonNRS03 = document.getElementById('NRS03SourcePresentbutton');
+                        otherButtonNRS03.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS03SourcePresent() {
+                        var imgElement = document.getElementById('SourcePresent');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS03_AboveWind.jpg";
+                        const thisButton = document.getElementById('NRS03SourcePresentbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonOC02 = document.getElementById('OC02SourcePresentbutton');
+                        otherButtonOC02.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
 </div>
 </div>
 </section>
 <section id="are-sounds-of-interest-within-typical-range" class="level3">
 <h3 class="anchored" data-anchor-id="are-sounds-of-interest-within-typical-range">Are sounds of interest within typical range?</h3>
-<div id="8e1f7e00" class="cell" data-execution_count="8">
+<div id="e186b239" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 In some soundscapes, we can use specific frequencies as indicators for the presence of a source of interest (e.g. species presence and behavior). Monitoring sites are often chosen because a known source is present and we want to track that source. These sources need to be the dominant sound energy contributor to the specific frequency or frequency range. For example, seasonal migration of humpback whales to Hawaiian Islands results in soundscapes dominated by their calling between 200 and 1,000 Hz. At sites near commercial shipping lanes, 63 Hz and 125 Hz are used as an indicator for ship noise.  At sites where snapping shrimp are present, 10,000 Hz is used as an indicator of their sounds. Only frequencies that have been identified as reliable for tracking a source of interest are shown below. 
 </div>
 <div class="cell-output cell-output-display">
-<img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02-125_status.jpg" width="700" id="FOI" onclick="this.requestFullscreen()">
+<button id="OC02FOIbutton" onclick="OC02FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">OC02</button><button id="NRS03FOIbutton" onclick="NRS03FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02-125_status.jpg" width="700" id="FOI" onclick="this.requestFullscreen()">
                     <script>
                     function toggleFOI() {
                         var imgElement = document.getElementById('FOI');
@@ -652,25 +718,47 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
                     }
                     </script>
     
+                    <script>
+                    function OC02FOI() {
+                        var imgElement = document.getElementById('FOI');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02-125_status.jpg";
+                        const thisButton = document.getElementById('OC02FOIbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonNRS03 = document.getElementById('NRS03FOIbutton');
+                        otherButtonNRS03.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS03FOI() {
+                        var imgElement = document.getElementById('FOI');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS03-125_status.jpg";
+                        const thisButton = document.getElementById('NRS03FOIbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonOC02 = document.getElementById('OC02FOIbutton');
+                        otherButtonOC02.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
 </div>
 </div>
 </section>
 </section>
 <section id="ocean-sound-indicators" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-indicators">Ocean Sound Indicators</h2>
-<div id="8b2c8680" class="cell" data-execution_count="9">
+<div id="874655ec" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 We can use long-term monitoring of ocean sound to derive and track indicators of ocean conditions. These indicators track the status and trend of habitat condition, species presence, human-use patterns, and management activities.  There are many analytical methods used to generate ocean sound indicators. Below are ocean sound indicators relevant to the sanctuary and available for <a href="https://sanctuarywatch.ioos.us/" target="_blank"> condition tracking</a>. 
 </div>
 </div>
 <section id="how-much-noise-from-large-vessels-may-be-interfering-with-whale-communication" class="level3">
 <h3 class="anchored" data-anchor-id="how-much-noise-from-large-vessels-may-be-interfering-with-whale-communication">How much noise from large vessels may be interfering with whale communication?</h3>
-<div id="2b72936b" class="cell" data-execution_count="10">
+<div id="343cf9a3" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 Sound levels rise when ships are transiting in an area due to engine and propeller noise. The elevated noise interferes with biological communication in the same frequencies. We used a monthly metric to assess noise interference. Ocean sound data was combined with ship tracking data. Nearby ship presence is tracked using data from the Automatic Identification System (AIS), an onboard transponder that  most ships are required to use to transmit their location and identity. Higher median values indicate more interference with biological communication at the specified frequency. 
 </div>
 <div class="cell-output cell-output-display">
-<img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AISMonthAbove.jpg" width="700" id="SoundLevelVariance" onclick="this.requestFullscreen()">
+<button id="OC02SoundLevelVariancebutton" onclick="OC02SoundLevelVariance()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">OC02</button><button id="NRS03SoundLevelVariancebutton" onclick="NRS03SoundLevelVariance()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AISMonthAbove.jpg" width="700" id="SoundLevelVariance" onclick="this.requestFullscreen()">
                     <script>
                     function toggleSoundLevelVariance() {
                         var imgElement = document.getElementById('SoundLevelVariance');
@@ -682,16 +770,38 @@ Sound levels rise when ships are transiting in an area due to engine and propell
                     }
                     </script>
     
+                    <script>
+                    function OC02SoundLevelVariance() {
+                        var imgElement = document.getElementById('SoundLevelVariance');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AISMonthAbove.jpg";
+                        const thisButton = document.getElementById('OC02SoundLevelVariancebutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonNRS03 = document.getElementById('NRS03SoundLevelVariancebutton');
+                        otherButtonNRS03.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS03SoundLevelVariance() {
+                        var imgElement = document.getElementById('SoundLevelVariance');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS03_AISMonthAbove.jpg";
+                        const thisButton = document.getElementById('NRS03SoundLevelVariancebutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonOC02 = document.getElementById('OC02SoundLevelVariancebutton');
+                        otherButtonOC02.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
 </div>
 </div>
 <section id="how-does-the-level-of-traffic-change-conditions" class="level4">
 <h4 class="anchored" data-anchor-id="how-does-the-level-of-traffic-change-conditions">How does the level of traffic change conditions?</h4>
-<div id="25356e6c" class="cell" data-execution_count="11">
+<div id="dbf40b0e" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 Ship traffic can vary and this may influence the level of noise in the environment. Periods with different numbers of ships transiting nearby were compared to understand the difference: no ships, low number of ships ( less than 3), medium number of ships (3 to 5 ships ), and high number of ships (more than 5). 
 </div>
 <div class="cell-output cell-output-display">
-<img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AIShist.jpg" width="700" id="Histogram" onclick="this.requestFullscreen()">
+<button id="OC02Histogrambutton" onclick="OC02Histogram()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">OC02</button><button id="NRS03Histogrambutton" onclick="NRS03Histogram()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS03</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AIShist.jpg" width="700" id="Histogram" onclick="this.requestFullscreen()">
                     <script>
                     function toggleHistogram() {
                         var imgElement = document.getElementById('Histogram');
@@ -703,13 +813,35 @@ Ship traffic can vary and this may influence the level of noise in the environme
                     }
                     </script>
     
+                    <script>
+                    function OC02Histogram() {
+                        var imgElement = document.getElementById('Histogram');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_OC02_AIShist.jpg";
+                        const thisButton = document.getElementById('OC02Histogrambutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonNRS03 = document.getElementById('NRS03Histogrambutton');
+                        otherButtonNRS03.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS03Histogram() {
+                        var imgElement = document.getElementById('Histogram');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS03_AIShist.jpg";
+                        const thisButton = document.getElementById('NRS03Histogrambutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonOC02 = document.getElementById('OC02Histogrambutton');
+                        otherButtonOC02.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
 </div>
 </div>
 </section>
 </section>
 <section id="when-do-whales-contribute-to-the-soundscape-indicating-their-presence-nearby" class="level3">
 <h3 class="anchored" data-anchor-id="when-do-whales-contribute-to-the-soundscape-indicating-their-presence-nearby">When do whales contribute to the soundscape, indicating their presence nearby?</h3>
-<div id="3f66822f" class="cell" data-execution_count="12">
+<div id="d11be7f4" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 The National Marine Fisheries Service (NMFS) maintains <a href="https://passiveacoustics.fisheries.noaa.gov/pacm/#/" target="_blank">the analysis of acoustic presence of many whale species from passive acoustic monitoring data </a> within U.S. waters, including ONMS sites. Visit the interactive website to explore spatial and temporal patterns in different species. 
 </div>
