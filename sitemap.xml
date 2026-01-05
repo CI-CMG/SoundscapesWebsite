@@ -1,71 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/ci.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/hi.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/hi.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/pm.html</loc>
+    <lastmod>2026-01-05T17:47:33.256Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/sb.html</loc>
-    <lastmod>2026-01-05T17:28:48.969Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/ch.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/oc.html</loc>
-    <lastmod>2026-01-05T17:28:47.609Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/cb.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/ch.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/fk.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/as.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/fgb.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/mb.html</loc>
-    <lastmod>2026-01-05T17:28:47.609Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/index.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/sb.html</loc>
+    <lastmod>2026-01-05T17:47:34.735Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/cb.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/gr.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/gr.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/oc.html</loc>
+    <lastmod>2026-01-05T17:47:33.256Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/fk.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/mb.html</loc>
+    <lastmod>2026-01-05T17:47:33.256Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/index_test.html</loc>
-    <lastmod>2026-01-05T17:28:47.609Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/ci.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
   <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/acknowledgements.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/pri.html</loc>
-    <lastmod>2026-01-05T17:28:47.609Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/pm.html</loc>
-    <lastmod>2026-01-05T17:28:47.609Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/publishing.html</loc>
-    <lastmod>2026-01-05T17:28:47.609Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/index.qmd/content/fgb.html</loc>
-    <lastmod>2026-01-05T17:28:47.608Z</lastmod>
+    <loc>https://ci-cmg.github.io/SoundscapesWebsite/content/as.html</loc>
+    <lastmod>2026-01-05T17:47:33.255Z</lastmod>
   </url>
 </urlset>
