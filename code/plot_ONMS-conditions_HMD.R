@@ -28,15 +28,15 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("sb09")
+ONMSsites = c("oc02")
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # your local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir = "C:/Users/embe5980/SoundscapesWebsite/"
-outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
 outDirGe =  paste0(outDir,"content/resources/extra") #where extra save graphics
