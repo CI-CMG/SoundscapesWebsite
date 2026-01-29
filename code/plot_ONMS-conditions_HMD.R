@@ -28,15 +28,24 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
+<<<<<<< Updated upstream
 ONMSsites = c("oc02")
+=======
+ONMSsites = c("fk01")
+>>>>>>> Stashed changes
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # your local git repo
+<<<<<<< Updated upstream
 outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir = "C:/Users/embe5980/SoundscapesWebsite/"
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+=======
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir = "C:/Users/embe5980/SoundscapesWebsite/"
+>>>>>>> Stashed changes
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
 outDirGe =  paste0(outDir,"content/resources/extra") #where extra save graphics
@@ -139,6 +148,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   ## SITE PARAMETERS ####
   siteInfo = lookup[lookup$`NCEI ID` == tolower(site1),]
   siteInfo = siteInfo[!is.na(siteInfo$`NCEI ID`), ]
+  siteInfo$MThreshold = as.numeric(siteInfo$"Threshold for excluding a month of data (default is 23 days)")
+  
   
   # ##frequency of interest ####
   # if (substr(site, 1,3) == "fgb"){
@@ -215,6 +226,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   udays = length( unique(as.Date(gps$UTC)) )
   #cat("Input Data - ", site, " has ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
  
+  #removing HMD_20 from SS data so that it lines up with ONMS data
+  # if(site == "sb03"){
+  #   gps = gps[, -c(2:22)]
+  # }
+  # else if(siteInfo$`SanctSound Portal` != 'no'){
+  #   gps = gps[, -2]
+  # }
+  
   #for GR01! Removing HMD_20 until we can fix data quality matrix to have 20 Hz ONMS data
   #gps = gps[, -2]
   
@@ -277,6 +296,19 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     filter(n >= removeShort) %>%
     pull(yr)
   
+  #also remove years indicated by sanctuary managers to exclude on spreadsheet
+  years_to_remove <- siteInfo$`Years to Exclude `
+  
+  if(years_to_remove == "n/a" | years_to_remove == "unknown"){
+    years_to_remove <- numeric(0)
+  } else {
+    years_to_remove <- as.numeric(strsplit(years_to_remove, ",\\s*")[[1]])
+  }
+  
+  #remove years to remove from years to keep if that applies
+  years_to_keep <- setdiff(years_to_keep, years_to_remove)
+  
+  #apply years to keep
   gps = gps %>%
     filter(yr %in% years_to_keep)
   
@@ -355,6 +387,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     effort_title = "monitoring effort by year (all data)"
   }
   
+
   
   p1 = ggplot(summary, aes(x = month, y = dy, fill = as.factor(year))) +
     geom_col(position = "dodge", width = .4) +  # Use dodge to separate bars for each year within the same month
@@ -381,7 +414,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       legend.position = "right" 
     ) +
     #adding marker for cutoff threshold (months need more than 23 days of data to be kept in line graph)
-    geom_hline(yintercept = 23,    
+    geom_hline(yintercept = siteInfo$MThreshold,    
                linetype = "dashed",
                color = "red",
                linewidth = .5)
@@ -391,12 +424,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_HMDEffort.jpg"), plot = p1, width = 10, height = 4, dpi = 300)
   
   
-  #remove any months that have less than 23 days of data (552 hours) from gps
+  #remove any months that have less than siteInfo$MThreshold days of data from gps (ex: 23 days of data = 552 hours)
   #for PM01: 03/20, 04/20, 06/20, 07/21, 07/23, 06/24
   
   summary$month = as.character(summary$month)
   summary$month = as.numeric(summary$month)
-  summaryX = summary %>% filter(n < 552) %>% select(year, month)
+  summaryX = summary %>% filter(n < (siteInfo$MThreshold*24)) %>% select(year, month)
+  
   
   gpsnew = anti_join(gps, summaryX, by = c("yr" = "year",
                                            "mth" = "month"))
@@ -726,8 +760,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         legend.text = element_text(size = 12),
         legend.position = "right" 
       )+
-      #adding marker for cutoff threshold (months need more than 23 days of data to be kept in line graph)
-      geom_hline(yintercept = 23,    
+      #adding marker for cutoff threshold (months need more than 23 (default) or x days of data to be kept in line graph)
+      geom_hline(yintercept = siteInfo$MThreshold,    
                  linetype = "dashed",
                  color = "red",
                  linewidth = .5)
