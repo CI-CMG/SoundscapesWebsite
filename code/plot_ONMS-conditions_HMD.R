@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("fk01")
+ONMSsites = c("oc02")
 
 ## directories ####
 outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -289,7 +289,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #also remove years indicated by sanctuary managers to exclude on spreadsheet
   years_to_remove <- siteInfo$`Years to Exclude `
   
-  if(years_to_remove == "n/a" | years_to_remove == "unknown"){
+  if(is.na(years_to_remove) || years_to_remove %in% c("n/a", "unknown")){
     years_to_remove <- numeric(0)
   } else {
     years_to_remove <- as.numeric(strsplit(years_to_remove, ",\\s*")[[1]])
@@ -305,6 +305,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   st = as.Date( min(gps$UTC) )
   ed = as.Date( max(gps$UTC) )
   udays = length( unique(as.Date(gps$UTC)) )
+  
   
   
   # CHECK: DATA SUMMARY ####
@@ -465,9 +466,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     labs(
       title = "monitoring effort by season (all data)",
       subtitle  = paste0(toupper(site), " has ", udays, 
-                         " unique days of data between ", as.character(st), " and ", as.character(ed)), #, "\n", seasonLabel),
-      x = "",      y = "Days",      fill = "Season"
-    ) +
+                         " unique days: ", as.character(st), " to ", as.character(ed)), #, "\n", seasonLabel),
+      x = "",      
+      y = "Days",      
+      fill = "Season") +
     scale_fill_manual(values = seasont$values) +
     theme_minimal() +
     theme(

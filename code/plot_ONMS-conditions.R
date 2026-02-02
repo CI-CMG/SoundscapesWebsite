@@ -27,13 +27,14 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("sb09")
+ONMSsites = c("mb02")
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # your local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # your local git repo
-outDir   = "~/GitHub/SoundscapesWebsite/" 
+#outDir   = "~/GitHub/SoundscapesWebsite/" 
+
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
 outDirGe =  paste0(outDir,"content/resources/extra") #where extra save graphics
 outDirC  =  paste0(outDir,"context/") #where to get context
@@ -195,7 +196,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   }
   
   ## SPL data product ####
-  inFile = list.files(outDirP, pattern = paste0("data_", tolower(site1), "_HourlySPL-gfs_.*\\.Rda$"), full.names = T)
+  inFile = list.files(outDirP, pattern = paste0("TOLdata_", tolower(site1), "_HourlySPL-gfs_.*\\.Rda$"), full.names = T)
   file_info = file.info(inFile) 
   load( inFile[which.max(file_info$ctime)] ) #only load the most recent!
   # fk05 being weird w loading in most recent, used this load("C:/Users/embe5980/SoundscapesWebsite/products/fk/data_fk05_HourlySPL-gfs_2025-10-17.Rda")
@@ -357,7 +358,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   p1
   ##save figure ####
-  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_EffortwOctNov.jpg"), plot = p1, width = 10, height = 4, dpi = 300)
+  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_Effort.jpg"), plot = p1, width = 10, height = 4, dpi = 300)
   
   
   #remove any months that have less than 23 days of data (552 hours) from gps
@@ -426,7 +427,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     )
   p2
   ##save figure ####
-  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_EffortSeasonwOctNovnoX.jpg"), plot = p2, width = 10, height = 4, dpi = 300)
+  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_EffortSeason.jpg"), plot = p2, width = 10, height = 4, dpi = 300)
   
   
   
@@ -479,7 +480,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_fill_manual(values = c("low" = "blue",  "med" = "orange", "high" = "red") )
   l
   #save figure ####
-  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_windSpeedwOctNovnoX.jpg"), plot = l , width = 10, height = 12, dpi = 300)
+  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_windSpeed.jpg"), plot = l , width = 10, height = 12, dpi = 300)
   
   
   
@@ -621,7 +622,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # arranged_plot = grid.arrange(p, separator, l, heights =c(4, 0.05, 0.8))
   arranged_plot = grid.arrange(p, separator, p2, heights =c(4, 0.1, 1))
   ## save figure ####
-  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_SeasonalSPLwOctNovnoX.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
+  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_SeasonalSPL.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
   
   
   
@@ -790,7 +791,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   pYear = grid.arrange(p, separator, p1, heights =c(4, 0.1, 1)) #make height of last graph larger when legend gets cut off  b/c of too many data years. default is 1
   
   ### save figure ####
-  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_YearSPLwOctNovnoX.jpg"), plot = pYear, width = 10, height = 12, dpi = 300)
+  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_YearSPL.jpg"), plot = pYear, width = 10, height = 12, dpi = 300)
   
   
   
@@ -1010,18 +1011,32 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           TOL_75 = quantile(SpecBand, 0.75, na.rm = TRUE) )
       
       #threshold bands with categories-- from all data
+      # threshold_bands <- data.frame(
+      #   category = c("Very Low", "Low", "Within Range", "High", "Very High"),
+      #   xmin = c(q01,    q10,    q25,    q75,    q90),
+      #   xmax = c(q10,     q25,    q75,    q90,    q99),
+         fill = c("#6699CC", "#99CCFF", "#CCCCCC", "#FF9999", "#CC0000")
+      # )
+      
+      # threshold_bands$category <- factor(
+      #   threshold_bands$category,
+      #   levels = c("Very Low", "Low", "Within Range", "High", "Very High")
+      # )
+      
+      #threshold bands with categories-- from all data COMBINING Very Low and Low as well as High and Very High
       threshold_bands <- data.frame(
-        category = c("Very Low", "Low", "Within Range", "High", "Very High"),
-        xmin = c(q01,    q10,    q25,    q75,    q90),
-        xmax = c(q10,     q25,    q75,    q90,    q99),
-        fill = c("#6699CC", "#99CCFF", "#CCCCCC", "#FF9999", "#CC0000")
+        category = c("Low", "Within Range", "High"),
+        xmin = c(q01,  q25,    q75),
+        xmax = c(q25,    q75,    q99),
+        fill = c( "lightblue", "#CCCCCC", "lightcoral")
       )
       
       threshold_bands$category <- factor(
         threshold_bands$category,
-        levels = c("Very Low", "Low", "Within Range", "High", "Very High")
+        levels = c( "Low", "Within Range", "High")
       )
       yrFQ$yr = factor(yrFQ$yr, levels = rev(sort(unique(yrFQ$yr))))
+      
       
       ### plot: annual threshold bars
       pthrs = ggplot() +
@@ -1038,16 +1053,163 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
         # more formatting
         theme_void() +
-        theme( legend.position = "right",
+        theme( legend.position = "none",
                plot.title = element_text(hjust = 0.5, size = 16),
                plot.caption = element_text(size = 12, hjust = 1),
-               plot.subtitle = element_text(hjust = 0.5, size = 14),
+               plot.subtitle = element_text(hjust = 0.5, size = 12),
                axis.title.x = element_text(size = 14),
                strip.text = element_text(size = 14) ) +
-        labs(title = paste0("Annual Status for ", ft, "Hz" ), fill = "",
-             subtitle  = "status is set at median for the year",
+        labs(title = paste0("Annual Status for ", ft, "Hz,\nwhich is an indication of ", FOIst$Label ), fill = "",
+             subtitle  = "Vertical line is the median for the year",
              strip.text = element_text(hjust = 0))
       pthrs 
+      
+      
+      ### plot: annual pie charts
+      # if dailyFQ$TOL_50 is < threshold_bands$xmin[2] = blue pie slice
+      # if dailyFQ$TOL_50 is > threshold_bands$xmin[2] and < threshold_bands$xmax[2] = grey pie slice
+      # if dailyFQ$TOL_50 is > threshold_bands$xmax[2] = red pie slice
+      
+      # q25 = minimum threshold (a)
+      # q75 = max threshold (b)
+     
+      # # with NA on pies, but there are only NA for between deployment start and end, not whole year
+      # pies <- dailyFQ_complete %>%
+      #   mutate(category = case_when(
+      #     is.na(TOL_50)             ~ "NA",
+      #     TOL_50 < q25               ~ "Low",
+      #     TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
+      #     TOL_50 > q75               ~ "High"
+      #   )) %>%
+      #   group_by(yr, category) %>%
+      #   summarise(
+      #     n_days = n(),
+      #     .groups = "drop"
+      #   )
+      # 
+      # 
+      # pies$category <- factor(
+      #   pies$category,
+      #   levels = c("Low", "Within Range", "High", "NA")
+      # )
+      # 
+      # 
+      # pie <- ggplot(pies, aes(x = "", y = n_days, fill = category)) +
+      #   geom_col(width = 1, color = "white") +
+      #   coord_polar(theta = "y") +
+      #   scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+      #   facet_wrap(~ yr, ncol = 1) +
+      #   labs(
+      #     title = "",
+      #     fill = "",
+      #     strip.text = element_text(hjust = 0)
+      #   ) +
+      #   theme_void() +
+      #   theme( legend.position = "right",
+      #          plot.title = element_text(hjust = 0.5, size = 16),
+      #          strip.text = element_text(size = 14) ) 
+      # 
+      # pie
+      
+      
+      # without NA on pies 
+      pies <- dailyFQ %>%
+        mutate(category = case_when(
+          #is.na(TOL_50)             ~ "NA",
+          TOL_50 < q25               ~ "Low",
+          TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
+          TOL_50 > q75               ~ "High"
+        )) %>%
+        group_by(yr, category) %>%
+        summarise(
+          n_days = n(),
+          .groups = "drop"
+        )
+
+      
+      pies$category <- factor(
+        pies$category,
+        levels = c("Low", "Within Range", "High")
+      )
+      pies$yr <- factor(pies$yr, levels = sort(unique(pies$yr), decreasing = TRUE))
+      
+      
+      pie <- ggplot(pies, aes(x = "", y = prop, fill = category)) +
+        geom_col(width = 1, color = "white")+
+        coord_polar(theta = "y") +
+        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+        facet_wrap(~ yr, ncol = 1) +
+        labs(
+          title = "",
+          fill = "",
+          strip.text = element_text(hjust = 0)
+        ) +
+        theme_void() +
+        theme( legend.position = "right",
+               plot.title = element_text(hjust = 0.5, size = 16),
+               strip.text = element_text(size = 14) )
+      
+      pie
+      
+      
+      
+      # without NA on pies and as proportions
+      pies <- dailyFQ %>%
+        mutate(category = case_when(
+          #is.na(TOL_50)             ~ "NA",
+          TOL_50 < q25               ~ "Low",
+          TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
+          TOL_50 > q75               ~ "High"
+        )) %>%
+        group_by(yr, category) %>%
+        summarise(
+          n_days = n(),
+          .groups = "drop"
+        )
+      
+      #getting effort
+      piesEffort <- dailyFQ_complete %>%
+                 group_by(yr) %>%
+                 summarise(
+                     n_NA = sum(is.na(TOL_50)),
+                     n_total = n(),
+                     n_effort = n_total - n_NA,
+                     .groups = "drop"
+                 )
+
+      finalpies <- pies %>%
+        left_join(piesEffort, by = "yr") %>%
+        mutate(
+          prop = n_days/n_effort
+        ) %>%
+        select(1:3, 6:7)
+    
+
+      finalpies$category <- factor(
+        finalpies$category,
+        levels = c("Low", "Within Range", "High")
+      )
+      finalpies$yr <- factor(finalpies$yr, levels = sort(unique(finalpies$yr), decreasing = TRUE))
+    
+
+      pie <- ggplot(finalpies, aes(x = "", y = prop, fill = category)) +
+        geom_col(width = 1, color = "white")+
+        coord_polar(theta = "y") +
+        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+        facet_wrap(~ yr, ncol = 1) +
+        labs(
+          title = "",
+          fill = "",
+          strip.text = element_text(hjust = 0)
+        ) +
+        theme_void() +
+        theme( legend.position = "right",
+               plot.title = element_text(hjust = 0.5, size = 16),
+               strip.text = element_text(size = 14) )
+
+
+      pie
+      
       
       ### plot: time series ####
       dailyFQ_complete$yr = factor(dailyFQ_complete$yr, levels = rev(sort(unique(dailyFQ_complete$yr))))
@@ -1058,15 +1220,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
-                   fill = "#CCCCCC", alpha = 0.2) +
+                   fill = "#CCCCCC", alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q75, ymax = q99 ,
-                   fill = "lightcoral", alpha = 0.2) +
+                   fill = "lightcoral", alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q01, ymax = q25,
-                   fill = "lightblue", alpha = 0.2) +
+                   fill = "lightblue", alpha = 0.5) +
           ylim(q01, q99) +
           
           geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
@@ -1100,8 +1262,21 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + plot_layout(ncol = 2, widths = c(2, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_status.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
-      } else if (substring(site, 1, 2) == "hi") {
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_statusNew.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
+        
+        #with pies that show off effort, directly comparable across years. out of 365. na/off effort is blank part of pie
+        plg3 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        plg3
+       
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_statusNewPies.jpg"), plot = plg3, width = 10, height = 12, dpi = 300)
+    
+        #with pies that adjust for effort. show proportion of low/within range/high out of days spent recording that year
+        plg4 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        plg4
+        
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_statusNewPiesV2.jpg"), plot = plg4, width = 10, height = 12, dpi = 300)
+        
+        } else if (substring(site, 1, 2) == "hi") {
         # alternative methods for plg for Hawaii sites
         monthly_sequence = seq.Date(as.Date("2020-12-01"), as.Date("2021-06-01"), by = "month")
         month_names_seq  = format(monthly_sequence, "%b")  # Extracts full month names
