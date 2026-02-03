@@ -219,51 +219,57 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #OC02 has duplicate data (two deployments overlapped) so we need to average dB values 
   #between Jan 29 2024 and March 15 2024
-  if (site == "oc02"){
-    
-    #gps row 12340 to 14561 are duplicates
-    which(gps$UTC == "2024-01-29 00:00:00")
-    which(gps$UTC == "2024-03-15 08:00:00")
-    
-    #pull out bad rows
-    fix <- gps[12340:14561,]
-    
-    # Check how many times each `UTC` appears
-    utc_counts <- gps %>%
-      group_by(UTC) %>%
-      summarize(count = n())
-    
-    occurrences_summary <- utc_counts %>%
-      group_by(count) %>%
-      summarize(num_utc_bins = n()) %>%  # How many UTC bins appear each number of times
-      arrange(count) 
-    
-    hi <- utc_counts %>% filter(count == 2)
-    
-    #hmmm more duplicates than I thought, average the whole dataset!
-    #make sure output has same number of rows removed as number of rows of hi dataset above
-    gps_avg <- gps %>%
-      group_by(UTC) %>%
-      summarize(
-        Latitude = first(Latitude),
-        Longitude = first(Longitude),
-        software = first(software),
-        yr = first(yr),
-        mth = first(mth),
-        site = first(site),
-        windU = first(windU),
-        windV = first(windV),
-        precRate = first(precRate),
-        matchLong = first(matchLong),
-        matchLat = first(matchLat),
-        matchTime = first(matchTime),
-        windMag = first(windMag),
-        across(starts_with("HMD"), mean, .names = "{.col}"), 
-        .groups = "drop" )
-    
-    gps_old <- gps
-    gps <- gps_avg
-  }
+  # if (site == "oc02"){
+  #   
+  #   #gps row 12340 to 14561 are duplicates
+  #   which(gps$UTC == "2024-01-29 00:00:00")
+  #   which(gps$UTC == "2024-03-15 08:00:00")
+  #   
+  #   #pull out bad rows
+  #   fix <- gps[12340:14561,]
+  #   
+  #   # Check how many times each `UTC` appears
+  #   utc_counts <- gps %>%
+  #     group_by(UTC) %>%
+  #     summarize(count = n())
+  #   
+  #   occurrences_summary <- utc_counts %>%
+  #     group_by(count) %>%
+  #     summarize(num_utc_bins = n()) %>%  # How many UTC bins appear each number of times
+  #     arrange(count) 
+  #   
+  #   hi <- utc_counts %>% filter(count == 2)
+  #   
+  #   #hmmm more duplicates than I thought, average the whole dataset!
+  #   #make sure output has same number of rows removed as number of rows of hi dataset above
+  #   #takes a little...
+  #    gps_avg <- gps %>%
+  #     group_by(UTC) %>%
+  #     summarize(
+  #       Latitude = first(Latitude),
+  #       Longitude = first(Longitude),
+  #       software = first(software),
+  #       yr = first(yr),
+  #       mth = first(mth),
+  #       site = first(site),
+  #       windU = first(windU),
+  #       windV = first(windV),
+  #       precRate = first(precRate),
+  #       matchLong = first(matchLong),
+  #       matchLat = first(matchLat),
+  #       matchTime = first(matchTime),
+  #       windMag = first(windMag),
+  #       across(starts_with("HMD"), mean, .names = "{.col}"), 
+  #       .groups = "drop" )
+  #   
+  #   gps_old <- gps
+  #   gps <- gps_avg
+  #   
+  #   #save new data without duplicate rows
+  #   outData = gps
+  #   save(outData, file = paste0(outDirP, "HMDdata_", tolower(site), "_HourlySPL-gfs_", DC, ".Rda") )
+  #  
+  # }
   
   
   #removing HMD_20 from SS data so that it lines up with ONMS data
