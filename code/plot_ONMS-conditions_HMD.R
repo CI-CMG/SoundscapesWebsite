@@ -31,10 +31,10 @@ rm(list=ls())
 ONMSsites = c("oc02")
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -216,6 +216,56 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   udays = length( unique(as.Date(gps$UTC)) )
   #cat("Input Data - ", site, " has ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
  
+  
+  #OC02 has duplicate data (two deployments overlapped) so we need to average dB values 
+  #between Jan 29 2024 and March 15 2024
+  if (site == "oc02"){
+    
+    #gps row 12340 to 14561 are duplicates
+    which(gps$UTC == "2024-01-29 00:00:00")
+    which(gps$UTC == "2024-03-15 08:00:00")
+    
+    #pull out bad rows
+    fix <- gps[12340:14561,]
+    
+    # Check how many times each `UTC` appears
+    utc_counts <- gps %>%
+      group_by(UTC) %>%
+      summarize(count = n())
+    
+    occurrences_summary <- utc_counts %>%
+      group_by(count) %>%
+      summarize(num_utc_bins = n()) %>%  # How many UTC bins appear each number of times
+      arrange(count) 
+    
+    hi <- utc_counts %>% filter(count == 2)
+    
+    #hmmm more duplicates than I thought, average the whole dataset!
+    #make sure output has same number of rows removed as number of rows of hi dataset above
+    gps_avg <- gps %>%
+      group_by(UTC) %>%
+      summarize(
+        Latitude = first(Latitude),
+        Longitude = first(Longitude),
+        software = first(software),
+        yr = first(yr),
+        mth = first(mth),
+        site = first(site),
+        windU = first(windU),
+        windV = first(windV),
+        precRate = first(precRate),
+        matchLong = first(matchLong),
+        matchLat = first(matchLat),
+        matchTime = first(matchTime),
+        windMag = first(windMag),
+        across(starts_with("HMD"), mean, .names = "{.col}"), 
+        .groups = "drop" )
+    
+    gps_old <- gps
+    gps <- gps_avg
+  }
+  
+  
   #removing HMD_20 from SS data so that it lines up with ONMS data
   # if(site == "sb03"){
   #   gps = gps[, -c(2:22)]
@@ -299,12 +349,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   years_to_keep <- setdiff(years_to_keep, years_to_remove)
   
   #apply years to keep
-  gps = gps %>%
+  #save as new dataset because we only want to exclude data from Annaul graphics, not seasonal or wind or FOI
+  gpsAG = gps %>%
     filter(yr %in% years_to_keep)
   
-  st = as.Date( min(gps$UTC) )
-  ed = as.Date( max(gps$UTC) )
-  udays = length( unique(as.Date(gps$UTC)) )
+  st = as.Date( min(gpsAG$UTC) )
+  ed = as.Date( max(gpsAG$UTC) )
+  udays = length( unique(as.Date(gpsAG$UTC)) )
   
   
   
@@ -320,7 +371,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   ## by month (days/ month-year) ####
   ## by season (hours/ season in each year) ####
   
-  summary <- gps %>%
+  summary <- gpsAG %>%
     mutate(
       year  = year(UTC),  # Extract Year
       month = format(UTC, "%m")  # Extract Month (numeric format)
@@ -337,6 +388,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gps$yr[gps$mth == 11] = gps$yr[gps$mth == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
     gps$yr[gps$mth == 10] = gps$yr[gps$mth == 10] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
     
+    gpsAG$yr[gpsAG$mth == 12] = gpsAG$yr[gpsAG$mth == 12] + seasonShift
+    gpsAG$yr[gpsAG$mth == 11] = gpsAG$yr[gpsAG$mth == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    gpsAG$yr[gpsAG$mth == 10] = gpsAG$yr[gpsAG$mth == 10] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    
+    
     summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
     summary$year[summary$month == 11] =  summary$year[summary$month == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
     summary$year[summary$month == 10] =  summary$year[summary$month == 10] + seasonShift  #for PM sites, Eden wants to see with October and November counted as next year
@@ -347,6 +403,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #removing Sept 2022 for PM01, we only want Oct-Jul, usually no data recorded in Sept
     gps <- gps[!(gps$yr == 2022 & gps$mth == 9), ]
     
+    gpsAG <- gpsAG[!(gpsAG$yr == 2022 & gpsAG$mth == 9), ]
+    
     #order months to start with Oct for effort graph
     summary$month <- factor(summary$month, levels = c("10", "11", "12", "01", "02", "03", "04", "05", "06", "07"))
     month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
@@ -354,6 +412,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   } else if ( substr(site, 1, 2) == "hi") {
     #shift december to the next year
     gps$yr[gps$mth == 12] = gps$yr[gps$mth == 12] + seasonShift
+    
+    gpsAG$yr[gpsAG$mth == 12] = gpsAG$yr[gpsAG$mth == 12] + seasonShift
     
     summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
  
@@ -423,10 +483,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   summaryX = summary %>% filter(n < (siteInfo$MThreshold*24)) %>% select(year, month)
   
   
-  gpsnew = anti_join(gps, summaryX, by = c("yr" = "year",
+  gpsAGnew = anti_join(gpsAG, summaryX, by = c("yr" = "year",
                                            "mth" = "month"))
-  gpsold = gps
-  gps = gpsnew
+  gpsAGold = gpsAG
+  gpsAG = gpsAGnew
   
   
   summary2 = gps %>%
@@ -702,15 +762,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
  
   
   if (substr(site, 1, 2) == "hi"){ #only keep humpback season
-    gpsAll = gps
+    gpsAGAll = gpsAG
     my_subtitle = "(humpback season)"
     #####  COMMENTING OUT BC trying PM01 w/ Oct and Nov
-    gps = gpsold 
-    gps = gps[gps$Season %in% c("Early", "Peak","Late"), ] 
-    #gps = gps[gps$Season %in% c("Peak"), ] was trying just Peak humpaback for HIHWNMS sites
-    unique( gps$mth )
+    gpsAG = gpsAGold 
+    gpsAG = gpsAG[gpsAG$Season %in% c("Early", "Peak","Late"), ] 
+    #gps = gps[gps$Season %in% c("Peak"), ] was trying just Peak humpback for HIHWNMS sites
+    unique( gpsAG$mth )
     #redo effort plot so not confusing
-    summary <- gps %>%
+    summary <- gpsAG %>%
       mutate(
         year = year(UTC),  # Extract Year
         month = format(UTC, "%m")  # Extract Month (numeric format)
@@ -762,9 +822,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     ## re-save effort figure ####
     ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_HMDEffort.jpg"), plot = p1, width = 10, height = 4, dpi = 300)
   
-    gps = gpsAll
+    gpsAG = gpsAGAll
   } else {
-    gpsAll = gps
+    gpsAGAll = gpsAG
     my_subtitle = "all data" 
   }
   
@@ -792,8 +852,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   ## re-calculate percentiles for all the data ####
   # all data - mALL 
-  hmd_columns = grep("HMD", colnames(gps))
-  all_quantiles = apply(gps[, hmd_columns, drop = FALSE], 2, quantile, 
+  hmd_columns = grep("HMD", colnames(gpsAG))
+  all_quantiles = apply(gpsAG[, hmd_columns, drop = FALSE], 2, quantile, 
                         probs = c(0.99, 0.90, 0.75, 0.50, 0.25, 0.10, .01), na.rm = TRUE)
   All = as.data.frame( all_quantiles )
   All$Quantile = rownames(All)
@@ -803,18 +863,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   mALL$variable = as.numeric( as.character( gsub("HMD_", "", mALL$variable )))
   colnames(mALL) = c("Quantile", "Year", "Frequency" , "SoundLevel" )
   # by year- mallData 
-  hmd_columns = grep("HMD", colnames(gps))
+  hmd_columns = grep("HMD", colnames(gpsAG))
   
-  yr_split = split(gps, gps$yr) # Calculate quantiles for each year
+  yr_split = split(gpsAG, gpsAG$yr) # Calculate quantiles for each year
   year_quantiles = lapply(yr_split, function(season_data) {
     apply(season_data[, hmd_columns, drop = FALSE], 2, quantile,  
           probs = c(0.99, 0.90, 0.75, 0.50, 0.25, 0.10, .01), na.rm = TRUE)})
   
-  hmd_columns = grep("HMD", colnames(gps))
+  hmd_columns = grep("HMD", colnames(gpsAG))
   yearAll = NULL
   for (ii in 1: length(year_quantiles) ) {
     tmp = as.data.frame ( year_quantiles[ii] ) 
-    colnames(tmp) = colnames(gps)[hmd_columns]
+    colnames(tmp) = colnames(gpsAG)[hmd_columns]
     tmp$Quantile = rownames(tmp)
     tmp$Year = names(year_quantiles)[ii]
     rownames(tmp) = NULL

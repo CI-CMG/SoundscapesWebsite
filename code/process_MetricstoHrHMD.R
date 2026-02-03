@@ -25,24 +25,24 @@ devtools::install_github('TaikiSan21/PAMscapes')
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "nrs09" 
+site  = "oc02" 
 site = tolower(site) 
 
 #add for NRS
-gcpF = "PMEL_SBNMS"
-prodName = "sb"
+# gcpF = "PMEL_SBNMS"
+# prodName = "sb"
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
 #dirGCP = paste0( "C:/Users/emma.beretta/Documents/ONMS/", site,"/") # for NOAA computer
 #dirGCP = paste0( "C:/Users/embe5980/ONMS/", site,"/") # for CIRES computer
-#dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
-dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
+dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
+#dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
 
 
 #SANCTSOUND DATA DIRECTORY
 #for when sanctsound data is in different location than ONMS data: grnms, sbnms, hihwnms
-dirGCPSS = paste0( "M:/FATESD/PASSIVE_ACOUSTIC_DATA_ANALYSIS/SANCTSOUND_SBNMS/SB01") # for GCP workstation
+#dirGCPSS = paste0( "M:/FATESD/PASSIVE_ACOUSTIC_DATA_ANALYSIS/SANCTSOUND_SBNMS/SB01") # for GCP workstation
 #dirGCPSS = paste0( "X:/Emma_Beretta/HI01SanctSound") # for GCP workstation - HI01
 
 # LOCAL CODE REPO DIRECTORIES ####
@@ -50,12 +50,12 @@ dirGCPSS = paste0( "M:/FATESD/PASSIVE_ACOUSTIC_DATA_ANALYSIS/SANCTSOUND_SBNMS/SB
 #outDir =  "F:/CODE/GitHub/SoundscapesWebsite/" 
 #outDir =  "C:/Users/emma.beretta/Documents/SoundscapesWebsite/" #for NOAA computer
 #outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
-#outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation
-outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
+outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation
+#outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
 
 outDirC = paste0( outDir,"content/resources/") #context
-#outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
-outDirP = paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
+outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
+#outDirP = paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
 outDirG = paste0( outDir,"report/" ) #graphics
 
 
