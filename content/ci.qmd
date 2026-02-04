@@ -9,6 +9,7 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["CI01","CI04","NRS05"]# "SIOB"
+fishsites = ["CI01","CI04"]
 
 # input table for standard text
 inputDir = os.path.normpath(os.path.join(os.getcwd(), "resources"))
@@ -129,6 +130,15 @@ display(HTML(gf.makeButtons(sites, "plot_***-125_status.jpg", "FOI2")))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
+```
+
+### When do fish choruses contribute to the soundscape?
+```{python}
+#| echo: false
+display(HTML(standardTextDict["Fish Chorus"]))
+display(HTML(gf.makeImage("MB01_FinalHist.png", " Seasonal Fish Choruses")))
+
+display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlot.jpg", " Daily Fish Choruses")))
 ```
 
 ### When do whales contribute to the soundscape, indicating their presence nearby?
