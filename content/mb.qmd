@@ -9,6 +9,7 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["MB01", "MB02"]
+fishsites = ["MB01", "MB02", "MB05"]
 humpbacksites = ["MB01", "MB02", "MB03"]
 
 # input table for standard text
@@ -136,7 +137,8 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
 display(HTML(gf.makeImage("MB01_FinalHist.png", " Seasonal Fish Choruses")))
-display(HTML(gf.makeImage("MB01_FinalRosePlot.png", " Daily Fish Choruses")))
+
+display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlot.png", " Daily Fish Choruses")))
 ```
 ### When are the seasonal biologically-important times for whales?
 ```{python}

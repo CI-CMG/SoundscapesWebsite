@@ -213,7 +213,7 @@ MB05Rose = ggplot(MB05_summary, aes(x = factor(ChorusHourPT), y = prop, fill = f
 MB05Rose
 
 outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
-ggsave(filename = paste0(outDirG, "/MB05_FinalRosePlot.jpg"), dpi = 300)
+ggsave(filename = paste0(outDirG, "/MB05_FinalRosePlot.png"), dpi = 300)
 
 
 #proportion of days where fish (bocaccio) chorused out of all days where we were recording during that hour (20)
@@ -453,7 +453,7 @@ MB02Rose
 
 
 outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
-ggsave(filename = paste0(outDirG, "/MB02_FinalRosePlot.jpg"), dpi = 300)
+ggsave(filename = paste0(outDirG, "/MB02_FinalRosePlot.png"), dpi = 300)
 
 #proportion of days where fish (bocaccio) chorused out of all days where we were recording during that hour (20)
 
