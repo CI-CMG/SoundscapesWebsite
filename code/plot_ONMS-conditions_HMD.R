@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("oc02")
+ONMSsites = c("cb11")
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -105,7 +105,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site  = "NRS03"
     site5 = "oc03"
   } else if (site == "sb09"){
-    outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
     site1 = "nrs09"
     site3 = "sbnrs09"
     site  = "NRS09"
@@ -123,7 +123,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site  = "NRS13"
     site5 = "ch13"
   } else if (site == "cb11"){
-    outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
     site1 = "nrs11"
     site3 = "cbnrs11"
     site  = "NRS11"

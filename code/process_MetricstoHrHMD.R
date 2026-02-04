@@ -19,18 +19,18 @@ library(data.table)
 library(devtools)
 
 # RUN this to make sure latest updates for PAMscapes
-devtools::install_github('TaikiSan21/PAMscapes')
+#devtools::install_github('TaikiSan21/PAMscapes')
 
 
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "oc02" 
+site  = "nrs11" 
 site = tolower(site) 
 
 #add for NRS
-# gcpF = "PMEL_SBNMS"
-# prodName = "sb"
+# gcpF = "PMEL_CBNMS"
+# prodName = "cb"
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
@@ -55,7 +55,7 @@ outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation
 
 outDirC = paste0( outDir,"content/resources/") #context
 outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
-#outDirP = paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
+#outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
 outDirG = paste0( outDir,"report/" ) #graphics
 
 
@@ -239,6 +239,7 @@ if (length(inFiles) > 0) {
   } 
 }
 
+library(data.table) #reload if not recognized
 #combine list elements after processing each day seperately and saving into different list elements
 cDatah <- rbindlist(data_list)
 
