@@ -31,7 +31,8 @@ projectNONMS = "onms" # set this to deal with different metadata formats
 projectNSS  = "sanctsound"# set this to deal with different metadata formats
 projectNNRS = "nrs"# set this to deal with different metadata formats
 
-outDir =   "F:/CODE/GitHub/SoundscapesWebsite/"
+#outDir =   "F:/CODE/GitHub/SoundscapesWebsite/"
+outDir =   "C:/Users/embe5980/SoundscapesWebsite/"
 outDirR =  paste0(outDir, "content/resources/") #save graphics
 outDirP =  paste0(outDir, "products/onms/")     #products
 
@@ -97,7 +98,7 @@ for (s in 1:length(subdirsALL) ) { # s = 1
   # read in files
   args = c("ls", "-r", subdirsALL[s])
   sFiles = system2(command, args, stdout = TRUE, stderr = TRUE)  
-  json_files = grep("/.json$", sFiles, value = TRUE) #metadata files
+  json_files = grep("\\.json$", sFiles, value = TRUE) #metadata files
   cat("Processing... ", dirNames[s], "[", s, " of ", length(subdirsALL),"]", "\n" )
   
   if ( length(grep(projectNONMS, subdirsALL[s]) ) > 0 ) { # check for format - onms
