@@ -512,6 +512,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     summary2$Season <- factor(summary2$Season, levels = c("Early", "Peak", "Late", "Non"))
     seasont$Season <- factor(seasont$Season, levels = c("Early", "Peak", "Late", "Non"))
     seasont <- season[order(seasont$Season), ]
+    
+  } else if (sidx == "upwelling") {
+    summary2$Season <- factor(summary2$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    seasont$Season <- factor(seasont$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    seasont <- season[order(seasont$Season), ]
+    
   } else if (site %in% c("fk06", "fk07", "fgb01")){
     summary2$Season <- factor(summary2$Season, levels = c("Spring", "Summer", "Fall"))
     
@@ -688,6 +694,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       mallData$Season,
       levels = c("Early", "Peak", "Late", "Non")
     )
+  }else if (sidx == "upwelling") {
+    mallData$Season <- factor(
+      mallData$Season,
+      levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    
   }else if ( sidx == "wssf" | length(sidx) == 0) {
     mallData$Season <- factor(
       mallData$Season,

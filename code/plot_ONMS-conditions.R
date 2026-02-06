@@ -558,7 +558,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       mallData$Season,
       levels = c("Early", "Peak", "Late", "Non")
     )
-  }else if ( sidx == "wssf" | length(sidx) == 0) {
+    }else if (sidx == "upwelling") {
+    mallData$Season <- factor(
+      mallData$Season,
+      levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    
+    }else if ( sidx == "wssf" | length(sidx) == 0) {
     mallData$Season <- factor(
       mallData$Season,
       levels = c("Winter", "Spring", "Summer", "Fall"))
