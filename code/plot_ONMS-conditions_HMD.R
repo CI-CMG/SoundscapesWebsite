@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("hi01")
+ONMSsites = c("hi03")
 
 ## directories ####
 outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -142,14 +142,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   # ##frequency of interest ####
-  # if (substr(site, 1,3) == "fgb"){
-  #   FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
-  # } else {
-  #   FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
-  # }
-  # ##frequency(s) to track
-  # FOIst = FOIs [ FOIs$`Track.this.FQ.as.indicator.for.sources?` == "Y", ] 
-  
+  if (substr(site, 1,3) == "fgb"){
+    FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
+  } else {
+    FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
+  }
+  ##frequency(s) to track
+  FOIst = FOIs [ FOIs$`Track.this.FQ.as.indicator.for.sources?` == "Y", ]
+
   ##times of interest ####
   TOIs = TOI [ TOI$Site == (site1), ]
   TOIs <- TOIs %>%
@@ -368,7 +368,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # CHECK: DATA SUMMARY ####
   cat(site, "Context Summary:\n", siteInfo$`Oceanographic category`,  "; season-",  unique(gps$Season), 
       "; times of interest-", nrow(TOIs), 
-     # "; frequencies of interest- ", nrow(FOIst), "\n",
+      "; frequencies of interest- ", nrow(FOIst), "\n",
       "Input Data - ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
   
   
@@ -714,6 +714,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   NRSLabelShift <- if (substr(site, 1, 3) == "NRS") 39 else NA
   
   mallDataS = mallData
+  
+  
+  FOIsOG <- FOIs
+  FOIs$FQstart[2] = 16000
 
 #plot  
   p = ggplot() +
@@ -736,11 +740,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
     
     # Add vertical lines at FQstart
-   # geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-   # geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
-    #          fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
+    geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
+              fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     # Add labels at the bottom of each line
-  #  geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.5, size = 4) +
+    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.5, size = 4) +
      labs(
         subtitle = seasonLabel,
        caption  = caption_text,
