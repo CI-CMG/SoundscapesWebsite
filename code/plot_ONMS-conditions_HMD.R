@@ -217,29 +217,30 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #cat("Input Data - ", site, " has ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
  
   
+  #FOR NEW OC02 DATA!!!
   #OC02 has duplicate data (two deployments overlapped) so we need to average dB values 
   #between Jan 29 2024 and March 15 2024
   # if (site == "oc02"){
-  #   
+  # 
   #   #gps row 12340 to 14561 are duplicates
   #   which(gps$UTC == "2024-01-29 00:00:00")
   #   which(gps$UTC == "2024-03-15 08:00:00")
-  #   
+  # 
   #   #pull out bad rows
   #   fix <- gps[12340:14561,]
-  #   
+  # 
   #   # Check how many times each `UTC` appears
   #   utc_counts <- gps %>%
   #     group_by(UTC) %>%
   #     summarize(count = n())
-  #   
+  # 
   #   occurrences_summary <- utc_counts %>%
   #     group_by(count) %>%
   #     summarize(num_utc_bins = n()) %>%  # How many UTC bins appear each number of times
-  #     arrange(count) 
-  #   
+  #     arrange(count)
+  # 
   #   hi <- utc_counts %>% filter(count == 2)
-  #   
+  # 
   #   #hmmm more duplicates than I thought, average the whole dataset!
   #   #make sure output has same number of rows removed as number of rows of hi dataset above
   #   #takes a little...
@@ -259,16 +260,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #       matchLat = first(matchLat),
   #       matchTime = first(matchTime),
   #       windMag = first(windMag),
-  #       across(starts_with("HMD"), mean, .names = "{.col}"), 
+  #       across(starts_with("HMD"), mean, .names = "{.col}"),
   #       .groups = "drop" )
-  #   
+  # 
   #   gps_old <- gps
   #   gps <- gps_avg
-  #   
+  # 
   #   #save new data without duplicate rows
   #   outData = gps
   #   save(outData, file = paste0(outDirP, "HMDdata_", tolower(site), "_HourlySPL-gfs_", DC, ".Rda") )
-  #  
+  # 
   # }
   
   
@@ -636,7 +637,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   All$Quantile = rownames(All)
   All$Year = "all"
   hmd_columns = grep("HMD", colnames(All))
-  mALL = melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
+  mALL = reshape2::melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
   mALL$variable = as.numeric( as.character( gsub("HMD_", "", mALL$variable )))
   colnames(mALL) = c("Quantile", "Year", "Frequency" , "SoundLevel" )
  
@@ -676,7 +677,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   hmd_columns = grep("HMD", colnames(seasonAll))
   
   ### format for plot ####
-  mallData = melt(seasonAll, id.vars = c("Quantile","Season"), measure.vars = hmd_columns)
+  mallData = reshape2::melt(seasonAll, id.vars = c("Quantile","Season"), measure.vars = hmd_columns)
   mallData$variable = as.numeric( as.character( gsub("HMD_", "", mallData$variable )))
   colnames(mallData) = c("Quantile", "Season", "Frequency" , "SoundLevel" )
   fqupper = max(as.numeric( as.character( mallData$Frequency) ))
@@ -880,7 +881,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   All$Quantile = rownames(All)
   All$Year = "all"
   hmd_columns = grep("HMD", colnames(All))
-  mALL = melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
+  mALL = reshape2::melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
   mALL$variable = as.numeric( as.character( gsub("HMD_", "", mALL$variable )))
   colnames(mALL) = c("Quantile", "Year", "Frequency" , "SoundLevel" )
   # by year- mallData 
@@ -902,7 +903,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     yearAll = rbind(yearAll,tmp)
   }
   hmd_columns = grep("HMD", colnames(yearAll))
-  mallData = melt(yearAll, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
+  mallData = reshape2::melt(yearAll, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
   mallData$variable = as.numeric( as.character( gsub("HMD_", "", mallData$variable )))
   colnames(mallData) = c("Quantile", "Year", "Frequency" , "SoundLevel" )
   fqupper = max(as.numeric( as.character( mallData$Frequency) ))
