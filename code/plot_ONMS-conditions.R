@@ -558,7 +558,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       mallData$Season,
       levels = c("Early", "Peak", "Late", "Non")
     )
-  }else if ( sidx == "wssf" | length(sidx) == 0) {
+    }else if (sidx == "upwelling") {
+    mallData$Season <- factor(
+      mallData$Season,
+      levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    
+    }else if ( sidx == "wssf" | length(sidx) == 0) {
     mallData$Season <- factor(
       mallData$Season,
       levels = c("Winter", "Spring", "Summer", "Fall"))
@@ -1054,13 +1059,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         # more formatting
         theme_void() +
         theme( legend.position = "none",
-               plot.title = element_text(hjust = 0.5, size = 16),
+               plot.title = element_text(hjust = 0, size = 12),
                plot.caption = element_text(size = 12, hjust = 1),
                plot.subtitle = element_text(hjust = 0.5, size = 12),
                axis.title.x = element_text(size = 14),
                strip.text = element_text(size = 14) ) +
-        labs(title = paste0("Annual Status for ", ft, "Hz,\nwhich is an indication of ", FOIst$Label ), fill = "",
-             subtitle  = "Vertical line is the median for the year",
+        labs(title  = "Vertical dotted line is the\nannual median sound level",
              strip.text = element_text(hjust = 0))
       pthrs 
       
@@ -1110,58 +1114,58 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       #          strip.text = element_text(size = 14) ) 
       # 
       # pie
-      
-      
-      # without NA on pies 
-      pies <- dailyFQ %>%
-        mutate(category = case_when(
-          #is.na(TOL_50)             ~ "NA",
-          TOL_50 < q25               ~ "Low",
-          TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
-          TOL_50 > q75               ~ "High"
-        )) %>%
-        group_by(yr, category) %>%
-        summarise(
-          n_days = n(),
-          .groups = "drop"
-        )
-
-      
-      pies$category <- factor(
-        pies$category,
-        levels = c("Low", "Within Range", "High")
-      )
-      pies$yr <- factor(pies$yr, levels = sort(unique(pies$yr), decreasing = TRUE))
-      
-      
-      pie <- ggplot(pies, aes(x = "", y = prop, fill = category)) +
-        geom_col(width = 1, color = "white")+
-        coord_polar(theta = "y") +
-        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
-        facet_wrap(~ yr, ncol = 1) +
-        labs(
-          title = "",
-          fill = "",
-          strip.text = element_text(hjust = 0)
-        ) +
-        theme_void() +
-        theme( legend.position = "right",
-               plot.title = element_text(hjust = 0.5, size = 16),
-               strip.text = element_text(size = 14) )
-      
-      pie
-      
-      
+      # 
+      # 
+      # # without NA on pies 
+      # pies <- dailyFQ %>%
+      #   mutate(category = case_when(
+      #     #is.na(TOL_50)             ~ "NA",
+      #     TOL_50 < q25               ~ "Low",
+      #     TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
+      #     TOL_50 > q75               ~ "High"
+      #   )) %>%
+      #   group_by(yr, category) %>%
+      #   summarise(
+      #     n_days = n(),
+      #     .groups = "drop"
+      #   )
+      # 
+      # 
+      # pies$category <- factor(
+      #   pies$category,
+      #   levels = c("Low", "Within Range", "High")
+      # )
+      # pies$yr <- factor(pies$yr, levels = sort(unique(pies$yr), decreasing = TRUE))
+      # 
+      # 
+      # pie <- ggplot(pies, aes(x = "", y = prop, fill = category)) +
+      #   geom_col(width = 1, color = "white")+
+      #   coord_polar(theta = "y") +
+      #   scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+      #   facet_wrap(~ yr, ncol = 1) +
+      #   labs(
+      #     title = "",
+      #     fill = "",
+      #     strip.text = element_text(hjust = 0)
+      #   ) +
+      #   theme_void() +
+      #   theme( legend.position = "right",
+      #          plot.title = element_text(hjust = 0.5, size = 16),
+      #          strip.text = element_text(size = 14) )
+      # 
+      # pie
+      # 
+      # 
       
       # without NA on pies and as proportions
       pies <- dailyFQ %>%
-        mutate(category = case_when(
+        mutate(status = case_when(
           #is.na(TOL_50)             ~ "NA",
           TOL_50 < q25               ~ "Low",
           TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
           TOL_50 > q75               ~ "High"
         )) %>%
-        group_by(yr, category) %>%
+        group_by(yr, status) %>%
         summarise(
           n_days = n(),
           .groups = "drop"
@@ -1183,28 +1187,36 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           prop = n_days/n_effort
         ) %>%
         select(1:3, 6:7)
+     
+      
+      finalpies <- finalpies %>%
+        mutate(status = if_else(status == "Within Range", "Typical", status))
     
+      threshold_bands <- threshold_bands %>%
+        mutate(category = if_else(category == "Within Range", "Typical", category))
+      
 
-      finalpies$category <- factor(
-        finalpies$category,
-        levels = c("Low", "Within Range", "High")
+      finalpies$status <- factor(
+        finalpies$status,
+        levels = c("Low", "Typical", "High")
       )
+      
       finalpies$yr <- factor(finalpies$yr, levels = sort(unique(finalpies$yr), decreasing = TRUE))
     
 
-      pie <- ggplot(finalpies, aes(x = "", y = prop, fill = category)) +
+      pie <- ggplot(finalpies, aes(x = "", y = prop, fill = status)) +
         geom_col(width = 1, color = "white")+
         coord_polar(theta = "y") +
         scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
         facet_wrap(~ yr, ncol = 1) +
         labs(
-          title = "",
-          fill = "",
+          title = "Proportion of annual\nrecording within each status",
+          fill = "Status",
           strip.text = element_text(hjust = 0)
         ) +
         theme_void() +
         theme( legend.position = "right",
-               plot.title = element_text(hjust = 0.5, size = 16),
+               plot.title = element_text(hjust = 0, size = 12),
                strip.text = element_text(size = 14) )
 
 
@@ -1239,8 +1251,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           facet_wrap(~yr, ncol = 1)+
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
-            title    = paste0("Are sound levels within \ntypical conditions for ", ft, "Hz?" ) , 
-            subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label, "?" ) , 
+            #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
             y = substitute(
@@ -1254,8 +1266,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                 axis.text.x = element_text(size = 14, hjust = 1, angle = 30),
                 axis.text.y = element_text(size = 14, hjust = 1),
                 strip.text = element_text(hjust = 0, size = 12),
-                plot.caption = element_text(size = 12, hjust = 0),
-                plot.subtitle = element_text(size = 12)) 
+                plot.caption = element_text(size = 12, hjust = 0)) 
         
         ## save: plot 125 Hz time series with thresholds ####
         plg

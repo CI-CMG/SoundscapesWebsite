@@ -107,12 +107,12 @@ display(HTML(gf.makeButtons(sites, "plot_***_YearSPL.jpg", "YearSPL")))
 
 ```
 
-### How often are sources of interest likely present?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["sources of interest likely present"]))
-display(HTML(gf.makeButtons(sites, "plot_***_AboveWind.jpg", "SourcePresent")))
-```
+<!-- ### How often are sources of interest likely present? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["sources of interest likely present"])) -->
+<!-- display(HTML(gf.makeButtons(sites, "plot_***_AboveWind.jpg", "SourcePresent"))) -->
+<!-- ``` -->
 
 ### Are sounds of interest within typical range?
 ```{python}

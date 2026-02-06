@@ -200,14 +200,19 @@ MB05Rose = ggplot(MB05_summary, aes(x = factor(ChorusHourPT), y = prop, fill = f
   coord_polar(start = 0) +
   theme_minimal() +
   scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
-  labs(x = "Hour of the Day (Pacific Time)", y = "Combined Proportion of Daily Chorusing\n(count of chorusing hours / count of hours recorded)", title = "Hourly Proportion of Daily Fish Chorusing at MB05" , fill = "Fish Species") +
+  labs(x = "Hour of the Day (PST/PDT)", 
+       y = "Stacked Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+       title = "Hourly Proportion of Daily Fish Chorusing at MB05" , fill = "Fish Species") +
   theme(axis.text.x = element_text(size = 12)) +
+  scale_y_continuous(
+    breaks = c(0.4, 0.8, 1.2, 1.6),
+    expand = c(0, 0))+
   #can add this following line if you want the 0 on the y axis to be labeled. I removed it because it was making it hard to see bars around 0
   #annotate("text", x = 10.5, y = 0.4, label = "0.4", color = "black") +
-  annotate("text", x = 10.5, y = .5, label = "0.5", color = "black") +
-  annotate("text", x = 10.5, y = 1, label = "1", color = "black") +
-  annotate("text", x = 10.5, y = 1.5, label = "1.5", color = "black")  +
-  #annotate("text", x = 8.5, y = 1.75, label = "1.75", color = "black")  +
+  annotate("text", x = 10.5, y = .4, label = "0.4", color = "black") +
+  annotate("text", x = 10.5, y = .8, label = "0.8", color = "black") +
+  annotate("text", x = 10.5, y = 1.6, label = "1.6", color = "black")  +
+  annotate("text", x = 10.5, y = 1.2, label = "1.2", color = "black")  +
   theme(axis.text.y = element_blank()) 
 
 MB05Rose
@@ -433,13 +438,24 @@ MB02_summary$fish <- gsub('HF','UF440',MB02_summary$fish)
 #colors for all 5 fish species
 custom_colors <- c("Bocaccio" = "deepskyblue", "Midshipman" = "darkorange", "UF310" = "green3", "White Seabass" = "firebrick2", "UF440" = "darkorchid")
 
+MB02_summary$fish <- factor(
+  MB02_summary$fish,
+  levels = c(
+    "Bocaccio",
+    "Midshipman",
+    "UF440" ,
+    "UF310",
+    "White Seabass" 
+  )
+)
+
 #Rose Plot!
 MB02Rose = ggplot(MB02_summary, aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
   geom_bar(stat = "identity") +
   coord_polar(start = 0) +
   theme_minimal() +
   scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
-  labs(x = "Hour of the Day (Pacific Time)", y = "Combined Proportion of Daily Chorusing\n(count of chorusing hours / count of hours recorded)", title = "Hourly Proportion of Daily Fish Chorusing at MB02" , fill = "Fish Species") +
+  labs(x = "Hour of the Day (PST/PDT)", y = "Stacked Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", title = "Hourly Proportion of Daily Fish Chorusing at MB02" , fill = "Fish Species") +
   theme(axis.text.x = element_text(size = 12)) +
   #can add this following line if you want the 0 on the y axis to be labeled. I removed it because it was making it hard to see bars around 0
   #annotate("text", x = 10.5, y = .2, label = "0.2", color = "black") +
@@ -664,13 +680,28 @@ CI01_summary$fish <- gsub('HF','UF440',CI01_summary$fish)
 #colors for all 5 fish species
 custom_colors <- c("Bocaccio" = "deepskyblue", "Midshipman" = "darkorange", "UF310" = "green3", "White Seabass" = "firebrick2", "UF440" = "darkorchid")
 
+
+#fixing order of colors so that red and purple are not next to eachother
+#easier to distinguish
+CI01_summary$fish <- factor(
+  CI01_summary$fish,
+  levels = c(
+    "Bocaccio",
+    "UF440" ,
+    "Midshipman",
+    "White Seabass" 
+  )
+)
+
 #Rose Plot!
 CI01Rose = ggplot(CI01_summary, aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
   geom_bar(stat = "identity") +
   coord_polar(start = 0) +
   theme_minimal() +
   scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
-  labs(x = "Hour of the Day (Pacific Time)", y = "Combined Proportion of Daily Chorusing\n(count of chorusing hours / count of hours recorded)", title = "Hourly Proportion of Daily Fish Chorusing at CI01" , fill = "Fish Species") +
+  labs(x = "Hour of the Day (PST/PDT)", 
+       y = "Stacked Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+       title = "Hourly Proportion of Daily Fish Chorusing at CI01" , fill = "Fish Species") +
   theme(axis.text.x = element_text(size = 12)) +
   #can add this following line if you want the 0 on the y axis to be labeled. I removed it because it was making it hard to see bars around 0
   #annotate("text", x = 10.5, y = .2, label = "0.2", color = "black") +
@@ -755,8 +786,9 @@ CI04$Comments <- gsub('Bocaccio sunrise','Bocaccio',CI04$Comments)
 # CI04$Comments <- gsub('HF sunrise','HF',CI04$Comments)
 # CI04$Comments <- gsub('HF sunset','HF', CI04$Comments)
 
-CI04$Comments <- gsub('Lincod','Lingcod',CI04$Comments)
-CI04$Comments <- gsub('Lingcod sunrise','Lingcod',CI04$Comments)
+CI04$Comments <- gsub('Lincod','White Seabass',CI04$Comments)
+CI04$Comments <- gsub('Lingcod','White Seabass',CI04$Comments)
+CI04$Comments <- gsub('Lingcod sunrise','White Seabass',CI04$Comments)
 CI04$Comments <- gsub('Midshipman sunrise','Midshipman',CI04$Comments)
 CI04$Comments <- gsub('Midhsipman','Midshipman',CI04$Comments)
 
@@ -896,13 +928,12 @@ CI04_summary$prop <- CI04_summary$count / CI04_summary$effortDays
 CI04_summary$fish <- gsub('HF','UF440',CI04_summary$fish)
 
 #colors for all 5 fish species
-custom_colors <- c("Lingcod" = "goldenrod2", "Bocaccio" = "deepskyblue", "Midshipman" = "darkorange", "UF310" = "green3", "White Seabass" = "firebrick2", "UF440" = "darkorchid")
+custom_colors <- c( "Bocaccio" = "deepskyblue", "Midshipman" = "darkorange", "UF310" = "green3", "White Seabass" = "firebrick2", "UF440" = "darkorchid")
 
 CI04_summary$fish <- factor(
   CI04_summary$fish,
   levels = c(
-    "White Seabass" , 
-    "Lingcod",
+    "White Seabass" ,
     "Bocaccio",
     "Midshipman",
     "UF310",
@@ -917,14 +948,17 @@ CI04Rose = ggplot(CI04_summary, aes(x = factor(ChorusHourPT), y = prop, fill = f
   coord_polar(start = 0) +
   theme_minimal() +
   scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
-  labs(x = "Hour of the Day (Pacific Time)", y = "Combined Proportion of Daily Chorusing\n(count of chorusing hours / count of hours recorded)", title = "Hourly Proportion of Daily Fish Chorusing at CI04" , fill = "Fish Species") +
+  labs(x = "Hour of the Day (PST/PDT)", y = "Stacked Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", title = "Hourly Proportion of Daily Fish Chorusing at CI04" , fill = "Fish Species") +
   theme(axis.text.x = element_text(size = 12)) +
+  scale_y_continuous(
+    breaks = c(0.4, 0.8, 1.2, 1.6),
+    expand = c(0, 0))+
   #can add this following line if you want the 0 on the y axis to be labeled. I removed it because it was making it hard to see bars around 0
-  annotate("text", x = 10.5, y = .2, label = "0.2", color = "black") +
-  annotate("text", x = 10.5, y = .5, label = "0.5", color = "black") +
-  annotate("text", x = 10.5, y = .3, label = "0.3", color = "black") +
-  annotate("text", x = 10.5, y = .1, label = "0.1", color = "black")  +
-  annotate("text", x = 10.5, y = 0.4, label = "0.4", color = "black")  +
+  #annotate("text", x = 10.5, y = 0.4, label = "0.4", color = "black") +
+  annotate("text", x = 10.5, y = .4, label = "0.4", color = "black") +
+  annotate("text", x = 10.5, y = .8, label = "0.8", color = "black") +
+  annotate("text", x = 10.5, y = 1.6, label = "1.6", color = "black")  +
+  annotate("text", x = 10.5, y = 1.2, label = "1.2", color = "black")  +
   theme(axis.text.y = element_blank()) 
 
 CI04Rose

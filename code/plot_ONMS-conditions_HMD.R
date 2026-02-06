@@ -28,13 +28,13 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("sb09")
+ONMSsites = c("hi01")
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -72,15 +72,15 @@ endSS = as.data.frame ( openxlsx :: read.xlsx(metaFile, sheet  = "SanctSound") )
 endSS$endSS =  as.Date(endSS$endSS, origin = "1899-12-30")
 
 ## FREQUENCIES OF INTEREST ####
-# FOI = as.data.frame ( openxlsx ::read.xlsx(metaFile, sheet = "Frequency of Interest") )
-# FOI = FOI[!apply(FOI, 1, function(row) all(is.na(row))), ]
-# FOI$Sanctuary = tolower(FOI$Sanctuary)
-# FOI = FOI[FOI$`Show.on.plot?` == "Y",]
-# FOIp = FOI[FOI$`Track.this.FQ.as.indicator.for.sources?` == "Y",]
+FOI = as.data.frame ( openxlsx ::read.xlsx(metaFile, sheet = "Frequency of Interest") )
+FOI = FOI[!apply(FOI, 1, function(row) all(is.na(row))), ]
+FOI$Sanctuary = tolower(FOI$Sanctuary)
+FOI = FOI[FOI$`Show.on.plot?` == "Y",]
+FOIp = FOI[FOI$`Track.this.FQ.as.indicator.for.sources?` == "Y",]
 
 ## TOL CONVERSION ####
-TOL_convert = read.csv(paste0(outDirC,"TOLconvert.csv"))
-TOL_convert$Nominal = paste0("TOL_",TOL_convert$Center)
+# TOL_convert = read.csv(paste0(outDirC,"TOLconvert.csv"))
+# TOL_convert$Nominal = paste0("TOL_",TOL_convert$Center)
 
 ## WIND NOISE MODEL ####
 windFile = list.files(outDirC, pattern = paste0("WindModel_", project), full.names = T)
@@ -513,6 +513,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     summary2$Season <- factor(summary2$Season, levels = c("Early", "Peak", "Late", "Non"))
     seasont$Season <- factor(seasont$Season, levels = c("Early", "Peak", "Late", "Non"))
     seasont <- season[order(seasont$Season), ]
+    
+  } else if (sidx == "upwelling") {
+    summary2$Season <- factor(summary2$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    seasont$Season <- factor(seasont$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    seasont <- season[order(seasont$Season), ]
+    
   } else if (site %in% c("fk06", "fk07", "fgb01")){
     summary2$Season <- factor(summary2$Season, levels = c("Spring", "Summer", "Fall"))
     
@@ -689,6 +695,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       mallData$Season,
       levels = c("Early", "Peak", "Late", "Non")
     )
+  }else if (sidx == "upwelling") {
+    mallData$Season <- factor(
+      mallData$Season,
+      levels = c("Upwelling", "Post-Upwelling", "Winter"))
+    
   }else if ( sidx == "wssf" | length(sidx) == 0) {
     mallData$Season <- factor(
       mallData$Season,
