@@ -31,10 +31,10 @@ rm(list=ls())
 ONMSsites = c("hi01")
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -142,14 +142,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   # ##frequency of interest ####
-  # if (substr(site, 1,3) == "fgb"){
-  #   FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
-  # } else {
-  #   FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
-  # }
-  # ##frequency(s) to track
-  # FOIst = FOIs [ FOIs$`Track.this.FQ.as.indicator.for.sources?` == "Y", ] 
-  
+  if (substr(site, 1,3) == "fgb"){
+    FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
+  } else {
+    FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
+  }
+  ##frequency(s) to track
+  FOIst = FOIs [ FOIs$`Track.this.FQ.as.indicator.for.sources?` == "Y", ]
+
   ##times of interest ####
   TOIs = TOI [ TOI$Site == (site1), ]
   TOIs <- TOIs %>%
@@ -211,6 +211,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gps = outData
     rm(outData)
   }
+  
+  # #remove 2018 from all data for hi01 b/c only 1 day of recording
+  # if(site == "hi01"){
+  #   gps = gps %>%
+  #     filter(yr != 2018)
+  # }
+  
   st = as.Date( min(gps$UTC) )
   ed = as.Date( max(gps$UTC) )
   udays = length( unique(as.Date(gps$UTC)) )
@@ -356,7 +363,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   years_to_keep <- setdiff(years_to_keep, years_to_remove)
   
   #apply years to keep
-  #save as new dataset because we only want to exclude data from Annaul graphics, not seasonal or wind or FOI
+  #save as new dataset because we only want to exclude data from Annual graphics, not seasonal or wind or FOI
   gpsAG = gps %>%
     filter(yr %in% years_to_keep)
   
@@ -365,11 +372,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   udays = length( unique(as.Date(gpsAG$UTC)) )
   
   
-  
   # CHECK: DATA SUMMARY ####
   cat(site, "Context Summary:\n", siteInfo$`Oceanographic category`,  "; season-",  unique(gps$Season), 
       "; times of interest-", nrow(TOIs), 
-     # "; frequencies of interest- ", nrow(FOIst), "\n",
+      "; frequencies of interest- ", nrow(FOIst), "\n",
       "Input Data - ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
   
   
@@ -715,6 +721,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   NRSLabelShift <- if (substr(site, 1, 3) == "NRS") 39 else NA
   
   mallDataS = mallData
+  
+  FOIsSave <- FOIs
+  FOIs$FQstart[2] = 16000
 
 #plot  
   p = ggplot() +
@@ -737,11 +746,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
     
     # Add vertical lines at FQstart
-   # geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-   # geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
-    #          fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
+    geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
+              fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     # Add labels at the bottom of each line
-  #  geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.5, size = 4) +
+    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.5, size = 4) +
      labs(
         subtitle = seasonLabel,
        caption  = caption_text,
@@ -909,6 +918,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   NRSLabelShift <- if (substr(site, 1, 3) == "NRS") 39 else NA
   
   
+  FOIs$FQstart[1] = 50 #or 100
+  FOIs$FQend[1] = 16000
+  
 #plot
   p = ggplot() +
     geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
@@ -918,8 +930,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #median TOL values- all data
     geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
               linetype = "dotted") +
-#    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
-#            fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
+    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
+            fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
     #wind model
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windUpp,], aes(x = variable, y = value), color = "black", linewidth = 1) +
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black", linewidth = 1) +
@@ -928,9 +940,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_fill_manual(values =  rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
     # Add vertical lines at FQstart
     #, color = Label
-  #  geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
     # Add labels at the bottom of each line
- #   geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label),  angle = 90, vjust = 1, hjust = 0.5, size = 4) +
+    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label),  angle = 90, vjust = 1, hjust = 0.5, size = 4) +
     scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
     # Additional aesthetics
     theme_minimal() +
