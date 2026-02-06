@@ -293,7 +293,7 @@ save(outputONMS,      file = paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_", D
 write.csv(outputONMS, file = paste0(outDirP, "/data_gantt_ONMS-SS-NRS__gantt_", DC, ".csv") )
 
 #option to load the file, if you already ran and just want to plot ####
-# load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2025-07-23.Rda") )
+#load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2025-07-23.Rda") )
 
 # GANTT CHART  ####
 ## COLOR ####
@@ -315,7 +315,7 @@ project_colors <- c(
   "NRS" = "#004295") 
 
 ## geom_tile option ####
-pTb = ggplot(outputONMS, aes(y = Site, x = Start_Date, xend = End_Date, fill = Project1 ) ) +
+pTb = ggplot(outputONMS, aes(y = toupper(Site), x = Start_Date, xend = End_Date, fill = Project1 ) ) +
   geom_tile(aes(x = Start_Date, width = as.numeric(End_Date - Start_Date) ) , 
             color = "gray", height = 0.6) +  # Fill color by Instrument and outline in black
   scale_fill_manual(values = project_colors) +  # Use specific colors for instruments
@@ -329,7 +329,7 @@ pTb = ggplot(outputONMS, aes(y = Site, x = Start_Date, xend = End_Date, fill = P
         legend.text = element_text(size = 14),
         legend.title = element_blank(),
         strip.text = element_text(size = 14),
-        plot.caption = element_text(size = 14, hjust = 0),
+        plot.caption = element_text(size = 14, hjust = 0.5),
         #panel.border = element_rect(color = "gray", fill = NA, size = .1),
         panel.spacing = unit(2, "cm") )
 pTb
