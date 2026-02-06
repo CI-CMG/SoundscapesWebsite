@@ -55,7 +55,7 @@ display(HTML(standardTextDict["What is ocean sound?"]))
 display(HTML(standardTextDict["When, where, & why are we listening?"]))
 display(HTML(gf.embedMapViewer("https://www.ncei.noaa.gov/maps/passive-acoustic-data/?monitoringProgram=ONMS")))
 ```
-### ONMS Sound data available through NCEI Passive Acoustic Data Archive  
+### NOAA underwater sound data available through NCEI Passive Acoustic Data Archive, summarized in these reports  
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["gantt"]))

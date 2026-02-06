@@ -69,6 +69,7 @@ args =  c("ls", gcpDirNRS)
 subdirsNRS = system2(command, args, stdout = TRUE, stderr = TRUE)  
 
 subdirsALL = c(subdirsONMS, subdirsSS, subdirsNRS) 
+subdirsALL <- subdirsALL[subdirsALL != "gs://noaa-passive-bioacoustic/onms/audio/fk08/"]
 dirNames   = sapply(strsplit(basename( subdirsALL ), "/"), `[`, 1)
 cat("Processing... ", projectNONMS, length(dirNames), "directories" )
 
@@ -78,10 +79,12 @@ args = c("ls", "-r", subdirsALL[1])
 sFiles = system2(command, args, stdout = TRUE, stderr = TRUE)  
 json_files = grep("\\.json$", sFiles, value = TRUE) # metadata files
 url = paste0("https://storage.googleapis.com/", gsub ("gs://", '', paste(json_files[1], collapse = "") ) )
-h = curl(url, "r")
-json_content = readLines(url)
-close(h)
-tmp = fromJSON(paste(url, collapse = ""))
+# h = curl(url, "r")
+# json_content = readLines(url)
+# close(h)
+# tmp = fromJSON(paste(url, collapse = ""))
+
+tmp = fromJSON(url)
 if ( length(tmp)  > 0 ) {
   cat("Successfully loaded file from GCP... contiune" )
 } else {cat("File not loaded from GCP, check directories" ) }
@@ -91,8 +94,10 @@ if ( length(tmp)  > 0 ) {
 
 ## ONMS + SS ####
 subdirsALL = c(subdirsONMS, subdirsSS) 
+subdirsALL <- subdirsALL[subdirsALL != "gs://noaa-passive-bioacoustic/onms/audio/fk08/"]
 output = NULL
 dirNames   = sapply(strsplit(basename( subdirsALL ), "/"), `[`, 1)
+
 for (s in 1:length(subdirsALL) ) { # s = 1
   
   # read in files
@@ -106,10 +111,11 @@ for (s in 1:length(subdirsALL) ) { # s = 1
     for (jf in 1:length( json_files) ) {
       
       url = paste0("https://storage.googleapis.com/", gsub ("gs://", '', paste(json_files[jf], collapse = "") ) )
-      h = curl(url, "r")
-      json_content = readLines(url)
-      close(h)
-      tmp = fromJSON(paste(url, collapse = ""))
+      # h = curl(url, "r")
+      # json_content = readLines(url)
+      # close(h)
+      # tmp = fromJSON(paste(url, collapse = ""))
+      tmp = fromJSON(url)
       
       name  = tmp$DATA_COLLECTION_NAME 
       instr = tmp$INSTRUMENT_TYPE
@@ -131,11 +137,12 @@ for (s in 1:length(subdirsALL) ) { # s = 1
     for (jf in 1:length( json_files) ) {
       
       url = paste0("https://storage.googleapis.com/", gsub ("gs://", '', paste(json_files[jf], collapse = "") ) )
-      h = curl(url, "r")
-      json_content = readLines(url)
-      close(h)
-      tmp = fromJSON(paste(url, collapse = ""))
-      
+      # h = curl(url, "r")
+      # json_content = readLines(url)
+      # close(h)
+      # tmp = fromJSON(paste(url, collapse = ""))
+      # 
+      tmp = fromJSON(url)
       
       name  = tmp$DEPLOYMENT_NAME  
       instr = tmp$INSTRUMENT_NAME
@@ -313,10 +320,10 @@ pTb = ggplot(outputONMS, aes(y = Site, x = Start_Date, xend = End_Date, fill = P
             color = "gray", height = 0.6) +  # Fill color by Instrument and outline in black
   scale_fill_manual(values = project_colors) +  # Use specific colors for instruments
   labs(x = "", y = "", title = "",
-       caption = paste0("Data available on NCEI-GCP (", typ, ") as of ", format(Sys.Date(), "%B %d, %Y"))) +
+       caption = paste0("Audio data archived on NCEI-GCP as of ", format(Sys.Date(), "%B %d, %Y"))) +
   facet_wrap(~Region,scales = "free_y") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 0, hjust = 1, size = 12),
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 12),
         axis.text.y = element_text(angle = 0, size = 12),
         legend.position = "bottom", 
         legend.text = element_text(size = 14),
