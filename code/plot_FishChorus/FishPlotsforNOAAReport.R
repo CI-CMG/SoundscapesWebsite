@@ -48,7 +48,7 @@ library(viridis)
 # ><(((*>  <*)))><   ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  
 #CH01
 #set working directory (change before making each new site graph)
-setwd("/Users/emmaberetta/Desktop/NMSF2024/csvdetections/CHNMS Logs/CH01")   
+setwd("C:/Users/embe5980/Indicators/WCR_fish_ella/Code/CH01")   
 
 #read all CSVs for all sites and deployments
 CH01_01_data=read.csv("CH01_01.csv",header=TRUE)
@@ -147,21 +147,27 @@ CH01Rose = ggplot(CH01_summary, aes(x = factor(ChorusHour), y = prop, fill = fis
   coord_polar(start = 0) +
   theme_minimal() +
   scale_fill_manual(values = custom_colors) + 
-  labs(x = "Hour of the Day", y = "Combined Proportion of Daily Chorusing", title = "Hourly Proportion of Daily Fish Chorusing at CH01 in PST", fill = "Fish Species") +
+  labs(x = "Hour of the Day (PST/PDT)", 
+       y = "Stacked Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+       title = "Hourly Proportion of Daily Fish Chorusing at CH01", 
+       fill = "Fish Species") +
   theme(axis.text.x = element_text(size = 12)) + 
-  annotate("text", x = 15.5, y = 0, label = "0", color = "black") +
-  annotate("text", x = 15.5, y = .2, label = "0.2", color = "black") +
-  annotate("text", x = 15.5, y = .4, label = "0.4", color = "black") +
-  annotate("text", x = 15.5, y = .6, label = "0.6", color = "black")  +
-  annotate("text", x = 15.5, y = .8, label = "0.8", color = "black")  +
+  #annotate("text", x = 10.5, y = 0, label = "0", color = "black") +
+  annotate("text", x = 10.5, y = .4, label = "0.4", color = "black") +
+  annotate("text", x = 10.5, y = .8, label = "0.8", color = "black") +
+  annotate("text", x = 10.5, y = 1.2, label = "1.2", color = "black")  +
+  annotate("text", x = 10.5, y = 1.6, label = "1.6", color = "black")  +
   theme(axis.text.y = element_blank()) 
 
 CH01Rose
 
+outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
+ggsave(filename = paste0(outDirG, "/CH01_FinalRosePlot.png"), dpi = 300)
+
 # ><(((*>  <*)))><   ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  
 #MB01
 #set working directory (change before making each new site graph)
-setwd("/Users/emmaberetta/Desktop/NMSF2024/csvdetections/MBNMS Logs/MB01")   
+setwd("C:/Users/embe5980/Indicators/WCR_fish_ella/Code/MB01")   
 
 #read all CSVs for all deployments
 #no MB01_10 b/c off effort
@@ -216,7 +222,7 @@ MB01$Comments <- gsub('Mystery high','UF310',MB01$Comments)
 MB01$Comments <- gsub('Mystery','UF310',MB01$Comments)
 
 #check our columns
-X<-split(MB01_fix, MB01_fix$Comments)
+X<-split(MB01, MB01$Comments)
 
 #UF310 being weird where there are two of them when you split(), code below manually fixes issues
 missingUF310 <- MB01[1207:1221,]
@@ -279,6 +285,52 @@ MB01_summary <- MB01_summary %>%
   group_by(ChorusHour, fish) %>%
   summarise(count = sum(count))
 
+
+# MAKING ACOUSTIC EFFORT PLOT BELOW
+
+#upload deployment dates: here you need to upload deployment start and end dates (when data was being recorded at this site)
+MB01_deployment_dates=read.csv("MB01Deployments.csv",header=TRUE)
+
+#make dates readable by R
+MB01_deployment_dates$Start <- mdy(MB01_deployment_dates$Start)
+MB01_deployment_dates$End <- mdy(MB01_deployment_dates$End) 
+
+#save into dataframes with just start and end times for each location (and adding comments for fish name)
+MB01_effort <- MB01_deployment_dates 
+
+#now we need to make the start datetime column just date (this deployment was already just in date)
+MB01_effort$Start_date <-as.Date(MB01_effort$Start)
+MB01_effort$End_date <-as.Date(MB01_effort$End)
+
+#Now I want to make a sequence of dates from start to end date for each of the rows and then put 24 hours for each of those
+MB01effort_days1 <- seq(as.Date(MB01_effort$Start_date[1]), as.Date(MB01_effort$End_date[1]), by = 'days')  
+MB01effort_days2 <- seq(as.Date(MB01_effort$Start_date[2]), as.Date(MB01_effort$End_date[2]), by = 'days')  
+MB01effort_days3 <- seq(as.Date(MB01_effort$Start_date[3]), as.Date(MB01_effort$End_date[3]), by = 'days')  
+MB01effort_days4 <- seq(as.Date(MB01_effort$Start_date[4]), as.Date(MB01_effort$End_date[4]), by = 'days')  
+MB01effort_days5 <- seq(as.Date(MB01_effort$Start_date[5]), as.Date(MB01_effort$End_date[5]), by = 'days')  
+MB01effort_days6 <- seq(as.Date(MB01_effort$Start_date[6]), as.Date(MB01_effort$End_date[6]), by = 'days')  
+MB01effort_days7 <- seq(as.Date(MB01_effort$Start_date[7]), as.Date(MB01_effort$End_date[7]), by = 'days')  
+MB01effort_days8 <- seq(as.Date(MB01_effort$Start_date[8]), as.Date(MB01_effort$End_date[8]), by = 'days')  
+MB01effort_days9 <- seq(as.Date(MB01_effort$Start_date[9]), as.Date(MB01_effort$End_date[9]), by = 'days')  
+MB01effort_days11 <- seq(as.Date(MB01_effort$Start_date[10]), as.Date(MB01_effort$End_date[10]), by = 'days')  
+MB01effort_days12 <- seq(as.Date(MB01_effort$Start_date[11]), as.Date(MB01_effort$End_date[11]), by = 'days')  
+
+#combine all of these into one array
+MB01_effort_dates = c(MB01effort_days1,MB01effort_days2,MB01effort_days3, MB01effort_days4, MB01effort_days5 ,MB01effort_days6 ,MB01effort_days7 ,MB01effort_days8 ,MB01effort_days9, MB01effort_days11 ,MB01effort_days12)
+
+#save array as data frame and add a row that is 24 for each of the days
+#times = length of MB01_effort_dates
+test<-rep(c(24),times=1421) 
+dates_test<-cbind(MB01_effort_dates,test)
+MB01_date_hours=as.data.frame(dates_test)
+names(MB01_date_hours)[1] <-"numdate"
+names(MB01_date_hours)[2] <-"acoustic_hours"
+MB01_date_hours$date<-as.Date.numeric(MB01_date_hours$numdate)
+#resave just those 2 columns
+MB01_effort2 <- MB01_date_hours %>% 
+  dplyr::select(date,acoustic_hours)
+
+
 #divide count of chorusing days by total effort days so that the units are in proportion, just like the histograms
 MB01_summary$effortDays <- nrow(MB01_effort2)
 MB01_summary$prop <- MB01_summary$count / MB01_summary$effortDays
@@ -289,23 +341,40 @@ MB01_summary$fish <- gsub('HF','UF440',MB01_summary$fish)
 #colors for all 5 fish species
 custom_colors <- c("Bocaccio" = "deepskyblue", "Midshipman" = "darkorange", "UF310" = "green3", "White Seabass" = "firebrick2", "UF440" = "darkorchid")
 
+
+MB01_summary$fish <- factor(
+  MB01_summary$fish,
+  levels = c(
+    "Bocaccio",
+    "Midshipman",
+    "UF440" ,
+    "UF310",
+    "White Seabass" 
+  )
+)
+
 #Rose Plot!
 MB01Rose = ggplot(MB01_summary, aes(x = factor(ChorusHour), y = prop, fill = fish)) +
   geom_bar(stat = "identity") +
   coord_polar(start = 0) +
   theme_minimal() +
   scale_fill_manual(values = custom_colors) + 
-  labs(x = "Hour of the Day", y = "Combined Proportion of Daily Chorusing", title = "Hourly Proportion of Daily Fish Chorusing at MB01 in PST" , fill = "Fish Species") +
+  labs(x = "Hour of the Day (PST/PDT)", 
+       y = "Stacked Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+       title = "Hourly Proportion of Daily Fish Chorusing at MB01" , fill = "Fish Species") +
   theme(axis.text.x = element_text(size = 12)) +
   #can add this following line if you want the 0 on the y axis to be labeled. I removed it because it was making it hard to see bars around 0
   #annotate("text", x = 15.5, y = 0, label = "0", color = "black", size = 3) +
-  annotate("text", x = 15.5, y = .3, label = "0.3", color = "black") +
-  annotate("text", x = 15.5, y = .6, label = "0.6", color = "black") +
-  annotate("text", x = 15.5, y = .9, label = "0.9", color = "black")  +
-  annotate("text", x = 15.5, y = 1.2, label = "1.2", color = "black")  +
+  annotate("text", x = 10.5, y = .4, label = "0.4", color = "black") +
+  annotate("text", x = 10.5, y = .8, label = "0.8", color = "black") +
+  annotate("text", x = 10.5, y = 1.2, label = "1.2", color = "black")  +
+  annotate("text", x = 10.5, y = 1.6, label = "1.6", color = "black")  +
   theme(axis.text.y = element_blank()) 
 
 MB01Rose
+
+outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
+ggsave(filename = paste0(outDirG, "/MB01_FinalRosePlot.png"), dpi = 300)
 
 #proportion of days where fish (bocaccio) chorused out of all days where we were recording during that hour (20)
 
