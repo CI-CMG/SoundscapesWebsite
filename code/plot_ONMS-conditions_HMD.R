@@ -28,14 +28,14 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("sb09")
+ONMSsites = c("ci05")
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
-#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
 outDirGe =  paste0(outDir,"content/resources/extra") #where extra save graphics
@@ -99,7 +99,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #renaming for NRS sites
   if (site == "oc03") {
-    outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
     site1 = "nrs03"
     site3 = "ocnrs03"
     site  = "NRS03"
@@ -111,13 +111,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site  = "NRS09"
     site5 = "sb09"
   } else if (site == "ci05"){
-    outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
     site1 = "nrs05"
     site3 = "cinrs05"
     site  = "NRS05"
     site5 = "ci05"
   } else if (site == "ch13"){
-    outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
     site1 = "nrs13"
     site3 = "chnrs13"
     site  = "NRS13"
