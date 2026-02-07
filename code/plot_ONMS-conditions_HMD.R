@@ -30,6 +30,7 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
 ONMSsites = c("ci05")
 
+
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
@@ -72,15 +73,15 @@ endSS = as.data.frame ( openxlsx :: read.xlsx(metaFile, sheet  = "SanctSound") )
 endSS$endSS =  as.Date(endSS$endSS, origin = "1899-12-30")
 
 ## FREQUENCIES OF INTEREST ####
-# FOI = as.data.frame ( openxlsx ::read.xlsx(metaFile, sheet = "Frequency of Interest") )
-# FOI = FOI[!apply(FOI, 1, function(row) all(is.na(row))), ]
-# FOI$Sanctuary = tolower(FOI$Sanctuary)
-# FOI = FOI[FOI$`Show.on.plot?` == "Y",]
-# FOIp = FOI[FOI$`Track.this.FQ.as.indicator.for.sources?` == "Y",]
+FOI = as.data.frame ( openxlsx ::read.xlsx(metaFile, sheet = "Frequency of Interest") )
+FOI = FOI[!apply(FOI, 1, function(row) all(is.na(row))), ]
+FOI$Sanctuary = tolower(FOI$Sanctuary)
+FOI = FOI[FOI$`Show.on.plot?` == "Y",]
+FOIp = FOI[FOI$`Track.this.FQ.as.indicator.for.sources?` == "Y",]
 
 ## TOL CONVERSION ####
-TOL_convert = read.csv(paste0(outDirC,"TOLconvert.csv"))
-TOL_convert$Nominal = paste0("TOL_",TOL_convert$Center)
+# TOL_convert = read.csv(paste0(outDirC,"TOLconvert.csv"))
+# TOL_convert$Nominal = paste0("TOL_",TOL_convert$Center)
 
 ## WIND NOISE MODEL ####
 windFile = list.files(outDirC, pattern = paste0("WindModel_", project), full.names = T)
@@ -142,14 +143,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   # ##frequency of interest ####
-  # if (substr(site, 1,3) == "fgb"){
-  #   FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
-  # } else {
-  #   FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
-  # }
-  # ##frequency(s) to track
-  # FOIst = FOIs [ FOIs$`Track.this.FQ.as.indicator.for.sources?` == "Y", ] 
-  
+  if (substr(site, 1,3) == "fgb"){
+    FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
+  } else {
+    FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
+  }
+  ##frequency(s) to track
+  FOIst = FOIs [ FOIs$`Track.this.FQ.as.indicator.for.sources?` == "Y", ]
+
   ##times of interest ####
   TOIs = TOI [ TOI$Site == (site1), ]
   TOIs <- TOIs %>%
@@ -211,35 +212,43 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gps = outData
     rm(outData)
   }
+  
+  # #remove 2018 from all data for hi01 b/c only 1 day of recording
+  # if(site == "hi01"){
+  #   gps = gps %>%
+  #     filter(yr != 2018)
+  # }
+  
   st = as.Date( min(gps$UTC) )
   ed = as.Date( max(gps$UTC) )
   udays = length( unique(as.Date(gps$UTC)) )
   #cat("Input Data - ", site, " has ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
  
   
+  #FOR NEW OC02 DATA!!!
   #OC02 has duplicate data (two deployments overlapped) so we need to average dB values 
   #between Jan 29 2024 and March 15 2024
   # if (site == "oc02"){
-  #   
+  # 
   #   #gps row 12340 to 14561 are duplicates
   #   which(gps$UTC == "2024-01-29 00:00:00")
   #   which(gps$UTC == "2024-03-15 08:00:00")
-  #   
+  # 
   #   #pull out bad rows
   #   fix <- gps[12340:14561,]
-  #   
+  # 
   #   # Check how many times each `UTC` appears
   #   utc_counts <- gps %>%
   #     group_by(UTC) %>%
   #     summarize(count = n())
-  #   
+  # 
   #   occurrences_summary <- utc_counts %>%
   #     group_by(count) %>%
   #     summarize(num_utc_bins = n()) %>%  # How many UTC bins appear each number of times
-  #     arrange(count) 
-  #   
+  #     arrange(count)
+  # 
   #   hi <- utc_counts %>% filter(count == 2)
-  #   
+  # 
   #   #hmmm more duplicates than I thought, average the whole dataset!
   #   #make sure output has same number of rows removed as number of rows of hi dataset above
   #   #takes a little...
@@ -259,16 +268,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #       matchLat = first(matchLat),
   #       matchTime = first(matchTime),
   #       windMag = first(windMag),
-  #       across(starts_with("HMD"), mean, .names = "{.col}"), 
+  #       across(starts_with("HMD"), mean, .names = "{.col}"),
   #       .groups = "drop" )
-  #   
+  # 
   #   gps_old <- gps
   #   gps <- gps_avg
-  #   
+  # 
   #   #save new data without duplicate rows
   #   outData = gps
   #   save(outData, file = paste0(outDirP, "HMDdata_", tolower(site), "_HourlySPL-gfs_", DC, ".Rda") )
-  #  
+  # 
   # }
   
   
@@ -355,7 +364,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   years_to_keep <- setdiff(years_to_keep, years_to_remove)
   
   #apply years to keep
-  #save as new dataset because we only want to exclude data from Annaul graphics, not seasonal or wind or FOI
+  #save as new dataset because we only want to exclude data from Annual graphics, not seasonal or wind or FOI
   gpsAG = gps %>%
     filter(yr %in% years_to_keep)
   
@@ -364,11 +373,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   udays = length( unique(as.Date(gpsAG$UTC)) )
   
   
-  
   # CHECK: DATA SUMMARY ####
   cat(site, "Context Summary:\n", siteInfo$`Oceanographic category`,  "; season-",  unique(gps$Season), 
       "; times of interest-", nrow(TOIs), 
-     # "; frequencies of interest- ", nrow(FOIst), "\n",
+      "; frequencies of interest- ", nrow(FOIst), "\n",
       "Input Data - ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
   
   
@@ -636,7 +644,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   All$Quantile = rownames(All)
   All$Year = "all"
   hmd_columns = grep("HMD", colnames(All))
-  mALL = melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
+  mALL = reshape2::melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
   mALL$variable = as.numeric( as.character( gsub("HMD_", "", mALL$variable )))
   colnames(mALL) = c("Quantile", "Year", "Frequency" , "SoundLevel" )
  
@@ -676,7 +684,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   hmd_columns = grep("HMD", colnames(seasonAll))
   
   ### format for plot ####
-  mallData = melt(seasonAll, id.vars = c("Quantile","Season"), measure.vars = hmd_columns)
+  mallData = reshape2::melt(seasonAll, id.vars = c("Quantile","Season"), measure.vars = hmd_columns)
   mallData$variable = as.numeric( as.character( gsub("HMD_", "", mallData$variable )))
   colnames(mallData) = c("Quantile", "Season", "Frequency" , "SoundLevel" )
   fqupper = max(as.numeric( as.character( mallData$Frequency) ))
@@ -714,6 +722,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   NRSLabelShift <- if (substr(site, 1, 3) == "NRS") 39 else NA
   
   mallDataS = mallData
+  
+  FOIsSave <- FOIs
+  FOIs$FQstart[2] = 16000
 
 #plot  
   p = ggplot() +
@@ -736,11 +747,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
     
     # Add vertical lines at FQstart
-   # geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-   # geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
-    #          fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
+    geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
+              fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     # Add labels at the bottom of each line
-  #  geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.5, size = 4) +
+    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.5, size = 4) +
      labs(
         subtitle = seasonLabel,
        caption  = caption_text,
@@ -876,7 +887,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   All$Quantile = rownames(All)
   All$Year = "all"
   hmd_columns = grep("HMD", colnames(All))
-  mALL = melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
+  mALL = reshape2::melt(All, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
   mALL$variable = as.numeric( as.character( gsub("HMD_", "", mALL$variable )))
   colnames(mALL) = c("Quantile", "Year", "Frequency" , "SoundLevel" )
   # by year- mallData 
@@ -898,7 +909,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     yearAll = rbind(yearAll,tmp)
   }
   hmd_columns = grep("HMD", colnames(yearAll))
-  mallData = melt(yearAll, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
+  mallData = reshape2::melt(yearAll, id.vars = c("Quantile","Year"), measure.vars = hmd_columns)
   mallData$variable = as.numeric( as.character( gsub("HMD_", "", mallData$variable )))
   colnames(mallData) = c("Quantile", "Year", "Frequency" , "SoundLevel" )
   fqupper = max(as.numeric( as.character( mallData$Frequency) ))
@@ -907,6 +918,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #if NRS, scale y min lower so that FOI labels are visible 
   NRSLabelShift <- if (substr(site, 1, 3) == "NRS") 39 else NA
   
+  
+  FOIs$FQstart[1] = 50 #or 100
+  FOIs$FQend[1] = 16000
   
 #plot
   p = ggplot() +
@@ -917,8 +931,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #median TOL values- all data
     geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
               linetype = "dotted") +
-#    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
-#            fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
+    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
+            fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
     #wind model
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windUpp,], aes(x = variable, y = value), color = "black", linewidth = 1) +
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black", linewidth = 1) +
@@ -927,9 +941,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_fill_manual(values =  rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
     # Add vertical lines at FQstart
     #, color = Label
-  #  geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
     # Add labels at the bottom of each line
- #   geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label),  angle = 90, vjust = 1, hjust = 0.5, size = 4) +
+    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label),  angle = 90, vjust = 1, hjust = 0.5, size = 4) +
     scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
     # Additional aesthetics
     theme_minimal() +

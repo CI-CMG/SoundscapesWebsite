@@ -97,10 +97,10 @@ display(HTML(standardTextDict["What are we learning?"]))
 ```
 :::
 
-::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"}
-## Testing images
-```{python}
-#| echo: false
-display(HTML(gf.makeButtonsFit(['OC02', 'HI08'], "plot_***-***status.jpg", "FOI")))
-```
-:::
+<!-- ::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"} -->
+<!-- ## Testing images -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(gf.makeButtonsFit(['OC02', 'HI08'], "plot_***-***status.jpg", "FOI"))) -->
+<!-- ``` -->
+<!-- ::: -->

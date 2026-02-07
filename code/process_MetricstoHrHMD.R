@@ -165,7 +165,7 @@ if ( length(pFile) > 0 ) {
     load( inFileP[which.max(file_info$ctime)] )
     #outData = gps    #for some reason hi03,8, and 4 AND pm01 earlier outdata was saved as gps in products folder
     if( exists("outData") ) {
-      processedData1 = outData
+      processedData = outData
       rm(outData)
       #rm(gps) #fix for hi03,8, and 4 AND pm01
     }
@@ -193,11 +193,11 @@ if ( length(pFile) > 0 ) {
 #testing when SS data ends and ONMS data begins for when a site has both SS data and ONMS (SB01,03, GR01, and HI01)
 #use this info to change if statement in processing loop so that it smootly continues to ONMS data after SS 
 #if no SS data, ignore this step and make sure to remove HMD_20 column later on
-ncFile = inFiles[1291]
-test = loadSoundscapeData(ncFile)
-
-ncFile = inFiles[1292]
-test2 = loadSoundscapeData(ncFile)
+# ncFile = inFiles[1291]
+# test = loadSoundscapeData(ncFile)
+# 
+# ncFile = inFiles[1292]
+# test2 = loadSoundscapeData(ncFile)
 
 # faster method to save each day in list and rbind after, prevents R from crashing
 cDatah = NULL
@@ -413,7 +413,7 @@ gps <- dplyr::bind_rows(gps_chunks)
 if ( length(pFile) > 0 ){   #append old (processedData) and save out all processed data
 
   #remove any no matching headings
-  data_mismatched = setdiff(colnames(processedData2), colnames(processedData1))
+  data_mismatched = setdiff(colnames(gps), colnames(processedData))
   gps_clean = gps[, !colnames(gps) %in% data_mismatched] #new data with matching headings
   
   #re-order columns
