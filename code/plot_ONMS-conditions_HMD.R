@@ -28,13 +28,13 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("hi01")
+ONMSsites = c("as01")
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -147,9 +147,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   } else {
     FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
   }
+  
+  FOIs <- FOIs [FOIs$Site == toupper(site5) | is.na(FOIs$Site), ]
+  
   ##frequency(s) to track
+  #any rows with blank site column apply to all sites in NMS, any rows with just on site apply only to that site
   FOIst = FOIs [ FOIs$`Track.this.FQ.as.indicator.for.sources?` == "Y", ]
 
+  
+  
   ##times of interest ####
   TOIs = TOI [ TOI$Site == (site1), ]
   TOIs <- TOIs %>%
@@ -722,8 +728,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   mallDataS = mallData
   
-  FOIsSave <- FOIs
-  FOIs$FQstart[2] = 16000
+  # FOIs <- FOIsSave
+  # FOIsSave <- FOIs
+  
+   # FOIs$FQstart[1] = 7000
+   # FOIs$FQend[1] = 16000
 
 #plot  
   p = ggplot() +
@@ -918,8 +927,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   NRSLabelShift <- if (substr(site, 1, 3) == "NRS") 39 else NA
   
   
-  FOIs$FQstart[1] = 50 #or 100
-  FOIs$FQend[1] = 16000
+    # FOIs$FQstart[1] = 110 
+    # FOIs$FQend[1] = 700
   
 #plot
   p = ggplot() +
