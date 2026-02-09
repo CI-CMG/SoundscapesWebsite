@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("hi01")
+ONMSsites = c("hi03")
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -723,6 +723,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   mallDataS = mallData
   
   FOIsSave <- FOIs
+
   FOIs$FQstart[2] = 16000
 
 #plot  
