@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("as01")
+ONMSsites = c("fk06")
 
 ## directories ####
 outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
