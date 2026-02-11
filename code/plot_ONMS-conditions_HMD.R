@@ -28,13 +28,13 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("sb03")
+ONMSsites = c("mb02")
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
@@ -187,9 +187,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasonShift = 1 # this is the offset for HI sites- where the december is part of the next year
   }else if  ( sidx == "upwelling") {
     season = data.frame(
-      Season = c("Post-Upwelling", "Upwelling", "Winter"),
-      Months = c("7,8,9,10,11", "3,4,5,6", "12,1,2") ,
-      values = c(  "#CC79A7",  "#009E73", "#56B4E9") )
+      Season = c( "Upwelling", "Post-Upwelling", "Winter"),
+      Months = c( "3,4,5,6", "7,8,9,10,11", "12,1,2") ,
+      values = c(  "#009E73", "#CC79A7",  "#56B4E9") )
     seasonLabel = "Upwelling = Mar-Jun, Post-Upwelling = Jul-Nov, Winter = Dec-Feb"
     seasonShift = 0
   }else if ( sidx == "wssf") {
@@ -937,9 +937,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   p = ggplot() +
     geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
                 aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.1) + # Use alpha for transparency
-    #median TOL values- each year
+    #median HMD values- each year
     geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year), linewidth = 2) +
-    #median TOL values- all data
+    #median HMD values- all data
     geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
               linetype = "dotted") +
     geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
@@ -1009,7 +1009,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #add "name = "Year", " to  scale_fill_manual and scale_color_manual
   #then run code below
   
-  
   pInt = ggplot() +
     #ribbon for year lines
     #median TOL values- each year
@@ -1077,7 +1076,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   interactive_plot 
   
-  
   #  interactive_plot$x$layout$xaxis$type
   # interactive_plot$x$data[[18]]$textangle <- 90  
   
@@ -1090,22 +1088,22 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   
-  
   #(5) TIME SERIES- FOI ####
   # plot with error bars and median and hours above 75th percentile in title
   if ( nrow(FOIst) > 0 ) {
-    for (tt in 1: nrow(FOIst) ){
+    for (tt in 1: nrow(FOIst) ){ # tt = 1
       
       #check to see if the FOI is broad band
       if (FOIst$FQstart [tt] == FOIst$FQend [tt] ){
-        ftN = paste0("TOL_", FOIst$FQstart [tt]) #fqIn
+        ftN = paste0("HMD_", FOIst$FQstart [tt]) #fqIn
         ft = FOIst$FQstart [tt]
         cols_to_select = c("UTC", "yr", "windMag","wind_category",ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         wspeeds = unique( (windModel$windSpeed) )
         gpsFQ$closest_windMag = wspeeds[pmax(1, findInterval(gpsFQ$windMag, wspeeds)+1)]
+        
         #Thresholds from all data percentiles
-        mALL$FrequencyName = paste0("TOL_", mALL$Frequency)
+        mALL$FrequencyName = paste0("HMD_", mALL$Frequency)
         thresholds = mALL[mALL$FrequencyName == ftN,]
         threshold_min  = thresholds$SoundLevel[thresholds$Quantile == "1%"]
         threshold_mid  = thresholds$SoundLevel[thresholds$Quantile == "50%"]
@@ -1122,13 +1120,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         q99 = thresholds$SoundLevel[thresholds$Quantile == "99%"]
         
         gpsFQ$SpecBand = gpsFQ[ftN]
-      }else {
+        
+      }else { # if FOI is a range of frequencies
         
         ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
         
-        tolc = ( grep("TOL", colnames(gps)) )
-        toln =  as.numeric( gsub("TOL_", "", colnames(gps)[tolc]) )
-        idx = tolc[( toln >= FOIst$FQstart[tt] & toln <= FOIst$FQend [tt] ) ]
+        hmdc = ( grep("HMD", colnames(gps)) )
+        hmdn =  as.numeric( gsub("HMD_", "", colnames(gps)[hmdc]) )
+        idx = hmdc[( hmdn >= FOIst$FQstart[tt] & hmdn <= FOIst$FQend [tt] ) ]
         ftN = colnames(gps)[idx]
         cols_to_select = c("UTC", "yr", "windMag","wind_category",ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
@@ -1138,7 +1137,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         # thresholds for typical-- BB 
         # calculate a BB measurement for TOL FQ- unlog, sum, re-log
-        mALL$FrequencyName = paste0("TOL_", mALL$Frequency)
+        mALL$FrequencyName = paste0("HMD_", mALL$Frequency)
         thresholds = mALL[mALL$FrequencyName %in% ftN, ]
         thresholds2 <- thresholds %>%
           group_by(Quantile) %>%
@@ -1155,14 +1154,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         q99 = thresholds2$summed_dB[thresholds2$Quantile == "99%"]
       }
       
-      ### daily percentiles with hours above threshold- 75th precentile
+      ### daily percentiles with hours above threshold- 75th percentile
       dailyFQ = gpsFQ %>%
         mutate(Date = as.Date(UTC)) %>%
         group_by(Date) %>%
         summarise(
-          TOL_25 = quantile(SpecBand, 0.25, na.rm = TRUE),
-          TOL_50 = quantile(SpecBand, 0.50, na.rm = TRUE),
-          TOL_75 = quantile(SpecBand, 0.75, na.rm = TRUE),
+          HMD_25 = quantile(SpecBand, 0.25, na.rm = TRUE),
+          HMD_50 = quantile(SpecBand, 0.50, na.rm = TRUE),
+          HMD_75 = quantile(SpecBand, 0.75, na.rm = TRUE),
           windspeed = quantile(windMag, 0.50, na.rm = TRUE),
           count_above_threshold   = sum(SpecBand > q75, na.rm = TRUE),
           percent_above_threshold = sum(SpecBand > q75, na.rm = TRUE) / 
@@ -1208,23 +1207,41 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       
       yrFQ = gpsFQ %>% group_by(yr) %>%
         summarise(
-          TOL_25 = quantile(SpecBand, 0.25, na.rm = TRUE),
-          TOL_50 = quantile(SpecBand, 0.50, na.rm = TRUE),
-          TOL_75 = quantile(SpecBand, 0.75, na.rm = TRUE) )
+          HMD_25 = quantile(SpecBand, 0.25, na.rm = TRUE),
+          HMD_50 = quantile(SpecBand, 0.50, na.rm = TRUE),
+          HMD_75 = quantile(SpecBand, 0.75, na.rm = TRUE) )
       
       #threshold bands with categories-- from all data
+      # threshold_bands <- data.frame(
+      #   category = c("Very Low", "Low", "Within Range", "High", "Very High"),
+      #   xmin = c(q01,    q10,    q25,    q75,    q90),
+      #   xmax = c(q10,     q25,    q75,    q90,    q99),
+         fill = c("#6699CC", "#99CCFF", "#CCCCCC", "#FF9999", "#CC0000")
+      # )
+      
+      # threshold_bands$category <- factor(
+      #   threshold_bands$category,
+      #   levels = c("Very Low", "Low", "Within Range", "High", "Very High")
+      # )
+      
+      #threshold bands with categories-- from all data COMBINING Very Low and Low as well as High and Very High
       threshold_bands <- data.frame(
-        category = c("Very Low", "Low", "Within Range", "High", "Very High"),
-        xmin = c(q01,    q10,    q25,    q75,    q90),
-        xmax = c(q10,     q25,    q75,    q90,    q99),
-        fill = c("#6699CC", "#99CCFF", "#CCCCCC", "#FF9999", "#CC0000")
+        category = c("Low", "Within Range", "High"),
+        xmin = c(q01,  q25,    q75),
+        xmax = c(q25,    q75,    q99),
+       # fill = c( "#6699CC", "#66C2A5", "#9467BD")
+       fill = c("#99CCFF", "#8DA0CB", "lightcoral")
+       # fill = c("#99CCFF", "#377EB8", "#6A3D9A" )
+      # fill = c("#4C78A8",  "#F2A541", "#8E6C8A")  # dusty purple
+      # fill = c("#5B8DB8",   "#F2A541",  "#7A5195")  # refined purple
       )
       
       threshold_bands$category <- factor(
         threshold_bands$category,
-        levels = c("Very Low", "Low", "Within Range", "High", "Very High")
+        levels = c( "Low", "Within Range", "High")
       )
       yrFQ$yr = factor(yrFQ$yr, levels = rev(sort(unique(yrFQ$yr))))
+      
       
       ### plot: annual threshold bars
       pthrs = ggplot() +
@@ -1233,7 +1250,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                   aes(xmin = xmin, xmax = xmax, ymin = 0.4, ymax = 0.6, fill = category),
                   color = "white") +
         # Marker line per year- median
-        geom_vline(data = yrFQ, aes(xintercept = TOL_50), 
+        geom_vline(data = yrFQ, aes(xintercept = HMD_50), 
                    linetype = "dashed", color = "black", linewidth = .5) +
         # Facet by year
         facet_wrap(~yr, ncol = 1) +  
@@ -1241,52 +1258,207 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
         # more formatting
         theme_void() +
-        theme( legend.position = "right",
-               plot.title = element_text(hjust = 0.5, size = 16),
+        theme( legend.position = "none",
+               plot.title = element_text(hjust = 0, size = 12),
                plot.caption = element_text(size = 12, hjust = 1),
-               plot.subtitle = element_text(hjust = 0.5, size = 14),
+               plot.subtitle = element_text(hjust = 0.5, size = 12),
                axis.title.x = element_text(size = 14),
                strip.text = element_text(size = 14) ) +
-        labs(title = paste0("Annual Status for ", ft, "Hz" ), fill = "",
-             subtitle  = "status is set at median for the year",
+        labs(title  = "Vertical dotted line is the\nannual median sound level",
              strip.text = element_text(hjust = 0))
       pthrs 
+      
+      
+      ### plot: annual pie charts
+      # if dailyFQ$TOL_50 is < threshold_bands$xmin[2] = blue pie slice
+      # if dailyFQ$TOL_50 is > threshold_bands$xmin[2] and < threshold_bands$xmax[2] = grey pie slice
+      # if dailyFQ$TOL_50 is > threshold_bands$xmax[2] = red pie slice
+      
+      # q25 = minimum threshold (a)
+      # q75 = max threshold (b)
+      
+      # # with NA on pies, but there are only NA for between deployment start and end, not whole year
+      # pies <- dailyFQ_complete %>%
+      #   mutate(category = case_when(
+      #     is.na(TOL_50)             ~ "NA",
+      #     TOL_50 < q25               ~ "Low",
+      #     TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
+      #     TOL_50 > q75               ~ "High"
+      #   )) %>%
+      #   group_by(yr, category) %>%
+      #   summarise(
+      #     n_days = n(),
+      #     .groups = "drop"
+      #   )
+      # 
+      # 
+      # pies$category <- factor(
+      #   pies$category,
+      #   levels = c("Low", "Within Range", "High", "NA")
+      # )
+      # 
+      # 
+      # pie <- ggplot(pies, aes(x = "", y = n_days, fill = category)) +
+      #   geom_col(width = 1, color = "white") +
+      #   coord_polar(theta = "y") +
+      #   scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+      #   facet_wrap(~ yr, ncol = 1) +
+      #   labs(
+      #     title = "",
+      #     fill = "",
+      #     strip.text = element_text(hjust = 0)
+      #   ) +
+      #   theme_void() +
+      #   theme( legend.position = "right",
+      #          plot.title = element_text(hjust = 0.5, size = 16),
+      #          strip.text = element_text(size = 14) ) 
+      # 
+      # pie
+      # 
+      # 
+      # # without NA on pies 
+      # pies <- dailyFQ %>%
+      #   mutate(category = case_when(
+      #     #is.na(TOL_50)             ~ "NA",
+      #     TOL_50 < q25               ~ "Low",
+      #     TOL_50 >= q25 & TOL_50 <= q75 ~ "Within Range",
+      #     TOL_50 > q75               ~ "High"
+      #   )) %>%
+      #   group_by(yr, category) %>%
+      #   summarise(
+      #     n_days = n(),
+      #     .groups = "drop"
+      #   )
+      # 
+      # 
+      # pies$category <- factor(
+      #   pies$category,
+      #   levels = c("Low", "Within Range", "High")
+      # )
+      # pies$yr <- factor(pies$yr, levels = sort(unique(pies$yr), decreasing = TRUE))
+      # 
+      # 
+      # pie <- ggplot(pies, aes(x = "", y = prop, fill = category)) +
+      #   geom_col(width = 1, color = "white")+
+      #   coord_polar(theta = "y") +
+      #   scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+      #   facet_wrap(~ yr, ncol = 1) +
+      #   labs(
+      #     title = "",
+      #     fill = "",
+      #     strip.text = element_text(hjust = 0)
+      #   ) +
+      #   theme_void() +
+      #   theme( legend.position = "right",
+      #          plot.title = element_text(hjust = 0.5, size = 16),
+      #          strip.text = element_text(size = 14) )
+      # 
+      # pie
+      # 
+      # 
+      
+      # without NA on pies and as proportions
+      pies <- dailyFQ %>%
+        mutate(status = case_when(
+          #is.na(TOL_50)             ~ "NA",
+          HMD_50 < q25               ~ "Low",
+          HMD_50 >= q25 & HMD_50 <= q75 ~ "Within Range",
+          HMD_50 > q75               ~ "High"
+        )) %>%
+        group_by(yr, status) %>%
+        summarise(
+          n_days = n(),
+          .groups = "drop"
+        )
+      
+      #getting effort
+      piesEffort <- dailyFQ_complete %>%
+        group_by(yr) %>%
+        summarise(
+          n_NA = sum(is.na(HMD_50)),
+          n_total = n(),
+          n_effort = n_total - n_NA,
+          .groups = "drop"
+        )
+      
+      finalpies <- pies %>%
+        left_join(piesEffort, by = "yr") %>%
+        mutate(
+          prop = n_days/n_effort
+        ) %>%
+        select(1:3, 6:7)
+      
+      
+      finalpies <- finalpies %>%
+        mutate(status = if_else(status == "Within Range", "Typical", status))
+      
+      threshold_bands <- threshold_bands %>%
+        mutate(category = if_else(category == "Within Range", "Typical", category))
+      
+      
+      finalpies$status <- factor(
+        finalpies$status,
+        levels = c("Low", "Typical", "High")
+      )
+      
+      finalpies$yr <- factor(finalpies$yr, levels = sort(unique(finalpies$yr), decreasing = TRUE))
+      
+      
+      pie <- ggplot(finalpies, aes(x = "", y = prop, fill = status)) +
+        geom_col(width = 1, color = "white")+
+        coord_polar(theta = "y") +
+        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+        facet_wrap(~ yr, ncol = 1) +
+        labs(
+          title = "Proportion of annual\nrecording within each status",
+          fill = "Status",
+          strip.text = element_text(hjust = 0)
+        ) +
+        theme_void() +
+        theme( legend.position = "right",
+               plot.title = element_text(hjust = 0, size = 12),
+               strip.text = element_text(size = 14) )
+      
+      
+      pie
+      
       
       ### plot: time series ####
       dailyFQ_complete$yr = factor(dailyFQ_complete$yr, levels = rev(sort(unique(dailyFQ_complete$yr))))
       
       if (sidx != "biological") {
-        plg =  ggplot(dailyFQ_complete, aes(x = Julian, y = TOL_50, group = yr) ) +
+        plg =  ggplot(dailyFQ_complete, aes(x = Julian, y = HMD_50, group = yr) ) +
           
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
-                   fill = "#CCCCCC", alpha = 0.2) +
+                  # fill = "#CCCCCC"
+                   fill =  "#8DA0CB",
+                   , alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q75, ymax = q99 ,
-                   fill = "lightcoral", alpha = 0.2) +
+                   fill = "lightcoral" , alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q01, ymax = q25,
-                   fill = "lightblue", alpha = 0.2) +
+                   fill = "#99CCFF", alpha = 0.5) +
           ylim(q01, q99) +
-          
+
           geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
           geom_hline(aes(yintercept = q75),linetype = "dashed", color = "gray",linewidth = .2) +
           geom_hline(aes(yintercept = q25),linetype = "dashed", color = "gray",linewidth = .2) +
           
           geom_line() +
           facet_wrap(~yr, ncol = 1)+
-          scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq) +
+          scale_x_continuous(limits = c(0,365), breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
-            title    = paste0("Are sound levels within \ntypical conditions for ", ft, "Hz?" ) , 
-            subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label, "?" ) , 
+            #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
-            y = substitute(
-              paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"),
-              list(f = ft) )
+            y =substitute(paste("Daily Median Sound Levels (NEED UNITS at ", f, " Hz)"), list(f = ft) )
+              #substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
           theme_minimal() +
@@ -1295,15 +1467,19 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                 axis.text.x = element_text(size = 14, hjust = 1, angle = 30),
                 axis.text.y = element_text(size = 14, hjust = 1),
                 strip.text = element_text(hjust = 0, size = 12),
-                plot.caption = element_text(size = 12, hjust = 0),
-                plot.subtitle = element_text(size = 12)) 
+                plot.caption = element_text(size = 12, hjust = 0)) 
         
         ## save: plot 125 Hz time series with thresholds ####
         plg
-        plg2 = plg + pthrs + plot_layout(ncol = 2, widths = c(2, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+      
+        
+        #with pies that show off effort, directly comparable across years. out of 365. na/off effort is blank part of pie
+        plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_status.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
+        
+       
       } else if (substring(site, 1, 2) == "hi") {
         # alternative methods for plg for Hawaii sites
         monthly_sequence = seq.Date(as.Date("2020-12-01"), as.Date("2021-06-01"), by = "month")
@@ -1318,7 +1494,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             shifted_julian = ifelse(Julian >= 335, Julian - 365, Julian)
           )
         
-        plg = ggplot(dailyFQ_modified, aes(x = shifted_julian, y = TOL_50, group = yr)) +
+        plg = ggplot(dailyFQ_modified, aes(x = shifted_julian, y = HMD_50, group = yr)) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
@@ -1383,7 +1559,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             shifted_julian = ifelse(Julian >= 274, Julian - 365, Julian)
           )
         
-        plg = ggplot(dailyFQ_modified, aes(x = shifted_julian, y = TOL_50, group = yr)) +
+        plg = ggplot(dailyFQ_modified, aes(x = shifted_julian, y = HMD_50, group = yr)) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
@@ -1437,149 +1613,150 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   
+   
+  # #(5) Wind Dominated in fqIn2 ####
+  # # select only data for fqIn2
+  # cols_to_select = c("UTC", "yr","windMag","wind_category",fqIn2)
+  # gpsFQ = gps %>% select(all_of(cols_to_select))
+  # gpsFQ$Day = as.Date( gpsFQ$UTC )
+  # gpsFQ$mth = month(gpsFQ$UTC )
+  # 
+  # # what wind speed category is the measured value closest to?
+  # wspeeds = unique( (windModel$windSpeed) )
+  # gpsFQ$closest_windMag = wspeeds[pmax(1, findInterval(gpsFQ$windMag, wspeeds)+1)]
+  # 
+  # # what is the SPL values for that windspeed?
+  # fqIdx = which( colnames( windInfo) == substr( fqIn2, 5,8)) #'500'
+  # wsIdx = match(gpsFQ$closest_windMag, windInfo$windSpeed)
+  # gpsFQ$WindModelfq = windInfo[wsIdx, fqIdx]
+  # 
+  # # what difference from the measured vs modeled?
+  # tol_col = grep("TOL", colnames(gpsFQ))
+  # gpsFQ$Exceed = gpsFQ[,tol_col] -  gpsFQ$WindModelfq 
+  # 
+  # # is the difference above or below 0?
+  # gpsFQ$Windthres = "unk"
+  # gpsFQ$Windthres[gpsFQ$Exceed <= ab2] = "below"
+  # gpsFQ$Windthres[gpsFQ$Exceed > ab2]  = "above"
+  # 
+  # # what are the all data thresholds for this frequency (not used)
+  # thresholds = mALL[mALL$FrequencyName == fqIn2,]
+  # threshold_mid =  thresholds$SoundLevel[thresholds$Quantile == "50%"]
+  # threshold_up  = thresholds$SoundLevel[thresholds$Quantile  == "75%"]
+  # threshold_lo  = thresholds$SoundLevel[thresholds$Quantile == "25%"]
+  # gpsFQ$SpecBand = gpsFQ[fqIn2]
+  # 
+  # dayNE = gpsFQ %>%
+  #   mutate(Date = as.Date(UTC)) %>%
+  #   group_by(yr, mth) %>%
+  #   summarise(
+  #     # Count of non-NA hours (remove NAs)
+  #     hrs = sum(!is.na(Exceed ) ) ,  
+  #     
+  #     # hours for the year-day that are at or below wind speed estimate
+  #     n_below = sum(Windthres == "below", na.rm = TRUE),
+  #     n_above = sum(Windthres == "above", na.rm = TRUE),
+  #     
+  #     #percent_below = sum(Windthres == "below", na.rm = TRUE) / hrs * 100,
+  #     #percent_above = sum(Windthres == "above", na.rm = TRUE)/ hrs * 100,
+  #     
+  #     percent_below = ifelse(hrs > 0, n_below / hrs * 100, NA_real_),
+  #     percent_above = ifelse(hrs > 0, n_above / hrs * 100, NA_real_),
+  #     
+  #     # windspeed during the year-day
+  #     windspeed = quantile(windMag, 0.50, na.rm = TRUE),
+  #     .groups = "drop"
+  #   )
+  # # CHECK: dayNE$percent_below + dayNE$percent_above
+  # 
+  # dayNE = as.data.frame( dayNE )
+  # 
+  # #put most recent year at the top of the plot
+  # dayNE$yr  = factor(dayNE$yr,  levels = rev(sort(unique(dayNE$yr)))) 
+  # 
+  # if (sidx == "biological" & substring(site, 1, 2) == "hi") {
+  #   dayNE$mth = factor(dayNE$mth, levels = rev(c(12,1,2,3,4,5))) 
+  # }else if (sidx == "biological" & substring(site, 1, 2) == "pm") {
+  #   dayNE$mth = factor(dayNE$mth, levels = rev(c(10,11,12,1,2,3,4,5,6,7))) #ADDED 10, 11, 6, and 7 for PM Oct aand Nov graph
+  # }else {
+  #   #puts January at the top of the plot... maybe remove if confusing to go to previous year
+  #   dayNE$mth = factor(dayNE$mth, levels = rev(c(1,2,3,4,5,6,7,8,9,10,11,12)))
+  # }
+  # 
+  # # CHECK: is there a relationship between percent below and windspeed?
+  # #plot(dayNE$percent_below, dayNE$windspeed)
+  # 
+  # windD = ggplot(dayNE, aes(x = factor(mth), y = as.numeric(percent_below), fill = factor( mth ) ) ) +
+  #   geom_col(width = 1) +
+  #   facet_wrap(~yr, ncol = 1) +
+  #   coord_flip() +
+  #   ylim(0,100) +
+  #   scale_fill_viridis_d(option = "D") +
+  #   labs(
+  #     title = paste0("Habitat acoustically inactive (wind-driven at ", fqIn2name, ")"),
+  #     subtitle  = paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"),
+  #     x = "",
+  #     y = paste0("% of hours in a month wind noise dominate at ", fqIn2name, 
+  #                "\n (when measured sound level are similar to predicted sound level at known wind speed)"),
+  #     #color = "Year"  # Label for the color legend
+  #   ) +
+  #   theme_minimal()+
+  #   theme(
+  #     legend.position = "none",
+  #     plot.title = element_text(size = 16, face = "bold", hjust = 0),
+  #     strip.text  = element_text(size = 14),
+  #     axis.title.x  = element_text(size = 14),
+  #     axis.title.y  = element_text(size = 14),
+  #     axis.text.x = element_text(size = 14, hjust = 1, angle = 30),
+  #     axis.text.y = element_text(size = 14, hjust = 1) )
+  # windD
+  # ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_WindDominatedwOctNovnoX.jpg"), plot = windD, width = 10, height = 12, dpi = 300)
+  # 
+  # x_scale = if (sidx == "biological" & substring(site, 1, 2) == "hi" ) {
+  #   scale_x_discrete(
+  #     breaks = c("12", "2", "4"),
+  #     labels = c("Dec", "Feb", "Apr") 
+  #   )
+  # } else if (sidx == "biological" & substring(site, 1, 2) == "pm" ){
+  #   scale_x_discrete(
+  #     breaks = c("10", "12", "2", "4", "6"),
+  #     labels = c("Oct", "Dec", "Feb", "Apr", "Jun")
+  #   )
+  # }else {
+  #   scale_x_discrete(
+  #     breaks = c("1", "3", "5", "7", "9", "11"),
+  #     labels = c("Jan", "Mar", "May", "Jul", "Sep", "Nov")
+  #   )
+  # }
+  # 
+  # windB = ggplot(dayNE, aes(x = factor(mth), y = as.numeric(percent_above), fill = factor( mth ) ) ) +
+  #   geom_col(width = 1) +
+  #   facet_wrap(~yr, ncol = 1) +
+  #   coord_flip() +
+  #   ylim(0,100) +
+  #   x_scale +
+  #   labs(
+  #     title = paste0("How often sources of interest are likey present (vocalizing species or vessels)"),
+  #     subtitle  = paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"),
+  #     #caption = "Calculated as % hours when measured sound levels are above predicted level based on wind speed",
+  #     x = "",
+  #     y = paste0("% of hours above wind noise ", fqIn2name, "\n (calculated as % hours when measured sound levels are above predicted level based on wind speed)"),
+  #     #color = "Year"  # Label for the color legend
+  #   ) +
+  #   theme_minimal()+
+  #   theme(
+  #     strip.text  = element_text(size = 14),
+  #     plot.title   = element_text(size = 16, face = "bold", hjust = 0),
+  #     plot.caption = element_text(size = 12, face = "italic", hjust = 0), 
+  #     axis.text.x = element_text(size = 14, hjust = 1),
+  #     axis.title.x  = element_text(size = 14),
+  #     axis.title.y  = element_text(size = 12),
+  #     axis.text.y   = element_text(size = 12, hjust = 1), 
+  #     legend.position = "none")
+  # windB
+  # ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_AboveWindwOctNovnoX.jpg"), plot = windB, width = 10, height = 12, dpi = 300)
   
   
-  #(5) Wind Dominated in fqIn2 ####
-  # select only data for fqIn2
-  cols_to_select = c("UTC", "yr","windMag","wind_category",fqIn2)
-  gpsFQ = gps %>% select(all_of(cols_to_select))
-  gpsFQ$Day = as.Date( gpsFQ$UTC )
-  gpsFQ$mth = month(gpsFQ$UTC )
-  
-  # what wind speed category is the measured value closest to?
-  wspeeds = unique( (windModel$windSpeed) )
-  gpsFQ$closest_windMag = wspeeds[pmax(1, findInterval(gpsFQ$windMag, wspeeds)+1)]
-  
-  # what is the SPL values for that windspeed?
-  fqIdx = which( colnames( windInfo) == substr( fqIn2, 5,8)) #'500'
-  wsIdx = match(gpsFQ$closest_windMag, windInfo$windSpeed)
-  gpsFQ$WindModelfq = windInfo[wsIdx, fqIdx]
-  
-  # what difference from the measured vs modeled?
-  tol_col = grep("TOL", colnames(gpsFQ))
-  gpsFQ$Exceed = gpsFQ[,tol_col] -  gpsFQ$WindModelfq 
-  
-  # is the difference above or below 0?
-  gpsFQ$Windthres = "unk"
-  gpsFQ$Windthres[gpsFQ$Exceed <= ab2] = "below"
-  gpsFQ$Windthres[gpsFQ$Exceed > ab2]  = "above"
-  
-  # what are the all data thresholds for this frequency (not used)
-  thresholds = mALL[mALL$FrequencyName == fqIn2,]
-  threshold_mid =  thresholds$SoundLevel[thresholds$Quantile == "50%"]
-  threshold_up  = thresholds$SoundLevel[thresholds$Quantile  == "75%"]
-  threshold_lo  = thresholds$SoundLevel[thresholds$Quantile == "25%"]
-  gpsFQ$SpecBand = gpsFQ[fqIn2]
-  
-  dayNE = gpsFQ %>%
-    mutate(Date = as.Date(UTC)) %>%
-    group_by(yr, mth) %>%
-    summarise(
-      # Count of non-NA hours (remove NAs)
-      hrs = sum(!is.na(Exceed ) ) ,  
-      
-      # hours for the year-day that are at or below wind speed estimate
-      n_below = sum(Windthres == "below", na.rm = TRUE),
-      n_above = sum(Windthres == "above", na.rm = TRUE),
-      
-      #percent_below = sum(Windthres == "below", na.rm = TRUE) / hrs * 100,
-      #percent_above = sum(Windthres == "above", na.rm = TRUE)/ hrs * 100,
-      
-      percent_below = ifelse(hrs > 0, n_below / hrs * 100, NA_real_),
-      percent_above = ifelse(hrs > 0, n_above / hrs * 100, NA_real_),
-      
-      # windspeed during the year-day
-      windspeed = quantile(windMag, 0.50, na.rm = TRUE),
-      .groups = "drop"
-    )
-  # CHECK: dayNE$percent_below + dayNE$percent_above
-  
-  dayNE = as.data.frame( dayNE )
-  
-  #put most recent year at the top of the plot
-  dayNE$yr  = factor(dayNE$yr,  levels = rev(sort(unique(dayNE$yr)))) 
-  
-  if (sidx == "biological" & substring(site, 1, 2) == "hi") {
-    dayNE$mth = factor(dayNE$mth, levels = rev(c(12,1,2,3,4,5))) 
-  }else if (sidx == "biological" & substring(site, 1, 2) == "pm") {
-    dayNE$mth = factor(dayNE$mth, levels = rev(c(10,11,12,1,2,3,4,5,6,7))) #ADDED 10, 11, 6, and 7 for PM Oct aand Nov graph
-  }else {
-    #puts January at the top of the plot... maybe remove if confusing to go to previous year
-    dayNE$mth = factor(dayNE$mth, levels = rev(c(1,2,3,4,5,6,7,8,9,10,11,12)))
-  }
-  
-  # CHECK: is there a relationship between percent below and windspeed?
-  #plot(dayNE$percent_below, dayNE$windspeed)
-  
-  windD = ggplot(dayNE, aes(x = factor(mth), y = as.numeric(percent_below), fill = factor( mth ) ) ) +
-    geom_col(width = 1) +
-    facet_wrap(~yr, ncol = 1) +
-    coord_flip() +
-    ylim(0,100) +
-    scale_fill_viridis_d(option = "D") +
-    labs(
-      title = paste0("Habitat acoustically inactive (wind-driven at ", fqIn2name, ")"),
-      subtitle  = paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"),
-      x = "",
-      y = paste0("% of hours in a month wind noise dominate at ", fqIn2name, 
-                 "\n (when measured sound level are similar to predicted sound level at known wind speed)"),
-      #color = "Year"  # Label for the color legend
-    ) +
-    theme_minimal()+
-    theme(
-      legend.position = "none",
-      plot.title = element_text(size = 16, face = "bold", hjust = 0),
-      strip.text  = element_text(size = 14),
-      axis.title.x  = element_text(size = 14),
-      axis.title.y  = element_text(size = 14),
-      axis.text.x = element_text(size = 14, hjust = 1, angle = 30),
-      axis.text.y = element_text(size = 14, hjust = 1) )
-  windD
-  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_WindDominatedwOctNovnoX.jpg"), plot = windD, width = 10, height = 12, dpi = 300)
-  
-  x_scale = if (sidx == "biological" & substring(site, 1, 2) == "hi" ) {
-    scale_x_discrete(
-      breaks = c("12", "2", "4"),
-      labels = c("Dec", "Feb", "Apr") 
-    )
-  } else if (sidx == "biological" & substring(site, 1, 2) == "pm" ){
-    scale_x_discrete(
-      breaks = c("10", "12", "2", "4", "6"),
-      labels = c("Oct", "Dec", "Feb", "Apr", "Jun")
-    )
-  }else {
-    scale_x_discrete(
-      breaks = c("1", "3", "5", "7", "9", "11"),
-      labels = c("Jan", "Mar", "May", "Jul", "Sep", "Nov")
-    )
-  }
-  
-  windB = ggplot(dayNE, aes(x = factor(mth), y = as.numeric(percent_above), fill = factor( mth ) ) ) +
-    geom_col(width = 1) +
-    facet_wrap(~yr, ncol = 1) +
-    coord_flip() +
-    ylim(0,100) +
-    x_scale +
-    labs(
-      title = paste0("How often sources of interest are likey present (vocalizing species or vessels)"),
-      subtitle  = paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"),
-      #caption = "Calculated as % hours when measured sound levels are above predicted level based on wind speed",
-      x = "",
-      y = paste0("% of hours above wind noise ", fqIn2name, "\n (calculated as % hours when measured sound levels are above predicted level based on wind speed)"),
-      #color = "Year"  # Label for the color legend
-    ) +
-    theme_minimal()+
-    theme(
-      strip.text  = element_text(size = 14),
-      plot.title   = element_text(size = 16, face = "bold", hjust = 0),
-      plot.caption = element_text(size = 12, face = "italic", hjust = 0), 
-      axis.text.x = element_text(size = 14, hjust = 1),
-      axis.title.x  = element_text(size = 14),
-      axis.title.y  = element_text(size = 12),
-      axis.text.y   = element_text(size = 12, hjust = 1), 
-      legend.position = "none")
-  windB
-  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_AboveWindwOctNovnoX.jpg"), plot = windB, width = 10, height = 12, dpi = 300)
   
   # SAVE UPDATED DATA ####
   # names(gps)

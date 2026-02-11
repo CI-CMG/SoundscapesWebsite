@@ -74,6 +74,8 @@ display(HTML(standardTextDict["Understanding Ocean Sound"]))
 #| echo: false
 display(HTML(gf.makeImage("sanctsound_scene.jpg", "soundscapeInfographic")))
 display(HTML(standardTextDict["Soundscapes"]))
+
+display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfographic")))
 ```
 ### Ocean Sound Conditions
 ```{python}

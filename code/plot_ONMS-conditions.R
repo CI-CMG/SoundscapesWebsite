@@ -953,7 +953,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         q10 = thresholds2$summed_dB[thresholds2$Quantile == "10%"]
         q25 = thresholds2$summed_dB[thresholds2$Quantile == "25%"]
         q50 = thresholds2$summed_dB[thresholds2$Quantile == "50%"]
-        q75 = thresholds2$summed_dB[thresholds2$Quantile  == "75%"]
+        q75 = thresholds2$summed_dB[thresholds2$Quantile == "75%"]
         q90 = thresholds2$summed_dB[thresholds2$Quantile == "90%"]
         q99 = thresholds2$summed_dB[thresholds2$Quantile == "99%"]
       }
