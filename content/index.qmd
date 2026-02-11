@@ -70,13 +70,20 @@ display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt")))
 #| echo: false
 display(HTML(standardTextDict["Understanding Ocean Sound"]))
 ```
+
 ```{python}
 #| echo: false
 display(HTML(gf.makeImage("sanctsound_scene.jpg", "soundscapeInfographic")))
 display(HTML(standardTextDict["Soundscapes"]))
+```
+
+```{python}
+#| echo: false
 
 display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfographic")))
 ```
+
+
 ### Ocean Sound Conditions
 ```{python}
 #| echo: false
