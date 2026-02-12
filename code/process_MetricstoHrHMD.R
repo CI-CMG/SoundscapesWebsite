@@ -40,9 +40,10 @@ site = tolower(site)
 dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
 
 
-#SANCTSOUND DATA DIRECTORY
-#for when sanctsound data is in different location than ONMS data: grnms, sbnms, hihwnms
-#dirGCPSS = paste0( "M:/FATESD/PASSIVE_ACOUSTIC_DATA_ANALYSIS/SANCTSOUND_SBNMS/SB01") # for GCP workstation
+#SANCTSOUND DATA DIRECTORIES
+#for when sanctsound data is in different directory than ONMS data: grnms, sbnms, hihwnms
+#dirGCPSS = paste0( "M:/FATESD/PASSIVE_ACOUSTIC_DATA_ANALYSIS/SANCTSOUND_SBNMS/SB01") # for GCP workstation - SBNMS
+#dirGCPSS = past0("E:/sanctsound/products/sound_level_metrics/gr01") # for GCP workstation - SBNMS (same data as above directory but pulling from NCEI. aditional folder to get to hmd data so if using this directory will need to adjust code looking for file path)
 #dirGCPSS = paste0( "X:/Emma_Beretta/HI01SanctSound") # for GCP workstation - HI01
 
 # LOCAL CODE REPO DIRECTORIES ####

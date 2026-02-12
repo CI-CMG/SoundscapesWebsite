@@ -469,7 +469,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                         " unique days: ", as.character(st), " to ", as.character(ed)),
       x = "",
       y = "Days",
-      fill = legend_label
+      fill = legend_label,
+      caption = "Data from months with effort that fell below the red line were excluded from annual sound level graph"
     ) +
     scale_x_discrete(labels = month.abb[month_nums]) +  # Show month names instead of numbers
     #scale_fill_manual(values = rev(gray.colors(length(unique(summary$year))))) +  # Create grayscale colors
@@ -482,6 +483,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       axis.text.x = element_text(size = 14, hjust = 1, angle = 30),  
       plot.subtitle = element_text(size = 14),
       legend.text = element_text(size = 12),
+      plot.caption = ggtext::element_markdown(hjust = 0, size = 12),
       legend.position = "right" 
     ) +
     #adding marker for cutoff threshold (months need more than 23 days of data to be kept in line graph)
@@ -836,7 +838,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                           , ", with ", peakDays, " unique days in humpback season"),
         x = "",
         y = "Days",
-        fill = "Humpback\nYear*"
+        fill = "Humpback\nYear*",
+        caption = "Data from months with effort that fell below the red line were excluded from annual sound level graph"
       ) +
       scale_x_discrete(labels = month.abb[ month_nums ]) +  # Show month names instead of numbers
       #scale_fill_manual(values = rev(gray.colors(length(unique(summary$year))))) +  # Create grayscale colors
@@ -849,6 +852,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         axis.text.x = element_text(size = 14, hjust = 1, angle = 30),  
         plot.subtitle = element_text(size = 12),
         legend.text = element_text(size = 12),
+        plot.caption = ggtext::element_markdown(hjust = 0, size = 12),
         legend.position = "right" 
       )+
       #adding marker for cutoff threshold (months need more than 23 (default) or x days of data to be kept in line graph)
@@ -1230,7 +1234,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         xmin = c(q01,  q25,    q75),
         xmax = c(q25,    q75,    q99),
        # fill = c( "#6699CC", "#66C2A5", "#9467BD")
-       fill = c("#99CCFF", "#8DA0CB", "lightcoral")
+       fill = c("#99CCFF",  "#8C8FD6", "#D4AF37")
+      # "#8DA0CB",
        # fill = c("#99CCFF", "#377EB8", "#6A3D9A" )
       # fill = c("#4C78A8",  "#F2A541", "#8E6C8A")  # dusty purple
       # fill = c("#5B8DB8",   "#F2A541",  "#7A5195")  # refined purple
@@ -1433,12 +1438,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
                   # fill = "#CCCCCC"
-                   fill =  "#8DA0CB",
+                   fill =   "#8C8FD6",
                    , alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q75, ymax = q99 ,
-                   fill = "lightcoral" , alpha = 0.5) +
+                   fill = "#D4AF37" , alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q01, ymax = q25,

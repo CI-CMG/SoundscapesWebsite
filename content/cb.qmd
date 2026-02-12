@@ -114,7 +114,7 @@ display(HTML(gf.makeButtons(sites, "plot_***_YearSPL.jpg", "YearSPL")))
 <!-- display(HTML(gf.makeButtons(sites, "plot_***_AboveWind.jpg", "SourcePresent"))) -->
 <!-- ``` -->
 
-### Are sounds of interest within typical range?
+### Is the intensity (loudness) of sound sources of interest within typical range?
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["sources of interest typical"]))
