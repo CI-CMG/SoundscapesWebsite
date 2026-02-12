@@ -106,10 +106,10 @@ def makeButtons(sites, generalFormat, identifier):
         """
     return buttons + initialImage + scripts
   
-def makeImage(imageName, identifier):
+def makeImage(imageName, identifier, width=700):
     inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
     path = f'{inputDir}/{imageName}'
-    initialImage = f'<img src="{path}" width="700" id="{identifier}" onclick="toggle{identifier}()" style="display: block; margin-left: auto; margin-right: auto">'
+    initialImage = f'<img src="{path}" width="{width}" id="{identifier}" onclick="toggle{identifier}()" style="display: block; margin-left: auto; margin-right: auto">'
     initialImage += f"""
                     <script>
                     function toggle{identifier}() {{

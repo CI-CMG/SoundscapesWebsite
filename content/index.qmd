@@ -80,7 +80,7 @@ display(HTML(standardTextDict["Soundscapes"]))
 ```{python}
 #| echo: false
 
-display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfographic")))
+display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfographic", 600)))
 ```
 
 
