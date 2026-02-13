@@ -232,7 +232,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
  
   
   #FOR NEW OC02 DATA!!!
-  #OC02 has duplicate data (two deployments overlapped) so we need to average dB values 
+  #ALSO MB02
+  
+  #these sites have duplicate data (two deployments overlapped) so we need to average dB values 
   #between Jan 29 2024 and March 15 2024
   # if (site == "oc02"){
   # 
