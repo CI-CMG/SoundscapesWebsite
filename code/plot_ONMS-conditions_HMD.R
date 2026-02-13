@@ -472,7 +472,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       x = "",
       y = "Days",
       fill = legend_label,
-      caption = "Data from months with effort that fell below the red line were excluded from annual sound level graph"
+      caption = "Data from months with effort below the red horizonal line are excluded from annual sound levels figure above"
     ) +
     scale_x_discrete(labels = month.abb[month_nums]) +  # Show month names instead of numbers
     #scale_fill_manual(values = rev(gray.colors(length(unique(summary$year))))) +  # Create grayscale colors
@@ -841,7 +841,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         x = "",
         y = "Days",
         fill = "Humpback\nYear*",
-        caption = "Data from months with effort that fell below the red line were excluded from annual sound level graph"
+        caption = "Data from months with effort below the red horizonal line are excluded from annual sound levels figure above"
       ) +
       scale_x_discrete(labels = month.abb[ month_nums ]) +  # Show month names instead of numbers
       #scale_fill_manual(values = rev(gray.colors(length(unique(summary$year))))) +  # Create grayscale colors
