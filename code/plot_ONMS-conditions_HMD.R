@@ -1063,21 +1063,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   interactive_plot$x$data[[14]]$hoverinfo <- "skip"
   
   
-  interactive_plot <-  interactive_plot %>% layout(
-    shapes = list(
-      list(
-        type = "line",
-        x0 = 100,
-        x1 = 100,
-        y0 = 35,
-        y1 = 90,
-        yref = "paper", # Reference to the plot's paper coordinates
-        line = list(color = "red", width = 15, dash = "dash")
-      )
-    )
-  )
-  
-  
   interactive_plot 
   
   #  interactive_plot$x$layout$xaxis$type
