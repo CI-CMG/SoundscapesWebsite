@@ -25,12 +25,12 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "mb02" 
+site  = "nrs04" 
 site = tolower(site) 
 
 #add for NRS
- # gcpF = "PMEL_CINMS"
- # prodName = "ci"
+ # gcpF = "PMEL_HI"
+ # prodName = "hi" 
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
@@ -210,7 +210,7 @@ if (length(inFiles) > 0) {
     cat("Processing", f, "of", length(inFiles),basename(inFiles[f]), "\n")
     
     ncFile = inFiles[f]
-    hmdData = loadSoundscapeData(ncFile) #only keeps quality 1 as default
+    hmdData = loadSoundscapeData(ncFile, keepQuals = c(1,2)) #keeps quality 1 and 2 (unknown) - 2 needed for NMFS data not yet at NCEI
     
     #tolData = createOctaveLevel(hmdData, type='tol')
     #names( hmdData )
