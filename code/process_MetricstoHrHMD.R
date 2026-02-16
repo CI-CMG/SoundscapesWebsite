@@ -25,7 +25,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "mb02" 
+site  = "mb05" 
 site = tolower(site) 
 
 #add for NRS
@@ -74,25 +74,37 @@ cat("CHECK: Read in data for: ",
 
 
 # GET list of files to process ####
-## PyPAM soundscape FILES- NEFSC-GCP ####
+
+## PyPAM soundscape (Sanctsound) FILES- NEFSC-GCP ####
 # e.g. NEFSC_SBNMS_201811_SB03_20181112.nc
-inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
+inFilesPY = list.files(dirGCP, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
 tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
 if (length(tmp) != 0){
-  dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
+  dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 3),format = "%Y%m%d")
   cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
       "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
 }
 
 ## ONMS Sound FILES- NCEI-GCP ####
 # e.g. ONMS_HI01_20231201_8021.1.48000_20231201_DAILY_MILLIDEC_MinRes.nc
-inFilesON = list.files(dirGCP, pattern = "MinRes.nc", recursive = T, full.names = T)
-dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 5), format = "%Y%m%d")
-cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
-    sum( duplicated(dysON)), "duplicated days\n")
+if (site == "ch01" | site == "mb05"){
+  inFilesON = list.files(dirGCP, pattern = ".nc", recursive = T, full.names = T)
+  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 3), format = "%Y%m%d")
+  cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
+      sum( duplicated(dysON)), "duplicated days\n")
+  
+} else{
+  inFilesON = list.files(dirGCP, pattern = "MinRes.nc", recursive = T, full.names = T)
+  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 5), format = "%Y%m%d")
+  cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
+      sum( duplicated(dysON)), "duplicated days\n")
+  
+}
+
 
 ## NMFS-GCP NRS sound files
 #PMEL_CINMS_201410_NRS05_20141018.nc
+if ( substr(site,start = 1, stop =3) == "nrs"){
 inFilesPY = list.files(dirGCP, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
 tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
 if (length(tmp) != 0){
@@ -101,7 +113,7 @@ if (length(tmp) != 0){
       "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
 }
 inFiles = inFilesPY
-
+}
 
 #For SB03 since new data has different naming convention
 # inFilesON = list.files(dirGCP, pattern = "MinRes.nc", recursive = T, full.names = T)
@@ -240,7 +252,6 @@ if (length(inFiles) > 0) {
   } 
 }
 
-library(data.table) #reload if not recognized
 #combine list elements after processing each day seperately and saving into different list elements
 cDatah <- rbindlist(data_list)
 
@@ -371,9 +382,9 @@ gps_chunks[[i]] <- matchGFS(data_chunks[[i]])
 #run one line at a time, it will take a while
 #can try for loop above but may crash if too many chunks
 # gps_chunks[[1]] <- matchGFS(data_chunks[[1]])
-# gps_chunks[[2]] <- matchGFS(data_chunks[[2]])
-# gps_chunks[[3]] <- matchGFS(data_chunks[[3]])
-# gps_chunks[[4]] <- matchGFS(data_chunks[[4]])
+ gps_chunks[[2]] <- matchGFS(data_chunks[[2]])
+ gps_chunks[[3]] <- matchGFS(data_chunks[[3]])
+ gps_chunks[[4]] <- matchGFS(data_chunks[[4]])
 # gps_chunks[[5]] <- matchGFS(data_chunks[[5]])
 # gps_chunks[[6]] <- matchGFS(data_chunks[[6]])
 # gps_chunks[[7]] <- matchGFS(data_chunks[[7]])
