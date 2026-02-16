@@ -12,8 +12,8 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 library(reshape)
-library(rJava)
-library(xlsx)
+# library(rJava)
+# library(xlsx)
 library(openxlsx)
 library(data.table)
 library(devtools)
@@ -29,15 +29,15 @@ site  = "mb01"
 site = tolower(site) 
 
 #add for NRS
- gcpF = "PMEL_CINMS"
- prodName = "ci"
+ # gcpF = "PMEL_HI"
+ # prodName = "hi" 
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
 #dirGCP = paste0( "C:/Users/emma.beretta/Documents/ONMS/", site,"/") # for NOAA computer
 #dirGCP = paste0( "C:/Users/embe5980/ONMS/", site,"/") # for CIRES computer
-#dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
-dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
+dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
+#dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
 
 
 #SANCTSOUND DATA DIRECTORIES
@@ -51,12 +51,12 @@ dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs G
 #outDir =  "F:/CODE/GitHub/SoundscapesWebsite/" 
 #outDir =  "C:/Users/emma.beretta/Documents/SoundscapesWebsite/" #for NOAA computer
 #outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
-#outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation
-outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
+outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation
+#outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
 
 outDirC = paste0( outDir,"content/resources/") #context
-#outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
-outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
+outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
+#outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
 outDirG = paste0( outDir,"report/" ) #graphics
 
 
@@ -210,7 +210,7 @@ if (length(inFiles) > 0) {
     cat("Processing", f, "of", length(inFiles),basename(inFiles[f]), "\n")
     
     ncFile = inFiles[f]
-    hmdData = loadSoundscapeData(ncFile) #only keeps quality 1 as default
+    hmdData = loadSoundscapeData(ncFile, keepQuals = c(1,2)) #keeps quality 1 and 2 (unknown) - 2 needed for NMFS data not yet at NCEI
     
     #tolData = createOctaveLevel(hmdData, type='tol')
     #names( hmdData )
