@@ -167,6 +167,17 @@ display(HTML(infoHtml4))
 # NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg
 ```
 
+### When are the seasonal biologically-important times for whales?
+
+```{python}
+#| echo: false
+#display(HTML(standardTextDict["killer-whales"]))
+display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca")))
+```
+
+
+
+
 ### When do whales contribute to the soundscape, indicating their presence nearby?
 ```{python}
 #| echo: false
