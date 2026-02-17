@@ -25,7 +25,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "mb01" 
+site  = "ci01" 
 site = tolower(site) 
 
 #add for NRS
@@ -382,9 +382,9 @@ gps_chunks[[i]] <- matchGFS(data_chunks[[i]])
 #run one line at a time, it will take a while
 #can try for loop above but may crash if too many chunks
 # gps_chunks[[1]] <- matchGFS(data_chunks[[1]])
- gps_chunks[[2]] <- matchGFS(data_chunks[[2]])
- gps_chunks[[3]] <- matchGFS(data_chunks[[3]])
- gps_chunks[[4]] <- matchGFS(data_chunks[[4]])
+ # gps_chunks[[2]] <- matchGFS(data_chunks[[2]])
+ # gps_chunks[[3]] <- matchGFS(data_chunks[[3]])
+ # gps_chunks[[4]] <- matchGFS(data_chunks[[4]])
 # gps_chunks[[5]] <- matchGFS(data_chunks[[5]])
 # gps_chunks[[6]] <- matchGFS(data_chunks[[6]])
 # gps_chunks[[7]] <- matchGFS(data_chunks[[7]])
