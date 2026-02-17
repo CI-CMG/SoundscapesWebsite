@@ -25,7 +25,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "ci01" 
+site  = "mb01" 
 site = tolower(site) 
 
 #add for NRS
@@ -94,11 +94,14 @@ if (site == "ch01" | site == "mb05"){
       sum( duplicated(dysON)), "duplicated days\n")
   
 } else{
+  # use code below for MB01 fix. there was MB02 data in NCEI folder, only want MB01
+  #inFilesON = list.files(dirGCP, pattern = "^ONMS_MB01.*MinRes\\.nc$", recursive = TRUE, full.names = TRUE )
+  
   inFilesON = list.files(dirGCP, pattern = "MinRes.nc", recursive = T, full.names = T)
   dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 5), format = "%Y%m%d")
   cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
       sum( duplicated(dysON)), "duplicated days\n")
-  
+
 }
 
 
