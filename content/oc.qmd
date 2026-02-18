@@ -171,7 +171,7 @@ display(HTML(infoHtml4))
 
 ```{python}
 #| echo: false
-#display(HTML(standardTextDict["killer-whales"]))
+display(HTML(standardTextDict["killer-whales"]))
 display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca")))
 ```
 
