@@ -130,7 +130,7 @@ display(HTML(gf.makeButtons(sites, "plot_***-10000_status.jpg", "FOI")))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
-###When do fish courses contribute to the soundscape?
+### When do fish courses contribute to the soundscape?
 ```{python}
 #| echo: false
 
@@ -139,7 +139,7 @@ display(HTML(gf.makeImage("FK01_daily_activity.png", "daily activity")))
 display(HTML(gf.makeImage("FK01_diel_patterns.png", "diel patterns")))
 ```
 
-###When are goliath grouper calling on their spawning aggregation site? 
+### When are goliath grouper calling on their spawning aggregation site? 
 ```{python}
 #| echo: false
 
