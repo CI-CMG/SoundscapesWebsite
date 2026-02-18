@@ -25,7 +25,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "mb01" 
+site  = "nrs04" 
 site = tolower(site) 
 
 #add for NRS
