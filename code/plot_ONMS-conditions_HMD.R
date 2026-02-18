@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("mb01")
+ONMSsites = c("oc02")
 
 ## directories ####
 outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -1156,6 +1156,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       
       ### daily percentiles with hours above threshold- 75th percentile
       dailyFQ = gpsFQ %>%
+        filter(!is.na(SpecBand)) %>% 
         mutate(Date = as.Date(UTC)) %>%
         group_by(Date) %>%
         summarise(
@@ -1361,7 +1362,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       # without NA on pies and as proportions
       pies <- dailyFQ %>%
         mutate(status = case_when(
-          #is.na(TOL_50)             ~ "NA",
+          #is.na(HMD_50)             ~ "NA",
           HMD_50 < q25               ~ "Low",
           HMD_50 >= q25 & HMD_50 <= q75 ~ "Within Range",
           HMD_50 > q75               ~ "High"
@@ -1454,7 +1455,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           facet_wrap(~yr, ncol = 1)+
           scale_x_continuous(limits = c(0,365), breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label, "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
