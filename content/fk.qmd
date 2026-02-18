@@ -143,7 +143,7 @@ display(HTML(gf.makeImage("FK01_diel_patterns.png", "diel patterns")))
 ```{python}
 #| echo: false
 
-display(HTML(standardTextDict["goliath grouper 2']))
+display(HTML(standardTextDict["goliath grouper 2"]))
 ```
 
 

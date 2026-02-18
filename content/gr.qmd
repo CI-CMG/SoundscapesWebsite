@@ -143,7 +143,7 @@ display(HTML(gf.makeImage("GR01_NARW_presence.png", "daily activity")))
 
 ###Who is migrating through GRNMS? 
 ```{python}
-display(HTML(standardTextDict["NARW 2']))
+display(HTML(standardTextDict["NARW 2"]))
 ```
 
 
