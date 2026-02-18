@@ -131,10 +131,10 @@ display(HTML(gf.makeButtons(sites, "plot_***-10000_status.jpg", "FOI")))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
-### When do whales contribute to the soundscape, indicating their presence nearby?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["whales"]))
-#display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw")))
-```
+<!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["whales"])) -->
+<!-- #display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw"))) -->
+<!-- ``` -->
 :::

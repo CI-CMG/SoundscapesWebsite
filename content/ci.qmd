@@ -140,12 +140,12 @@ display(HTML(standardTextDict["Fish Chorus"]))
 display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlot.jpg", "daily_fish_choruses")))
 ```
 
-### When do whales contribute to the soundscape, indicating their presence nearby?
-```{python}
-#| echo: false
-display(HTML("Coming soon!"))
+<!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML("Coming soon!")) -->
 
-#display(HTML(standardTextDict["whales"]))
-#display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw")))
-```
+<!-- #display(HTML(standardTextDict["whales"])) -->
+<!-- #display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw"))) -->
+<!-- ``` -->
 :::
