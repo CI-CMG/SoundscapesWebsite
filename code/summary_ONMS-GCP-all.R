@@ -294,7 +294,7 @@ write.csv(outputONMS, file = paste0(outDirP, "/data_gantt_ONMS-SS-NRS__gantt_", 
 
 
 #option to load the file, if you already ran and just want to plot ####
-load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2026-02-05.Rda") )
+load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2026-02-04.Rda") )
 
 # GANTT CHART  ####
 ## COLOR ####
@@ -378,3 +378,22 @@ p = ggplot() +
   scale_size_continuous(range = c(.5, 8))  # Adjust point size range
 p
 ggsave(filename = paste0(outDirR, "/map_ONMS.jpg"), plot = p, width = 8, height = 6, dpi = 300)
+
+
+
+
+# Calculating number of recording days and start date at each site
+
+outputSummary <- outputONMS %>%
+  mutate(Duration_days = as.numeric(str_extract(Duration, "\\d+"))) %>%
+  group_by(Site) %>%
+  summarise(total_days = sum(Duration_days, na.rm = TRUE),
+            earliest_start = min(Start_Date, na.rm = TRUE))
+  
+  
+  
+  
+  
+  
+
+

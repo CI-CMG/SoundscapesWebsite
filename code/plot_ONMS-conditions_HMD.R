@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("oc02")
+ONMSsites = c("fgb01")
 
 ## directories ####
 outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -997,6 +997,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   ### save figure ####
   ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDYearSPL.jpg"), plot = pYear, width = 10, height = 12, dpi = 300)
+  
+  
+  
+  
+  
+  
+  
   
  
   
