@@ -9,6 +9,7 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["FK01","FK05","FK06"]
+GGrouperGraphs = ["Daily Activity", "Diel Patterns"]
 
 # input table for standard text
 inputDir = os.path.normpath(os.path.join(os.getcwd(), "resources"))
@@ -130,22 +131,14 @@ display(HTML(gf.makeButtons(sites, "plot_***-10000_status.jpg", "FOI")))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
-### When do fish courses contribute to the soundscape?
-```{python}
-#| echo: false
-
-display(HTML(standardTextDict["goliath grouper"]))
-display(HTML(gf.makeImage("FK01_daily_activity.png", "daily activity")))
-display(HTML(gf.makeImage("FK01_diel_patterns.png", "diel patterns")))
-```
-
 ### When are goliath grouper calling on their spawning aggregation site? 
 ```{python}
 #| echo: false
 
-display(HTML(standardTextDict["goliath grouper 2"]))
+display(HTML(standardTextDict["goliath grouper"]))
+display(HTML(gf.makeButtons(GGrouperGraphs, "FK01_***.png", "g grouper")))
+#gf.makeImage("FK01_diel_patterns.png", "diel patterns")
 ```
-
 
 
 ### When do whales contribute to the soundscape, indicating their presence nearby?
