@@ -10,6 +10,7 @@ from pythonFunctions import generalFunctions as gf
 
 sites = ["FK01","FK05","FK06"]
 GGrouperGraphs = ["Daily_Activity", "Diel_Patterns"]
+GGrouperGraphsLabels = ["Daily Activity", "Diel Patterns"]
 
 # input table for standard text
 inputDir = os.path.normpath(os.path.join(os.getcwd(), "resources"))
@@ -136,7 +137,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 
 display(HTML(standardTextDict["goliath grouper"]))
-display(HTML(gf.makeButtons(GGrouperGraphs, "FK01_***.png", "g_grouper")))
+display(HTML(makeButtonsWithLabels(GGrouperGraphs, GGrouperGraphsLabels, "FK01_***.png", "g_grouper")))
 #gf.makeImage("FK01_diel_patterns.png", "diel patterns")
 ```
 
