@@ -135,13 +135,13 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
         for j in range(len(uniqueImageIDs)):
             if i != j:
                 othersToLight += f"""const otherButton{uniqueImageIDs[j]} = document.getElementById('{uniqueImageIDs[j]}{identifier}button');
-                        otherButton{s}.style.backgroundColor = '#008CBA';"""
+                        otherButton{uniqueImageIDs[j]}.style.backgroundColor = '#008CBA';"""
         
         initialColor = "#008CBA"
         if i == 0:
             initialColor = "#BA2F00"
             
-        buttons += f'<button id="{uniqueImageIDs[i]}{identifier}button" onclick="{uniqueImageIDs[i]}{identifier}()" style="padding: 10px; color: white; margin: 4px 4px; background-color: {initialColor};">{buttonLabels[j]}</button>'
+        buttons += f'<button id="{uniqueImageIDs[i]}{identifier}button" onclick="{uniqueImageIDs[i]}{identifier}()" style="padding: 10px; color: white; margin: 4px 4px; background-color: {initialColor};">{buttonLabels[i]}</button>'
         scripts += f"""
                     <script>
                     function {uniqueImageIDs[i]}{identifier}() {{
