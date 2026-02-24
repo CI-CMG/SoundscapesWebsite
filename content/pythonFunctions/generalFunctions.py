@@ -105,6 +105,55 @@ def makeButtons(sites, generalFormat, identifier):
                     </script>
         """
     return buttons + initialImage + scripts
+    
+def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifier):
+    buttons = ""
+    scripts = f"""
+                    <script>
+                    function toggle{identifier}() {{
+                        var imgElement = document.getElementById('{identifier}');
+                        if (!document.fullscreenElement) {{
+                            imgElement.requestFullscreen();
+                        }} else {{
+                            document.exitFullscreen();
+                        }}
+                    }}
+                    </script>
+    """
+    inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
+    path = f'{inputDir}/{generalFormat}'
+    path = path.replace("***", uniqueImageIDs[0])
+    initialImage = f'<img src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
+    if len(uniqueImageIDs) == 1:
+        return initialImage + scripts
+    
+    for i in range(len(uniqueImageIDs)):
+        path = f'{inputDir}/{generalFormat}'
+        path = path.replace("***", uniqueImageIDs[i])
+        
+        othersToLight = ""
+        for j in range(len(uniqueImageIDs)):
+            if i != j:
+                othersToLight += f"""const otherButton{uniqueImageIDs[j]} = document.getElementById('{uniqueImageIDs[j]}{identifier}button');
+                        otherButton{s}.style.backgroundColor = '#008CBA';"""
+        
+        initialColor = "#008CBA"
+        if i == 0:
+            initialColor = "#BA2F00"
+            
+        buttons += f'<button id="{uniqueImageIDs[i]}{identifier}button" onclick="{uniqueImageIDs[i]}{identifier}()" style="padding: 10px; color: white; margin: 4px 4px; background-color: {initialColor};">{buttonLabels[j]}</button>'
+        scripts += f"""
+                    <script>
+                    function {uniqueImageIDs[i]}{identifier}() {{
+                        var imgElement = document.getElementById('{identifier}');
+                        imgElement.src = "{path}";
+                        const thisButton = document.getElementById('{uniqueImageIDs[i]}{identifier}button');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        {othersToLight}
+                    }}
+                    </script>
+        """
+    return buttons + initialImage + scripts
   
 def makeImage(imageName, identifier, width=700):
     inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
