@@ -9,7 +9,7 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["FK01","FK05","FK06"]
-GGrouperGraphs = ["Daily Activity", "Diel Patterns"]
+GGrouperGraphs = ["Daily_Activity", "Diel_Patterns"]
 
 # input table for standard text
 inputDir = os.path.normpath(os.path.join(os.getcwd(), "resources"))
