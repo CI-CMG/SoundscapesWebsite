@@ -131,7 +131,16 @@ display(HTML(standardTextDict["sources of interest typical"]))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
+
 ### When do whales contribute to the soundscape, indicating their presence nearby?
+```{python}
+#| echo: false
+
+display(HTML(standardTextDict["NARW"]))
+display(HTML(gf.makeImage("GR01_NARW_presence.png", "daily activity")))
+
+```
+
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["whales"]))

@@ -9,6 +9,8 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["FK01","FK05","FK06"]
+GGrouperGraphs = ["Daily_Activity", "Diel_Patterns"]
+GGrouperGraphsLabels = ["Daily Activity", "Diel Patterns"]
 
 # input table for standard text
 inputDir = os.path.normpath(os.path.join(os.getcwd(), "resources"))
@@ -129,6 +131,16 @@ display(HTML(gf.makeButtons(sites, "plot_***-10000_status.jpg", "FOI")))
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
 ```
+
+### When are goliath grouper calling on their spawning aggregation site? 
+```{python}
+#| echo: false
+
+display(HTML(standardTextDict["goliath grouper"]))
+display(HTML(gf.makeButtonsWithLabels(GGrouperGraphs, GGrouperGraphsLabels, "FK01_***.png", "g_grouper")))
+#gf.makeImage("FK01_diel_patterns.png", "diel patterns")
+```
+
 
 ### When do whales contribute to the soundscape, indicating their presence nearby?
 ```{python}

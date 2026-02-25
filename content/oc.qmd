@@ -171,21 +171,21 @@ display(HTML(infoHtml4))
 
 ```{python}
 #| echo: false
-#display(HTML(standardTextDict["killer-whales"]))
+display(HTML(standardTextDict["killer-whales"]))
 display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca")))
 ```
 
 
 
 
-### When do whales contribute to the soundscape, indicating their presence nearby?
-```{python}
-#| echo: false
-#display(HTML(standardTextDict["whales"]))
-display(HTML("Coming soon!"))
+<!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- #display(HTML(standardTextDict["whales"])) -->
+<!-- display(HTML("Coming soon!")) -->
 
-#display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw")))
-```
+<!-- #display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw"))) -->
+<!-- ``` -->
 :::
 
 

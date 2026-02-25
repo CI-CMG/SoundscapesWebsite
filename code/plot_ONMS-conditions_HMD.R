@@ -28,7 +28,10 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-ONMSsites = c("mb01")
+# NRSsites sb09 oc03 ci05 cb11 hi00
+
+ONMSsites = c("ci01")
+
 
 ## directories ####
 outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -742,13 +745,22 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   mallDataS = mallData
   
-
-  # FOIs <- FOIsSave
-  # FOIsSave <- FOIs
   
-   # FOIs$Label[4] = "Delphinids"
-   # FOIs$FQend[1] = 16000
+  
+  #making so shaded FOIs (ranges) are set dash instead of just dash line
+  FOIsRange <- FOIs %>% filter(FQstart != FQend)
+  FOIs <- FOIs %>% filter(FQstart == FQend)
+  
 
+  #some FOIs want labels on left side
+  # CI01: put bocaccio label on left side of vert line
+  if(site == "ci01"){
+    FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
+    FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
+  } else{
+    FOIsL = NULL
+  }
+ 
   
 #plot  
   p = ggplot() +
@@ -770,17 +782,26 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black",  linewidth = 1) +
     scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
     
-    # Add vertical lines at FQstart
+    # Add vertical lines at FOIs, label on right side
     geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
+    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
+
+    # Add vertical lines at FOIs, label on left side
+    geom_vline(data = FOIsL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
+   
+    # Add vertical set dash lines and grey shaded region at FOI ranges
+    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
-    # Add labels at the bottom of each line
-    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.5, size = 4) +
-     labs(
-        subtitle = seasonLabel,
+    geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
+   
+    labs(
+       subtitle = seasonLabel,
        caption  = caption_text,
-      x = "Frequency Hz",
-      y = expression(paste("Sound Levels (dB re 1 ", mu, " Pa"^2, "/Hz)" ) ) #dB re 1 uPa^2/Hz
+       x = "Frequency Hz",
+       y = expression(paste("Sound Levels (dB re 1 ", mu, " Pa"^2, "/Hz)" ) ) #dB re 1 uPa^2/Hz
     ) +
     # Additional aesthetics
     scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
@@ -799,7 +820,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # arranged_plot = grid.arrange(p, separator, l, heights =c(4, 0.05, 0.8))
   arranged_plot = grid.arrange(p, separator, p2, heights =c(4, 0.1, 1))
   ## save figure ####
-  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDSeasonalSPL.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
+  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDSeasonalSPLV2.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
   
   
   
@@ -965,11 +986,20 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
     scale_color_manual(values = rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
     scale_fill_manual(values =  rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
-    # Add vertical lines at FQstart
-    #, color = Label
+    # Add vertical lines at FOIs, label on right side
     geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-    # Add labels at the bottom of each line
-    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label),  angle = 90, vjust = 1, hjust = 0.5, size = 4) +
+    geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
+    
+    # Add vertical lines at FOIs, label on left side
+    geom_vline(data = FOIsL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
+    
+    # Add vertical set dash lines and grey shaded region at FOI ranges
+    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
+              fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
+    geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
     scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
     # Additional aesthetics
     theme_minimal() +
@@ -997,6 +1027,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   ### save figure ####
   ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDYearSPL.jpg"), plot = pYear, width = 10, height = 12, dpi = 300)
+  
+  
+  
+  
+  
+  
+  
   
  
   
@@ -1156,6 +1193,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       
       ### daily percentiles with hours above threshold- 75th percentile
       dailyFQ = gpsFQ %>%
+        filter(!is.na(SpecBand)) %>% 
         mutate(Date = as.Date(UTC)) %>%
         group_by(Date) %>%
         summarise(
@@ -1361,7 +1399,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       # without NA on pies and as proportions
       pies <- dailyFQ %>%
         mutate(status = case_when(
-          #is.na(TOL_50)             ~ "NA",
+          #is.na(HMD_50)             ~ "NA",
           HMD_50 < q25               ~ "Low",
           HMD_50 >= q25 & HMD_50 <= q75 ~ "Within Range",
           HMD_50 > q75               ~ "High"
@@ -1454,7 +1492,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           facet_wrap(~yr, ncol = 1)+
           scale_x_continuous(limits = c(0,365), breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label, "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",

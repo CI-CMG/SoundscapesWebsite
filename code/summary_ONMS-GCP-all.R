@@ -292,8 +292,9 @@ outputONMS = outputC[!is.na(outputC$Region),]
 save(outputONMS,      file = paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_", DC, ".Rda") )
 write.csv(outputONMS, file = paste0(outDirP, "/data_gantt_ONMS-SS-NRS__gantt_", DC, ".csv") )
 
+
 #option to load the file, if you already ran and just want to plot ####
-#load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2025-07-23.Rda") )
+load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2026-02-04.Rda") )
 
 # GANTT CHART  ####
 ## COLOR ####
@@ -320,7 +321,7 @@ pTb = ggplot(outputONMS, aes(y = toupper(Site), x = Start_Date, xend = End_Date,
             color = "gray", height = 0.6) +  # Fill color by Instrument and outline in black
   scale_fill_manual(values = project_colors) +  # Use specific colors for instruments
   labs(x = "", y = "", title = "",
-       caption = paste0("Audio data archived on NCEI-GCP as of ", format(Sys.Date(), "%B %d, %Y"))) +
+       caption = paste0("Audio data archived at NCEI as of ", format(Sys.Date(), "%B %d, %Y"))) +
   facet_wrap(~Region,scales = "free_y") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 12),
@@ -377,3 +378,22 @@ p = ggplot() +
   scale_size_continuous(range = c(.5, 8))  # Adjust point size range
 p
 ggsave(filename = paste0(outDirR, "/map_ONMS.jpg"), plot = p, width = 8, height = 6, dpi = 300)
+
+
+
+
+# Calculating number of recording days and start date at each site
+
+outputSummary <- outputONMS %>%
+  mutate(Duration_days = as.numeric(str_extract(Duration, "\\d+"))) %>%
+  group_by(Site) %>%
+  summarise(total_days = sum(Duration_days, na.rm = TRUE),
+            earliest_start = min(Start_Date, na.rm = TRUE))
+  
+  
+  
+  
+  
+  
+
+
