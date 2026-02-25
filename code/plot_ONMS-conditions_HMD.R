@@ -30,7 +30,7 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
 # NRSsites sb09 oc03 ci05 cb11 hi00
 
-ONMSsites = c("ci01")
+ONMSsites = c("oc02")
 
 
 ## directories ####
@@ -548,7 +548,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasont$Season <- factor(seasont$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
     seasont <- season[order(seasont$Season), ]
     
-  } else if (site %in% c("fk06", "fk07", "fgb01")){
+  } else if (site %in% c("fk06", "fk07", "fgb01", "fk08")){
     summary2$Season <- factor(summary2$Season, levels = c("Spring", "Summer", "Fall"))
     
   } else if ( sidx == "wssf") {
@@ -758,7 +758,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
     FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
   } else{
-    FOIsL = NULL
+    FOIsL = FOIs[0, ]
   }
  
   
@@ -786,13 +786,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
     geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
 
-    # Add vertical lines at FOIs, label on left side
+    # Add vertical lines at FOIs, label on left side, not common
     geom_vline(data = FOIsL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
     geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges
-    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
-    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
@@ -820,7 +820,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # arranged_plot = grid.arrange(p, separator, l, heights =c(4, 0.05, 0.8))
   arranged_plot = grid.arrange(p, separator, p2, heights =c(4, 0.1, 1))
   ## save figure ####
-  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDSeasonalSPLV2.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
+  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDSeasonalSPL.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
   
   
   
@@ -995,8 +995,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
     
     # Add vertical set dash lines and grey shaded region at FOI ranges
-    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
-    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
@@ -1169,6 +1169,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         cols_to_select = c("UTC", "yr", "windMag","wind_category",ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         tmpBB = gpsFQ %>% select(all_of(ftN))
+        
         # calculate a BB measurement for TOL FQ- unlog, sum, re-log
         gpsFQ$SpecBand = 10*log10 ( rowSums( 10^(tmpBB/10) ) ) 
         
@@ -1496,7 +1497,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
-            y =substitute(paste("Daily Median Sound Levels (NEED UNITS at ", f, " Hz)"), list(f = ft) )
+            y =substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa at ", f, " Hz)"), list(f = ft) )
               #substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
@@ -1518,6 +1519,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
         
+        
+        write.csv(dailyFQ_complete, file = paste0(outDirP, "/data_FGB01_FOI_", DC, ".csv") )
        
       } else if (substring(site, 1, 2) == "hi") {
         # alternative methods for plg for Hawaii sites

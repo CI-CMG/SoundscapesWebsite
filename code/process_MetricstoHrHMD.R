@@ -25,7 +25,7 @@ devtools::install_github('TaikiSan21/PAMscapes')
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "fk08" 
+site  = "oc02" 
 site = tolower(site) 
 
 #add for NRS
