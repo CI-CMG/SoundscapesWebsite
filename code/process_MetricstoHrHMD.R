@@ -19,7 +19,7 @@ library(data.table)
 library(devtools)
 
 # RUN this to make sure latest updates for PAMscapes
-#devtools::install_github('TaikiSan21/PAMscapes')
+devtools::install_github('TaikiSan21/PAMscapes')
 
 
 # SET UP PARAMS ####
