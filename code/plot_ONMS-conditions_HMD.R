@@ -30,7 +30,7 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
 # NRSsites sb09 oc03 ci05 cb11 hi00
 
-ONMSsites = c("fk08")
+ONMSsites = c("oc02")
 
 
 ## directories ####
@@ -1169,6 +1169,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         cols_to_select = c("UTC", "yr", "windMag","wind_category",ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         tmpBB = gpsFQ %>% select(all_of(ftN))
+        
         # calculate a BB measurement for TOL FQ- unlog, sum, re-log
         gpsFQ$SpecBand = 10*log10 ( rowSums( 10^(tmpBB/10) ) ) 
         
@@ -1496,7 +1497,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
-            y =substitute(paste("Daily Median Sound Levels (NEED UNITS at ", f, " Hz)"), list(f = ft) )
+            y =substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa at ", f, " Hz)"), list(f = ft) )
               #substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
@@ -1518,6 +1519,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
         
+        
+        write.csv(dailyFQ_complete, file = paste0(outDirP, "/data_FGB01_FOI_", DC, ".csv") )
        
       } else if (substring(site, 1, 2) == "hi") {
         # alternative methods for plg for Hawaii sites

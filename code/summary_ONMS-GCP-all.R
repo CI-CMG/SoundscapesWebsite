@@ -292,7 +292,7 @@ write.csv(outputONMS, file = paste0(outDirP, "/data_gantt_ONMS-SS-NRS__gantt_", 
 
 
 #option to load the file, if you already ran and just want to plot ####
-load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2026-02-04.Rda") )
+#load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2026-02-04.Rda") )
 
 # GANTT CHART  ####
 ## COLOR ####
