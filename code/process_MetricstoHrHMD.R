@@ -25,7 +25,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "mb01" 
+site  = "fk08" 
 site = tolower(site) 
 
 #add for NRS
@@ -43,8 +43,11 @@ dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP wo
 #SANCTSOUND DATA DIRECTORIES
 #for when sanctsound data is in different directory than ONMS data: grnms, sbnms, hihwnms
 #dirGCPSS = paste0( "M:/FATESD/PASSIVE_ACOUSTIC_DATA_ANALYSIS/SANCTSOUND_SBNMS/SB01") # for GCP workstation - SBNMS
-#dirGCPSS = past0("E:/sanctsound/products/sound_level_metrics/gr01") # for GCP workstation - SBNMS (same data as above directory but pulling from NCEI. aditional folder to get to hmd data so if using this directory will need to adjust code looking for file path)
+#dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/gr01") # for GCP workstation - SBNMS (same data as above directory but pulling from NCEI. aditional folder to get to hmd data so if using this directory will need to adjust code looking for file path)
 #dirGCPSS = paste0( "X:/Emma_Beretta/HI01SanctSound") # for GCP workstation - HI01
+#dirGCPSS = paste0("E:/onms/products/sound_level_metrics/mb05/onms_mb05_20220425_20220621_hmd") #to get MB05_01
+dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/", site,"/") 
+
 
 # LOCAL CODE REPO DIRECTORIES ####
 #outDir =  "/Users/quca3108/SoundscapesWebsite/"
@@ -77,7 +80,7 @@ cat("CHECK: Read in data for: ",
 
 ## PyPAM soundscape (Sanctsound) FILES- NEFSC-GCP ####
 # e.g. NEFSC_SBNMS_201811_SB03_20181112.nc
-inFilesPY = list.files(dirGCP, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
+inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
 tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
 if (length(tmp) != 0){
   dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 3),format = "%Y%m%d")
@@ -87,9 +90,11 @@ if (length(tmp) != 0){
 
 ## ONMS Sound FILES- NCEI-GCP ####
 # e.g. ONMS_HI01_20231201_8021.1.48000_20231201_DAILY_MILLIDEC_MinRes.nc
-if (site == "ch01" | site == "mb05"){
+
+#NEW Pypam processing results in files ending in .nc not MinRes.nc!
+if (site == "ch01" | site == "fk08"){
   inFilesON = list.files(dirGCP, pattern = ".nc", recursive = T, full.names = T)
-  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 3), format = "%Y%m%d")
+  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 4), format = "%Y%m%d")
   cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
       sum( duplicated(dysON)), "duplicated days\n")
   
@@ -220,15 +225,12 @@ cDatah = NULL
 data_list <- list()
 
 if (length(inFiles) > 0) { 
-  for (f in 1: length(inFiles) ){ # 1245:1246 length(inFiles)
+  for (f in 1: length(inFiles) ){ # 1245:1246 length(inFiles) # f = 1
     
     cat("Processing", f, "of", length(inFiles),basename(inFiles[f]), "\n")
     
     ncFile = inFiles[f]
     hmdData = loadSoundscapeData(ncFile, keepQuals = c(1,2)) #keeps quality 1 and 2 (unknown) - 2 needed for NMFS data not yet at NCEI
-    
-    #tolData = createOctaveLevel(hmdData, type='tol')
-    #names( hmdData )
     
     # add software column
     if ( grepl("MinRes.nc", basename(inFiles[f]) ) ) {
@@ -236,7 +238,7 @@ if (length(inFiles) > 0) {
     } else {  
       hmdData$software = "pypam" }
     
-    # combine data- check to make sure columns match
+    # remove platform column
     hmdData = hmdData[, setdiff(names(hmdData), "platform"), drop = FALSE]
     
     #bin to hourly median values
