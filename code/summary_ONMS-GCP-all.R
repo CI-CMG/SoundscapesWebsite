@@ -69,7 +69,6 @@ args =  c("ls", gcpDirNRS)
 subdirsNRS = system2(command, args, stdout = TRUE, stderr = TRUE)  
 
 subdirsALL = c(subdirsONMS, subdirsSS, subdirsNRS) 
-subdirsALL <- subdirsALL[subdirsALL != "gs://noaa-passive-bioacoustic/onms/audio/fk08/"]
 dirNames   = sapply(strsplit(basename( subdirsALL ), "/"), `[`, 1)
 cat("Processing... ", projectNONMS, length(dirNames), "directories" )
 
@@ -94,7 +93,6 @@ if ( length(tmp)  > 0 ) {
 
 ## ONMS + SS ####
 subdirsALL = c(subdirsONMS, subdirsSS) 
-subdirsALL <- subdirsALL[subdirsALL != "gs://noaa-passive-bioacoustic/onms/audio/fk08/"]
 output = NULL
 dirNames   = sapply(strsplit(basename( subdirsALL ), "/"), `[`, 1)
 
