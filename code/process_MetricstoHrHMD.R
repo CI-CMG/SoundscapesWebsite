@@ -27,7 +27,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "fk08" 
+site  = "sb03" 
 site = tolower(site) 
 
 #add for NRS
@@ -85,7 +85,7 @@ cat("CHECK: Read in data for: ",
   inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
   tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
   if (length(tmp) != 0){
-    dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 3),format = "%Y%m%d")
+    dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
     cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
       "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
   }
@@ -116,7 +116,7 @@ cat("CHECK: Read in data for: ",
   dysON = c(dysON1, dysON2)
   
   #for newer sites without manta data:
-  dysON =  dysON2
+  #dysON =  dysON2
   
   # Output summary
   cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min(dysON, na.rm = T)), " to ", as.character(max(dysON, na.rm = T)), 
