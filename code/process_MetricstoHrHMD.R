@@ -7,6 +7,10 @@
 
 #install.packages("rJava") make sure Java is installed for xlsx to work
 
+# RUN this to make sure latest updates for PAMscapes
+devtools::install_github('TaikiSan21/PAMscapes')
+
+
 library(PAMscapes)
 library(lubridate)
 library(dplyr)
@@ -18,14 +22,12 @@ library(openxlsx)
 library(data.table)
 library(devtools)
 
-# RUN this to make sure latest updates for PAMscapes
-devtools::install_github('TaikiSan21/PAMscapes')
 
 
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "oc02" 
+site  = "fk05" 
 site = tolower(site) 
 
 #add for NRS
@@ -91,23 +93,37 @@ if (length(tmp) != 0){
 ## ONMS Sound FILES- NCEI-GCP ####
 # e.g. ONMS_HI01_20231201_8021.1.48000_20231201_DAILY_MILLIDEC_MinRes.nc
 
-#NEW Pypam processing results in files ending in .nc not MinRes.nc!
-if (site == "ch01" | site == "fk08"){
+  #NEW Pypam processing results in files ending in .nc not MinRes.nc!
+  #check for old .MinRes.nc and new .nc in the products folder
+  #cant just take all .nc because folders w/ MinRes.nc also have netCDF.nc
+
   inFilesON = list.files(dirGCP, pattern = ".nc", recursive = T, full.names = T)
-  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 4), format = "%Y%m%d")
-  cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
-      sum( duplicated(dysON)), "duplicated days\n")
+
+  # Filter out files that end with 'netCDF.nc'
+  inFilesON = inFilesON[!grepl("netCDF\\.nc$", inFilesON)]
   
-} else{
+  #wierd xls coming through into nc list for some reason
+  inFilesON = inFilesON[!grepl(".xls", inFilesON)]
+  
+  mantaFiles = inFilesON[grepl("MinRes\\.nc$", inFilesON)]  # Files ending with '_MinRes.nc'
+  pypamFiles = inFilesON[!grepl("MinRes\\.nc$", inFilesON)]  # All other .nc files
+  
+  #you may need to change the number of the segment where the date is getting taken from he file name below
+  dysON1 = as.Date(sapply( strsplit(basename(mantaFiles), "_"), "[[", 5), format = "%Y%m%d")
+  #you may need to change the number of the segment where the date is getting taken from he file name below
+  dysON2 = as.Date(sapply( strsplit(basename(pypamFiles), "_"), "[[", 4), format = "%Y%m%d")
+  
+  dysON = c(dysON1, dysON2)
+  
+  # Output summary
+  cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min(dysON, na.rm = T)), " to ", as.character(max(dysON, na.rm = T)), 
+      ") with", sum(duplicated(dysON)), "duplicated days\n")
+  
+  
   # use code below for MB01 fix. there was MB02 data in NCEI folder, only want MB01
   #inFilesON = list.files(dirGCP, pattern = "^ONMS_MB01.*MinRes\\.nc$", recursive = TRUE, full.names = TRUE )
-  
-  inFilesON = list.files(dirGCP, pattern = "MinRes.nc", recursive = T, full.names = T)
-  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 5), format = "%Y%m%d")
-  cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
-      sum( duplicated(dysON)), "duplicated days\n")
 
-}
+
 
 
 ## NMFS-GCP NRS sound files
@@ -436,6 +452,9 @@ if ( length(pFile) > 0 ){   #append old (processedData) and save out all process
   #re-order columns
   # setdiff(colnames(gps_clean), colnames(processedData))
   print(names(processedData))
+  
+  processedData <- processedData[, -c(2:21)]
+  
   col_order = colnames(processedData)
   gps_clean1 = gps_clean[, col_order]
   names( processedData)
