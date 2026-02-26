@@ -88,7 +88,7 @@ display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfogra
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Seasonal soundscape conditions"]))
-display(HTML(gf.makeImage("plot_SB03_SeasonalSPL.jpg", "seasons")))
+display(HTML(gf.makeImage("plot_SB03_HMDSeasonalSPL.jpg", "seasons")))
 ```
 ### Ocean Sound Indicators
 ```{python}

@@ -1497,7 +1497,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
-            y =substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa at ", f, " Hz)"), list(f = ft) )
+            y =substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
               #substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
