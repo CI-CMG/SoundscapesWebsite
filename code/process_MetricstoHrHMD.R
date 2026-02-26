@@ -25,7 +25,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "oc02" 
+site  = "ch01" 
 site = tolower(site) 
 
 #add for NRS
@@ -35,8 +35,8 @@ site = tolower(site)
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
 #dirGCP = paste0( "C:/Users/emma.beretta/Documents/ONMS/", site,"/") # for NOAA computer
-#dirGCP = paste0( "C:/Users/embe5980/ONMS/", site,"/") # for CIRES computer
-dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
+dirGCP = paste0( "C:/Users/embe5980/ONMS/", site,"/") # for CIRES computer
+#dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
 #dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
 
 
@@ -53,8 +53,8 @@ dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/", site,"/")
 #outDir =  "/Users/quca3108/SoundscapesWebsite/"
 #outDir =  "F:/CODE/GitHub/SoundscapesWebsite/" 
 #outDir =  "C:/Users/emma.beretta/Documents/SoundscapesWebsite/" #for NOAA computer
-#outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
-outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation
+outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
+#outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation
 #outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
 
 outDirC = paste0( outDir,"content/resources/") #context
@@ -94,7 +94,7 @@ if (length(tmp) != 0){
 #NEW Pypam processing results in files ending in .nc not MinRes.nc!
 if (site == "ch01" | site == "fk08"){
   inFilesON = list.files(dirGCP, pattern = ".nc", recursive = T, full.names = T)
-  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 4), format = "%Y%m%d")
+  dysON = as.Date(sapply( strsplit(basename(inFilesON), "_"), "[[", 3), format = "%Y%m%d")
   cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min( dysON , na.rm = T)), " to ", as.character(max( dysON , na.rm = T)),") with",
       sum( duplicated(dysON)), "duplicated days\n")
   

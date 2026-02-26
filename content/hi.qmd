@@ -78,7 +78,7 @@ display(HTML(standardTextDict["conditions overview"]))
 #| echo: false
 display(HTML(standardTextDict["Soundscape Overview"]))
 
-display(HTML(gf.makeButtons(sites, "plot_***_SeasonalSPL.jpg", "Seasons")))
+display(HTML(gf.makeButtons(sites, "plot_***_HMDSeasonalSPL.jpg", "Seasons")))
 
 #display(HTML(f'''
 #<div id="button-group-Seasons">
@@ -141,7 +141,7 @@ display(HTML(infoHtml))
 #| echo: false
 display(HTML(standardTextDict["What are the latest conditions in ocean sound?"]))
 
-display(HTML(gf.makeButtons(sites, "plot_***_YearSPL.jpg", "YearSPL")))
+display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL")))
 ```
 
 <!-- ### How often are sources of interest likely present? -->
@@ -155,7 +155,7 @@ display(HTML(gf.makeButtons(sites, "plot_***_YearSPL.jpg", "YearSPL")))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["sources of interest typical"]))
-display(HTML(gf.makeButtons(sites, "plot_***-200-1000_status.jpg", "FOI")))
+display(HTML(gf.makeButtons(sites, "plot_***-200-1000_HMDstatus.jpg", "FOI")))
 ```
 :::
 
