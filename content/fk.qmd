@@ -8,7 +8,7 @@ import os
 import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
-sites = ["FK01","FK05","FK06"]
+sites = ["FK01","FK05","FK06", "FK08"]
 GGrouperGraphs = ["Daily_Activity", "Diel_Patterns"]
 GGrouperGraphsLabels = ["Daily Activity", "Diel Patterns"]
 
