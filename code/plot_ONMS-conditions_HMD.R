@@ -30,6 +30,7 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
 # NRSsites sb09 oc03 ci05 cb11 hi00
 
+
 ONMSsites = c("fk01")
 
 
@@ -548,8 +549,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasont$Season <- factor(seasont$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
     seasont <- season[order(seasont$Season), ]
     
-  } else if (site %in% c("fk06", "fk07", "fgb01", "fk08")){
+  } else if (site %in% c("fk07", "fgb01", "fk08")){
     summary2$Season <- factor(summary2$Season, levels = c("Spring", "Summer", "Fall"))
+    
+  } else if (site == "fk06"){
+    summary2$Season <- factor(summary2$Season, levels = c("Winter", "Spring", "Summer")) 
     
   } else if ( sidx == "wssf") {
     summary2$Season <- factor(summary2$Season, levels = c("Winter", "Spring", "Summer", "Fall"))
@@ -1127,6 +1131,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #(5) TIME SERIES- FOI ####
   # plot with error bars and median and hours above 75th percentile in title
+  
+  #before running loop, adjust height of graph in save() so that graph with less years is shorter
   if ( nrow(FOIst) > 0 ) {
     for (tt in 1: nrow(FOIst) ){ # tt = 1
       
@@ -1517,11 +1523,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
+        #adjust height variable for how many years of data there are
+          #ex: for graphs with one year of data change height of plot from 12 to 6
+          # graph with 2 years: 10
+          # graph with three of more years: 12
         ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
         
         
-        write.csv(dailyFQ_complete, file = paste0(outDirP, "/data_FGB01_FOI_", DC, ".csv") )
-       
       } else if (substring(site, 1, 2) == "hi") {
         # alternative methods for plg for Hawaii sites
         monthly_sequence = seq.Date(as.Date("2020-12-01"), as.Date("2021-06-01"), by = "month")
