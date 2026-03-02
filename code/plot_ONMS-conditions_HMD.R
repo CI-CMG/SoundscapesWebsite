@@ -28,7 +28,7 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-# NRSsites sb09 oc03 ci05 cb11 hi00
+# NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
 ONMSsites = c("sb03")
@@ -139,7 +139,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "hinrs04"
     site  = "NRS04"
     site5 = "hi00"
-  } else {
+  } else if (site == "as10"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs10"
+    site3 = "asnrs10"
+    site  = "NRS10"
+    site5 = "as10"
+      } else {
     site1 = site
     site3 = site
     site5 = site
