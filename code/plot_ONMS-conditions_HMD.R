@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("sb03")
+ONMSsites = c("fk06")
 
 
 ## directories ####
@@ -229,7 +229,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   file_info = file.info(inFile) 
   load( inFile[which.max(file_info$ctime)] ) #only load the most recent!
   # fk05 being weird w loading in most recent, used this 
-  load("X:/Emma_Beretta/SoundscapesWebsite/products/sb/HMDdata_sb03_HourlySPL-gfs_2026-01-21.Rda")
+  #load("X:/Emma_Beretta/SoundscapesWebsite/products/sb/HMDdata_sb03_HourlySPL-gfs_2026-01-21.Rda")
   
   if( exists("outData") ) {
     gps = outData
