@@ -265,11 +265,9 @@ if (length(inFiles) > 0) {
     
     #FOR ONMS gr01 data! onms has columns HMD_0-HMD_19 (all NA) but SS data starts at HMD_20
     #For SB03, remove HMD_0-HMD_19 from SS and ONMS data. There are values in those columns for SS dataset...
-    # if (f >= 1292){
-    #   cDatah_day = cDatah_day[, -c(2:22)]
-    # } else{
-    #   cDatah_day = cDatah_day[, -2]
-    # }
+    # if (f >= 59){
+    #   cDatah_day = cDatah_day[, -c(2:11)]
+    # } 
     
       data_list[[f]] = cDatah_day
     
@@ -454,9 +452,9 @@ if ( length(pFile) > 0 ){   #append old (processedData) and save out all process
   
   #re-order columns
   # setdiff(colnames(gps_clean), colnames(processedData))
-  print(names(processedData))
+  #print(names(processedData))
   
-  processedData <- processedData[, -c(2:21)]
+  #processedData <- processedData[, -c(2:21)]
   
   col_order = colnames(processedData)
   gps_clean1 = gps_clean[, col_order]
@@ -497,3 +495,4 @@ if ( length(pFile) > 0 ){   #append old (processedData) and save out all process
   processedFiles  = basename(inFiles)
   save(processedFiles, file = paste0(outDirP, "HMDfilesProcesed_", tolower(site), "_HourlySPL.Rda") )
 }
+

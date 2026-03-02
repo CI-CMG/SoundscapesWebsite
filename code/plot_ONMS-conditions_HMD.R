@@ -31,14 +31,14 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00
 
 
-ONMSsites = c("fk01")
+ONMSsites = c("sb03")
 
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
@@ -222,7 +222,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   inFile = list.files(outDirP, pattern = paste0("HMDdata_", tolower(site1), "_HourlySPL-gfs_.*\\.Rda$"), full.names = T)
   file_info = file.info(inFile) 
   load( inFile[which.max(file_info$ctime)] ) #only load the most recent!
-  # fk05 being weird w loading in most recent, used this load("C:/Users/embe5980/SoundscapesWebsite/products/fk/data_fk05_HourlySPL-gfs_2025-10-17.Rda")
+  # fk05 being weird w loading in most recent, used this 
+  load("X:/Emma_Beretta/SoundscapesWebsite/products/sb/HMDdata_sb03_HourlySPL-gfs_2026-01-21.Rda")
   
   if( exists("outData") ) {
     gps = outData
@@ -389,9 +390,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   gpsAG = gps %>%
     filter(yr %in% years_to_keep)
   
-  st = as.Date( min(gpsAG$UTC) )
-  ed = as.Date( max(gpsAG$UTC) )
-  udays = length( unique(as.Date(gpsAG$UTC)) )
+  stAG = as.Date( min(gpsAG$UTC) )
+  edAG = as.Date( max(gpsAG$UTC) )
+  udaysAG = length( unique(as.Date(gpsAG$UTC)) )
   
   
   # CHECK: DATA SUMMARY ####
@@ -480,8 +481,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #coord_flip() +
     labs(
       title = effort_title,
-      subtitle = paste0(toupper(site), " has ", udays, 
-                        " unique days: ", as.character(st), " to ", as.character(ed)),
+      subtitle = paste0(toupper(site), " has ", udaysAG, 
+                        " unique days: ", as.character(stAG), " to ", as.character(edAG)),
       x = "",
       y = "Days",
       fill = legend_label,
@@ -1166,7 +1167,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
       }else { # if FOI is a range of frequencies
         
+        
+        if (site == "gr01"){
+          ft = paste0( FOIst$FQstart [tt], "-891")
+        } else{
         ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
+        }
         
         hmdc = ( grep("HMD", colnames(gps)) )
         hmdn =  as.numeric( gsub("HMD_", "", colnames(gps)[hmdc]) )
