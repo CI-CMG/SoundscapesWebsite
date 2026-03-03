@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("ci01")
+ONMSsites = c("ci04")
 
 
 ## directories ####
@@ -1499,7 +1499,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
                   # fill = "#CCCCCC"
-                   fill =   "#8C8FD6",
+                   fill =  "#8C8FD6",
                    , alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
@@ -1523,7 +1523,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
-            y =substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
+            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
               #substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
@@ -1568,15 +1568,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
-                   fill = "#CCCCCC", alpha = 0.2) +
+                   fill = "#8C8FD6", alpha = 0.2) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q75, ymax = q99 ,
-                   fill = "lightcoral", alpha = 0.2) +
+                   fill = "#D4AF37", alpha = 0.2) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q01, ymax = q25,
-                   fill = "lightblue", alpha = 0.2) +
+                   fill = "#99CCFF", alpha = 0.2) +
           ylim(q01, q99) +
           
           geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
@@ -1588,13 +1588,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-40,150)) +
           labs(
-            title    = paste0("Are sound levels within \ntypical conditions for ", ft, "Hz?" ) , 
-            subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label[tt], "?" ) , 
+            #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
-            y = substitute(
-              paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"),
-              list(f = ft) )
+            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
           theme_minimal() +
@@ -1608,8 +1606,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ## save: plot 125 Hz time series with thresholds ####
         plg
-        plg2 = plg + pthrs + plot_layout(ncol = 2, widths = c(2, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        
+        plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
+        
         ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_status.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
         
       } else if (substring(site, 1, 2) == "pm") {
@@ -1633,15 +1633,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
-                   fill = "#CCCCCC", alpha = 0.2) +
+                   fill = "#8C8FD6", alpha = 0.2) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q75, ymax = q99 ,
-                   fill = "lightcoral", alpha = 0.2) +
+                   fill = "#D4AF37", alpha = 0.2) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q01, ymax = q25,
-                   fill = "lightblue", alpha = 0.2) +
+                   fill = "#99CCFF", alpha = 0.2) +
           ylim(q01, q99) +
           
           geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
@@ -1653,13 +1653,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-90,185)) +  #FOR PM01 w/ Oct and Nov
           labs(
-            title    = paste0("Are sound levels within \ntypical conditions for ", ft, "Hz?" ) , 
-            subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label[tt], "?" ) , 
+            #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
-            y = substitute(
-              paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"),
-              list(f = ft) )
+            substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
           theme_minimal() +
@@ -1673,9 +1671,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ## save: plot 125 Hz time series with thresholds ####
         plg
-        plg2 = plg + pthrs + plot_layout(ncol = 2, widths = c(2, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        
+        plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_statuswOctNovnoX.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
+        
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_status.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
         
       }
     }
