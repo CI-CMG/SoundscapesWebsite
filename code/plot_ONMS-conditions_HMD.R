@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("mb01")
+ONMSsites = c("ch01")
 
 
 ## directories ####
@@ -1205,7 +1205,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           ft = paste0( FOIst$FQstart [tt], "-891")
         } else if(site == "ci01" & tt == 2){
           ft = "6998-11220"
-        } else{
+        } else if(site == "mb01" & tt == 2){
+          ft = "100-800"
+        } else {
           ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
         }
         
@@ -1541,7 +1543,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           facet_wrap(~yr, ncol = 1)+
           scale_x_continuous(limits = c(0,365), breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
