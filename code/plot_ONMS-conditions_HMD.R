@@ -31,14 +31,14 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("fk06")
+ONMSsites = c("ci01")
 
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
@@ -768,6 +768,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   if(site == "ci01"){
     FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
     FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
+  } else if(site == "ch01"){
+    FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
+    FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
+    
+    FOIsL <- FOIs %>% filter(Label == "Humpback")
+    FOIs <- FOIs %>% filter(Label != "Humpback")
   } else{
     FOIsL = FOIs[0, ]
   }
@@ -1176,8 +1182,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         if (site == "gr01"){
           ft = paste0( FOIst$FQstart [tt], "-891")
+        } else if(site == "ci01" & tt == 2){
+          ft = "6998-11220"
         } else{
-        ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
+          ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
         }
         
         hmdc = ( grep("HMD", colnames(gps)) )
