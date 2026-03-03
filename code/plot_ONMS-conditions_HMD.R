@@ -31,14 +31,14 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("ci04")
+ONMSsites = c("mb01")
 
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
@@ -1568,15 +1568,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
-                   fill = "#8C8FD6", alpha = 0.2) +
+                   fill = "#8C8FD6", alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q75, ymax = q99 ,
-                   fill = "#D4AF37", alpha = 0.2) +
+                   fill = "#D4AF37", alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q01, ymax = q25,
-                   fill = "#99CCFF", alpha = 0.2) +
+                   fill = "#99CCFF", alpha = 0.5) +
           ylim(q01, q99) +
           
           geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
@@ -1633,15 +1633,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q25, ymax = q75,
-                   fill = "#8C8FD6", alpha = 0.2) +
+                   fill = "#8C8FD6", alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q75, ymax = q99 ,
-                   fill = "#D4AF37", alpha = 0.2) +
+                   fill = "#D4AF37", alpha = 0.5) +
           annotate("rect",
                    xmin = -Inf, xmax = Inf,
                    ymin = q01, ymax = q25,
-                   fill = "#99CCFF", alpha = 0.2) +
+                   fill = "#99CCFF", alpha = 0.5) +
           ylim(q01, q99) +
           
           geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
