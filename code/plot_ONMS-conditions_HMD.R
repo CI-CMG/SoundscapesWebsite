@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("oc02")
+ONMSsites = c("mb01")
 
 
 ## directories ####
@@ -551,6 +551,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasont$Season <- factor(seasont$Season, levels = c("Early", "Peak", "Late", "Non"))
     seasont <- season[order(seasont$Season), ]
     
+  } else if(site == "ch01"){
+    summary2$Season <- factor(summary2$Season, levels = c("Post-Upwelling"))
+    
   } else if (sidx == "upwelling") {
     summary2$Season <- factor(summary2$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
     seasont$Season <- factor(seasont$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
@@ -768,14 +771,17 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   if(site == "ci01"){
     FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
     FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
+    
   } else if(site == "ch01"){
     FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
     FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
+     
+    FOIsRangeL <- FOIsRange %>% filter(Label == "Humpback Whale")
+    FOIsRange <- FOIsRange %>% filter(Label != "Humpback Whale")
     
-    FOIsL <- FOIs %>% filter(Label == "Humpback")
-    FOIs <- FOIs %>% filter(Label != "Humpback")
   } else{
     FOIsL = FOIs[0, ]
+    FOIsRangeL = FOIs[0, ]
   }
  
   
@@ -814,6 +820,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
    
+    # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
+              fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
+    geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
+    
+    
     labs(
        subtitle = seasonLabel,
        caption  = caption_text,
@@ -1017,7 +1031,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
-    scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
+    # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
+              fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
+    geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
+    
+     scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
     # Additional aesthetics
     theme_minimal() +
     labs(
@@ -1147,7 +1168,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #before running loop, adjust height of graph in save() so that graph with less years is shorter
   if ( nrow(FOIst) > 0 ) {
-    for (tt in 1: nrow(FOIst) ){ # tt = 1
+    for (tt in 1: nrow(FOIst) ){ # tt = 2
       
       #check to see if the FOI is broad band
       if (FOIst$FQstart [tt] == FOIst$FQend [tt] ){
@@ -1307,6 +1328,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         levels = c( "Low", "Within Range", "High")
       )
       yrFQ$yr = factor(yrFQ$yr, levels = rev(sort(unique(yrFQ$yr))))
+      yrFQ <- na.omit(yrFQ)
       
       
       ### plot: annual threshold bars
@@ -1547,7 +1569,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           #ex: for graphs with one year of data change height of plot from 12 to 6
           # graph with 2 years: 10
           # graph with three of more years: 12
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 10, dpi = 300)
         
         
       } else if (substring(site, 1, 2) == "hi") {
