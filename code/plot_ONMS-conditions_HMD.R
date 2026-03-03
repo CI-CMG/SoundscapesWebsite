@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("ci04")
+ONMSsites = c("oc02")
 
 
 ## directories ####
