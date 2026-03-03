@@ -137,7 +137,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 
 display(HTML(standardTextDict["NARW"]))
-display(HTML(gf.makeImage("GR01_NARW_presence.png", "daily activity")))
+display(HTML(gf.makeImage("GR01_NARW_presence.png", "daily activity", 900)))
 
 ```
 

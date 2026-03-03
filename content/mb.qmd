@@ -8,7 +8,7 @@ import os
 import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
-sites = ["MB01", "MB02"]
+sites = ["MB01", "MB02", "MB05"]
 fishsites = ["MB01", "MB02", "MB05"]
 humpbacksites = ["MB01", "MB02", "MB03"]
 
