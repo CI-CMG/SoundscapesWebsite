@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("mb01")
+ONMSsites = c("mb02")
 
 
 ## directories ####
@@ -236,12 +236,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     rm(outData)
   }
   
-  # #remove 2018 from all data for hi01 b/c only 1 day of recording
-  # if(site == "hi01"){
-  #   gps = gps %>%
-  #     filter(yr != 2018)
-  # }
-  
   st = as.Date( min(gps$UTC) )
   ed = as.Date( max(gps$UTC) )
   udays = length( unique(as.Date(gps$UTC)) )
@@ -250,9 +244,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #FOR NEW OC02 DATA!!!
   #ALSO MB02
+  # these sites have duplicate data (two deployments overlapped) so we need to average dB values 
+  # between Jan 29 2024 and March 15 2024
+  # should be good now sinc I saved non duplicate data to products, but keeping incase we need to fix this issue again
   
-  #these sites have duplicate data (two deployments overlapped) so we need to average dB values 
-  #between Jan 29 2024 and March 15 2024
   # if (site == "oc02"){
   # 
   #   #gps row 12340 to 14561 are duplicates
@@ -315,21 +310,26 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # }
   
   #for GR01! Removing HMD_20 until we can fix data quality matrix to have 20 Hz ONMS data
-  #gps = gps[, -2]
+  # if (site == "gr01"){
+  # gps = gps[, -2]
+  # }
+   
+  # #for SB03! forgot to remove HMD_0-19 during processing
+  # if (site == "sb03"){
+  # gps = gps[, -c(2:22)]
+  # }
   
-  #for SB03! forgot to remove HMD_0-19 during processing
-  #gps = gps[, -c(2:22)]
-  
-  #SB01 and SB03: remove 2018
-  # gps = gps %>%
-  #   filter(yr != 2018)
-  
-  #GR01: remove 2018
-  # gps = gps %>%
-  #   filter(yr != 2022)
   
   #MB02: remove HMD_0-20
-  #gps = gps[, -c(2:22)]
+  if (site == "mb02"){
+  gps = gps[, -c(2:22)]
+  }
+  
+  #remove 2018 from all data for hi01 b/c only 1 day of recording
+  if(site == "hi01"){
+    gps = gps %>%
+      filter(yr != 2018)
+  }
   
   Fq = as.numeric( as.character( gsub("HMD_", "",  colnames(gps)[grep("HMD", colnames(gps))] ) ))
   
@@ -779,7 +779,11 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     FOIsRangeL <- FOIsRange %>% filter(Label == "Humpback Whale")
     FOIsRange <- FOIsRange %>% filter(Label != "Humpback Whale")
     
-  } else{
+  } else if(site == "mb02"){
+    FOIsL <- FOIs %>% filter(Label == "White Seabass Chorus")
+    FOIs <- FOIs %>% filter(Label != "White Seabass Chorus")
+    
+  }else {
     FOIsL = FOIs[0, ]
     FOIsRangeL = FOIs[0, ]
   }
