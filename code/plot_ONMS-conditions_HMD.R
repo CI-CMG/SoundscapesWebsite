@@ -1166,7 +1166,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #  cat("TRACE", i, "\n")
   #print(interactive_plot$x$data[[i]][c("name","fill","mode","hoverinfo")])
   #}
-  
+
   
   
   
@@ -1578,7 +1578,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           #ex: for graphs with one year of data change height of plot from 12 to 6
           # graph with 2 years: 10
           # graph with three of more years: 12
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 10, dpi = 300)
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 6, dpi = 300)
         
         
       } else if (substring(site, 1, 2) == "hi") {
