@@ -153,8 +153,7 @@ display(HTML(gf.makeImage("plot_CINMSHumpbackWhaleDetections.jpeg", "time series
 
 
 
-<!-- #test
-### When do whales contribute to the soundscape, indicating their presence nearby? -->
+<!-- When do whales contribute to the soundscape, indicating their presence nearby? -->
 <!-- ```{python} -->
 <!-- #| echo: false -->
 <!-- display(HTML("Coming soon!")) -->
