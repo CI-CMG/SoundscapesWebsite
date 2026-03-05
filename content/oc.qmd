@@ -174,6 +174,11 @@ display(HTML(infoHtml4))
 #| echo: false
 display(HTML(standardTextDict["killer-whales"]))
 display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca")))
+
+
+display(HTML(standardTextDict["humpback-whales-OC"]))
+display(HTML(gf.makeImage("OCNMS_HumpbackWhaleDetections.jpeg", "time series humpback")))
+
 ```
 
 
