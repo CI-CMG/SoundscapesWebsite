@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites sb09 oc03 ci05 cb11 hi00 as10
 
 
-ONMSsites = c("hi04")
+ONMSsites = c("pm01")
 
 
 ## directories ####
@@ -1175,7 +1175,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #before running loop, adjust height of graph in save() so that graph with less years is shorter
   if ( nrow(FOIst) > 0 ) {
-    for (tt in 1: nrow(FOIst) ){ # tt = 2
+    for (tt in 1: nrow(FOIst) ){ # tt = 1       tt = 2
       
       #check to see if the FOI is broad band
       if (FOIst$FQstart [tt] == FOIst$FQend [tt] ){
@@ -1214,6 +1214,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           ft = "6998-11220"
         } else if(site == "mb01" & tt == 2){
           ft = "100-800"
+        } else if(site == "hi04"){
+          ft = "90-708"
         } else {
           ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
         }
@@ -1454,6 +1456,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       # 
       # 
       
+      
+      #adjust for HI and PM
+      dailyFQ$mth = month(dailyFQ$Date)
+      dailyFQ$yr[dailyFQ$mth == 12] = dailyFQ$yr[dailyFQ$mth == 12] + seasonShift
+      
+      if(substring(site, 1, 2) == "pm") {
+        dailyFQ$yr[dailyFQ$mth == 11] = dailyFQ$yr[dailyFQ$mth == 11] + seasonShift
+        dailyFQ$yr[dailyFQ$mth == 10] = dailyFQ$yr[dailyFQ$mth == 10] + seasonShift
+      }
+      
+      
+      
       # without NA on pies and as proportions
       pies <- dailyFQ %>%
         mutate(status = case_when(
@@ -1619,7 +1633,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-40,150)) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
@@ -1641,7 +1655,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_status.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
         
       } else if (substring(site, 1, 2) == "pm") {
         # alternative methods for plg for Papahanamokuakea sites
@@ -1688,7 +1702,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
-            substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
+            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
           theme_minimal() +
@@ -1706,7 +1720,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_status.jpg"), plot = plg2, width = 10, height = 12, dpi = 300)
+        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = 10, dpi = 300)
         
       }
     }
