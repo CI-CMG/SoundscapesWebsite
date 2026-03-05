@@ -177,7 +177,7 @@ display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca")))
 
 
 display(HTML(standardTextDict["humpback-whales-OC"]))
-display(HTML(gf.makeImage("OCNMS_HumpbackWhaleDetections.jpeg", "time series humpback")))
+display(HTML(gf.makeImage("plot_OCNMSHumpbackWhaleDetections.jpeg", "time series humpback")))
 
 ```
 
