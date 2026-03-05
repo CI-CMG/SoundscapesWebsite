@@ -140,6 +140,19 @@ display(HTML(standardTextDict["Fish Chorus"]))
 display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlot.jpg", "daily_fish_choruses")))
 ```
 
+
+### When are the seasonal biologically-important times for whales?
+
+```{python}
+#| echo: false
+
+display(HTML(standardTextDict["humpback-whales-CI"]))
+display(HTML(gf.makeImage("plot_CINMSHumpbackWhaleDetections.jpeg", "time series humpback")))
+
+```
+
+
+
 <!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
 <!-- ```{python} -->
 <!-- #| echo: false -->
