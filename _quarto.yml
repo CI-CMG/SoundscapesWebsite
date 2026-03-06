@@ -52,7 +52,7 @@ website:
         target: _blank
         text: ONMS Sound Project Page
       - text: <br>
-      - text: <b>East Coast Region</b>
+      - text: <b>Eastern Region</b>
       - href: content/sb.qmd
         text: Stellwagen Bank
       - href: content/fgb.qmd
