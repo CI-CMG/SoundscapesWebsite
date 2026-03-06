@@ -147,7 +147,7 @@ display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlot.jpg", "daily_fish_chor
 #| echo: false
 
 display(HTML(standardTextDict["humpback-whales-CI"]))
-display(HTML(gf.makeImage("plot_CINMSHumpbackWhaleDetections.jpeg", "time series humpback")))
+display(HTML(gf.makeImage("plot_CINMSHumpbackWhaleDetections.jpg", "time series humpback")))
 
 ```
 
