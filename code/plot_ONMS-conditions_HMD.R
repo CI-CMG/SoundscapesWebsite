@@ -32,7 +32,7 @@ rm(list=ls())
 
 
 
-ONMSsites = c("as10")
+ONMSsites = c("ch13")
 
 
 ## directories ####
