@@ -32,15 +32,15 @@ rm(list=ls())
 
 
 
-ONMSsites = c("mb02")
+ONMSsites = c("mb01")
 
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
 #outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
-outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
