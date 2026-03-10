@@ -333,6 +333,20 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   Fq = as.numeric( as.character( gsub("HMD_", "",  colnames(gps)[grep("HMD", colnames(gps))] ) ))
   
+  
+  #Removing frequencies that have instrument issues that were not marked in data quality matrix
+  #DIPS at ~3k Hz. They vary by site.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   # ##REMOVE sanctsound data ####
   # if (removess == 1){
   #   idxDD = which(endSS$site == site)
@@ -772,6 +786,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
     FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
     
+    FOIsRangeL = FOIs[0, ]
+    
   } else if(site == "ch01"){
     FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
     FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
@@ -780,8 +796,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     FOIsRange <- FOIsRange %>% filter(Label != "Humpback Whale")
     
   } else if(site == "mb02"){
-    FOIsL <- FOIs %>% filter(Label == "White Seabass Chorus")
-    FOIs <- FOIs %>% filter(Label != "White Seabass Chorus")
+    FOIsRangeL <- FOIsRange %>% filter(Label == "Humpback Whale")
+    FOIsRange <- FOIsRange %>% filter(Label != "Humpback Whale")
+   
     
   }else {
     FOIsL = FOIs[0, ]
@@ -818,15 +835,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges
-    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
@@ -1030,14 +1047,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
     
     # Add vertical set dash lines and grey shaded region at FOI ranges
-    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
-    # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "black",linewidth = .5) +
+   
+     # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
