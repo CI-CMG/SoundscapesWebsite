@@ -443,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="ocean-sound-monitoring" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-monitoring">Ocean Sound Monitoring</h2>
-<div id="fdee92fe" class="cell" data-execution_count="2">
+<div id="fb6e9ced" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 Every winter, thousands of humpback whales travel to the warm, shallow waters of Hawai‘i to mate, give birth, and raise their young. <a href="https://hawaiihumpbackwhale.noaa.gov/" target="_blank">Hawaiian Islands Humpback Whale National Marine Sanctuary</a> (HIHWNMS) protects these whales and their habitat. 
 <br><br>
@@ -455,7 +455,7 @@ Current ONMS ocean sound monitoring and analysis is maintained at four sites wit
 </div>
 <section id="summary-of-monitoring-sites" class="level3">
 <h3 class="anchored" data-anchor-id="summary-of-monitoring-sites">Summary of monitoring sites</h3>
-<div id="53653b06" class="cell" data-execution_count="3">
+<div id="7b42df0e" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/HINMSSiteMap.jpg" width="700" id="HI Site Map" onclick="this.requestFullscreen()" style="display: block; margin-left: auto; margin-right: auto">
                     <script>
@@ -567,14 +567,14 @@ Current ONMS ocean sound monitoring and analysis is maintained at four sites wit
 </section>
 <section id="ocean-sound-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-conditions">Ocean Sound Conditions</h2>
-<div id="f45b9ca3" class="cell" data-execution_count="4">
+<div id="be79e625" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 Soundscapes vary across years, seasons, and even within a day. Differences are driven by shifts in wind and weather patterns, migration and behavior of animals, and patterns in human activities. We track how sound levels change in different frequencies using standardized soundscape metrics to understand these changes. Seasonal and annual percentiles of all the data are used to define typical conditions.
 </div>
 </div>
 <section id="what-are-the-seasonal-patterns-across-frequencies" class="level3">
 <h3 class="anchored" data-anchor-id="what-are-the-seasonal-patterns-across-frequencies">What are the seasonal patterns across frequencies?</h3>
-<div id="4f95f31b" class="cell" data-execution_count="5">
+<div id="13cee45d" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 Season is often a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. As shown on the graphic(s) below, we can visualize the differences by looking at the variation across <b>frequency</b> (pitch of the sound in Hertz) shown on the x-axis and <b>intensity</b> (how loud the sound is in decibels) shown on the y-axis. The colored lines represent <b>seasonal categories</b>, vertical lines are the start of a frequency range that continues over the shaded area that a <b>sound source of interest</b> can be heard, and the black lines bound the soundscape to expected range of intensity based on when only <b>wind noise</b> is present.
  <br style="line-height: 1;">
@@ -587,7 +587,7 @@ Season is often a main driver of soundscape differences: wind and weather patter
  (3) Are the low-frequency sound levels outside the expected range for wind noise?
 </div>
 <div class="cell-output cell-output-display">
-<button id="HI01Seasonsbutton" onclick="HI01Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">HI01</button><button id="HI03Seasonsbutton" onclick="HI03Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI03</button><button id="HI04Seasonsbutton" onclick="HI04Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI04</button><button id="HI08Seasonsbutton" onclick="HI08Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI08</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_HI01_HMDSeasonalSPL.jpg" width="700" id="Seasons" onclick="this.requestFullscreen()">
+<button id="HI01Seasonsbutton" onclick="HI01Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">HI01</button><button id="HI03Seasonsbutton" onclick="HI03Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI03</button><button id="HI04Seasonsbutton" onclick="HI04Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI04</button><button id="HI08Seasonsbutton" onclick="HI08Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI08</button><button id="NRS04Seasonsbutton" onclick="NRS04Seasons()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS04</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_HI01_HMDSeasonalSPL.jpg" width="700" id="Seasons" onclick="this.requestFullscreen()">
                     <script>
                     function toggleSeasons() {
                         var imgElement = document.getElementById('Seasons');
@@ -608,7 +608,8 @@ Season is often a main driver of soundscape differences: wind and weather patter
                         const otherButtonHI03 = document.getElementById('HI03Seasonsbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04Seasonsbutton');
                         otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08Seasonsbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04Seasonsbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -621,7 +622,8 @@ Season is often a main driver of soundscape differences: wind and weather patter
                         const otherButtonHI01 = document.getElementById('HI01Seasonsbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04Seasonsbutton');
                         otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08Seasonsbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04Seasonsbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -634,7 +636,8 @@ Season is often a main driver of soundscape differences: wind and weather patter
                         const otherButtonHI01 = document.getElementById('HI01Seasonsbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03Seasonsbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08Seasonsbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04Seasonsbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -647,7 +650,22 @@ Season is often a main driver of soundscape differences: wind and weather patter
                         const otherButtonHI01 = document.getElementById('HI01Seasonsbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03Seasonsbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04Seasonsbutton');
-                        otherButtonHI04.style.backgroundColor = '#008CBA';
+                        otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04Seasonsbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS04Seasons() {
+                        var imgElement = document.getElementById('Seasons');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS04_HMDSeasonalSPL.jpg";
+                        const thisButton = document.getElementById('NRS04Seasonsbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonHI01 = document.getElementById('HI01Seasonsbutton');
+                        otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03Seasonsbutton');
+                        otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04Seasonsbutton');
+                        otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08Seasonsbutton');
+                        otherButtonHI08.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -684,7 +702,7 @@ For the MANTA and PyPAM results <a href="https://github.com/TaikiSan21/PAMscapes
 </section>
 <section id="how-are-ocean-sound-conditions-changing-across-years" class="level3">
 <h3 class="anchored" data-anchor-id="how-are-ocean-sound-conditions-changing-across-years">How are ocean sound conditions changing across years?</h3>
-<div id="6ab58464" class="cell" data-execution_count="6">
+<div id="6bfe0cb9" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 Comparing annual ocean sound levels over time can track changes in ocean noise and its contributors. Efforts to reduce noise impacts to marine animals are underway on local to global scales. Strategies can include avoidance of times and areas with high vulnerability, changing the operation of a noise source (e.g., by slowing down) or through the design and use of alternative, quieter sources (vessel speed reduction strategies). The effectiveness of these approaches, and the scales over which they are effective, can be tracked through comprehensive monitoring efforts. A focused analysis is often necessary to tease apart the multiple drivers of ocean sound levels, however, annual summaries provide initial insights to overall patterns.
 <br style="line-height: .5;">
@@ -695,7 +713,7 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
 (2) Are there peaks in the sound levels for any of the sounds of interest? Do they differ across years?
 </div>
 <div class="cell-output cell-output-display">
-<button id="HI01YearSPLbutton" onclick="HI01YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">HI01</button><button id="HI03YearSPLbutton" onclick="HI03YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI03</button><button id="HI04YearSPLbutton" onclick="HI04YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI04</button><button id="HI08YearSPLbutton" onclick="HI08YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI08</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_HI01_HMDYearSPL.jpg" width="700" id="YearSPL" onclick="this.requestFullscreen()">
+<button id="HI01YearSPLbutton" onclick="HI01YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">HI01</button><button id="HI03YearSPLbutton" onclick="HI03YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI03</button><button id="HI04YearSPLbutton" onclick="HI04YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI04</button><button id="HI08YearSPLbutton" onclick="HI08YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI08</button><button id="NRS04YearSPLbutton" onclick="NRS04YearSPL()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS04</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_HI01_HMDYearSPL.jpg" width="700" id="YearSPL" onclick="this.requestFullscreen()">
                     <script>
                     function toggleYearSPL() {
                         var imgElement = document.getElementById('YearSPL');
@@ -716,7 +734,8 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
                         const otherButtonHI03 = document.getElementById('HI03YearSPLbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04YearSPLbutton');
                         otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08YearSPLbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04YearSPLbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -729,7 +748,8 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
                         const otherButtonHI01 = document.getElementById('HI01YearSPLbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04YearSPLbutton');
                         otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08YearSPLbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04YearSPLbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -742,7 +762,8 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
                         const otherButtonHI01 = document.getElementById('HI01YearSPLbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03YearSPLbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08YearSPLbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04YearSPLbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -755,7 +776,22 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
                         const otherButtonHI01 = document.getElementById('HI01YearSPLbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03YearSPLbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04YearSPLbutton');
-                        otherButtonHI04.style.backgroundColor = '#008CBA';
+                        otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04YearSPLbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS04YearSPL() {
+                        var imgElement = document.getElementById('YearSPL');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS04_HMDYearSPL.jpg";
+                        const thisButton = document.getElementById('NRS04YearSPLbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonHI01 = document.getElementById('HI01YearSPLbutton');
+                        otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03YearSPLbutton');
+                        otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04YearSPLbutton');
+                        otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08YearSPLbutton');
+                        otherButtonHI08.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -770,12 +806,12 @@ Comparing annual ocean sound levels over time can track changes in ocean noise a
 </section>
 <section id="is-the-intensity-loudness-of-sound-sources-of-interest-within-typical-range" class="level3">
 <h3 class="anchored" data-anchor-id="is-the-intensity-loudness-of-sound-sources-of-interest-within-typical-range">Is the intensity (loudness) of sound sources of interest within typical range?</h3>
-<div id="22198e55" class="cell" data-execution_count="7">
+<div id="12512b49" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 In some soundscapes, we can use specific frequencies as indicators for the presence of a source of interest (e.g. species presence and behavior). Monitoring sites are often chosen because a known source is present and we want to track that source. These sources need to be the dominant sound energy contributor to the specific frequency or frequency range. For example, seasonal migration of humpback whales to Hawaiian Islands results in soundscapes dominated by their calling between 200 and 1,000 Hz. At sites near commercial shipping lanes, 63 Hz and 125 Hz are used as an indicator for ship noise.  At sites where snapping shrimp are present, 10,000 Hz is used as an indicator of their sounds. Only frequencies that have been identified as reliable for tracking a source of interest are shown below. 
 </div>
 <div class="cell-output cell-output-display">
-<button id="HI01FOIbutton" onclick="HI01FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">HI01</button><button id="HI03FOIbutton" onclick="HI03FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI03</button><button id="HI04FOIbutton" onclick="HI04FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI04</button><button id="HI08FOIbutton" onclick="HI08FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI08</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_HI01-90-708_HMDstatus.jpg" width="700" id="FOI" onclick="this.requestFullscreen()">
+<button id="HI01FOIbutton" onclick="HI01FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #BA2F00;text-transform: uppercase;">HI01</button><button id="HI03FOIbutton" onclick="HI03FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI03</button><button id="HI04FOIbutton" onclick="HI04FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI04</button><button id="HI08FOIbutton" onclick="HI08FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">HI08</button><button id="NRS04FOIbutton" onclick="NRS04FOI()" style="padding: 10px; color: white; margin: 4px 4px; background-color: #008CBA;text-transform: uppercase;">NRS04</button><img src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_HI01-90-708_HMDstatus.jpg" width="700" id="FOI" onclick="this.requestFullscreen()">
                     <script>
                     function toggleFOI() {
                         var imgElement = document.getElementById('FOI');
@@ -796,7 +832,8 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
                         const otherButtonHI03 = document.getElementById('HI03FOIbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04FOIbutton');
                         otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08FOIbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04FOIbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -809,7 +846,8 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
                         const otherButtonHI01 = document.getElementById('HI01FOIbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04FOIbutton');
                         otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08FOIbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04FOIbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -822,7 +860,8 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
                         const otherButtonHI01 = document.getElementById('HI01FOIbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03FOIbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08FOIbutton');
-                        otherButtonHI08.style.backgroundColor = '#008CBA';
+                        otherButtonHI08.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04FOIbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -835,7 +874,22 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
                         const otherButtonHI01 = document.getElementById('HI01FOIbutton');
                         otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03FOIbutton');
                         otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04FOIbutton');
-                        otherButtonHI04.style.backgroundColor = '#008CBA';
+                        otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonNRS04 = document.getElementById('NRS04FOIbutton');
+                        otherButtonNRS04.style.backgroundColor = '#008CBA';
+                    }
+                    </script>
+        
+                    <script>
+                    function NRS04FOI() {
+                        var imgElement = document.getElementById('FOI');
+                        imgElement.src = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/plot_NRS04-90-708_HMDstatus.jpg";
+                        const thisButton = document.getElementById('NRS04FOIbutton');
+                        thisButton.style.backgroundColor = '#BA2F00';
+                        const otherButtonHI01 = document.getElementById('HI01FOIbutton');
+                        otherButtonHI01.style.backgroundColor = '#008CBA';const otherButtonHI03 = document.getElementById('HI03FOIbutton');
+                        otherButtonHI03.style.backgroundColor = '#008CBA';const otherButtonHI04 = document.getElementById('HI04FOIbutton');
+                        otherButtonHI04.style.backgroundColor = '#008CBA';const otherButtonHI08 = document.getElementById('HI08FOIbutton');
+                        otherButtonHI08.style.backgroundColor = '#008CBA';
                     }
                     </script>
         
@@ -845,7 +899,7 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
 </section>
 <section id="ocean-sound-indicators" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-indicators">Ocean Sound Indicators</h2>
-<div id="c89dc74c" class="cell" data-execution_count="8">
+<div id="79afc7c9" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 We can use long-term monitoring of ocean sound to derive and track indicators of ocean conditions. These indicators track the status and trend of habitat condition, species presence, human-use patterns, and management activities.  There are many analytical methods used to generate ocean sound indicators. Below are ocean sound indicators relevant to the sanctuary and available for <a href="https://sanctuarywatch.ioos.us/" target="_blank"> condition tracking</a>. 
 </div>
