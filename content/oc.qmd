@@ -131,42 +131,42 @@ display(HTML(gf.makeButtons(sites, "plot_***-112-141_HMDstatus.jpg", "FOI")))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
-### How much noise from large vessels may be interfering with whale communication?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["large vessels interfer"]))
-display(HTML(gf.makeImage("plot_OC02_AISMonthAbove.jpg", "SoundLevelVariance"))) 
+<!-- ### How much noise from large vessels may be interfering with whale communication? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["large vessels interfer"])) -->
+<!-- display(HTML(gf.makeImage("plot_OC02_AISMonthAbove.jpg", "SoundLevelVariance")))  -->
 
-infoHtml3 = f'''
-        <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).showModal()">Table of Results</button>
-            <dialog id="infoModal3">
-                {gf.makeImage("table_OC02_AISMonthAbove.jpg", "AISMonthlyTables")}
-                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).close()">
-                    Close
-                </button>
-            </dialog>
-'''
-display(HTML(infoHtml3))
-# NEED TO ADD BUTTON: "See Table Results" table_***_AISMonthAbove.jpg
-```
-### How does the level of traffic change conditions?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["level of traffic"]))
-display(HTML(gf.makeImage("plot_OC02_AIShist.jpg", "Histogram")))
+<!-- infoHtml3 = f''' -->
+<!--         <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).showModal()">Table of Results</button> -->
+<!--             <dialog id="infoModal3"> -->
+<!--                 {gf.makeImage("table_OC02_AISMonthAbove.jpg", "AISMonthlyTables")} -->
+<!--                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).close()"> -->
+<!--                     Close -->
+<!--                 </button> -->
+<!--             </dialog> -->
+<!-- ''' -->
+<!-- display(HTML(infoHtml3)) -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AISMonthAbove.jpg -->
+<!-- ``` -->
+<!-- ### How does the level of traffic change conditions? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["level of traffic"])) -->
+<!-- display(HTML(gf.makeImage("plot_OC02_AIShist.jpg", "Histogram"))) -->
 
-infoHtml4 = f'''
-        <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).showModal()">Table of Results</button>
-            <dialog id="infoModal4">
-                {gf.makeImage("table_OC02_AIShist.jpg", "AISHistTables")}
-                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).close()">
-                    Close
-                </button>
-            </dialog>
-'''
-display(HTML(infoHtml4))
-# NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg
-```
+<!-- infoHtml4 = f''' -->
+<!--         <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).showModal()">Table of Results</button> -->
+<!--             <dialog id="infoModal4"> -->
+<!--                 {gf.makeImage("table_OC02_AIShist.jpg", "AISHistTables")} -->
+<!--                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).close()"> -->
+<!--                     Close -->
+<!--                 </button> -->
+<!--             </dialog> -->
+<!-- ''' -->
+<!-- display(HTML(infoHtml4)) -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg -->
+<!-- ``` -->
 
 ### When are the seasonal biologically-important times for whales?
 

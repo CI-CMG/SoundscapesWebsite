@@ -843,15 +843,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges
-    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
-    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
+  #  geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "grey50",linewidth = .5) +
+  #  geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "grey50",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), color = "black", angle = 90, vjust = 1, hjust = 0.45, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
+   # geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "grey50",linewidth = .5) +
+  #  geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "grey50",linewidth = .5) +
     geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), color = "black", angle = 90, vjust = 0, hjust = 0.5, size = 4) +
@@ -1048,15 +1048,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
 #plot
   p = ggplot() +
-    geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
-                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.1) + # Use alpha for transparency
-    #median HMD values- each year
-    geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year), linewidth = 2) +
-    #median HMD values- all data
-    geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
-              linetype = "dotted") +
-    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
-            fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
     #wind model
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windUpp,], aes(x = variable, y = value), color = "black", linewidth = 1) +
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black", linewidth = 1) +
@@ -1072,18 +1063,28 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
     
     # Add vertical set dash lines and grey shaded region at FOI ranges
-    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
-    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    #geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
    
      # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "red",linewidth = .5) +
+    #geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    #geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
+    
+    geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
+                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.1) + # Use alpha for transparency
+    #median HMD values- each year
+    geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year), linewidth = 2) +
+    #median HMD values- all data
+    geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
+              linetype = "dotted") +
+    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
+              fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
     
      scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
     # Additional aesthetics

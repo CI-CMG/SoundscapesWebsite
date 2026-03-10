@@ -132,40 +132,40 @@ display(HTML(gf.makeButtons(sites, "plot_***-113-141_HMDstatus.jpg", "FOI2")))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
-### How much noise from large vessels may be interfering with whale communication?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["large vessels interfer"]))
-display(HTML(gf.makeButtons(["SB01", "SBO3"], "plot_***_AISMonthAbove.jpg", "SoundLevelVariance")))
-infoHtml3 = f'''
-        <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).showModal()">Table of Results</button>
-            <dialog id="infoModal3">
-                {gf.makeButtons(["SB01", "SBO3"], "table_***_AISMonthAbove.jpg", "AISMonthlyTables")}
-                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).close()">
-                    Close
-                </button>
-            </dialog>
-'''
-display(HTML(infoHtml3))
-# NEED TO ADD BUTTON: "See Table Results" table_***_AISMonthAbove.jpg
-```
-### How does the level of traffic change conditions?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["level of traffic"]))
-display(HTML(gf.makeButtons(["SB01", "SBO3"], "plot_***_AIShist.jpg", "Histogram")))
-infoHtml4 = f'''
-        <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).showModal()">Table of Results</button>
-            <dialog id="infoModal4">
-                {gf.makeButtons(["SB01", "SBO3"], "table_***_AIShist.jpg", "AISHistTables")}
-                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).close()">
-                    Close
-                </button>
-            </dialog>
-'''
-display(HTML(infoHtml4))
-# NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg
-```
+<!-- ### How much noise from large vessels may be interfering with whale communication? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["large vessels interfer"])) -->
+<!-- display(HTML(gf.makeButtons(["SB01", "SBO3"], "plot_***_AISMonthAbove.jpg", "SoundLevelVariance"))) -->
+<!-- infoHtml3 = f''' -->
+<!--         <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).showModal()">Table of Results</button> -->
+<!--             <dialog id="infoModal3"> -->
+<!--                 {gf.makeButtons(["SB01", "SBO3"], "table_***_AISMonthAbove.jpg", "AISMonthlyTables")} -->
+<!--                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).close()"> -->
+<!--                     Close -->
+<!--                 </button> -->
+<!--             </dialog> -->
+<!-- ''' -->
+<!-- display(HTML(infoHtml3)) -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AISMonthAbove.jpg -->
+<!-- ``` -->
+<!-- ### How does the level of traffic change conditions? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["level of traffic"])) -->
+<!-- display(HTML(gf.makeButtons(["SB01", "SBO3"], "plot_***_AIShist.jpg", "Histogram"))) -->
+<!-- infoHtml4 = f''' -->
+<!--         <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).showModal()">Table of Results</button> -->
+<!--             <dialog id="infoModal4"> -->
+<!--                 {gf.makeButtons(["SB01", "SBO3"], "table_***_AIShist.jpg", "AISHistTables")} -->
+<!--                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).close()"> -->
+<!--                     Close -->
+<!--                 </button> -->
+<!--             </dialog> -->
+<!-- ''' -->
+<!-- display(HTML(infoHtml4)) -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg -->
+<!-- ``` -->
 
 ### When do right whales contribute to the soundscape, indicating their presence nearby?
 ```{python}

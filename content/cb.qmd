@@ -129,27 +129,27 @@ display(HTML(gf.makeButtons(sites, "plot_***-112-141_HMDstatus.jpg", "FOI2")))
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
 ```
-### What are the trends in ocean noise?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["Above year 1"]))
-#display(HTML(gf.makeButtons(sites, "plot_***_year1.jpg", "Above year 1"))) 
-```
+<!-- ### What are the trends in ocean noise? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["Above year 1"])) -->
+<!-- #display(HTML(gf.makeButtons(sites, "plot_***_year1.jpg", "Above year 1")))  -->
+<!-- ``` -->
 
-### How much noise from large vessels may be interfering with whale communication?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["large vessels interfer"]))
-#display(HTML(gf.makeButtons(sites, "plot_***_AISMonthAbove.jpg", "SoundLevelVariance"))) 
-# NEED TO ADD BUTTON: "See Table Results" table_***_AISMonthAbove.jpg
-```
-### How does the level of traffic change conditions?
-```{python}
-#| echo: false
-display(HTML(standardTextDict["level of traffic"]))
-#display(HTML(gf.makeButtons(sites, "plot_***_AIShist.jpg", "Histogram")))
-# NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg
-```
+<!-- ### How much noise from large vessels may be interfering with whale communication? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["large vessels interfer"])) -->
+<!-- #display(HTML(gf.makeButtons(sites, "plot_***_AISMonthAbove.jpg", "SoundLevelVariance")))  -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AISMonthAbove.jpg -->
+<!-- ``` -->
+<!-- ### How does the level of traffic change conditions? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["level of traffic"])) -->
+<!-- #display(HTML(gf.makeButtons(sites, "plot_***_AIShist.jpg", "Histogram"))) -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg -->
+<!-- ``` -->
 
 <!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
 <!-- ```{python} -->
