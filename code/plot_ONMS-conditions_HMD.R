@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("fk08")
+ONMSsites = c("mb01")
 
 
 ## directories ####
@@ -332,20 +332,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   }
   
   Fq = as.numeric( as.character( gsub("HMD_", "",  colnames(gps)[grep("HMD", colnames(gps))] ) ))
-  
-  
-  #Removing frequencies that have instrument issues that were not marked in data quality matrix
-  #DIPS at ~3k Hz. They vary by site.
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   
   # ##REMOVE sanctsound data ####
   # if (removess == 1){
@@ -413,6 +400,39 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   stAG = as.Date( min(gpsAG$UTC) )
   edAG = as.Date( max(gpsAG$UTC) )
   udaysAG = length( unique(as.Date(gpsAG$UTC)) )
+  
+
+  
+  
+  #Removing frequencies that have instrument issues that were not marked in data quality matrix
+  #DIPS at ~3k Hz. They vary by site.
+  
+  if (site == "mb01"){
+    
+    # This selects only columns HMD_5901, HMD_5902, ..., HMD_6005
+    #for seasonal graph
+    gps_removed_dip <- gps %>%
+      select(num_range("HMD_", 5901:6005))
+    
+    #for annual graph
+    gpsAG_removed_dip <- gpsAG %>%
+      select(num_range("HMD_", 5901:6005))
+    
+    #make those columns na
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 5901:6005), ~ NA))
+    
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 5901:6005), ~ NA))
+  }
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   # CHECK: DATA SUMMARY ####
@@ -808,18 +828,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
 #plot  
   p = ggplot() +
-    geom_ribbon(data = mallDataS %>%
-                  pivot_wider(names_from = Quantile, values_from = SoundLevel),
-                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Season),
-                alpha = 0.2) +  # Use alpha for transparency
-    # Median (50%) HMD values
-    geom_line(data = mallDataS[mallDataS$Quantile == "50%",], 
-              aes(x = Frequency, y = SoundLevel, color = Season), linewidth = 2) +
-    geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
-              linetype = "dotted")+ 
-    # Set color and fill to match season
-    scale_color_manual(values  = seasont$values ) +
-    scale_fill_manual (values  = seasont$values ) +
     
     # Wind model values
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windUpp,], aes(x = variable, y = value), color = "black",  linewidth = 1) +
@@ -835,19 +843,31 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges
-    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-    #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
+    geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
-    geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
+    geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), color = "black", angle = 90, vjust = 1, hjust = 0.45, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
-    geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
+    geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "grey45",linewidth = .5) +
     geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
-    geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
+    geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), color = "black", angle = 90, vjust = 0, hjust = 0.5, size = 4) +
     
+    geom_ribbon(data = mallDataS %>%
+                  pivot_wider(names_from = Quantile, values_from = SoundLevel),
+                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Season),
+                alpha = 0.2) +  # Use alpha for transparency
+    # Median (50%) HMD values
+    geom_line(data = mallDataS[mallDataS$Quantile == "50%",], 
+              aes(x = Frequency, y = SoundLevel, color = Season), linewidth = 2) +
+    geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
+              linetype = "dotted")+ 
+    # Set color and fill to match season
+    scale_color_manual(values  = seasont$values ) +
+    scale_fill_manual (values  = seasont$values ) +
     
     labs(
        subtitle = seasonLabel,
@@ -873,6 +893,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   arranged_plot = grid.arrange(p, separator, p2, heights =c(4, 0.1, 1))
   ## save figure ####
   ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDSeasonalSPL.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
+  
+  
+  
   
   
   

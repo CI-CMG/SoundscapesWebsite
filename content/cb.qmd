@@ -40,7 +40,7 @@ for i in range(len(headerLocations)):
 ```
 
 ---
-title: "Cordell Bank National Marine Sanctuary Soundscape Report"
+title: "Cordell Bank and Greater Farallones National Marine Sanctuary Soundscape Report"
 date: "today"
 output: 
   html_document: 
@@ -54,7 +54,7 @@ editor_options:
 ## Ocean sound monitoring
 ```{python}
 #| echo: false
-display(HTML(standardTextDict["CBNMS"]))
+display(HTML(standardTextDict["CBNMS/GFNMS"]))
 ```
 
 ### Summary of monitoring sites
