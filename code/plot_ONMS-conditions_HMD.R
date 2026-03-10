@@ -856,15 +856,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), color = "black", angle = 90, vjust = 0, hjust = 0.5, size = 4) +
     
+    #shading (25-75%) HMD values
     geom_ribbon(data = mallDataS %>%
                   pivot_wider(names_from = Quantile, values_from = SoundLevel),
                 aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Season),
                 alpha = 0.2) +  # Use alpha for transparency
+    
     # Median (50%) HMD values
     geom_line(data = mallDataS[mallDataS$Quantile == "50%",], 
               aes(x = Frequency, y = SoundLevel, color = Season), linewidth = 2) +
     geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
               linetype = "dotted")+ 
+    
     # Set color and fill to match season
     scale_color_manual(values  = seasont$values ) +
     scale_fill_manual (values  = seasont$values ) +
@@ -877,7 +880,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     ) +
     # Additional aesthetics
     scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
-    
     theme_minimal()+
     theme(legend.position = "right",
           plot.caption = ggtext::element_markdown(hjust = 0, size = 12),
