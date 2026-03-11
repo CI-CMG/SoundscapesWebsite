@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("ci04")
+ONMSsites = c("oc02")
 
 
 ## directories ####
@@ -458,14 +458,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   
-   
-  dipS = mallDataS %>% filter(Quantile == "50%")
-  dipS = dipS %>% filter(Season == "Post-Upwelling")
-  
-  
-  dip = mallData %>% filter(Quantile == "50%")
-  dip = dip %>% filter(Year == 2022)
-  
+  #  
+  # dipS = mallDataS %>% filter(Quantile == "50%")
+  # dipS = dipS %>% filter(Season == "Post-Upwelling")
+  # 
+  # 
+  # dip = mallData %>% filter(Quantile == "50%")
+  # dip = dip %>% filter(Year == 2022)
+  # 
   
   
   
