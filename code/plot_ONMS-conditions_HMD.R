@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("oc02")
+ONMSsites = c("ch01")
 
 
 ## directories ####
@@ -454,18 +454,27 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 3115:4330), 
                     ~ if_else(yr == 2024, NA_real_, .)))
+  } else if (site == "ch01"){
+    
+    #for seasonal 
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2627:4300), ~ NA))
+    
+    #for annual
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 2627:4300), ~ NA))
+    
   }
   
   
   
-  #  
-  # dipS = mallDataS %>% filter(Quantile == "50%")
-  # dipS = dipS %>% filter(Season == "Post-Upwelling")
+  # use this code to manually find what frequencies to remove dip
+   # dipS = mallDataS %>% filter(Quantile == "50%")
+   # dipS = dipS %>% filter(Season == "Post-Upwelling")
   # 
   # 
   # dip = mallData %>% filter(Quantile == "50%")
   # dip = dip %>% filter(Year == 2022)
-  # 
   
   
   
@@ -844,13 +853,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     
     FOIsRangeL = FOIs[0, ]
     
-  } else if(site == "ch01"){
-    FOIsL <- FOIs %>% filter(Label == "Bocaccio Rockfish Chorus")
-    FOIs <- FOIs %>% filter(Label != "Bocaccio Rockfish Chorus")
-     
-    FOIsRangeL <- FOIsRange %>% filter(Label == "Humpback Whale")
-    FOIsRange <- FOIsRange %>% filter(Label != "Humpback Whale")
-    
   } else {
     FOIsL = FOIs[0, ]
     FOIsRangeL = FOIs[0, ]
@@ -876,7 +878,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         NA, 
         SoundLevel
       ))
-  }
+  } 
  
   
 #plot  

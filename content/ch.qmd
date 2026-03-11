@@ -122,7 +122,7 @@ display(HTML(standardTextDict["sources of interest typical"]))
 
 #display(HTML(gf.makeButtons(sites, "plot_***HMDstatus.jpg", "FOI"))) 
 
-display(HTML(gf.makeImage("plot_CH01-5502_HMDstatus.jpg", "FOI")))
+display(HTML(gf.makeImage("plot_CH01-4300-5000_HMDstatus.jpg", "FOI")))
 display(HTML(gf.makeImage("plot_NRS13-57-70_HMDstatus.jpg", "FOI2")))
 display(HTML(gf.makeImage("plot_NRS13-112-141_HMDstatus.jpg", "FOI3")))
 ```
