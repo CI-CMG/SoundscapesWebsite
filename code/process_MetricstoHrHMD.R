@@ -27,7 +27,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "mb02" 
+site  = "mb05" 
 site = tolower(site) 
 # 
 # #add for NRS
@@ -111,7 +111,7 @@ cat("CHECK: Read in data for: ",
   #you may need to change the number of the segment where the date is getting taken from he file name below
   dysON1 = as.Date(sapply( strsplit(basename(mantaFiles), "_"), "[[", 5), format = "%Y%m%d")
   #you may need to change the number of the segment where the date is getting taken from he file name below
-  dysON2 = as.Date(sapply( strsplit(basename(pypamFiles), "_"), "[[", 4), format = "%Y%m%d")
+  dysON2 = as.Date(sapply( strsplit(basename(pypamFiles), "_"), "[[", 3), format = "%Y%m%d")
   
   dysON = c(dysON1, dysON2)
   
