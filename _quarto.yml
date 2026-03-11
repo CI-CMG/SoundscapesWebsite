@@ -90,6 +90,7 @@ format:
     code-copy: true
     code-overflow: wrap
     toc: true
+    page-layout: full
 
 
 filters:
