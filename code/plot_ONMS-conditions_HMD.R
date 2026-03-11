@@ -832,6 +832,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     FOIsL = FOIs[0, ]
     FOIsRangeL = FOIs[0, ]
   }
+  
+  
+  
+#for sites that we removed 3k hz dip for some seasons but not all, remove median line in that gap  
+  if (site == "mb01"){
+    
+    #make those columns na
+    mallDataS <- mallDataS %>%
+      mutate(across(num_range("HMD_", 3115:4330), 
+                    ~ if_else(Quantile =="50%", NA_real_, .)))
+    
+  }
  
   
 #plot  
@@ -1209,7 +1221,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   
-  
   #  interactive_plot$x$layout$xaxis$type
   # interactive_plot$x$data[[18]]$textangle <- 90  
   
@@ -1219,13 +1230,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #print(interactive_plot$x$data[[i]][c("name","fill","mode","hoverinfo")])
   #}
 
-  if(site %in% c("mb01", "ci01")){
-    gps = gpsAG
-  }
   
   
   #(5) TIME SERIES- FOI ####
   # plot with error bars and median and hours above 75th percentile in title
+  
+  
+  if(site %in% c("mb01", "ci01")){
+    gps = gpsAG
+  }
+  
   
   if ( nrow(FOIst) > 0 ) {
     for (tt in 1: nrow(FOIst) ){ # tt = 1       tt = 2
@@ -1638,7 +1652,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
-            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
+            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, ")"), list(f = ft) )
               #substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
@@ -1658,6 +1672,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
+        ft = str_remove(ft, " Hz")
        
         ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
@@ -1704,7 +1719,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
-            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
+            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, ")"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
           theme_minimal() +
@@ -1721,6 +1736,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
+        
+        ft = str_remove(ft, " Hz")
         
         ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
@@ -1769,7 +1786,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
-            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, " Hz)"), list(f = ft) )
+            y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, ")"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
           ) +
           theme_minimal() +
@@ -1786,6 +1803,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
+        
+        ft = str_remove(ft, " Hz")
         
         ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
