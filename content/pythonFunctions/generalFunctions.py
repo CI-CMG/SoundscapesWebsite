@@ -1,6 +1,6 @@
 import os
 
-def makeButtonsFit(sites, generalFormat, identifier):
+def makeButtonsFit(sites, generalFormat, identifier, altText=""):
     buttons = ""
     scripts = f"""
                     <script>
@@ -28,7 +28,7 @@ def makeButtonsFit(sites, generalFormat, identifier):
                 
     path = f'{inputDir}/{fullFileName}'
     path = path.replace("***", sites[0])
-    initialImage = f'<img src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
+    initialImage = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
     if len(sites) == 1:
         return initialImage + scripts
     
@@ -57,7 +57,7 @@ def makeButtonsFit(sites, generalFormat, identifier):
         """
     return buttons + initialImage + scripts
 
-def makeButtons(sites, generalFormat, identifier):
+def makeButtons(sites, generalFormat, identifier, altText=""):
     buttons = ""
     scripts = f"""
                     <script>
@@ -74,7 +74,7 @@ def makeButtons(sites, generalFormat, identifier):
     inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
     path = f'{inputDir}/{generalFormat}'
     path = path.replace("***", sites[0])
-    initialImage = f'<img src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
+    initialImage = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
     if len(sites) == 1:
         return initialImage + scripts
     
@@ -106,7 +106,7 @@ def makeButtons(sites, generalFormat, identifier):
         """
     return buttons + initialImage + scripts
     
-def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifier):
+def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifier, altText=""):
     buttons = ""
     scripts = f"""
                     <script>
@@ -123,7 +123,7 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
     inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
     path = f'{inputDir}/{generalFormat}'
     path = path.replace("***", uniqueImageIDs[0])
-    initialImage = f'<img src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
+    initialImage = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
     if len(uniqueImageIDs) == 1:
         return initialImage + scripts
     
@@ -155,22 +155,10 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
         """
     return buttons + initialImage + scripts
   
-def makeImage(imageName, identifier, width=700):
+def makeImage(imageName, identifier, width=700, altText=""):
     inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
     path = f'{inputDir}/{imageName}'
-    initialImage = f'<img src="{path}" width="{width}" id="{identifier}" onclick="this.requestFullscreen()" style="display: block; margin-left: auto; margin-right: auto">'
-    initialImage += f"""
-                    <script>
-                    function toggle{identifier}() {{
-                        var imgElement = document.getElementById('{identifier}');
-                        if (!document.fullscreenElement) {{
-                            imgElement.requestFullscreen();
-                        }} else {{
-                            document.exitFullscreen();
-                        }}
-                    }}
-                    </script>
-    """
+    initialImage = f'<img alt="{altText}" src="{path}" width="{width}" id="{identifier}" onclick="this.requestFullscreen()" style="display: block; margin-left: auto; margin-right: auto">'
     return initialImage
     
 def addPlotly(sourceHTML):

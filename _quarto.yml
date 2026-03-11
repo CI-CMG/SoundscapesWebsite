@@ -20,7 +20,7 @@ website:
   title: "NOAA quarto simple" 
   site-url: "https://ci-cmg.github.io/SoundscapesWebsite"
   repo-url: "https://github.com/CI-CMG/SoundscapesWebsite"
-  repo-actions: [edit, source, issue]
+  repo-actions: [source, issue]
   favicon: images/favicon.ico
   
   page-footer:
@@ -37,9 +37,6 @@ website:
       - icon: globe
         href: https://sanctuaries.noaa.gov/
         text: "Office of National Marine Sanctuaries"
-      - icon: github
-        href: https://github.com/CI-CMG/SoundscapesWebsite
-        text: "ONMS Sound"
 
     style: "docked"
     search: true
