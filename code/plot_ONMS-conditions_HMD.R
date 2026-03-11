@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("hi04")
+ONMSsites = c("pm01")
 
 
 ## directories ####
@@ -1336,18 +1336,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       }else { # if FOI is a range of frequencies
         
         
-        if (site == "gr01"){
-          ft = paste0( FOIst$FQstart [tt], "-891")
-        } else if(site == "ci01" & tt == 2){
-          ft = "5000-7000 Hz"
-        }  else if(site == "mb01" & tt == 2){
-          ft = "100-800 Hz"
-        } else if(site == "hi04"){
-          ft = "90-708 Hz"
-        } else {
-          #ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
-          ft = FOIst$`Decidecade.(TOL)`[tt]
-        }
+        ft = FOIst$`Decidecade.(TOL)`[tt]
         
         hmdc = ( grep("HMD", colnames(gps)) )
         hmdn =  as.numeric( gsub("HMD_", "", colnames(gps)[hmdc]) )
