@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("mb02")
+ONMSsites = c("ci01")
 
 
 ## directories ####
@@ -407,12 +407,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #Removing frequencies that have instrument issues that were not marked in data quality matrix
   #DIPS at ~3k Hz. They vary by site.
   # 
-  dipS = mallDataS %>% filter(Quantile == "50%")
-  dipS = dipS %>% filter(Season == "Upwelling")
-  # 
-  # 
-  dip = mallData %>% filter(Quantile == "50%")
-  dip = dip %>% filter(Year == 2022)
+  # dipS = mallDataS %>% filter(Quantile == "50%")
+  # dipS = dipS %>% filter(Season == "Upwelling")
+  # # 
+  # # 
+  # dip = mallData %>% filter(Quantile == "50%")
+  # dip = dip %>% filter(Year == 2022)
   
   
   
@@ -1269,8 +1269,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       #check to see if the FOI is broad band
       if (FOIst$FQstart [tt] == FOIst$FQend [tt] ){
         ftN = paste0("HMD_", FOIst$FQstart [tt]) #fqIn
-        ft = FOIst$FQstart [tt]
-        cols_to_select = c("UTC", "yr", "windMag","wind_category",ftN )
+        ft = FOIst$`Decidecade.(TOL)`
+        cols_to_select = c("UTC", "yr", "windMag",ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         wspeeds = unique( (windModel$windSpeed) )
         gpsFQ$closest_windMag = wspeeds[pmax(1, findInterval(gpsFQ$windMag, wspeeds)+1)]
@@ -1300,7 +1300,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         if (site == "gr01"){
           ft = paste0( FOIst$FQstart [tt], "-891")
         } else if(site == "ci01" & tt == 2){
-          ft = "6998-11220 Hz"
+          ft = "5000-7000 Hz"
         }  else if(site == "mb01" & tt == 2){
           ft = "100-800 Hz"
         } else if(site == "hi04"){
