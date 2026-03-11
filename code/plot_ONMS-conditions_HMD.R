@@ -1733,7 +1733,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ft = str_remove(ft, " Hz")
        
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
+        ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
         
       } else if (substring(site, 1, 2) == "hi") {
@@ -1798,7 +1798,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ft = str_remove(ft, " Hz")
         
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
+        ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
       } else if (substring(site, 1, 2) == "pm") {
         # alternative methods for plg for Papahanamokuakea sites
@@ -1865,7 +1865,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ft = str_remove(ft, " Hz")
         
-        ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
+        ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
       }
     }
