@@ -48,6 +48,9 @@ website:
       - href: https://sanctuaries.noaa.gov/science/monitoring/sound/
         target: _blank
         text: ONMS Sound Project Page
+      - href: https://pmc.ncbi.nlm.nih.gov/articles/PMC12702305/
+        target: _blank
+        text: NRS Project Page
       - text: <br>
       - text: <b>Eastern Region</b>
       - href: content/sb.qmd

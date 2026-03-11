@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("ci01")
+ONMSsites = c("ci04")
 
 
 ## directories ####
@@ -406,16 +406,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #Removing frequencies that have instrument issues that were not marked in data quality matrix
   #DIPS at ~3k Hz. They vary by site.
-  # 
-  # dipS = mallDataS %>% filter(Quantile == "50%")
-  # dipS = dipS %>% filter(Season == "Upwelling")
-  # # 
-  # # 
-  # dip = mallData %>% filter(Quantile == "50%")
-  # dip = dip %>% filter(Year == 2022)
-  
-  
-  
+
   if (site == "mb01"){
     
     #make those columns na
@@ -441,11 +432,39 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 1912:2567), 
                     ~ if_else(yr == 2022, NA_real_, .)))
+    
+  } else if (site == "ci04"){
+    
+    #for winter and post-upwelling lower dip
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2175:2567), 
+                    ~ if_else(Season != "Upwelling", NA_real_, .)))
+    
+    #for upwelling higher dip
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 3115:4330), 
+                    ~ if_else(Season == "Upwelling", NA_real_, .)))
+    
+    #for 2023 and 2022 lower dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 2175:2567), 
+                    ~ if_else(yr != 2024, NA_real_, .)))
+    
+    #for 2024 higher dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 3115:4330), 
+                    ~ if_else(yr == 2024, NA_real_, .)))
   }
   
   
   
+   
+  dipS = mallDataS %>% filter(Quantile == "50%")
+  dipS = dipS %>% filter(Season == "Post-Upwelling")
   
+  
+  dip = mallData %>% filter(Quantile == "50%")
+  dip = dip %>% filter(Year == 2022)
   
   
   
@@ -842,11 +861,21 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
 #for sites that we removed 3k hz dip for some seasons but not all, remove median line in that gap  
   if (site == "mb01"){
     
-    #make those rows na
-    mallDataS <- mallDataS %>%
-      mutate(across(num_range("HMD_", 3115:4330), 
-                    ~ if_else(Quantile =="50%", NA_real_, .)))
+    mALL <- mALL %>%
+      mutate(SoundLevel = ifelse(
+        (Frequency >= 3115 & Frequency <= 4330) & (Quantile == "50%"),
+        NA, 
+        SoundLevel
+      ))
     
+  } else if (site == "ci04"){
+    
+    mALL <- mALL %>%
+      mutate(SoundLevel = ifelse(
+        (Frequency >= 2175 & Frequency <= 2567) & (Quantile == "50%"),
+        NA, 
+        SoundLevel
+      ))
   }
  
   
@@ -1079,8 +1108,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         SoundLevel
       ))
     
-  }
+  } else if (site == "ci04"){
   
+  mALL <- mALL %>%
+    mutate(SoundLevel = ifelse(
+      (Frequency >= 2175 & Frequency <= 2567) & (Quantile == "50%"),
+      NA, 
+      SoundLevel
+    ))
+  
+  }
 
   
 #plot
