@@ -1842,7 +1842,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-90,185)) +  #FOR PM01 w/ Oct and Nov
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of ", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
