@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("ch01")
+ONMSsites = c("fk05")
 
 
 ## directories ####
@@ -1308,7 +1308,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       #check to see if the FOI is broad band
       if (FOIst$FQstart [tt] == FOIst$FQend [tt] ){
         ftN = paste0("HMD_", FOIst$FQstart [tt]) #fqIn
-        ft = FOIst$`Decidecade.(TOL)`
+        ft = FOIst$`Decidecade.(TOL)`[tt]
         cols_to_select = c("UTC", "yr", "windMag",ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         wspeeds = unique( (windModel$windSpeed) )
@@ -1346,7 +1346,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           ft = "90-708 Hz"
         } else {
           #ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
-          ft = FOIst$`Decidecade.(TOL)`
+          ft = FOIst$`Decidecade.(TOL)`[tt]
         }
         
         hmdc = ( grep("HMD", colnames(gps)) )
@@ -1678,6 +1678,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plot_height <- 12
       }
       
+      if (ft == "125 Hz" ){
+        
+        ft = "125 Hz TOL"
+        
+      } else if(ft == "63 Hz"){
+        
+        ft = "63 Hz TOL"
+        
+      }
+      
       
       ### plot: time series ####
       dailyFQ_complete$yr = factor(dailyFQ_complete$yr, levels = rev(sort(unique(dailyFQ_complete$yr))))
@@ -1733,7 +1743,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
-        ft = str_remove(ft, " Hz")
+        ft = str_remove(ft, " Hz TOL| Hz")
        
         ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
@@ -1798,7 +1808,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
-        ft = str_remove(ft, " Hz")
+        ft = str_remove(ft, " Hz TOL| Hz")
         
         ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
@@ -1865,7 +1875,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
-        ft = str_remove(ft, " Hz")
+        ft = str_remove(ft, " Hz TOL| Hz")
         
         ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
