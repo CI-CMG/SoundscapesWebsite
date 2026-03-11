@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("mb01")
+ONMSsites = c("mb02")
 
 
 ## directories ####
@@ -407,23 +407,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #Removing frequencies that have instrument issues that were not marked in data quality matrix
   #DIPS at ~3k Hz. They vary by site.
   # 
-  # dipS = mallDataS %>% filter(Quantile == "50%")
-  # dipS = dipS %>% filter(Season == "Upwelling")
+  dipS = mallDataS %>% filter(Quantile == "50%")
+  dipS = dipS %>% filter(Season == "Upwelling")
   # 
   # 
-  # dip = mallData %>% filter(Quantile == "50%")
-  # dip = dip %>% filter(Year == 2023)
+  dip = mallData %>% filter(Quantile == "50%")
+  dip = dip %>% filter(Year == 2022)
+  
+  
   
   if (site == "mb01"){
-    
-    # This selects only columns HMD_5901, HMD_5902, ..., HMD_6005
-    #for seasonal graph
-    # gps_removed_dip <- gps %>%
-    #   select(num_range("HMD_", 5901:6005))
-    # 
-    # #for annual graph
-    # gpsAG_removed_dip <- gpsAG %>%
-    #   select(num_range("HMD_", 5901:6005))
     
     #make those columns na
     gps <- gps %>%
@@ -432,6 +425,22 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 3115:4330), ~ NA))
+    
+  } else if (site == "mb02"){
+    
+    #for all seasons
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 3270:4330), ~ NA))
+    
+    #for 2023 and 2024 higher dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 3270:4330), 
+                    ~ if_else(yr != 2022, NA_real_, .)))
+    
+    #for 2022 lower dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 1912:2567), 
+                    ~ if_else(yr == 2022, NA_real_, .)))
   }
   
   
@@ -823,12 +832,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     FOIsRangeL <- FOIsRange %>% filter(Label == "Humpback Whale")
     FOIsRange <- FOIsRange %>% filter(Label != "Humpback Whale")
     
-  } else if(site == "mb02"){
-    FOIsRangeL <- FOIsRange %>% filter(Label == "Humpback Whale")
-    FOIsRange <- FOIsRange %>% filter(Label != "Humpback Whale")
-   
-    
-  }else {
+  } else {
     FOIsL = FOIs[0, ]
     FOIsRangeL = FOIs[0, ]
   }
@@ -838,7 +842,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
 #for sites that we removed 3k hz dip for some seasons but not all, remove median line in that gap  
   if (site == "mb01"){
     
-    #make those columns na
+    #make those rows na
     mallDataS <- mallDataS %>%
       mutate(across(num_range("HMD_", 3115:4330), 
                     ~ if_else(Quantile =="50%", NA_real_, .)))
@@ -1063,8 +1067,21 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   NRSLabelShift <- if (substr(site, 1, 3) == "NRS") 39 else NA
   
   
-    # FOIs$FQstart[1] = 110 
-    # FOIs$FQend[1] = 700
+  
+  #for sites that we removed 3k hz dip for some seasons but not all, remove median line in that gap  
+  if (site == "mb02"){
+    
+    #make those rows na
+    mALL <- mALL %>%
+      mutate(SoundLevel = ifelse(
+        (Frequency >= 3115 & Frequency <= 4330) & (Quantile == "50%"),
+        NA, 
+        SoundLevel
+      ))
+    
+  }
+  
+
   
 #plot
   p = ggplot() +
@@ -1072,8 +1089,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windUpp,], aes(x = variable, y = value), color = "black", linewidth = 1) +
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black", linewidth = 1) +
     scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
+    
     scale_color_manual(values = rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
     scale_fill_manual(values =  rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
+  
     # Add vertical lines at FOIs, label on right side
     geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
     geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
@@ -1089,7 +1108,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
     geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
    
-     # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
+    # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
     #geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
     #geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
@@ -1098,8 +1117,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     
     geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
                 aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.1) + # Use alpha for transparency
+    
     #median HMD values- each year
     geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year), linewidth = 2) +
+   
     #median HMD values- all data
     geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
               linetype = "dotted") +
@@ -1107,6 +1128,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
               fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
     
      scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
+    
     # Additional aesthetics
     theme_minimal() +
     labs(

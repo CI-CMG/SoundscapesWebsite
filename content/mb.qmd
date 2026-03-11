@@ -9,6 +9,8 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["MB01", "MB02", "MB05"]
+sitesFOI = ["MB01"]
+sitesFOI2 = ["MB05"]
 fishsites = ["MB01", "MB02", "MB05"]
 humpbacksites = ["MB01", "MB02", "MB03"]
 
@@ -122,8 +124,11 @@ display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL")))
 #| echo: false
 display(HTML(standardTextDict["sources of interest typical"]))
 
-display(HTML(gf.makeButtons(sites, "plot_***-63_HMDstatus.jpg", "FOI")))
-display(HTML(gf.makeButtons(sites, "plot_***-100-800_HMDstatus.jpg", "FOI2")))
+display(HTML(gf.makeButtons(sitesFOI, "plot_***-63_HMDstatus.jpg", "FOI")))
+display(HTML(gf.makeButtons(sitesFOI, "plot_***-100-800_HMDstatus.jpg", "FOI2")))
+
+display(HTML(gf.makeButtons(sitesFOI2, "plot_***-42_HMDstatus.jpg", "FOI3")))
+display(HTML(gf.makeButtons(sitesFOI2, "plot_***-169_HMDstatus.jpg", "FOI4")))
 ```
 :::
 
