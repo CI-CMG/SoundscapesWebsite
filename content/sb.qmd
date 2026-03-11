@@ -120,8 +120,8 @@ display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL")))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["sources of interest typical"]))
-display(HTML(gf.makeButtons(sites, "plot_***-57-70_HMDstatus.jpg", "FOI")))
-display(HTML(gf.makeButtons(sites, "plot_***-113-141_HMDstatus.jpg", "FOI2")))
+display(HTML(gf.makeButtons(sites, "plot_***-63_HMDstatus.jpg", "FOI")))
+display(HTML(gf.makeButtons(sites, "plot_***-125_HMDstatus.jpg", "FOI2")))
 ```
 :::
 
