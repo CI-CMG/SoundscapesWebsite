@@ -31,14 +31,14 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("pm01")
+ONMSsites = c("gr01")
 
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
@@ -326,10 +326,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   }
   
   #remove 2018 from all data for hi01 b/c only 1 day of recording
-  if(site == "hi01"){
-    gps = gps %>%
-      filter(yr != 2018)
-  }
+  # if(site == "hi01"){
+  #   gps = gps %>%
+  #     filter(yr != 2018)
+  # }
   
   Fq = as.numeric( as.character( gsub("HMD_", "",  colnames(gps)[grep("HMD", colnames(gps))] ) ))
 
