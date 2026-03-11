@@ -406,24 +406,32 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   #Removing frequencies that have instrument issues that were not marked in data quality matrix
   #DIPS at ~3k Hz. They vary by site.
+  # 
+  # dipS = mallDataS %>% filter(Quantile == "50%")
+  # dipS = dipS %>% filter(Season == "Upwelling")
+  # 
+  # 
+  # dip = mallData %>% filter(Quantile == "50%")
+  # dip = dip %>% filter(Year == 2023)
   
   if (site == "mb01"){
     
     # This selects only columns HMD_5901, HMD_5902, ..., HMD_6005
     #for seasonal graph
-    gps_removed_dip <- gps %>%
-      select(num_range("HMD_", 5901:6005))
-    
-    #for annual graph
-    gpsAG_removed_dip <- gpsAG %>%
-      select(num_range("HMD_", 5901:6005))
+    # gps_removed_dip <- gps %>%
+    #   select(num_range("HMD_", 5901:6005))
+    # 
+    # #for annual graph
+    # gpsAG_removed_dip <- gpsAG %>%
+    #   select(num_range("HMD_", 5901:6005))
     
     #make those columns na
     gps <- gps %>%
-      mutate(across(num_range("HMD_", 5901:6005), ~ NA))
+      mutate(across(num_range("HMD_", 3115:4330), 
+                    ~ if_else(Season != "Post-Upwelling", NA_real_, .)))
     
     gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 5901:6005), ~ NA))
+      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
   }
   
   
@@ -1211,13 +1219,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #print(interactive_plot$x$data[[i]][c("name","fill","mode","hoverinfo")])
   #}
 
-  
+  if(site %in% c("mb01", "ci01")){
+    gps = gpsAG
+  }
   
   
   #(5) TIME SERIES- FOI ####
   # plot with error bars and median and hours above 75th percentile in title
   
-  #before running loop, adjust height of graph in save() so that graph with less years is shorter
   if ( nrow(FOIst) > 0 ) {
     for (tt in 1: nrow(FOIst) ){ # tt = 1       tt = 2
       
@@ -1255,20 +1264,21 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         if (site == "gr01"){
           ft = paste0( FOIst$FQstart [tt], "-891")
         } else if(site == "ci01" & tt == 2){
-          ft = "6998-11220"
-        } else if(site == "mb01" & tt == 2){
-          ft = "100-800"
+          ft = "6998-11220 Hz"
+        }  else if(site == "mb01" & tt == 2){
+          ft = "100-800 Hz"
         } else if(site == "hi04"){
-          ft = "90-708"
+          ft = "90-708 Hz"
         } else {
-          ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
+          #ft = paste0( FOIst$FQstart [tt], "-",  ft = FOIst$FQend [tt])
+          ft = FOIst$`Decidecade.(TOL)`
         }
         
         hmdc = ( grep("HMD", colnames(gps)) )
         hmdn =  as.numeric( gsub("HMD_", "", colnames(gps)[hmdc]) )
         idx = hmdc[( hmdn >= FOIst$FQstart[tt] & hmdn <= FOIst$FQend [tt] ) ]
         ftN = colnames(gps)[idx]
-        cols_to_select = c("UTC", "yr", "windMag","wind_category",ftN )
+        cols_to_select = c("UTC", "yr", "windMag", ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         tmpBB = gpsFQ %>% select(all_of(ftN))
         
@@ -1624,7 +1634,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           facet_wrap(~yr, ncol = 1)+
           scale_x_continuous(limits = c(0,365), breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of \n", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
             x = "",
@@ -1690,7 +1700,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-40,150)) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of \n", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
@@ -1755,7 +1765,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-90,185)) +  #FOR PM01 w/ Oct and Nov
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, "Hz, an indicator of ", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of ", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
             x = "",
