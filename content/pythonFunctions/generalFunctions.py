@@ -29,8 +29,6 @@ def makeButtonsFit(sites, generalFormat, identifier, altText=""):
     path = f'{inputDir}/{fullFileName}'
     path = path.replace("***", sites[0])
     initialImage = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
-    if len(sites) == 1:
-        return initialImage + scripts
     
     for site in sites:
         initialFile = generalFormat.replace('***', site, 1)
@@ -75,8 +73,6 @@ def makeButtons(sites, generalFormat, identifier, altText=""):
     path = f'{inputDir}/{generalFormat}'
     path = path.replace("***", sites[0])
     initialImage = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
-    if len(sites) == 1:
-        return initialImage + scripts
     
     for site in sites:
         path = f'{inputDir}/{generalFormat}'
@@ -124,8 +120,6 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
     path = f'{inputDir}/{generalFormat}'
     path = path.replace("***", uniqueImageIDs[0])
     initialImage = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
-    if len(uniqueImageIDs) == 1:
-        return initialImage + scripts
     
     for i in range(len(uniqueImageIDs)):
         path = f'{inputDir}/{generalFormat}'
