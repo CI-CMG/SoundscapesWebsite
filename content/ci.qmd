@@ -9,6 +9,8 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["CI01","CI04","NRS05"]# "SIOB"
+sitesFOI = ["CI01"]
+sitesFOI2 = ["NRS05"]
 fishsites = ["CI01","CI04"]
 
 # input table for standard text
@@ -121,8 +123,9 @@ display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL")))
 #| echo: false
 display(HTML(standardTextDict["sources of interest typical"]))
 display(HTML(gf.makeButtons(sites, "plot_***-45_HMDstatus.jpg", "FOI")))
-display(HTML(gf.makeImage("plot_CI01-5000-7000_HMDstatus.jpg", "FOI2")))
-display(HTML(gf.makeImage("plot_NRS05-57-70_HMDstatus.jpg", "FOI2")))
+
+display(HTML(gf.makeImage(sitesFOI, "plot_***-5000-7000_HMDstatus.jpg", "FOI2")))
+display(HTML(gf.makeImage(sitesFOI2, "plot_***-57-70_HMDstatus.jpg", "FOI3")))
 ```
 :::
 

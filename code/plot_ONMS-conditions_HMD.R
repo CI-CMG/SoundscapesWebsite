@@ -28,18 +28,18 @@ rm(list=ls())
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
-# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #line 1315
+# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
 
-ONMSsites = c("ci05")
+ONMSsites = c("mb01")
 
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
 #outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
-outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -473,29 +473,17 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  
-  } else if (site == "ci05"){
-  
-  #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 1249:1252), ~ NA))
-  
-    gpsAG <- gpsAG %>%
-    mutate(across(num_range("HMD_", 1249:1252), ~ NA))
-  
   }
   
   
-  #c("mb01", "ci01", "oc03", "hi00", "ci05", "sb09","as10","cb11","ch13")
   
   # use this code to manually find what frequencies to remove dip
   # dipS = mallDataS %>% filter(Quantile == "50%")
   # dipS = dipS %>% filter(Season == "Post-Upwelling")
   # 
   # 
-  # dip = mallData %>% filter(Quantile == "90%")
+  # dip = mallData %>% filter(Quantile == "50%")
   # dip = dip %>% filter(Year == 2022)
-  # dip = dip %>% filter(Frequency >= 1000)
   
   
   
@@ -1318,7 +1306,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # plot with error bars and median and hours above 75th percentile in title
   
   
-  if(site %in% c("mb01", "ci01", "oc03", "hi00", "ci05", "sb09","as10","cb11","ch13")){
+  if(site %in% c("mb01", "ci01")){
     gps = gpsAG
   }
   

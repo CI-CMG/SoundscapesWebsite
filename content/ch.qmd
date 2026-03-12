@@ -9,6 +9,8 @@ import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
 sites = ["CH01", "NRS13"]#,"CH01"
+sitesFOI = ["CH01"]
+sitesFOI2 = ["NRS13"]
 
 # input table for standard text
 inputDir = os.path.normpath(os.path.join(os.getcwd(), "resources"))
@@ -122,9 +124,10 @@ display(HTML(standardTextDict["sources of interest typical"]))
 
 #display(HTML(gf.makeButtons(sites, "plot_***HMDstatus.jpg", "FOI"))) 
 
-display(HTML(gf.makeImage("plot_CH01-4300-5000_HMDstatus.jpg", "FOI")))
-display(HTML(gf.makeImage("plot_NRS13-57-70_HMDstatus.jpg", "FOI2")))
-display(HTML(gf.makeImage("plot_NRS13-112-141_HMDstatus.jpg", "FOI3")))
+display(HTML(gf.makeButtons(sitesFOI, "plot_***-4300-5000_HMDstatus.jpg", "FOI")))
+
+display(HTML(gf.makeButtons(sitesFOI2, "plot_***-57-70_HMDstatus.jpg", "FOI2")))
+display(HTML(gf.makeButtons(sitesFOI2, "plot_***-112-141_HMDstatus.jpg", "FOI3")))
 ```
 :::
 
