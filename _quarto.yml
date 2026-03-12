@@ -21,7 +21,7 @@ website:
   site-url: "https://ci-cmg.github.io/SoundscapesWebsite"
   repo-url: "https://github.com/CI-CMG/SoundscapesWebsite"
   repo-actions: [source, issue]
-  favicon: onms-logo-no-text-800.png
+  favicon: images/onms-logo-no-text-800.png
   
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/)."
