@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
 
 
-ONMSsites = c("sb03")
+ONMSsites = c("mb05")
 
 
 ## directories ####
@@ -463,6 +463,21 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #for annual
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 2627:4300), ~ NA))
+    
+  } else if (site == "mb05"){
+    
+    #make those columns na
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
+    
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
+    
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2701:4995), ~ NA))
+    
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
   }
   
