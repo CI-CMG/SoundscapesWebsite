@@ -88,7 +88,7 @@ mthFocus =  moi$mth
 #   sDatat = sData[sData$mth == monthFocus,]
 #   mthFocus = monthFocus }
 
-# PERCENTILS for each site ####
+# PERCENTILES for each site ####
 tol_columns = grep("TOL", colnames(sDatat))
 site_split = split(sDatat, sDatat$site) # Calculate quantiles for each site
 season_quantiles = lapply(site_split, function(sDatat) {

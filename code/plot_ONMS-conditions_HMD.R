@@ -27,8 +27,8 @@ library(viridis)
 rm(list=ls()) 
 
 #SITES ####
-# ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02", "cb11" )
-# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 
+# ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
+# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
 
 ONMSsites = c("mb05")
@@ -468,12 +468,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     
     #make those columns na
     gps <- gps %>%
-      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
-    
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
-    
-    gps <- gps %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
     gpsAG <- gpsAG %>%
@@ -484,8 +478,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   # use this code to manually find what frequencies to remove dip
-   # dipS = mallDataS %>% filter(Quantile == "50%")
-   # dipS = dipS %>% filter(Season == "Post-Upwelling")
+  # dipS = mallDataS %>% filter(Quantile == "50%")
+  # dipS = dipS %>% filter(Season == "Post-Upwelling")
   # 
   # 
   # dip = mallData %>% filter(Quantile == "50%")
