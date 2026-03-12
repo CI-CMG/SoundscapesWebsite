@@ -82,25 +82,17 @@ display(HTML(standardTextDict["conditions overview"]))
 #| echo: false
 display(HTML(standardTextDict["Soundscape Overview"]))
 display(HTML(gf.makeButtons(sites, "plot_***_HMDSeasonalSPL.jpg", "Seasons")))
-# infoHtml = f'''
-#                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).showModal()">How was this calculated?</button>
-#             <dialog id="infoModal">
-#                 <p>{standardTextDict['How was this calculated?']}</p>
-#                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).close()">
-#                     Close
-#                 </button>
-#             </dialog>
-#                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal2&#39;).showModal()">
-#                     How does my sanctuary compare?
-#                 </button>
-#             <dialog id="infoModal2">
-#                 <p>{standardTextDict['How does my sanctuary compare?']}</p>
-#                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal2&#39;).close()">
-#                     Close
-#                 </button>
-#             </dialog>
-# '''
-# display(HTML(infoHtml))
+infoHtml = f'''
+                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).showModal()">How was this calculated?</button>
+            <dialog id="infoModal">
+                <p>{standardTextDict['How was this calculated?']}</p>
+                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).close()">
+                    Close
+                </button>
+            </dialog>
+                
+'''
+display(HTML(infoHtml))
 ```
 
 ### How are ocean sound conditions changing across years?
@@ -136,7 +128,7 @@ display(HTML(gf.makeButtons(sitesFOI2, "plot_***-57-70_HMDstatus.jpg", "FOI3")))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
-### When do fish choruses contribute to the soundscape?
+### When does fish chorusing contribute to the soundscape?
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))

@@ -91,15 +91,7 @@ infoHtml = f'''
                     Close
                 </button>
             </dialog>
-                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal2&#39;).showModal()">
-                    How does my sanctuary compare?
-                </button>
-            <dialog id="infoModal2">
-                <p>{standardTextDict['How does my sanctuary compare?']}</p>
-                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal2&#39;).close()">
-                    Close
-                </button>
-            </dialog>
+              
 '''
 display(HTML(infoHtml))
 ```
@@ -139,7 +131,7 @@ display(HTML(gf.makeButtons(sitesFOI2, "plot_***-169_HMDstatus.jpg", "FOI4")))
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
 ```
-### When do fish choruses contribute to the soundscape?
+### When does fish chorusing contribute to the soundscape?
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
