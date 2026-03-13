@@ -30,7 +30,7 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
-ONMSsites = c("oc03")
+ONMSsites = c("hi01")
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -379,25 +379,25 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     pull(yr)
   
   #also remove years indicated by sanctuary managers to exclude on spreadsheet
-  years_to_remove <- siteInfo$`Years to Exclude `
-  
-  if(is.na(years_to_remove) || years_to_remove %in% c("n/a", "unknown")){
-    years_to_remove <- numeric(0)
-  } else {
-    years_to_remove <- as.numeric(strsplit(years_to_remove, ",\\s*")[[1]])
-  }
-  
-  #remove years to remove from years to keep if that applies
-  years_to_keep <- setdiff(years_to_keep, years_to_remove)
-  
-  #apply years to keep
-  #save as new dataset because we only want to exclude data from Annual graphics, not seasonal or wind or FOI
-  gpsAG = gps %>%
-    filter(yr %in% years_to_keep)
-  
-  stAG = as.Date( min(gpsAG$UTC) )
-  edAG = as.Date( max(gpsAG$UTC) )
-  udaysAG = length( unique(as.Date(gpsAG$UTC)) )
+  # years_to_remove <- siteInfo$`Years to Exclude `
+  # 
+  # if(is.na(years_to_remove) || years_to_remove %in% c("n/a", "unknown")){
+  #   years_to_remove <- numeric(0)
+  # } else {
+  #   years_to_remove <- as.numeric(strsplit(years_to_remove, ",\\s*")[[1]])
+  # }
+  # 
+  # #remove years to remove from years to keep if that applies
+  # years_to_keep <- setdiff(years_to_keep, years_to_remove)
+  # 
+  # #apply years to keep
+  # #save as new dataset because we only want to exclude data from Annual graphics, not seasonal or wind or FOI
+  # gpsAG = gps %>%
+  #   filter(yr %in% years_to_keep)
+  # 
+  # stAG = as.Date( min(gpsAG$UTC) )
+  # edAG = as.Date( max(gpsAG$UTC) )
+  # udaysAG = length( unique(as.Date(gpsAG$UTC)) )
   
 
   
@@ -508,6 +508,82 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   ## by month (days/ month-year) ####
   ## by season (hours/ season in each year) ####
   
+  # summary <- gpsAG %>%
+  #   mutate(
+  #     year  = year(UTC),  # Extract Year
+  #     month = format(UTC, "%m")  # Extract Month (numeric format)
+  #   ) %>%
+  #   count(year, month)  # Count occurrences (hours) in each year-month
+  # summary$dy = round(summary$n/ 24)
+  # 
+  
+  # season for HI sites includes December from the previous years- so make adjustment here,
+  # if not HI this adds 0 so does nothing
+  if ( substr(site, 1, 2) == "pm") {
+    #shift october-december to the next year
+    gps$yr[gps$mth == 12] = gps$yr[gps$mth == 12] + seasonShift
+    gps$yr[gps$mth == 11] = gps$yr[gps$mth == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    gps$yr[gps$mth == 10] = gps$yr[gps$mth == 10] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    
+    # gpsAG$yr[gpsAG$mth == 12] = gpsAG$yr[gpsAG$mth == 12] + seasonShift
+    # gpsAG$yr[gpsAG$mth == 11] = gpsAG$yr[gpsAG$mth == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    # gpsAG$yr[gpsAG$mth == 10] = gpsAG$yr[gpsAG$mth == 10] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    # 
+    
+    # summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
+    # summary$year[summary$month == 11] =  summary$year[summary$month == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    # summary$year[summary$month == 10] =  summary$year[summary$month == 10] + seasonShift  #for PM sites, Eden wants to see with October and November counted as next year
+    # 
+    # #removing Sept 2022 for PM01, we only want Oct-Jul, usually no data recorded in Sept
+    # summary <- summary[!(summary$year == 2022 & summary$month == "09"), ]
+    
+    #removing Sept 2022 for PM01, we only want Oct-Jul, usually no data recorded in Sept
+    gps <- gps[!(gps$yr == 2022 & gps$mth == 9), ]
+    
+    # gpsAG <- gpsAG[!(gpsAG$yr == 2022 & gpsAG$mth == 9), ]
+    
+    # #order months to start with Oct for effort graph
+    # summary$month <- factor(summary$month, levels = c("10", "11", "12", "01", "02", "03", "04", "05", "06", "07"))
+    # month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
+    # peakDays <- sum(summary$dy)
+  } else if ( substr(site, 1, 2) == "hi") {
+    #shift december to the next year
+    gps$yr[gps$mth == 12] = gps$yr[gps$mth == 12] + seasonShift
+    
+    # gpsAG$yr[gpsAG$mth == 12] = gpsAG$yr[gpsAG$mth == 12] + seasonShift
+    
+    # summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
+    # 
+    # #order months to start with Dec for effort graph
+    # summary$month <- factor(summary$month, levels = c("11", "12", "01", "02", "03", "04", "05", "06", "07"))
+    # month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
+    # peakDays <- sum(summary$dy)
+  }
+  
+  
+  years_to_remove <- siteInfo$`Years to Exclude `
+  
+  if(is.na(years_to_remove) || years_to_remove %in% c("n/a", "unknown")){
+    years_to_remove <- numeric(0)
+  } else {
+    years_to_remove <- as.numeric(strsplit(years_to_remove, ",\\s*")[[1]])
+  }
+  
+  #remove years to remove from years to keep if that applies
+  years_to_keep <- setdiff(years_to_keep, years_to_remove)
+  
+  #apply years to keep
+  #save as new dataset because we only want to exclude data from Annual graphics, not seasonal or wind or FOI
+  gpsAG = gps %>%
+    filter(yr %in% years_to_keep)
+  
+  stAG = as.Date( min(gpsAG$UTC) )
+  edAG = as.Date( max(gpsAG$UTC) )
+  udaysAG = length( unique(as.Date(gpsAG$UTC)) )
+  
+  
+  
+  
   summary <- gpsAG %>%
     mutate(
       year  = year(UTC),  # Extract Year
@@ -521,42 +597,17 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # if not HI this adds 0 so does nothing
   if ( substr(site, 1, 2) == "pm") {
     #shift october-december to the next year
-    gps$yr[gps$mth == 12] = gps$yr[gps$mth == 12] + seasonShift
-    gps$yr[gps$mth == 11] = gps$yr[gps$mth == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
-    gps$yr[gps$mth == 10] = gps$yr[gps$mth == 10] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
-    
-    gpsAG$yr[gpsAG$mth == 12] = gpsAG$yr[gpsAG$mth == 12] + seasonShift
-    gpsAG$yr[gpsAG$mth == 11] = gpsAG$yr[gpsAG$mth == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
-    gpsAG$yr[gpsAG$mth == 10] = gpsAG$yr[gpsAG$mth == 10] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
-    
-    
-    summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
-    summary$year[summary$month == 11] =  summary$year[summary$month == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
-    summary$year[summary$month == 10] =  summary$year[summary$month == 10] + seasonShift  #for PM sites, Eden wants to see with October and November counted as next year
-    
-    #removing Sept 2022 for PM01, we only want Oct-Jul, usually no data recorded in Sept
-    summary <- summary[!(summary$year == 2022 & summary$month == "09"), ]
-    
-    #removing Sept 2022 for PM01, we only want Oct-Jul, usually no data recorded in Sept
-    gps <- gps[!(gps$yr == 2022 & gps$mth == 9), ]
-    
-    gpsAG <- gpsAG[!(gpsAG$yr == 2022 & gpsAG$mth == 9), ]
-    
     #order months to start with Oct for effort graph
     summary$month <- factor(summary$month, levels = c("10", "11", "12", "01", "02", "03", "04", "05", "06", "07"))
-    month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
+    #month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
     peakDays <- sum(summary$dy)
   } else if ( substr(site, 1, 2) == "hi") {
     #shift december to the next year
-    gps$yr[gps$mth == 12] = gps$yr[gps$mth == 12] + seasonShift
+    #summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
     
-    gpsAG$yr[gpsAG$mth == 12] = gpsAG$yr[gpsAG$mth == 12] + seasonShift
-    
-    summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
- 
     #order months to start with Dec for effort graph
     summary$month <- factor(summary$month, levels = c("11", "12", "01", "02", "03", "04", "05", "06", "07"))
-    month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
+    #month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
     peakDays <- sum(summary$dy)
   }
   
