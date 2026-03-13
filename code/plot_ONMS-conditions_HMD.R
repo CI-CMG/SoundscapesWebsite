@@ -32,9 +32,8 @@ rm(list=ls())
 
 ONMSsites = c("ci05")
 
-
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
 outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
@@ -472,12 +471,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  } else if (site == "ci05"){
+  } else if (site == "NRS05"){
       gps <- gps %>%
-        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
-      
+       mutate(across(num_range("HMD_", 1249:1252), ~ NA))
+      #  mutate(across(num_range("HMD_", 1215:1275), ~ NA))
       gpsAG <- gpsAG %>%
-        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
+       mutate(across(num_range("HMD_", 1249:1252), ~ NA))
+        #mutate(across(num_range("HMD_", 1215:1275), ~ NA))
       
     }
     
@@ -1178,12 +1178,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     # geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
     #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.2) +
     
-    geom_ribbon(data = mallData %>% 
-                  filter(Year != oldest_year) %>% 
+    geom_ribbon(data = mallData %>%
+                  filter(Year != oldest_year) %>%
                   pivot_wider(names_from = Quantile, values_from = SoundLevel),
-                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), 
+                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year),
                 alpha = 0.1) +
-    
+
     #for the oldest year, make the shading darker since it is hard to see at alpha = .1 for lightblue
     geom_ribbon(data = mallData %>% 
                   filter(Year == oldest_year) %>% 
@@ -1328,7 +1328,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # plot with error bars and median and hours above 75th percentile in title
   
   
-  if(site %in% c("mb01", "ci01", "oc03", "hi00", "ci05", "sb09","as10","cb11","ch13")){
+  if(site %in% c("mb01", "ci01", "NRS03", "NRS04", "NRS05", "NRS09","NRS10","NRS11","NRS13")){
     gps = gpsAG
   }
   
