@@ -36,8 +36,8 @@ ONMSsites = c("oc03")
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
-outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
+#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -486,7 +486,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   # use this code to manually find what frequencies to remove dip
   # dipS = mallDataS %>% filter(Quantile == "50%")
-  # dipS = dipS %>% filter(Season == "Post-Upwelling")
+  # dipS = dipS %>% filter(Season == "Winter")
   # 
   # 
   # dip = mallData %>% filter(Quantile == "50%")
