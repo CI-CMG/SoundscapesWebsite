@@ -30,15 +30,15 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
-ONMSsites = c("mb05")
+ONMSsites = c("ch01")
 
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
 #outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
-outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -1178,12 +1178,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     # geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
     #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.2) +
     
-    geom_ribbon(data = mallData %>% 
-                  filter(Year != oldest_year) %>% 
+    geom_ribbon(data = mallData %>%
+                  filter(Year != oldest_year) %>%
                   pivot_wider(names_from = Quantile, values_from = SoundLevel),
-                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), 
+                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year),
                 alpha = 0.1) +
-    
+
     #for the oldest year, make the shading darker since it is hard to see at alpha = .1 for lightblue
     geom_ribbon(data = mallData %>% 
                   filter(Year == oldest_year) %>% 
