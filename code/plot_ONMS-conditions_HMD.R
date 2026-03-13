@@ -30,7 +30,7 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
-ONMSsites = c("ci05")
+ONMSsites = c("oc03")
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
@@ -471,7 +471,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  } else if (site == "NRS05"){
+  } else if (site %in% c("mb01", "ci01", "NRS03", "NRS04", "NRS05", "NRS09","NRS10","NRS11","NRS13")){
+      #(site == "NRS05"){
       gps <- gps %>%
        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
       #  mutate(across(num_range("HMD_", 1215:1275), ~ NA))
