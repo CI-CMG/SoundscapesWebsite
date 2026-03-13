@@ -30,16 +30,15 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
-
 ONMSsites = c("mb05")
 
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
 #outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop
-#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -473,8 +472,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  }
-  
+  } else if (site == "ci05"){
+      gps <- gps %>%
+        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
+      
+      gpsAG <- gpsAG %>%
+        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
+      
+    }
+    
   
   
   # use this code to manually find what frequencies to remove dip
@@ -1322,7 +1328,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # plot with error bars and median and hours above 75th percentile in title
   
   
-  if(site %in% c("mb01", "ci01")){
+  if(site %in% c("mb01", "ci01", "oc03", "hi00", "ci05", "sb09","as10","cb11","ch13")){
     gps = gpsAG
   }
   
