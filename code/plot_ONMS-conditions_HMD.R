@@ -1129,6 +1129,20 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     ))
   
   }
+  
+  
+  if (years_to_keep < 5) {
+    oldcolor = "#81A2CF"
+  } else {
+    oldcolor = "lightblue"
+  }
+  
+  values = rev(colorRampPalette(c("darkblue", "lightblue"))(15))
+  
+  fill =  c("#ADD8E6", "#90B3D6", "#7390C7", "#566CB8", "#3948A9", "#1C249A", "#00008B")
+  
+  "#ADD8E6" "#A0C8DF" "#94B9D9" "#87A9D2" "#7B9ACC" "#6F8AC5" "#627BBF" "#566CB8" "#4A5CB2" "#3D4DAB"
+  "#313DA4" "#252E9E" "#181E98" "#0C0F91" "#00008B"
 
   
 #plot
@@ -1138,12 +1152,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black", linewidth = 1) +
     scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
     
-    scale_color_manual(values = rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
-    scale_fill_manual(values =  rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
+    scale_color_manual(values = rev(colorRampPalette(c("darkblue", "#81A2CF"))(length(unique(summary$year))))) +
+    scale_fill_manual(values =  rev(colorRampPalette(c("darkblue", "#81A2CF"))(length(unique(summary$year))))) +
   
     # Add vertical lines at FOIs, label on right side
     geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
     geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
+    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
+              fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
     
     # Add vertical lines at FOIs, label on left side
     geom_vline(data = FOIsL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
@@ -1164,7 +1180,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
     
     geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
-                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.1) + # Use alpha for transparency
+                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.2) +
     
     #median HMD values- each year
     geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year), linewidth = 2) +
@@ -1172,9 +1188,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #median HMD values- all data
     geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
               linetype = "dotted") +
-    geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf),
-              fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
-    
      scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
     
     # Additional aesthetics
@@ -1719,7 +1732,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           labs(
             title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
-            caption  = "Typical conditions shown as gray area (25th and 75th percentiles of all the data)", 
+            caption  = "Typical conditions shown as purple area (25th and 75th percentiles of all the data)", 
             x = "",
             y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, ")"), list(f = ft) )
               #substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at ", f, " Hz)"), list(f = ft) )
@@ -1786,7 +1799,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           labs(
             title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
-            caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
+            caption  = paste0("Typical conditions shown as purple area (25th and 75th percentiles of all the data)"),
             x = "",
             y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, ")"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
@@ -1853,7 +1866,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           labs(
             title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
-            caption  = paste0("Typical conditions shown as gray area (25th and 75th percentiles of all the data)"),
+            caption  = paste0("Typical conditions shown as purple area (25th and 75th percentiles of all the data)"),
             x = "",
             y = substitute(paste("Daily Median Sound Levels (dB re 1 ", mu, "Pa at ", f, ")"), list(f = ft) )
             # expression(paste("Daily Median Sound Levels (dB re 1 ", mu, " Pa/Hz at,", fqInN, "Hz)" ) )
