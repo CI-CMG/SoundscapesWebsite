@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
 
-ONMSsites = c("hi01")
+ONMSsites = c("hi04")
 
 
 ## directories ####
@@ -552,6 +552,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #shift december to the next year
     gps$yr[gps$mth == 12] = gps$yr[gps$mth == 12] + seasonShift
     
+    if (site == "hi01"){
+      gps <- gps[!(gps$yr == 2018 & gps$mth == "11"), ]
+    }
+    
     # gpsAG$yr[gpsAG$mth == 12] = gpsAG$yr[gpsAG$mth == 12] + seasonShift
     
     # summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
@@ -599,13 +603,22 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # if not HI this adds 0 so does nothing
   if ( substr(site, 1, 2) == "pm") {
     #shift october-december to the next year
+    summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
+    summary$year[summary$month == 11] =  summary$year[summary$month == 11] + seasonShift   #for PM sites, Eden wants to see with October and November counted as next year
+    summary$year[summary$month == 10] =  summary$year[summary$month == 10] + seasonShift  #for PM sites, Eden wants to see with October and November counted as next year
+
+    #removing Sept 2022 for PM01, we only want Oct-Jul, usually no data recorded in Sept
+    summary <- summary[!(summary$year == 2022 & summary$month == "09"), ]
+    
+    
     #order months to start with Oct for effort graph
     summary$month <- factor(summary$month, levels = c("10", "11", "12", "01", "02", "03", "04", "05", "06", "07"))
     #month_nums <- as.numeric(as.character( sort(unique(summary$month)) ))
     peakDays <- sum(summary$dy)
   } else if ( substr(site, 1, 2) == "hi") {
     #shift december to the next year
-    #summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
+    summary$year[summary$month == 12] =  summary$year[summary$month == 12] + seasonShift
+   
     
     #order months to start with Dec for effort graph
     summary$month <- factor(summary$month, levels = c("11", "12", "01", "02", "03", "04", "05", "06", "07"))
