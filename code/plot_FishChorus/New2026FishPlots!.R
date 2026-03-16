@@ -226,7 +226,7 @@ ggsave(filename = paste0(outDirG, "/MB05_FinalRosePlot.png"), dpi = 300)
 # ><(((*>  <*)))><   ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  
 #MB02
 #set working directory (change before making each new site graph)
-setwd("C:/Users/embe5980/Indicators/WCR_fish_ella/Code/MB02")   
+outDirG = setwd("C:/Users/embe5980/Indicators/WCR_fish_ella/Code/MB02")   
 
 #read all CSVs for all deployments
 MB02_01_data= read_csv("MB02_01.csv") %>%
@@ -245,9 +245,9 @@ MB02_07_data= read_csv("MB02_07.csv") %>%
   filter(if_any(everything(), ~ !is.na(.) & . != ""))
 MB02_10_data= read_csv("MB02_10 - Sheet1.csv") %>%
   filter(if_any(everything(), ~ !is.na(.) & . != ""))
-MB02_11_data= read_csv("MB02_11 - Sheet1.csv") %>%
+MB02_11_data= read_csv("MB02_11_NEW.csv") %>%
   filter(if_any(everything(), ~ !is.na(.) & . != ""))
-MB02_12_data= read_csv("MB02_12 - Sheet1.csv") %>%
+MB02_12_data= read_csv("MB02_12_NEW.csv") %>%
   filter(if_any(everything(), ~ !is.na(.) & . != ""))
 
 # midshipman was logged seperately for MBNMS, so load those in here
@@ -261,6 +261,40 @@ MB02_06_midshipman=read_csv("MB02_01_midshipman.csv")
 #MB02_10 missing last two columns so cant bind. fix
 MB02_10_data$Image <- NA
 MB02_10_data$Audio <- NA
+
+#MB02_11 and 12 have wrong UF440
+#mb02_11
+# MB02_11_UF440= read_csv("MB02_11_ella_uf440_fixed.csv") %>%
+#   filter(if_any(everything(), ~ !is.na(.) & . != ""))
+# 
+# MB02_12_UF440= read_csv("MB02_12_ella_uf440_fixed.csv") %>%
+#   filter(if_any(everything(), ~ !is.na(.) & . != ""))
+# 
+# MB02_11_data <- MB02_11_data %>% filter(Comments != "HF")
+# MB02_11_data <- MB02_11_data %>% filter(Comments != "HF sunset")
+# MB02_11_data <- MB02_11_data %>% filter(Comments != "HF sunrise")
+# 
+# MB02_11_data= rbind(MB02_11_data, MB02_11_UF440)
+# 
+# 
+# #mb02_12
+# MB02_12_UF440= read_csv("MB02_12_ella_uf440_fixed.csv") %>%
+#   filter(if_any(everything(), ~ !is.na(.) & . != ""))
+# 
+# MB02_12_UF440= read_csv("MB02_12_ella_uf440_fixed.csv") %>%
+#   filter(if_any(everything(), ~ !is.na(.) & . != ""))
+# 
+# MB02_12_data <- MB02_12_data %>% filter(Comments != "HF")
+# MB02_12_data <- MB02_12_data %>% filter(Comments != "HF sunset")
+# MB02_12_data <- MB02_12_data %>% filter(Comments != "HF sunrise")
+# 
+# MB02_12_data= rbind(MB02_12_data, MB02_12_UF440)
+# 
+# 
+# write.csv(MB02_11_data, "MB02_11_NEW.csv", row.names = FALSE)
+# write.csv(MB02_12_data, "MB03_12_NEW.csv", row.names = FALSE)
+
+
 
 # Combine CSV files into one matrix for each site
 MB02=rbind(MB02_01_data, 
