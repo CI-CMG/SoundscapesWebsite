@@ -359,15 +359,15 @@ MB02$end_time <- as.POSIXct(MB02$End)
 
 #loaded in already for CH01 but leaving here just in case
 #creating a function that will expand each log so that we have a row for each hour where a fish was singing 
-# generate_hours <- function(fish, start_time, end_time) {
-#   # Create a sequence of hours between start_time and end_time
-#   seq_hours <- seq(from = floor_date(start_time, "hour"), 
-#                    to = ceiling_date(end_time, "hour") - 1, 
-#                    by = "hour")
-#   
-#   # Return a data frame with one row per hour
-#   data.frame(fish = fish, hour = seq_hours)
-# }
+generate_hours <- function(fish, start_time, end_time) {
+  # Create a sequence of hours between start_time and end_time
+  seq_hours <- seq(from = floor_date(start_time, "hour"),
+                   to = ceiling_date(end_time, "hour") - 1,
+                   by = "hour")
+
+  # Return a data frame with one row per hour
+  data.frame(fish = fish, hour = seq_hours)
+}
 
 # Apply the function to each row of the data
 MB02Hour <- MB02 %>%
