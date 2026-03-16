@@ -35,15 +35,23 @@ for col in df1.select_dtypes(include=["datetime64[ns]"]).columns:
 summaryTable = [list(df1.columns.values)]  # keeps column names as-is, with spaces
 summaryTable.extend(df1.values.tolist())
 htmlTable = '<div style="overflow-x: scroll;">' + tabulate(summaryTable, tablefmt="unsafehtml") + '</div>'
-headerLocations = [i for i in range(len(htmlTable)) if htmlTable.startswith("<th>", i)]
-headerSizes = ["200","300","200","200","200","200","300","300","200","200","200"]
+# headerLocations = [i for i in range(len(htmlTable)) if htmlTable.startswith("<th>", i)]
+# headerSizes = ["200","300","200","200","200","200","300","300","200","200","200"]
 # 
 # headerSizes = ["100"] * len(df1.columns)
 # headerSizes[1] = "300"  # Column 2
 # headerSizes[6] = "300"  # Column 7
 # headerSizes[7] = "300"  # Column 8
-for i in range(len(headerLocations)):
-  htmlTable = htmlTable[:headerLocations[i]] + f'<th style="width:{headerSizes[i]}px"' + htmlTable[headerLocations[i]+4:]
+# Calculate locations
+headerLocations = [i for i in range(len(htmlTable)) if htmlTable.startswith("<th>", i)]
+headerSizes = ["200","300","200","200","200","200","300","300","200","200","200"]
+
+# Iterate BACKWARDS so indices don't shift for the next replacement
+for i in reversed(range(len(headerLocations))):
+    loc = headerLocations[i]
+    htmlTable = htmlTable[:loc] + f'<th style="min-width:{headerSizes[i]}px;"' + htmlTable[loc+4:]
+# for i in range(len(headerLocations)):
+#   htmlTable = htmlTable[:headerLocations[i]] + f'<th style="width:{headerSizes[i]}px"' + htmlTable[headerLocations[i]+4:]
 ```
 
 ---

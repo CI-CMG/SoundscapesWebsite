@@ -31,7 +31,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
 
-ONMSsites = c("pm02")
+ONMSsites = c("fk08")
 
 
 ## directories ####
@@ -145,7 +145,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "asnrs10"
     site  = "NRS10"
     site5 = "as10"
-      } else {
+  }else if (site == "fk08"){
+    site1 = site
+    site3 = "fk07"
+    site5 = site
+    outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" )#products
+  } else {
     site1 = site
     site3 = site
     site5 = site
@@ -685,7 +690,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   summary$month = as.character(summary$month)
   summary$month = as.numeric(summary$month)
-  summaryX = summary %>% filter(n < (siteInfo$MThreshold*24)) %>% select(year, month)
+  summaryX = summary %>% filter(n < (siteInfo$MThreshold*24)) %>% dplyr::select(year, month)
   
   
   gpsAGnew = anti_join(gpsAG, summaryX, by = c("yr" = "year",
@@ -1245,6 +1250,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     # geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
     #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.2) +
     
+    #for the geom_ribbons below, if data only has one year (ch01 and fk08), comment out the first geom ribbon and change alpha of second from .3 to .1
     geom_ribbon(data = mallData %>%
                   filter(Year != oldest_year) %>%
                   pivot_wider(names_from = Quantile, values_from = SoundLevel),

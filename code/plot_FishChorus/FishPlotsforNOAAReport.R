@@ -181,7 +181,7 @@ MB01_07_data=read.csv("MB01_07.csv",header=TRUE)
 MB01_08_data=read.csv("MB01_08.csv",header=TRUE)
 MB01_09_data=read.csv("MB01_09.csv",header=TRUE)
 MB01_11_data=read.csv("MB01_11 - Sheet1.csv",header=TRUE)
-MB01_12_data=read.csv("MB01_12 - Sheet1.csv",header=TRUE)
+MB01_12_data=read.csv("MB01_12_NEW.csv",header=TRUE)
 
 #midshipman was logged seperately for MBNMS, so load those in here
 MB01_02_midshipman=read.csv("MB01_02_midshipman.csv")
@@ -262,9 +262,14 @@ MB01Hour$date <- substr(MB01Hour$hour, 1, 10)
 MB01Hour$date <- as.Date(MB01Hour$date)
 
 #daylight savings -8, otherwise -7
+# MB01HourPST <- MB01Hour %>%
+#   mutate(
+#     ChorusHourP = ifelse(date >= as.Date("2018-11-15") & date <= as.Date("2019-03-10") | date >= as.Date("2019-11-04") & date <= as.Date("2020-03-07") | date >= as.Date("2020-11-01") & date <= as.Date("2021-03-13") | date >= as.Date("2021-11-07") & date <= as.Date("2022-01-21") | date >= as.Date("2022-11-06") & date <= as.Date("2023-03-11"), ChorusHour - 8, ChorusHour - 7)
+#   )
 MB01HourPST <- MB01Hour %>%
   mutate(
-    ChorusHourP = ifelse(date >= as.Date("2018-11-15") & date <= as.Date("2019-03-10") | date >= as.Date("2019-11-04") & date <= as.Date("2020-03-07") | date >= as.Date("2020-11-01") & date <= as.Date("2021-03-13") | date >= as.Date("2021-11-07") & date <= as.Date("2022-01-21") | date >= as.Date("2022-11-06") & date <= as.Date("2023-03-11"), ChorusHour - 8, ChorusHour - 7)
+    hour_PT = with_tz(hour, tzone = "America/Los_Angeles"),
+    ChorusHourP = hour(hour_PT)
   )
 
 #group count of fish chorusing for each hour and fish species
@@ -276,9 +281,9 @@ MB01_summary <- MB01HourPST %>%
 MB01_summary <- MB01_summary %>% filter(fish %in% c("Midshipman", "Bocaccio", "UF310", "White Seabass", "HF"))
 
 #changing data from utc to pst
-MB01_summary$ChorusHour <- MB01_summary$ChorusHourP
-MB01_summary <- MB01_summary[, 2:4]
-MB01_summary$ChorusHour[1:34] <- MB01_summary$ChorusHour[1:34] + 24
+ MB01_summary$ChorusHour <- MB01_summary$ChorusHourP
+# MB01_summary <- MB01_summary[, 2:4]
+# MB01_summary$ChorusHour[1:34] <- MB01_summary$ChorusHour[1:34] + 24
 
 #get sum of days spent chorusing
 MB01_summary <- MB01_summary %>%
