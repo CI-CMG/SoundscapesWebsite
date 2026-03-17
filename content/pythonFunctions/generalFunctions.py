@@ -102,7 +102,7 @@ def makeButtons(sites, generalFormat, identifier, altText=""):
         """
     return buttons + initialImage + scripts
     
-def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifier, altText=""):
+def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifier, altTexts=[]):
     buttons = ""
     scripts = f"""
                     <script>
@@ -119,7 +119,7 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
     inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
     path = f'{inputDir}/{generalFormat}'
     path = path.replace("***", uniqueImageIDs[0])
-    initialImage = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
+    initialImage = f'<img alt="{altTexts[0]}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()">'
     
     for i in range(len(uniqueImageIDs)):
         path = f'{inputDir}/{generalFormat}'
@@ -140,6 +140,7 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
                     <script>
                     function {uniqueImageIDs[i]}{identifier}() {{
                         var imgElement = document.getElementById('{identifier}');
+                        imgElement.alt = "{altTexts[i]}"
                         imgElement.src = "{path}";
                         const thisButton = document.getElementById('{uniqueImageIDs[i]}{identifier}button');
                         thisButton.style.backgroundColor = '#BA2F00';
