@@ -140,7 +140,7 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
                     <script>
                     function {uniqueImageIDs[i]}{identifier}() {{
                         var imgElement = document.getElementById('{identifier}');
-                        imgElement.alt = altTexts[i]
+                        imgElement.alt = "{altTexts[i]}"
                         imgElement.src = "{path}";
                         const thisButton = document.getElementById('{uniqueImageIDs[i]}{identifier}button');
                         thisButton.style.backgroundColor = '#BA2F00';
