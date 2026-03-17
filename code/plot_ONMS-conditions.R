@@ -220,6 +220,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     }
     
   }
+  
   ## calculate spectrum band levels in the TOLs ####
   # assumes all TOL data are in broadband measurements, NOT per/Hz
   # this is needed to compare with the wind model results 
