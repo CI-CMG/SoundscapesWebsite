@@ -35,11 +35,11 @@ ONMSsites = c("fk01")
 
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
 #outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
-#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -478,14 +478,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  } else if (site %in% c("mb01", "ci01", "NRS03", "NRS04", "NRS05", "NRS09","NRS10","NRS11","NRS13")){
+  } else if (site %in% c("NRS03", "NRS04", "NRS05", "NRS09","NRS10","NRS11","NRS13")){
       #(site == "NRS05"){
       gps <- gps %>%
        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
-      #  mutate(across(num_range("HMD_", 1215:1275), ~ NA))
-      gpsAG <- gpsAG %>%
-       mutate(across(num_range("HMD_", 1249:1252), ~ NA))
-        #mutate(across(num_range("HMD_", 1215:1275), ~ NA))
+
+     # gpsAG <- gpsAG %>%
+      # mutate(across(num_range("HMD_", 1249:1252), ~ NA))
+
       
     }
     
