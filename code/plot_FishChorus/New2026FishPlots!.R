@@ -5,7 +5,7 @@
 # ><(((*>  <*)))><   ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  
 #MB05
 #set working directory (change before making each new site graph)
-setwd("C:/Users/embe5980/Indicators/WCR_fish_ella/Code/MB05")   
+setwd("C:/Users/embe5980/SoundscapesWebsite/code/plot_FishChorus/MB05/")   
 
 #read all CSVs for all deployments
 #no MB01_10 b/c off effort
@@ -20,11 +20,41 @@ MB05_04_data= read_csv("MB05_04.csv") %>%
 MB05_05_data= read_csv("MB05_05.csv") %>%
   filter(if_any(everything(), ~ !is.na(.) & . != ""))
 
-# no midshipman for this deployment so skip... 
-# midshipman was logged seperately for MBNMS, so load those in here
-# MB01_02_midshipman=read.csv("MB01_02_midshipman.csv")
-# MB01_03_midshipman=read.csv("MB01_03_midshipman.csv")
-# etc...
+
+#MB02_02 and 05 have wrong UF440
+#MB05_02
+MB05_02_UF440= read_csv("MB05_02_UF440_new_log_ella.csv") %>%
+  filter(if_any(everything(), ~ !is.na(.) & . != ""))
+
+MB05_05_UF440= read_csv("MB05_05_UF440_new_log_ella.csv") %>%
+  filter(if_any(everything(), ~ !is.na(.) & . != ""))
+
+# MB05_12_UF440= read_csv("MB05_06_UF440_new_log_ella.csv") %>%
+#   filter(if_any(everything(), ~ !is.na(.) & . != ""))
+
+MB05_02_data <- MB05_02_data %>% filter(Comments != "HF")
+MB05_02_data <- MB05_02_data %>% filter(Comments != "HF sunset")
+MB05_02_data <- MB05_02_data %>% filter(Comments != "HF sunrise")
+
+MB05_02_UF440 <- MB05_02_UF440[,-c(7:12)]
+
+MB05_02_data= rbind(MB05_02_data, MB05_02_UF440)
+
+
+#MB05_05
+MB05_05_data <- MB05_05_data %>% filter(Comments != "HF")
+MB05_05_data <- MB05_05_data %>% filter(Comments != "HF sunset")
+MB05_05_data <- MB05_05_data %>% filter(Comments != "HF sunrise")
+
+MB05_05_UF440 <- MB05_05_UF440[,-c(7:12)]
+
+MB05_05_data= rbind(MB05_05_data, MB05_05_UF440)
+
+
+write.csv(MB05_02_data, "MB05_02_NEW.csv", row.names = FALSE)
+write.csv(MB05_05_data, "MB05_05_NEW.csv", row.names = FALSE)
+
+
 
 # Combine CSV files into one matrix for each site
 MB05=rbind(MB05_01_data, MB05_02_data, MB05_03_data, MB05_04_data, MB05_05_data)
@@ -53,6 +83,9 @@ MB05$Comments <- gsub('bocaccio','Bocaccio',MB05$Comments)
 MB05$Comments <- gsub('HF sunset','HF', MB05$Comments)
 MB05$Comments <- gsub('HF sunrise','HF',MB05$Comments)
 MB05$Comments <- gsub('HF ','HF',MB05$Comments)
+
+#change HF to UF440 because UF440 was logged as HF (high frequency) instead of its unidentified fish frequency name (UF310)
+MB05$Comments <- gsub('HF','UF440',MB05$Comments)
 
 MB05$Comments <- gsub('off effort','Off Effort',MB05$Comments)
 #MB05$Comments <- gsub('Lingcod','White Seabass',MB01$Comments)
@@ -83,6 +116,8 @@ generate_hours <- function(fish, start_time, end_time) {
   # Return a data frame with one row per hour
   data.frame(fish = fish, hour = seq_hours)
 }
+
+MB05 <- MB05[-529,]
 
 # Apply the function to each row of the data
 MB05Hour <- MB05 %>%
@@ -116,7 +151,7 @@ MB05_summary <- MB05HourPST %>%
   summarise(count = n())
 
 #keep only fish rows, not off effort
-MB05_summary <- MB05_summary %>% filter(fish %in% c("Midshipman", "Bocaccio", "UF310", "White Seabass", "HF"))
+MB05_summary <- MB05_summary %>% filter(fish %in% c("Midshipman", "Bocaccio", "UF310", "White Seabass", "UF440"))
 
 #get sum of days spent chorusing
 MB05_summary <- MB05_summary %>%
@@ -187,9 +222,6 @@ MB05_effort2 <- MB05_effort2[-322, ]
 #divide count of chorusing days by total effort days so that the units are in proportion, just like the histograms
 MB05_summary$effortDays <- nrow(MB05_effort2)
 MB05_summary$prop <- MB05_summary$count / MB05_summary$effortDays
-
-#change HF to UF440 because UF440 was logged as HF (high frequency) instead of its unidentified fish frequency name (UF310)
-MB05_summary$fish <- gsub('HF','UF440',MB05_summary$fish)
 
 #colors for all 5 fish species
 custom_colors <- c("Bocaccio" = "deepskyblue", "Midshipman" = "darkorange", "UF310" = "green3", "White Seabass" = "firebrick2", "UF440" = "darkorchid")
