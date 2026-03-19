@@ -31,15 +31,15 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
 
-ONMSsites = c("gr01")
+ONMSsites = c("as10")
 
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
-#outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
+outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics

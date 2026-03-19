@@ -27,19 +27,19 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "NRS13" 
+site  = "NRS10" 
 site = tolower(site) 
 # 
 # #add for NRS
- gcpF = "PMEL_CHNMS"
- prodName = "ch" 
+ gcpF = "PMEL_NPSA"
+ prodName = "as" 
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
 #dirGCP = paste0( "C:/Users/emma.beretta/Documents/ONMS/", site,"/") # for NOAA computer
 #dirGCP = paste0( "C:/Users/embe5980/ONMS/", site,"/") # for CIRES computer
-dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
-#dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
+#dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
+dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
 
 
 #SANCTSOUND DATA DIRECTORIES
@@ -48,7 +48,7 @@ dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP wo
 #dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/gr01") # for GCP workstation - SBNMS (same data as above directory but pulling from NCEI. aditional folder to get to hmd data so if using this directory will need to adjust code looking for file path)
 #dirGCPSS = paste0( "X:/Emma_Beretta/HI01SanctSound") # for GCP workstation - HI01
 #dirGCPSS = paste0("E:/onms/products/sound_level_metrics/mb05/onms_mb05_20220425_20220621_hmd") #to get MB05_01
-dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/", site,"/") 
+#dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/", site,"/") 
 
 
 # LOCAL CODE REPO DIRECTORIES ####
@@ -56,12 +56,12 @@ dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/", site,"/")
 #outDir =  "F:/CODE/GitHub/SoundscapesWebsite/" 
 #outDir =  "C:/Users/emma.beretta/Documents/SoundscapesWebsite/" #for NOAA computer
 #outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
-outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for Emma GCP workstation
-#outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
+#outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for Emma GCP workstation
+outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
 
 outDirC = paste0( outDir,"content/resources/") #context
-outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
-#outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
+#outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
+outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
 outDirG = paste0( outDir,"report/" ) #graphics
 
 
@@ -195,7 +195,7 @@ if ( length(pFile) > 0 ) {
   if ( length(inFilesN ) > 0 ) {
 
     # read in processed data to append results
-    inFileP = list.files((outDir),
+    inFileP = list.files((outDirP),
                          pattern = paste0("HMDdata_", site, "_HourlySPL-gfs_\\d{4}-\\d{2}-\\d{2}\\.Rda$"),
                          full.names = T, recursive = T)
     file_info = file.info(inFileP)
@@ -369,6 +369,7 @@ cDatah = setDF(cDatah)
 # # # names(gps)
 
 
+
 #GET WIND WITH CHUNKS ####
 #Too many unique days to process all at once. Need to break cDatah into smaller datasets
 #Split cDatah into chunks
@@ -435,6 +436,7 @@ gps <- dplyr::bind_rows(gps_chunks)
 #   Latitude = Latitude.y,
 #   Longitude = Longitude.y
 # )
+
 
 
 
