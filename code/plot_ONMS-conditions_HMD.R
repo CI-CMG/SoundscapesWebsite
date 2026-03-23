@@ -1221,7 +1221,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #wind model
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windUpp,], aes(x = variable, y = value), color = "black", linewidth = 1) +
     geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black", linewidth = 1) +
-    scale_x_log10(labels = label_number(),limits = (c(10,fqupper))) +  # Log scale for x-axis
+    scale_x_log10(labels = label_number(),limits = (c(10,fqupper)), guide = "axis_logticks") +  # Log scale for x-axis
     
     scale_color_manual(values = rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
     scale_fill_manual(values =  rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
@@ -1290,7 +1290,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           axis.title.x = element_text(size = 14),           # X-axis label size
           axis.title.y = element_text(size = 14),           # Y-axis label size
           axis.text = element_text(size = 14),
-          legend.text = element_text(size = 12)
+          legend.text = element_text(size = 12),
+          axis.ticks.length.x = unit(0.25, "cm"), 
+          axis.ticks.x = element_line(color = "grey", linewidth = 0.3), 
+          axis.line.x = element_line(color = "grey", linewidth = 0.3)    
     ) 
   p
   
