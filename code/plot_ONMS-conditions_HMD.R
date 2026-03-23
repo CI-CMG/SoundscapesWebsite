@@ -31,14 +31,14 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
 
-ONMSsites = c("fk05")
+ONMSsites = c("hi01")
 
 
 ## directories ####
-outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
+outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
@@ -1817,7 +1817,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                      linetype = "dashed", color = "black", linewidth = .5) +
     
           geom_text_npc(data = yrFQ, 
-                    aes(npcx = 1, npcy = HMD_50, label = paste0("year median = ", round(HMD_50, 3))),
+                    aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 3))),
                     inherit.aes = FALSE, # Ignores x = Julian from the main ggplot
                     vjust = -1,          # Moves it above the line
                     hjust = 1,           # Aligns it to the right
@@ -1863,7 +1863,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         ft = str_remove(ft, " Hz TOL| Hz")
        
-        ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatusV2.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
+        ggsave(filename = paste0(outDirG, "plot_", toupper(site), "-", ft, "_HMDstatus.jpg"), plot = plg2, width = 10, height = plot_height, dpi = 300)
         
         
       } else if (substring(site, 1, 2) == "hi") {
@@ -1895,7 +1895,19 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                    fill = "#99CCFF", alpha = 0.5) +
           ylim(q01, q99) +
           
-          geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
+          geom_hline(data = yrFQ, aes(yintercept = HMD_50), 
+                     linetype = "dashed", color = "black", linewidth = .5) +
+          
+          geom_text_npc(data = yrFQ, 
+                        aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 3))),
+                        inherit.aes = FALSE, # Ignores x = Julian from the main ggplot
+                        vjust = -1,          # Moves it above the line
+                        hjust = 1,           # Aligns it to the right
+                        size = 3, 
+                        color = "black",
+                        fontface = "bold") +
+          coord_cartesian(clip = "off") + # Allows text to exist outside the 0-365 range
+          #geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
           geom_hline(aes(yintercept = q75),linetype = "dashed", color = "gray",linewidth = .2) +
           geom_hline(aes(yintercept = q25),linetype = "dashed", color = "gray",linewidth = .2) +
           
@@ -1923,7 +1935,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         ## save: plot 125 Hz time series with thresholds ####
         plg
         
-        plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        # plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        # plg2
+        
+        plg2 = plg + pie + plot_layout(ncol = 2, widths = c(2, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
         ft = str_remove(ft, " Hz TOL| Hz")
@@ -1962,7 +1977,19 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                    fill = "#99CCFF", alpha = 0.5) +
           ylim(q01, q99) +
           
-          geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
+          #geom_hline(aes(yintercept = q50),linetype = "dashed", color = "black",linewidth = .2) +
+          geom_hline(data = yrFQ, aes(yintercept = HMD_50), 
+                     linetype = "dashed", color = "black", linewidth = .5) +
+          
+          geom_text_npc(data = yrFQ, 
+                        aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 3))),
+                        inherit.aes = FALSE, # Ignores x = Julian from the main ggplot
+                        vjust = -1,          # Moves it above the line
+                        hjust = 1,           # Aligns it to the right
+                        size = 3, 
+                        color = "black",
+                        fontface = "bold") +
+          coord_cartesian(clip = "off") + # Allows text to exist outside the 0-365 range
           geom_hline(aes(yintercept = q75),linetype = "dashed", color = "gray",linewidth = .2) +
           geom_hline(aes(yintercept = q25),linetype = "dashed", color = "gray",linewidth = .2) +
           
