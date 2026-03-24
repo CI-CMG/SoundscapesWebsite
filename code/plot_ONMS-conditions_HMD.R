@@ -32,7 +32,8 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fg06 #Samara edit line 1315
 
-ONMSsites = c("fg06")
+
+ONMSsites = c("fk06", "fgb01")
 
 
 ## directories ####
@@ -496,7 +497,33 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       # mutate(across(num_range("HMD_", 1249:1252), ~ NA))
 
       
-    }
+  } else if (site == "fgb01"){
+    
+    #make those columns na
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2500:3900), ~ NA))
+    
+    
+  } else if (site == "gr01" | site == "fk01"){
+    
+    #make those columns na
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2800:4200), ~ NA))
+    
+    
+  }else if (site == "fk05"){
+    
+    #make those columns na
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2100:3900), ~ NA))
+    
+  } else if (site == "sb01" | site == "sb03"){
+    
+    #make those columns na
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2900:4300), ~ NA))
+    
+  } 
     
   
   
@@ -1787,11 +1814,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       # graph with three of more years: 12
       if (num_years == 1) {
         #plot_height <- 6
-        plot_height <- 12/7
+        plot_height <- 2
       } else if (num_years == 2) {
         plot_height <- 4.75
       } else if (num_years == 3) {
         plot_height <- 6
+      } else if (num_years == 8) {
+        plot_height <- 14
       } else {
         # This covers three or more years
         plot_height <- 12
@@ -2195,7 +2224,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   # SAVE UPDATED DATA ####
   # names(gps)
-  save(gps, file = paste0(outDirP, "/data_", tolower(site), "_HourlySPL-gfs-season-spectrumlevel_", DC, ".Rda") )
+  #save(gps, file = paste0(outDirP, "/data_", tolower(site), "_HourlySPL-gfs-season-spectrumlevel_", DC, ".Rda") )
   
 }
 
