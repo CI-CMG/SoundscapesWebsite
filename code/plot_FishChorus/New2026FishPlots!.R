@@ -537,6 +537,26 @@ MB02Rose
 outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
 ggsave(filename = paste0(outDirG, "/MB02_FinalRosePlot.png"), dpi = 300)
 
+
+MB02Fish = ggplot(MB02_summary, aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
+  geom_bar(stat = "identity", position = position_dodge(preserve = "single")) +
+  #coord_polar(start = 0) +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
+  labs(x = "Hour of the Day (PST/PDT)", y = "Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", title = "Hourly Proportion of Daily Fish Chorusing at MB02" , fill = "Fish Species") +
+  theme(axis.text.x = element_text(size = 12),
+        axis.text.y = element_text(size = 12)) 
+  # + scale_y_continuous(limits = c(0, 1.6))
+  #can add this following line if you want the 0 on the y axis to be labeled. I removed it because it was making it hard to see bars around 0
+  #annotate("text", x = 10.5, y = .2, label = "0.2", color = "black") +
+  # annotate("text", x = 10.5, y = .4, label = "0.4", color = "black") +
+  # annotate("text", x = 10.5, y = .8, label = "0.8", color = "black") +
+  # annotate("text", x = 10.5, y = 1.2, label = "1.2", color = "black")  +
+  # annotate("text", x = 10.5, y = 1.6, label = "1.6", color = "black")  +
+  # theme(axis.text.y = element_blank()) 
+
+MB02Fish
+
 #proportion of days where fish (bocaccio) chorused out of all days where we were recording during that hour (20)
 
 # ><(((*>  <*)))><   ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  ><(((*>  <*)))><  
