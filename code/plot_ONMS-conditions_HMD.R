@@ -22,6 +22,7 @@ library(grid)
 library(ggtext)
 library(plotly)
 library(viridis)
+library(ggpp)
 
 
 rm(list=ls()) 
@@ -31,7 +32,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
 
 
-ONMSsites = c("hi01")
+ONMSsites = c("hi08")
 
 
 ## directories ####
@@ -1765,16 +1766,24 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       pie
       
     
-      #adjust height variable for how many years of data there are
-      #ex: for graphs with one year of data change height of plot from 12 to 6
-      # graph with 2 years: 10
-      # graph with three of more years: 12
+      #adjust height variable to keep annual graph height the same regardless of years in graph
+      #they liked height of graph w 7 years of data (hi01)
+      
       num_years <- nrow(yrFQ)
       
+      #plot_height <- (12/8)*num_years+1
+      
+      # old way to adjust graph height
+      # ex: for graphs with one year of data change height of plot from 12 to 6
+      # graph with 2 years: 10
+      # graph with three of more years: 12
       if (num_years == 1) {
-        plot_height <- 6
+        #plot_height <- 6
+        plot_height <- 12/7
       } else if (num_years == 2) {
-        plot_height <- 10
+        plot_height <- 4.75
+      } else if (num_years == 3) {
+        plot_height <- 6
       } else {
         # This covers three or more years
         plot_height <- 12
@@ -1790,8 +1799,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
       }
       
-      install.packages("ggpp")
-      library(ggpp)
       
       ### plot: time series ####
       dailyFQ_complete$yr = factor(dailyFQ_complete$yr, levels = rev(sort(unique(dailyFQ_complete$yr))))
@@ -1820,13 +1827,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                      linetype = "dashed", color = "black", linewidth = .5) +
     
           geom_text_npc(data = yrFQ, 
-                    aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 3))),
+                    aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 1))),
                     inherit.aes = FALSE, # Ignores x = Julian from the main ggplot
                     vjust = -1,          # Moves it above the line
                     hjust = 1,           # Aligns it to the right
                     size = 3, 
-                    color = "black",
-                    fontface = "bold") +
+                    color = "black") +
           coord_cartesian(clip = "off") + # Allows text to exist outside the 0-365 range
           
           geom_hline(aes(yintercept = q75),linetype = "dashed", color = "gray",linewidth = .2) +
@@ -1902,13 +1908,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                      linetype = "dashed", color = "black", linewidth = .5) +
           
           geom_text_npc(data = yrFQ, 
-                        aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 3))),
+                        aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 1))),
                         inherit.aes = FALSE, # Ignores x = Julian from the main ggplot
                         vjust = -1,          # Moves it above the line
                         hjust = 1,           # Aligns it to the right
                         size = 3, 
-                        color = "black",
-                        fontface = "bold") +
+                        color = "black"
+                        # ,
+                        # fontface = "bold"
+                        ) +
           coord_cartesian(clip = "off") + # Allows text to exist outside the 0-365 range
           #geom_hline(aes(yintercept = q50),linetype = "dashed", color = "gray",linewidth = .2) +
           geom_hline(aes(yintercept = q75),linetype = "dashed", color = "gray",linewidth = .2) +
@@ -1985,13 +1993,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                      linetype = "dashed", color = "black", linewidth = .5) +
           
           geom_text_npc(data = yrFQ, 
-                        aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 3))),
+                        aes(npcx = 1, npcy = HMD_50, label = paste0("annual median = ", round(HMD_50, 1))),
                         inherit.aes = FALSE, # Ignores x = Julian from the main ggplot
                         vjust = -1,          # Moves it above the line
                         hjust = 1,           # Aligns it to the right
                         size = 3, 
-                        color = "black",
-                        fontface = "bold") +
+                        color = "black") +
           coord_cartesian(clip = "off") + # Allows text to exist outside the 0-365 range
           geom_hline(aes(yintercept = q75),linetype = "dashed", color = "gray",linewidth = .2) +
           geom_hline(aes(yintercept = q25),linetype = "dashed", color = "gray",linewidth = .2) +
@@ -2020,7 +2027,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         ## save: plot 125 Hz time series with thresholds ####
         plg
         
-        plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, 1, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        plg2 = plg + pie + plot_layout(ncol = 2, widths = c(2, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
         plg2
         
         ft = str_remove(ft, " Hz TOL| Hz")
