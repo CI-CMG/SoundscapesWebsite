@@ -25,14 +25,14 @@ library(viridis)
 library(ggpp)
 
 
+
 rm(list=ls()) 
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
-# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 #Samara edit line 1315
+# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fg06 #Samara edit line 1315
 
-
-ONMSsites = c("hi08")
+ONMSsites = c("fg06")
 
 
 ## directories ####
@@ -151,6 +151,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "fk07"
     site5 = site
     outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" )#products
+  } else if (site == "fg06"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs06"
+    site3 = "fgnrs06"
+    site  = "NRS06"
+    site5 = "fgb06"
   } else {
     site1 = site
     site3 = site
@@ -167,7 +173,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # ##frequency of interest ####
   if (substr(site, 1,3) == "fgb"){
     FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
-  } else {
+  } else if (substr(site, 1,5) == "NRS06"){
+    FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
+   } else {
     FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
   }
   
@@ -479,7 +487,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gpsAG <- gpsAG %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  } else if (site %in% c("NRS03", "NRS04", "NRS05", "NRS09","NRS10","NRS11","NRS13")){
+  } else if (site %in% c("NRS03", "NRS04", "NRS05","NRS06","NRS09","NRS10","NRS11","NRS13")){
       #(site == "NRS05"){
       gps <- gps %>%
        mutate(across(num_range("HMD_", 1249:1252), ~ NA))

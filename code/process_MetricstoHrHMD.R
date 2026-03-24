@@ -27,12 +27,12 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "NRS10" 
+site  = "NRS06" 
 site = tolower(site) 
 # 
 # #add for NRS
- gcpF = "PMEL_NPSA"
- prodName = "as" 
+ gcpF = "PMEL_GOM"
+ prodName = "fgb" 
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
