@@ -33,14 +33,14 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fg06 #Samara edit line 1315
 
 
-ONMSsites = c("fk06", "fgb01")
+ONMSsites = c("fk08")
 
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
@@ -1290,18 +1290,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.2) +
     
     #for the geom_ribbons below, if data only has one year (ch01 and fk08), comment out the first geom ribbon and change alpha of second from .3 to .1
-    geom_ribbon(data = mallData %>%
-                  filter(Year != oldest_year) %>%
-                  pivot_wider(names_from = Quantile, values_from = SoundLevel),
-                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year),
-                alpha = 0.1) +
+    # geom_ribbon(data = mallData %>%
+    #               filter(Year != oldest_year) %>%
+    #               pivot_wider(names_from = Quantile, values_from = SoundLevel),
+    #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year),
+    #             alpha = 0.1) +
 
     #for the oldest year, make the shading darker since it is hard to see at alpha = .1 for lightblue
     geom_ribbon(data = mallData %>% 
                   filter(Year == oldest_year) %>% 
                   pivot_wider(names_from = Quantile, values_from = SoundLevel),
                 aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), 
-                alpha = 0.3) + # High alpha for visibility
+                alpha = 0.1) + # High alpha for visibility
     
     #median HMD values- each year
     geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year), linewidth = 2) +
@@ -1814,7 +1814,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       # graph with three of more years: 12
       if (num_years == 1) {
         #plot_height <- 6
-        plot_height <- 2
+        #plot_height <- 3.25
+        plot_height <- 4.25
       } else if (num_years == 2) {
         plot_height <- 4.75
       } else if (num_years == 3) {
