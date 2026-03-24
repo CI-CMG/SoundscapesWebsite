@@ -23,13 +23,13 @@ library(patchwork)
 rm(list=ls()) 
 
 #Load in
-OC02_01 <- read.csv('C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/data/OCNMS/noaaSanctSound_OC02_01_killerwhale.csv', stringsAsFactors = FALSE)
+OC02_01 <- read.csv('C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/data/OCNMS SS/noaaSanctSound_OC02_01_killerwhale.csv', stringsAsFactors = FALSE)
 
-OC02_02 <- read.csv('C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/data/OCNMS/noaaSanctSound_OC02_02_killerwhale.csv', stringsAsFactors = FALSE)
+OC02_02 <- read.csv('C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/data/OCNMS SS/noaaSanctSound_OC02_02_killerwhale.csv', stringsAsFactors = FALSE)
 
-OC02_04 <- read.csv('C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/data/OCNMS/noaaSanctSound_OC02_04_killerwhale.csv', stringsAsFactors = FALSE)
+OC02_04 <- read.csv('C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/data/OCNMS SS/noaaSanctSound_OC02_04_killerwhale.csv', stringsAsFactors = FALSE)
 
-OC02_05 <- read.csv('C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/data/OCNMS/noaaSanctSound_OC02_05_killerwhale.csv', stringsAsFactors = FALSE)
+OC02_05 <- read.csv('C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/data/OCNMS SS/noaaSanctSound_OC02_05_killerwhale.csv', stringsAsFactors = FALSE)
 
 
 #Clean up! 
@@ -310,6 +310,18 @@ OC02_offeffort <- data.frame(
 OC02_offeffort$start <- as.Date(OC02_offeffort$start, format = "%m-%d-%Y")
 OC02_offeffort$end <- as.Date(OC02_offeffort$end, format = "%m-%d-%Y")
 
+# Create a cleaned version of your data
+# daily_cleaned <- OC02_weekly
+# 
+# for(i in 1:nrow(OC02_offeffort)) {
+#   gap_start <- OC02_offeffort$start[i]
+#   gap_end   <- OC02_offeffort$end[i]
+#   
+#   # Set the sound level to NA for these Julian days
+#   daily_cleaned$HMD_50[daily_cleaned$Julian >= start & 
+#                          daily_cleaned$Julian <= end] <- NA
+# }
+
 
 ###plot ####
 
@@ -318,15 +330,16 @@ OC02_offeffort$end <- as.Date(OC02_offeffort$end, format = "%m-%d-%Y")
 curveOC02 <- ggplot(OC02_weekly, aes(x = week, y = total_hours_present)) +
   geom_point() +
   stat_smooth(method = "gam", formula = y ~ s(x, k = 20),
-              se = TRUE,
-              color = "steelblue",
-              fill = "steelblue",
-              alpha = 0.2) +
+               se = TRUE,
+               color = "steelblue",
+               fill = "steelblue",
+               na.rm = FALSE,
+               alpha = 0.2) +
   geom_rect(
     data = OC02_offeffort,
-    aes(xmin = start , xmax = end - days(4), ymin = 0, ymax = Inf),
+    aes(xmin = start , xmax = end - days(4), ymin = 0, ymax = 168),
     inherit.aes = FALSE,
-    fill = "grey") +
+    fill = "white") +
     scale_x_date(
     date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
     date_breaks = "3 months",
@@ -340,7 +353,7 @@ curveOC02 <- ggplot(OC02_weekly, aes(x = week, y = total_hours_present)) +
     x = "Week",
     y = "Total hours with orca call presence"
   ) +
-  theme_minimal() +
+  #theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         plot.title = element_text(face = "bold")) +
   guides(fill = "none")
