@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fgb06 #Samara edit line 1315
 
 
-ONMSsites = c("fgb06")
+ONMSsites = c("mb01", "mb02", "mb05")
 
 
 ## directories ####
@@ -421,62 +421,15 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #Removing frequencies that have instrument issues that were not marked in data quality matrix
   #DIPS at ~3k Hz. They vary by site.
 
-  if (site == "mb01"){
-    
-    #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 3115:4330), 
-                    ~ if_else(Season != "Post-Upwelling", NA_real_, .)))
-    
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
-    
-  } else if (site == "mb02"){
-    
-    #for all seasons
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 3270:4330), ~ NA))
-    
-    #for 2023 and 2024 higher dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 3270:4330), 
-                    ~ if_else(yr != 2022, NA_real_, .)))
-    
-    #for 2022 lower dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 1912:2567), 
-                    ~ if_else(yr == 2022, NA_real_, .)))
-    
-  } else if (site == "ci04"){
-    
-    #for winter and post-upwelling lower dip
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2175:2567), 
-                    ~ if_else(Season != "Upwelling", NA_real_, .)))
-    
-    #for upwelling higher dip
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 3115:4330), 
-                    ~ if_else(Season == "Upwelling", NA_real_, .)))
-    
-    #for 2023 and 2022 lower dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 2175:2567), 
-                    ~ if_else(yr != 2024, NA_real_, .)))
-    
-    #for 2024 higher dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 3115:4330), 
-                    ~ if_else(yr == 2024, NA_real_, .)))
-  } else if (site == "ch01"){
+ if (site == "ch01"){
     
     #for seasonal 
     gps <- gps %>%
       mutate(across(num_range("HMD_", 2627:4300), ~ NA))
     
     #for annual
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 2627:4300), ~ NA))
+    # gpsAG <- gpsAG %>%
+    #   mutate(across(num_range("HMD_", 2627:4300), ~ NA))
     
   } else if (site == "mb05"){
     
@@ -484,8 +437,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gps <- gps %>%
       mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 2701:4995), ~ NA))
+    # gpsAG <- gpsAG %>%
+    #   mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
   } else if (site %in% c("NRS03", "NRS04", "NRS05","NRS06","NRS09","NRS10","NRS11","NRS13")){
       #(site == "NRS05"){
@@ -622,6 +575,58 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #save as new dataset because we only want to exclude data from Annual graphics, not seasonal or wind or FOI
   gpsAG = gps %>%
     filter(yr %in% years_to_keep)
+  
+  
+  #removing dips that are specific to certain seasons and years
+  if (site == "mb01"){
+    
+    #make those columns na
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 3115:4330), 
+                    ~ if_else(Season != "Post-Upwelling", NA_real_, .)))
+    
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
+    
+  } else if (site == "mb02"){
+    
+    #for all seasons
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 3270:4330), ~ NA))
+    
+    #for 2023 and 2024 higher dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 3270:4330), 
+                    ~ if_else(yr != 2022, NA_real_, .)))
+    
+    #for 2022 lower dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 1912:2567), 
+                    ~ if_else(yr == 2022, NA_real_, .)))
+    
+  } else if (site == "ci04"){
+    
+    #for winter and post-upwelling lower dip
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 2175:2567), 
+                    ~ if_else(Season != "Upwelling", NA_real_, .)))
+    
+    #for upwelling higher dip
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 3115:4330), 
+                    ~ if_else(Season == "Upwelling", NA_real_, .)))
+    
+    #for 2023 and 2022 lower dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 2175:2567), 
+                    ~ if_else(yr != 2024, NA_real_, .)))
+    
+    #for 2024 higher dip
+    gpsAG <- gpsAG %>%
+      mutate(across(num_range("HMD_", 3115:4330), 
+                    ~ if_else(yr == 2024, NA_real_, .)))
+  } 
+  
   
   stAG = as.Date( min(gpsAG$UTC) )
   edAG = as.Date( max(gpsAG$UTC) )
@@ -1289,18 +1294,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.2) +
     
     #for the geom_ribbons below, if data only has one year (ch01 and fk08), comment out the first geom ribbon and change alpha of second from .3 to .1
-    # geom_ribbon(data = mallData %>%
-    #               filter(Year != oldest_year) %>%
-    #               pivot_wider(names_from = Quantile, values_from = SoundLevel),
-    #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year),
-    #             alpha = 0.1) +
+    geom_ribbon(data = mallData %>%
+                  filter(Year != oldest_year) %>%
+                  pivot_wider(names_from = Quantile, values_from = SoundLevel),
+                aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year),
+                alpha = 0.1) +
 
     #for the oldest year, make the shading darker since it is hard to see at alpha = .1 for lightblue
     geom_ribbon(data = mallData %>% 
                   filter(Year == oldest_year) %>% 
                   pivot_wider(names_from = Quantile, values_from = SoundLevel),
                 aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), 
-                alpha = 0.1) + # High alpha for visibility
+                alpha = 0.3) + # High alpha for visibility
     
     #median HMD values- each year
     geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year), linewidth = 2) +
@@ -1819,6 +1824,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plot_height <- 4.75
       } else if (num_years == 3) {
         plot_height <- 6
+      } else if (num_years == 4) {
+        plot_height <- 8
       } else if (num_years == 8) {
         plot_height <- 14
       } else {
