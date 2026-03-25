@@ -25,15 +25,14 @@ library(viridis)
 library(ggpp)
 
 
-
 rm(list=ls()) 
 
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
-# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fg06 #Samara edit line 1315
+# NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fgb06 #Samara edit line 1315
 
 
-ONMSsites = c("fk08")
+ONMSsites = c("fgb06")
 
 
 ## directories ####
@@ -152,7 +151,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "fk07"
     site5 = site
     outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" )#products
-  } else if (site == "fg06"){
+  } else if (site == "fgb06"){
     outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
     site1 = "nrs06"
     site3 = "fgnrs06"
