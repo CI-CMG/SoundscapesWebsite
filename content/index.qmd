@@ -73,7 +73,7 @@ display(HTML(standardTextDict["Understanding Ocean Sound"]))
 
 ```{python}
 #| echo: false
-display(HTML(gf.makeImage("Infographic of icons representing examples of different sound sources in the ocean.", "sanctsound_scene.jpg", "soundscapeInfographic")))
+display(HTML(gf.makeImage("sanctsound_scene.jpg", "soundscapeInfographic", altText= "Infographic of icons representing examples of different sound sources in the ocean.")))
 display(HTML(standardTextDict["Soundscapes"]))
 ```
 
