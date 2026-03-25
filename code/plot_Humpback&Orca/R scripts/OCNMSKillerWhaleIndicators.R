@@ -323,11 +323,72 @@ OC02_offeffort$end <- as.Date(OC02_offeffort$end, format = "%m-%d-%Y")
 # }
 
 
+
+library(dplyr)
+library(ivreg) # Only if using interval joins, otherwise base dplyr works
+
+# Assume primary data is 'orca_data' and off-effort is 'off_effort'
+orca_cleaned <- OC02_weekly %>%
+  # Create a temporary flag by checking if 'week_start' is between any off-effort start/end
+  rowwise() %>%
+  mutate(is_off_effort = any(week >= OC02_offeffort$start & 
+                               week <= OC02_offeffort$end)) %>%
+  ungroup() %>%
+  # Set hours to NA if the flag is TRUE
+  mutate(total_hours_present = ifelse(is_off_effort, NA, total_hours_present)) %>%
+  select(-is_off_effort)
+
+
+library(dplyr)
+library(tidyr)
+
+# 1. Create a complete sequence of weeks from your data's start to end
+full_weeks <- data.frame(
+  week = seq(min(OC02_weekly$week), 
+                   max(OC02_weekly$week), 
+                   by = "1 week")
+)
+
+# 2. Join existing data and identify off-effort weeks
+orca_complete <- full_weeks %>%
+  left_join(OC02_weekly, by = "week") %>%
+  rowwise() %>%
+  mutate(
+    # Check if this week_start falls within any off-effort start/end window
+    is_off = any(week >= OC02_offeffort$start & week <= OC02_offeffort$end),
+    # Set hours to NA if it was missing from orca_data OR if it's an off-effort week
+    total_hours_present = if_else(is_off, NA_real_, total_hours_present)
+  ) %>%
+  ungroup() %>%
+  select(-is_off)
+
+
+
+
+
+
+# 1. Identify continuous blocks of data
+orca_complete <- orca_complete %>%
+  mutate(has_data = !is.na(total_hours_present),
+         # Create a group ID that changes every time a gap (NA) occurs
+         group_id = cumsum(is.na(total_hours_present) != lag(is.na(total_hours_present), default = FALSE)))
+
+# 2. Add 'group = group_id' to your ggplot mapping
+ggplot(orca_complete, aes(x = week, y = total_hours_present, group = group_id)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 168))+
+  stat_smooth(method = "gam", formula = y ~ s(x, k = 8), # k adjusted for segments
+              na.rm = FALSE)
+
+
+
+
+
 ###plot ####
 
 ####curve graph MB01 ####
 #with GAM curve of best fit
-curveOC02 <- ggplot(OC02_weekly, aes(x = week, y = total_hours_present)) +
+curveOC02 <- ggplot(orca_complete, aes(x = week, y = total_hours_present)) +
   geom_point() +
   stat_smooth(method = "gam", formula = y ~ s(x, k = 20),
                se = TRUE,
@@ -337,15 +398,17 @@ curveOC02 <- ggplot(OC02_weekly, aes(x = week, y = total_hours_present)) +
                alpha = 0.2) +
   geom_rect(
     data = OC02_offeffort,
-    aes(xmin = start , xmax = end - days(4), ymin = 0, ymax = 168),
+    aes(xmin = start , xmax = end - days(4), ymin = 0, ymax = 2),
     inherit.aes = FALSE,
-    fill = "white") +
+    fill = "grey") +
     scale_x_date(
     date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
     date_breaks = "3 months",
     date_minor_breaks = "1 month"  # one tick per month
   ) +
-  coord_cartesian(ylim = c(0, 168))+
+  #theme_classic() +
+  theme_minimal() +
+  coord_cartesian(ylim = c(0, 72))+
   scale_y_continuous(expand = c(0, 0),
                      breaks = c(24, 48, 72, 96, 120, 144, 168))+
   labs(
@@ -353,7 +416,6 @@ curveOC02 <- ggplot(OC02_weekly, aes(x = week, y = total_hours_present)) +
     x = "Week",
     y = "Total hours with orca call presence"
   ) +
-  #theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         plot.title = element_text(face = "bold")) +
   guides(fill = "none")
