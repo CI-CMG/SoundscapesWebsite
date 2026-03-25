@@ -60,7 +60,7 @@ display(HTML(gf.embedMapViewer("https://www.ncei.noaa.gov/maps/passive-acoustic-
 #| echo: false
 display(HTML(standardTextDict["gantt"]))
 display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt")))
-#| display(HTML(gf.makeImage("map_ONMS.jpg","Gantt")))
+display(HTML(gf.makeImage("map_ONMS.jpg","Gantt")))
 ```
 :::
 
@@ -73,7 +73,7 @@ display(HTML(standardTextDict["Understanding Ocean Sound"]))
 
 ```{python}
 #| echo: false
-display(HTML(gf.makeImage("sanctsound_scene.jpg", "soundscapeInfographic")))
+display(HTML(gf.makeImage("sanctsound_scene.jpg", "soundscapeInfographic", "Infographic of icons representing examples of different sound sources in the ocean.")))
 display(HTML(standardTextDict["Soundscapes"]))
 ```
 
