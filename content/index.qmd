@@ -59,7 +59,7 @@ display(HTML(gf.embedMapViewer("https://www.ncei.noaa.gov/maps/passive-acoustic-
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["gantt"]))
-display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt", altText= "Gantt chart showing time periods that U.S. sound data are stored in NOAA’s NCEI repository and presented in this report, labeled by monitoring site and color-coded by monitoring project. Time periods begin in 2014 and go through the present."))))
+display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt", altText= "Gantt chart showing time periods that U.S. sound data are stored in NOAA’s NCEI repository and presented in this report, labeled by monitoring site and color-coded by monitoring project. Time periods begin in 2014 and go through the present.")))
 #| display(HTML(gf.makeImage("map_ONMS.jpg","Gantt")))
 display(HTML(standardTextDict["gantt fc"]))
 ```
