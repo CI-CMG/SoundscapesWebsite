@@ -98,7 +98,7 @@ display(HTML(standardTextDict["Seasonal condition fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicators from ocean sound"]))
-display(HTML(gf.makeImage("MB01_FinalRosePlot.png", "fish", altText= "Radial plot (in a clock orientation) of hourly proportion of fish chorusing each day, summarized by hour of day, for five fish species at a monitoring site in the Monterey Bay National Marine Sanctuary. Daily chorusing activity for each fish species is the number of days with chorusing per number of days recorded.")))
+display(HTML(gf.makeImage("MB01_FinalRosePlotV2.png", "fish", altText= "Radial plot (in a clock orientation) of hourly proportion of fish chorusing each day, summarized by hour of day, for five fish species at a monitoring site in the Monterey Bay National Marine Sanctuary. Daily chorusing activity for each fish species is the number of days with chorusing per number of days recorded.")))
 display(HTML(standardTextDict["Diel fish fc"]))
 ```
 :::
