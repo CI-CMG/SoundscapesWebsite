@@ -133,7 +133,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
 
-display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlot.jpg", "daily_fish_choruses")))
+display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.jpg", "daily_fish_choruses")))
 ```
 
 

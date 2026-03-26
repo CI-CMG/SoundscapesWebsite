@@ -145,8 +145,16 @@ MB05HourPST <- MB05Hour %>%
     ChorusHourPT = hour(hour_PT)
   )
 
+
+
+# Keep only unique rows based on date/time and fish species. 
+#this is so that we dont double count bocaccio sunset and bocaccio in teh same hour on the same day, for example
+MB05HourUnique <- MB05HourPST %>%
+  distinct(hour, fish, .keep_all = TRUE)
+
+
 #group count of fish chorusing for each hour and fish species
-MB05_summary <- MB05HourPST %>%
+MB05_summary <- MB05HourUnique %>%
   group_by(ChorusHourPT, fish) %>%
   summarise(count = n())
 
@@ -251,6 +259,46 @@ MB05Rose
 
 outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
 ggsave(filename = paste0(outDirG, "/MB05_FinalRosePlot.png"), dpi = 300)
+
+
+#remove na in fish column so that it facetwrap doesnt give an NA graph
+MB05_summary$fish[17:23] <- "Bocaccio"
+
+
+MB05Roses = ggplot(filter(MB05_summary, !is.na(fish)), aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
+  geom_bar(stat = "identity") +
+  # Create a separate plot for each species
+  facet_wrap(~fish) + 
+  coord_polar(start = 0) +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
+  labs(
+    x = "Hour of the Day (PST/PDT)", 
+    y = "Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+    title = "Hourly Proportion of Daily Fish Chorusing at MB05"
+    #, fill = "Fish Species"
+  ) +
+  # Adjust y-axis to accommodate your 1.6 max
+  scale_y_continuous(limits = c(0, .9), breaks = c(0.1, 0.3, 0.6, 0.9)) +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_blank(),
+    panel.grid.major = element_line(color = "gray95"), # Uses a very light grey
+    strip.text = element_text(face = "bold", size = 12) # Species labels
+  ) +
+  # Annotation for scale (placed at x = 0 to avoid overlapping bars)
+  annotate("text", x = 10.5, y = c(0.1, 0.3, 0.6, 0.9), 
+           label = c( "0.1", "0.3", "0.6","0.9"), 
+           color = "black", size = 3)
+
+MB05Roses
+
+c(0.1, 0.25, 0.5, 0.75)
+
+outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
+ggsave(filename = paste0(outDirG, "/MB05_FinalRosePlotV2.png"), dpi = 300)
+
 
 
 #proportion of days where fish (bocaccio) chorused out of all days where we were recording during that hour (20)
@@ -422,8 +470,13 @@ MB02HourPST <- MB02Hour %>%
     ChorusHourPT = hour(hour_PT)
   )
 
+# Keep only unique rows based on date/time and fish species. 
+#this is so that we dont double count bocaccio sunset and bocaccio in teh same hour on the same day, for example
+MB02HourUnique <- MB02HourPST %>%
+  distinct(hour, fish, .keep_all = TRUE)
+
 #group count of fish chorusing for each hour and fish species
-MB02_summary <- MB02HourPST %>%
+MB02_summary <- MB02HourUnique %>%
   group_by(ChorusHourPT, fish) %>%
   summarise(count = n())
 
@@ -534,8 +587,39 @@ MB02Rose = ggplot(MB02_summary, aes(x = factor(ChorusHourPT), y = prop, fill = f
 MB02Rose
 
 
+
+MB02Rose = ggplot(MB02_summary, aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
+  geom_bar(stat = "identity") +
+  # Create a separate plot for each species
+  facet_wrap(~fish) + 
+  coord_polar(start = 0) +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
+  labs(
+    x = "Hour of the Day (PST/PDT)", 
+    y = "Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+    title = "Hourly Proportion of Daily Fish Chorusing at MB02", 
+    fill = "Fish Species"
+  ) +
+  # Adjust y-axis to accommodate your 1.6 max
+  scale_y_continuous(limits = c(0, .9), breaks =c(0.1, 0.3, 0.6, 0.9)) +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_blank(),
+    panel.grid.major = element_line(color = "gray95"), # Uses a very light grey
+    strip.text = element_text(face = "bold", size = 12) # Species labels
+  ) +
+  # Annotation for scale (placed at x = 0 to avoid overlapping bars)
+  annotate("text", x = 10.5, y = c(0.1, 0.3, 0.6, 0.9), 
+           label = c( "0.1", "0.3", "0.6", "0.9"), 
+           color = "black", size = 3)
+
+MB02Rose
+
+
 outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
-ggsave(filename = paste0(outDirG, "/MB02_FinalRosePlot.png"), dpi = 300)
+ggsave(filename = paste0(outDirG, "/MB02_FinalRosePlotV2.png"), dpi = 300)
 
 
 MB02Fish = ggplot(MB02_summary, aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
@@ -683,8 +767,14 @@ CI01HourPST <- CI01Hour %>%
     ChorusHourPT = hour(hour_PT)
   )
 
+# Keep only unique rows based on date/time and fish species. 
+#this is so that we dont double count bocaccio sunset and bocaccio in teh same hour on the same day, for example
+CI01HourUnique <- CI01HourPST %>%
+  distinct(hour, fish, .keep_all = TRUE)
+
+
 #group count of fish chorusing for each hour and fish species
-CI01_summary <- CI01HourPST %>%
+CI01_summary <- CI01HourUnique %>%
   group_by(ChorusHourPT, fish) %>%
   summarise(count = n())
 
@@ -800,8 +890,41 @@ CI01Rose = ggplot(CI01_summary, aes(x = factor(ChorusHourPT), y = prop, fill = f
 CI01Rose
 
 
+
+CI01Roses = ggplot(CI01_summary, aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
+  geom_bar(stat = "identity") +
+  # Create a separate plot for each species
+  facet_wrap(~fish) + 
+  coord_polar(start = 0) +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
+  labs(
+    x = "Hour of the Day (PST/PDT)", 
+    y = "Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+    title = "Hourly Proportion of Daily Fish Chorusing at CI01", 
+    fill = "Fish Species"
+  ) +
+  # Adjust y-axis to accommodate your 1.6 max
+  scale_y_continuous(limits = c(0, .75), breaks = c(0.1, 0.25, 0.5, 0.75)) +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_blank(),
+    panel.grid.major = element_line(color = "gray95"), # Uses a very light grey
+    strip.text = element_text(face = "bold", size = 12) # Species labels
+  ) +
+  # Annotation for scale (placed at x = 0 to avoid overlapping bars)
+  annotate("text", x = 10.5, y = c(0.1, 0.25, 0.5, 0.75), 
+           label = c( "0.1", "0.25", "0.5", "0.75"), 
+           color = "black", size = 3)
+
+CI01Roses
+
+c(0.1, 0.25, 0.5, 0.75)
+
+
 outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
-ggsave(filename = paste0(outDirG, "/CI01_FinalRosePlot.jpg"), dpi = 300)
+ggsave(filename = paste0(outDirG, "/CI01_FinalRosePlotV2.jpg"), dpi = 300)
 
 #proportion of days where fish (bocaccio) chorused out of all days where we were recording during that hour (20)
 
@@ -934,8 +1057,14 @@ CI04HourPST <- CI04Hour %>%
     ChorusHourPT = hour(hour_PT)
   )
 
+# Keep only unique rows based on date/time and fish species. 
+#this is so that we dont double count bocaccio sunset and bocaccio in teh same hour on the same day, for example
+CI04HourUnique <- CI04HourPST %>%
+  distinct(hour, fish, .keep_all = TRUE)
+
+
 #group count of fish chorusing for each hour and fish species
-CI04_summary <- CI04HourPST %>%
+CI04_summary <- CI04HourUnique %>%
   group_by(ChorusHourPT, fish) %>%
   summarise(count = n())
 
@@ -1050,8 +1179,41 @@ CI04Rose = ggplot(CI04_summary, aes(x = factor(ChorusHourPT), y = prop, fill = f
 CI04Rose
 
 
+CI04Roses = ggplot(CI04_summary, aes(x = factor(ChorusHourPT), y = prop, fill = fish)) +
+  geom_bar(stat = "identity") +
+  # Create a separate plot for each species
+  facet_wrap(~fish) + 
+  coord_polar(start = 0) +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors, na.translate = FALSE) + 
+  labs(
+    x = "Hour of the Day (PST/PDT)", 
+    y = "Proportion of Daily Chorusing\n(# days with chorusing / # days recorded)", 
+    title = "Hourly Proportion of Daily Fish Chorusing at CI04", 
+    fill = "Fish Species"
+  ) +
+  # Adjust y-axis to accommodate your 1.6 max
+  scale_y_continuous(limits = c(0, .75), breaks = c(0.1, 0.25, 0.5, 0.75)) +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_blank(),
+    panel.grid.major = element_line(color = "gray95"), # Uses a very light grey
+    strip.text = element_text(face = "bold", size = 12) # Species labels
+  ) +
+  # Annotation for scale (placed at x = 0 to avoid overlapping bars)
+  annotate("text", x = 10.5, y = c(0.1, 0.25, 0.5, 0.75), 
+           label = c( "0.1", "0.25", "0.5", "0.75"), 
+           color = "black", size = 3)
+
+CI04Roses
+
+c(0.1, 0.25, 0.5, 0.75)
+
+
+
 outDirG = "C:/Users/embe5980/SoundscapesWebsite/content/resources"
-ggsave(filename = paste0(outDirG, "/CI04_FinalRosePlot.jpg"), dpi = 300)
+ggsave(filename = paste0(outDirG, "/CI04_FinalRosePlotV2.jpg"), dpi = 300)
 
 #proportion of days where fish (bocaccio) chorused out of all days where we were recording during that hour (20)
 

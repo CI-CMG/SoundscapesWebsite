@@ -147,7 +147,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
 display(HTML(gf.makeImage("CH01_Box.png", " Seasonal Fish Choruses")))
-display(HTML(gf.makeImage("CH01_FinalRosePlot.png", " Daily Fish Choruses")))
+display(HTML(gf.makeImage("CH01_FinalRosePlotV2.png", " Daily Fish Choruses")))
 ```
 
 <!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->

@@ -137,7 +137,7 @@ display(HTML(standardTextDict["Indicator description"]))
 display(HTML(standardTextDict["Fish Chorus"]))
 display(HTML(gf.makeImage("MB01_FinalHist.png", "Seasonal Fish Choruses")))
 
-display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlot.png", "daily_fish_choruses")))
+display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.png", "daily_fish_choruses")))
 ```
 ### When are the seasonal biologically-important times for whales?
 ```{python}
