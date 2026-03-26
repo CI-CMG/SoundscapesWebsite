@@ -1797,7 +1797,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         ) +
         theme_void() +
         theme( legend.position = "right",
-               plot.title = element_text(hjust = 0, size = 12),
+               plot.title = element_text(hjust = 0.5, size = 12),
                strip.text = element_text(size = 14) )
       
       
@@ -1885,7 +1885,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           facet_wrap(~yr, ncol = 1)+
           scale_x_continuous(limits = c(0,365), breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for ", ft, ",\nan indicator of ", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = "Typical conditions shown as purple area (25th and 75th percentiles of all the data)", 
             x = "",
@@ -1906,8 +1906,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       
         
         #with pies that show off effort, directly comparable across years. out of 365. na/off effort is blank part of pie
-        plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, .7, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
-        plg2
+        # plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, .7, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        # plg2
         
         #with pies that show off effort, directly comparable across years. out of 365. na/off effort is blank part of pie
         plg2 = plg + pie + plot_layout(ncol = 2, widths = c(2, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
@@ -1970,7 +1970,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-40,150)) +
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for ", ft, ",\nan indicator of ", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as purple area (25th and 75th percentiles of all the data)"),
             x = "",
@@ -2051,7 +2051,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           scale_x_continuous(breaks = days_of_year_for_months, labels = month_names_seq,
                              limits = c(-90,185)) +  #FOR PM01 w/ Oct and Nov
           labs(
-            title    = paste0("Are sound levels at ", toupper(site)," typical for \n", ft, ", an indicator of \n", FOIst$Label[tt], "?" ) , 
+            title    = paste0("Are sound levels at ", toupper(site)," typical for ", ft, ",\nan indicator of ", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
             caption  = paste0("Typical conditions shown as purple area (25th and 75th percentiles of all the data)"),
             x = "",

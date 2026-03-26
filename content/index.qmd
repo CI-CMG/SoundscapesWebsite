@@ -59,7 +59,7 @@ display(HTML(gf.embedMapViewer("https://www.ncei.noaa.gov/maps/passive-acoustic-
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["gantt"]))
-display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt")))
+display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt", altText= "Gantt chart showing time periods that U.S. sound data are stored in NOAA’s NCEI repository and presented in this report, labeled by monitoring site and color-coded by monitoring project. Time periods begin in 2014 and go through the present."))))
 #| display(HTML(gf.makeImage("map_ONMS.jpg","Gantt")))
 display(HTML(standardTextDict["gantt fc"]))
 ```
@@ -82,7 +82,7 @@ display(HTML(standardTextDict["Soundscapes"]))
 ```{python}
 #| echo: false
 
-display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfographic", 600)))
+display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfographic", 600, altText= "Infographic showing spectrogram cartoons ranging from low to high intensity of sound (amplitude measured in decibels) at different pitches (frequency measured in hertz).")))
 display(HTML(standardTextDict["SS how do we measure sound fc"]))
 ```
 
@@ -91,14 +91,14 @@ display(HTML(standardTextDict["SS how do we measure sound fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Seasonal soundscape conditions"]))
-display(HTML(gf.makeImage("plot_SB03_HMDSeasonalSPL.jpg", "seasons")))
+display(HTML(gf.makeImage("plot_SB03_HMDSeasonalSPL.jpg", "seasons", altText= " Example line graph of seasonal sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~20 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each season is a different colored line. Expected ambient sound levels from wind are shown as black lines. Frequency bands indicative of a sound source of interest are highlighted in gray and labeled; peak fish frequencies of interest are labeled with vertical dashed lines and labeled by species.")))
 display(HTML(standardTextDict["Seasonal condition fc"]))
 ```
 ### Ocean Sound Indicators
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicators from ocean sound"]))
-display(HTML(gf.makeImage("MB01_FinalRosePlot.png", "fish")))
+display(HTML(gf.makeImage("MB01_FinalRosePlot.png", "fish", altText= "Radial plot (in a clock orientation) of hourly proportion of fish chorusing each day, summarized by hour of day, for five fish species at a monitoring site in the Monterey Bay National Marine Sanctuary. Daily chorusing activity for each fish species is the number of days with chorusing per number of days recorded.")))
 display(HTML(standardTextDict["Diel fish fc"]))
 ```
 :::
