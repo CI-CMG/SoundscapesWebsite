@@ -61,6 +61,7 @@ display(HTML(gf.embedMapViewer("https://www.ncei.noaa.gov/maps/passive-acoustic-
 display(HTML(standardTextDict["gantt"]))
 display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt")))
 #| display(HTML(gf.makeImage("map_ONMS.jpg","Gantt")))
+display(HTML(standardTextDict["gantt fc"]))
 ```
 :::
 
@@ -74,6 +75,7 @@ display(HTML(standardTextDict["Understanding Ocean Sound"]))
 ```{python}
 #| echo: false
 display(HTML(gf.makeImage("sanctsound_scene.jpg", "soundscapeInfographic", altText= "Infographic of icons representing examples of different sound sources in the ocean.")))
+display(HTML(standardTextDict["SS Infographic fc"]))
 display(HTML(standardTextDict["Soundscapes"]))
 ```
 
@@ -81,7 +83,7 @@ display(HTML(standardTextDict["Soundscapes"]))
 #| echo: false
 
 display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfographic", 600)))
-
+display(HTML(standardTextDict["SS how do we measure sound fc"]))
 ```
 
 
@@ -90,12 +92,14 @@ display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfogra
 #| echo: false
 display(HTML(standardTextDict["Seasonal soundscape conditions"]))
 display(HTML(gf.makeImage("plot_SB03_HMDSeasonalSPL.jpg", "seasons")))
+display(HTML(standardTextDict["Seasonal condition fc"]))
 ```
 ### Ocean Sound Indicators
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicators from ocean sound"]))
 display(HTML(gf.makeImage("MB01_FinalRosePlot.png", "fish")))
+display(HTML(standardTextDict["Diel fish fc"]))
 ```
 :::
 
