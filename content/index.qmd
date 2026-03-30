@@ -49,7 +49,7 @@ display(HTML(standardTextDict["What is ocean sound?"]))
 :::
 
 ::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"}
-## Overview of ocean sound monitoring effort
+## Overview of NOAA ocean sound monitoring effort
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["When, where, & why are we listening?"]))

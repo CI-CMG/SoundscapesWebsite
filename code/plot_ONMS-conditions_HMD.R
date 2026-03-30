@@ -697,7 +697,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       x = "",
       y = "Days",
       fill = legend_label,
-      caption = "Data from months with effort below the red horizonal line are excluded from annual sound levels figure above"
+      # Update your p1 labs call:
+        caption = "Data&nbsp;from&nbsp;months&nbsp;with&nbsp;effort&nbsp;below&nbsp;the&nbsp;red&nbsp;horizontal&nbsp;line&nbsp;are&nbsp;excluded&nbsp;from&nbsp;annual&nbsp;sound&nbsp;levels&nbsp;figure&nbsp;above"
+      #caption = "Data from months with effort below the red horizonal line are excluded from annual sound levels figure above"
     ) +
     scale_x_discrete(labels = month.abb[month_nums]) +  # Show month names instead of numbers
     #scale_fill_manual(values = rev(gray.colors(length(unique(summary$year))))) +  # Create grayscale colors
@@ -868,10 +870,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #(3) SEASONAL CONDITION PLOT ####
   caption_text = paste0(
     "<b>",toupper(site) , " </b> (", siteInfo$`Oceanographic category`, ")<br>",
-    "<b>Vertical lines/shaded area</b> indicate frequencies for sounds of interest in this soundscape<br>",
+    "<b>Vertical lines and grey shaded areas</b> indicate frequencies for sounds of interest in this soundscape<br>",
     "<b>Black lines</b> are modeled wind noise at this depth [", windLow, " m/s & ", windUpp, " m/s]<br>",
     "<b>Dotted sound level curve</b> is the median for all data<br>",
-    "<b>Solid sound level curves and shaded areas</b> are the seasonal medians and 25th-75th percentiles for all data")
+    "<b>Solid sound level curves and colored shaded areas</b> are the seasonal medians and 25th-75th percentiles for all data")
   
   
   # PERCENTILES for all the data ####
@@ -1170,18 +1172,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   if (my_subtitle == "(humpback season)"){
     caption_text = paste0(
       "<b>",toupper(site) , " </b> (", siteInfo$`Oceanographic category`, ")<br>",
-      "<b>Vertical lines/shaded area</b> indicate frequencies for sounds of interest in this soundscape<br>",
+      "<b>Vertical lines and grey shaded areas</b> indicate frequencies for sounds of interest in this soundscape<br>",
       "<b>Black lines</b> are modeled wind noise at this depth [", windLow, " m/s & ", windUpp, " m/s]<br>",
       "<b>Dotted sound level curve</b> is the median for humpback season<br>",
-      "<b>Solid sound level curves and shaded areas</b> are the annual medians and 25th-75th percentiles for humpback season") # for ", my_subtitle)
+      "<b>Solid sound level curves and blue shaded areas</b> are the annual medians and 25th-75th percentiles for humpback season") # for ", my_subtitle)
     
   } else {
     caption_text = paste0(
       "<b>",toupper(site) , " </b> (", siteInfo$`Oceanographic category`, ")<br>",
-      "<b>Vertical lines/shaded area</b> indicate frequencies for sounds of interest in this soundscape<br>",
+      "<b>Vertical lines and grey shaded areas</b> indicate frequencies for sounds of interest in this soundscape<br>",
       "<b>Black lines</b> are modeled wind noise at this depth [", windLow, " m/s & ", windUpp, " m/s]<br>",
       "<b>Dotted sound level curve</b> is the median for ",my_subtitle, "<br>",
-      "<b>Solid sound level curves and shaded areas</b> are the annual medians and 25th-75th percentiles for ", my_subtitle) # for ", my_subtitle)
+      "<b>Solid sound level curves and blue shaded areas</b> are the annual medians and 25th-75th percentiles for ", my_subtitle) # for ", my_subtitle)
     
   }
   
