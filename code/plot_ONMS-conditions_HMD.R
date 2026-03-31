@@ -1809,8 +1809,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       pie <- ggplot(finalpies, aes(x = "", y = prop, fill = status)) +
         geom_col(width = 1, color = "white")+
         coord_polar(theta = "y") +
-        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category),
-                          drop = FALSE ) +  # This forces all factor levels to show in the legend
+        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) + 
         facet_wrap(~ yr, ncol = 1) +
         labs(
           title = "Proportion of annual\nrecording within each status",
