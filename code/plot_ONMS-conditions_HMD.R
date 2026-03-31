@@ -1786,11 +1786,31 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       #reorder legend so that it matches graph (high to low top to bottom)
       finalpies$status <- factor(finalpies$status, levels = c("High", "Typical", "Low"))
       
+
+      # Add a dummy row for sections if it doesn't exist in the data to maintain a full legend
+      if (!"High" %in% finalpies$status) {
+        dummy_row <- finalpies[1, ] # Copy the first row structure
+        dummy_row$status <- "High"
+        dummy_row$prop <- 0         # Zero proportion so it doesn't show in the pie
+        finalpies <- rbind(finalpies, dummy_row)
+      } else if (!"Typical" %in% finalpies$status) {
+        dummy_row <- finalpies[1, ] # Copy the first row structure
+        dummy_row$status <- "Typical"
+        dummy_row$prop <- 0         # Zero proportion so it doesn't show in the pie
+        finalpies <- rbind(finalpies, dummy_row)
+      } else if (!"Low" %in% finalpies$status) {
+        dummy_row <- finalpies[1, ] # Copy the first row structure
+        dummy_row$status <- "Low"
+        dummy_row$prop <- 0         # Zero proportion so it doesn't show in the pie
+        finalpies <- rbind(finalpies, dummy_row)
+      }
+      
       
       pie <- ggplot(finalpies, aes(x = "", y = prop, fill = status)) +
         geom_col(width = 1, color = "white")+
         coord_polar(theta = "y") +
-        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category),
+                          drop = FALSE ) +  # This forces all factor levels to show in the legend
         facet_wrap(~ yr, ncol = 1) +
         labs(
           title = "Proportion of annual\nrecording within each status",
