@@ -122,12 +122,14 @@ display(HTML(standardTextDict["sources of interest typical"]))
 display(HTML(standardTextDict["Indicator description"]))
 ```
 
-<!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
-<!-- ```{python} -->
-<!-- #| echo: false -->
-<!-- display(HTML("Coming soon!")) -->
+### When do fish contribute to the soundscape?
+```{python}
+#| echo: false
+#display(HTML(standardTextDict["fish-intro-PM"]))
 
-<!-- #display(HTML(standardTextDict["whales"])) -->
-<!-- #display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw"))) -->
-<!-- ``` -->
+display(HTML(standardTextDict["fish-AS"]))
+display(HTML(gf.makeImage("raster_by_site_Fish_damselfish.png", "rasterfishAS")))
+
+```
+
 :::
