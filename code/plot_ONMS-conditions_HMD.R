@@ -31,7 +31,7 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fgb06 
 
-ONMSsites = c("as01")
+ONMSsites = c("hi01", "hi03", "hi04", "hi08")
 
 
 ## directories ####
@@ -698,8 +698,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       y = "Days",
       fill = legend_label,
       # Update your p1 labs call:
-        caption = "Data&nbsp;from&nbsp;months&nbsp;with&nbsp;effort&nbsp;below&nbsp;the&nbsp;red&nbsp;horizontal&nbsp;line&nbsp;are&nbsp;excluded&nbsp;from&nbsp;annual&nbsp;sound&nbsp;levels&nbsp;figure&nbsp;above"
-      #caption = "Data from months with effort below the red horizonal line are excluded from annual sound levels figure above"
+        #caption = "Data&nbsp;from&nbsp;months&nbsp;with&nbsp;effort&nbsp;below&nbsp;the&nbsp;red&nbsp;horizontal&nbsp;line&nbsp;are&nbsp;excluded&nbsp;from&nbsp;annual&nbsp;sound&nbsp;levels&nbsp;figure&nbsp;above"
+      caption = "Data from months with effort below the red horizontal line are excluded from annual sound levels figure above"
     ) +
     scale_x_discrete(labels = month.abb[month_nums]) +  # Show month names instead of numbers
     #scale_fill_manual(values = rev(gray.colors(length(unique(summary$year))))) +  # Create grayscale colors
@@ -1134,7 +1134,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         x = "",
         y = "Days",
         fill = "Humpback\nYear*",
-        caption = "Data from months with effort below the red horizonal line are excluded from annual sound levels figure above"
+        #caption = "<span style='word-spacing: 10px;'>Data from months with effort below the red horizonal line are excluded from annual sound levels figure above"
+        #caption = "Data&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;&nbsp;&nbsp;&nbsp;months&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;&nbsp;&nbsp;effort&nbsp;&nbsp;&nbsp;&nbsp;below&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;&nbsp;&nbsp;&nbsp;red&nbsp;&nbsp;&nbsp;&nbsp;horizontal&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;&nbsp;&nbsp;&nbsp;excluded&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;&nbsp;&nbsp;&nbsp;annual&nbsp;&nbsp;&nbsp;&nbsp;sound&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;&nbsp;&nbsp;&nbsp;figure&nbsp;&nbsp;&nbsp;&nbsp;above"
+        caption = "Data from months with effort below the red horizontal line are excluded from annual sound levels figure above"
       ) +
       scale_x_discrete(labels = month.abb[ month_nums ]) +  # Show month names instead of numbers
       #scale_fill_manual(values = rev(gray.colors(length(unique(summary$year))))) +  # Create grayscale colors
