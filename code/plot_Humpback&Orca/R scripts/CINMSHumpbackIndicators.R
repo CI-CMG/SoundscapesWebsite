@@ -214,7 +214,7 @@ otherCsv1OG <- read.csv('C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss
 otherCsv2OG <- read.csv('C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/data/CINMS/SanctSound_CI04.csv', stringsAsFactors = FALSE)
 
 
-#CINMS data is different from MB and OCNMS, so refromat to match other data
+#CINMS data is different from MB and OCNMS, so reformat to match other data
 otherCsv1 <- otherCsv1OG %>%
   mutate(across(c(Song.Presence, Non.Song.Presence), 
                 ~ ifelse(NoData == 1, NA, .)))  %>%
@@ -422,7 +422,7 @@ curveCI01 <- ggplot(CI01_weekly_clean, aes(x = week, y = total_hours_present, co
     data = off_effort_weeksCI01,
     aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = Inf),
     inherit.aes = FALSE,
-    fill = "grey"
+    fill = "#E5E5E5"
   ) + scale_x_date(
     date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
     date_breaks = "3 months",
@@ -603,7 +603,7 @@ curveCI04 <- ggplot(CI04_weekly_clean, aes(x = week, y = total_hours_present, co
     data = off_effort_weeksCI04,
     aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = Inf),
     inherit.aes = FALSE,
-    fill = "grey"
+    fill = "#E5E5E5"
   ) + scale_x_date(
     date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
     date_breaks = "3 months",
@@ -660,7 +660,7 @@ patchedC
 
 
 #save
-outDir = "C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/plots"
+outDir = "C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/plots"
 
 ggsave(filename = paste0(outDir, "/plot_CINMSHumpbackWhaleDetections.jpg"), plot = patchedC, dpi = 300)
 

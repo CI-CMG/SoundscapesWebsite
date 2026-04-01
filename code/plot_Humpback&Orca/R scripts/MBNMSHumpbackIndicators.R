@@ -412,7 +412,7 @@ curveMB01 <- ggplot(MB01_weekly_clean, aes(x = week, y = total_hours_present, co
     data = off_effort_weeksMB01,
     aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = Inf),
     inherit.aes = FALSE,
-    fill = "grey"
+    fill = "#E5E5E5"
   ) + scale_x_date(
     date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
     date_breaks = "3 months",
@@ -593,7 +593,7 @@ curveMB02 <- ggplot(MB02_weekly_clean, aes(x = week, y = total_hours_present, co
     data = off_effort_weeksMB02,
     aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = Inf),
     inherit.aes = FALSE,
-    fill = "grey"
+    fill = "#E5E5E5"
   ) + scale_x_date(
     date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
     date_breaks = "3 months",
@@ -605,7 +605,7 @@ curveMB02 <- ggplot(MB02_weekly_clean, aes(x = week, y = total_hours_present, co
   labs(
     title = "MB02",
     x = "",
-    y = "Total Hours with Whale Call",
+    y = "Total hours with humpback whale call presence",
     color = "Call Type"
   ) +
   theme_minimal() +
@@ -615,6 +615,7 @@ curveMB02 <- ggplot(MB02_weekly_clean, aes(x = week, y = total_hours_present, co
         axis.text.x  = element_blank(),
         axis.ticks.x = element_blank())
 
+curveMB02
 
 
 # Save a data frame to CSV
@@ -768,7 +769,7 @@ curveMB03 <- ggplot(MB03_weekly_clean, aes(x = week, y = total_hours_present, co
     data = off_effort_weeksMB03,
     aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = Inf),
     inherit.aes = FALSE,
-    fill = "grey"
+    fill = "#E5E5E5"
   )  +
   coord_cartesian(ylim = c(0, 168))+
   scale_y_continuous(expand = c(0, 0),
@@ -825,7 +826,7 @@ patchedC
 
  
  #save
- outDir = "C:/Users/embe5980/OneDrive - UCB-O365/Desktop/sanctsound_humpback_mb/plots"
+ outDir = "C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/plots"
  
  ggsave(filename = paste0(outDir, "/plot_MBNMSHumpbackWhaleDetections.jpg"), plot = patchedC, dpi = 300)
  

@@ -398,6 +398,16 @@ curveOC02 <- ggplot(orca_complete, aes(x = week, y = total_hours_present)) +
                alpha = 0.2) +
   geom_rect(
     data = OC02_offeffort,
+    aes(xmin = start , xmax = end - days(4), ymin = 0, ymax = 72),
+    inherit.aes = FALSE,
+    fill = "white") +
+  scale_x_date(
+    date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
+    date_breaks = "3 months",
+    date_minor_breaks = "1 month"  # one tick per month
+  ) +
+  geom_rect(
+    data = OC02_offeffort,
     aes(xmin = start , xmax = end - days(4), ymin = 0, ymax = 2),
     inherit.aes = FALSE,
     fill = "grey") +
@@ -406,29 +416,90 @@ curveOC02 <- ggplot(orca_complete, aes(x = week, y = total_hours_present)) +
     date_breaks = "3 months",
     date_minor_breaks = "1 month"  # one tick per month
   ) +
-  #theme_classic() +
-  theme_minimal() +
+  theme_classic() +
+  #theme_minimal() +
   coord_cartesian(ylim = c(0, 72))+
   scale_y_continuous(expand = c(0, 0),
                      breaks = c(24, 48, 72, 96, 120, 144, 168))+
   labs(
-    title = "Passive acoustic monitoring of orca at OC02",
+    title = "OC02",
     x = "Week",
     y = "Total hours with orca call presence"
   ) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        plot.title = element_text(face = "bold")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(fill = "none")
 
 
 curveOC02
 
 
+curvewtitle <- (curveOC02) +
+  plot_layout(guides = "collect") +
+  plot_annotation(
+    title = "Passive acoustic monitoring of orca in Olympic Coast National Marine Sanctuary",
+    theme = theme(
+      plot.title = element_text(face = "bold")
+    )
+  )
+
+curvewtitle
+
+
+###plot ####
+
+####curve graph MB01 ####
+#with GAM curve of best fit
+curveOC02 <- ggplot(OC02_weekly, aes(x = week, y = total_hours_present)) +
+  geom_point() +
+  stat_smooth(method = "gam", formula = y ~ s(x, k = 20),
+              se = TRUE,
+              color = "steelblue",
+              fill = "steelblue",
+              alpha = 0.2) +
+  geom_rect(
+    data = OC02_offeffort,
+    aes(xmin = start , xmax = end - days(4), ymin = 0, ymax = 72),
+    inherit.aes = FALSE,
+    fill =  "gray95") +
+  scale_x_date(
+    date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
+    date_breaks = "3 months",
+    date_minor_breaks = "1 month"  # one tick per month
+  ) +
+  coord_cartesian(ylim = c(0, 72))+
+  scale_y_continuous(expand = c(0, 0),
+                     breaks = c(24, 48, 72, 96, 120, 144, 168))+
+  labs(
+    title = "OC02",
+    x = "Week",
+    y = "Total hours with orca call presence"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = "none")
+
+
+curveOC02
+
+
+curvewtitle <- (curveOC02) +
+  plot_layout(guides = "collect") +
+  plot_annotation(
+    title = "Passive acoustic monitoring of orca in Olympic Coast National Marine Sanctuary",
+    theme = theme(
+      plot.title = element_text(face = "bold")
+    )
+  )
+
+curvewtitle
+
+
+
 
 #save
-outDir = "C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/plots"
+outDir = "C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/plots"
 
-ggsave(filename = paste0(outDir, "/plot_OC02OrcaDetections.jpg"), plot = curveOC02, dpi = 300)
+ggsave(filename = paste0(outDir, "/plot_OC02OrcaDetectionsV4.jpg"), plot = curvewtitle, dpi = 300)
 
 
 

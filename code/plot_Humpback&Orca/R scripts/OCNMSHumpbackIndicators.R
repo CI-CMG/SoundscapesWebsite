@@ -283,6 +283,7 @@ lineMB01
 
 
 ####curve graph MB01 ####
+#OG
 #with GAM curve of best fit
 curveMB01 <- ggplot(OC02_weekly_clean, aes(x = week, y = total_hours_present, color = CallType)) +
   geom_point() +
@@ -299,8 +300,9 @@ curveMB01 <- ggplot(OC02_weekly_clean, aes(x = week, y = total_hours_present, co
     data = off_effort_weeksOC02,
     aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = Inf),
     inherit.aes = FALSE,
-    fill = "grey"
-  ) + scale_x_date(
+    fill = "grey95"
+  ) + 
+  scale_x_date(
     date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
     date_breaks = "3 months",
     date_minor_breaks = "1 month"  # one tick per month
@@ -315,6 +317,55 @@ curveMB01 <- ggplot(OC02_weekly_clean, aes(x = week, y = total_hours_present, co
     color = "Call Type"
   ) +
   theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = "none")
+
+curveMB01
+
+
+
+
+
+#with GAM curve of best fit
+curveMB01 <- ggplot(OC02_weekly_clean, aes(x = week, y = total_hours_present, color = CallType)) +
+  geom_point() +
+  scale_color_manual(
+    values = c(
+      "Song" = "steelblue",
+      "NonSong" = "firebrick"
+    )
+  )+
+  stat_smooth(method = "gam", formula = y ~ s(x, k = 20), se = TRUE,
+              aes(fill = CallType),   # NEW: fill follows CallType
+              alpha = 0.2  ) +
+  geom_rect(
+    data = off_effort_weeksOC02,
+    aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = Inf),
+    inherit.aes = FALSE,
+    #color = "grey",
+    fill = "white"
+  ) + 
+  geom_rect(
+    data = off_effort_weeksOC02,
+    aes(xmin = xmin - days(4), xmax = xmax-days(4), ymin = 0, ymax = 4),
+    inherit.aes = FALSE,
+    fill = "grey"
+  ) + 
+  scale_x_date(
+    date_labels = "%b %Y",   # shows abbreviated month + year on x-axis
+    date_breaks = "3 months",
+    date_minor_breaks = "1 month"  # one tick per month
+  ) +
+  coord_cartesian(ylim = c(0, 168))+
+  scale_y_continuous(expand = c(0, 0),
+                     breaks = c(24, 48, 72, 96, 120, 144, 168))+
+  labs(
+    title = "OC02",
+    x = "Week",
+    y = "Total hours with humpback whale call presence",
+    color = "Call Type"
+  ) +
+  theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(fill = "none")
 
@@ -375,9 +426,9 @@ patchedC
 
 
 #save
-outDir = "C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/plots"
+outDir = "C:/Users/embe5980/SoundscapesWebsite/code/plot_Humpback&Orca/plots"
 
-ggsave(filename = paste0(outDir, "/plot_OCNMSHumpbackWhaleDetections.jpg"), plot = patchedC, dpi = 300)
+ggsave(filename = paste0(outDir, "/plot_OCNMSHumpbackWhaleDetectionsV3.jpg"), plot = patchedC, dpi = 300)
 
 
 
