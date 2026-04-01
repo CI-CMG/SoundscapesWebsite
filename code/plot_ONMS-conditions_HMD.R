@@ -31,14 +31,14 @@ rm(list=ls())
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "as01", "mb01", "mb02", "oc02")
 # NRSsites oc03 hi00 ci05 sb09 as10 cb11 ch13 fgb06 
 
-ONMSsites = c("hi01", "hi03", "hi04", "hi08")
+ONMSsites = c("ch01")
 
 
 ## directories ####
-#outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
+outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
+#outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
 
 
