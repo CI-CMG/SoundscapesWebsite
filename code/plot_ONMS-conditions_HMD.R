@@ -1149,7 +1149,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         axis.text.x = element_text(size = 14, hjust = 1, angle = 30),  
         plot.subtitle = element_text(size = 12),
         legend.text = element_text(size = 12),
-        plot.caption = ggtext::element_markdown(hjust = 0, size = 12),
+        plot.caption = ggtext::element_markdown(hjust = 0, size = 11),
         legend.position = "right" 
       )+
       #adding marker for cutoff threshold (months need more than 23 (default) or x days of data to be kept in line graph)
