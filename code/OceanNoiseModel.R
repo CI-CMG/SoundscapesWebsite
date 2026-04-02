@@ -18,6 +18,7 @@ library(xlsx)
 outDir = "~/GitHub/SoundscapesWebsite/" #"F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\"
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
+outDirC  =  paste0(outDir,"context/") #where to get context
 #metaFile = paste0(outDir, "F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\ONMSSound_IndicatorCategories.xlsx")
 metaFile = paste0(outDirG,"ONMSSound_IndicatorCategories.xlsx")
 #lookup = as.data.frame ( read.xlsx(metaFile, sheetIndex = 1) )
@@ -533,7 +534,7 @@ for (depth in depthIn$depth ) {
   # RESULTS ####
   NL = cbind( cbind(si, depth, as.data.frame( nlm[,c(14, 1:9)] )) , as.data.frame(nl) )
   windModel = rbind(windModel, NL)
-  save(windModel, file = paste0(outDir, "WindModel_ONMS-", length(depthIn$site), "sites_.Rda") )
+  save(windModel, file = paste0(outDirC, "WindModel_ONMS-", length(depthIn$site), "sites_.Rda") )
 }
 
 # PLOTS ####

@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("as10")
+ONMSsites = c("fgb06")
 
 
 ## directories ####
@@ -154,7 +154,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   } else if (site == "fgb06"){
     outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
     site1 = "nrs06"
-    site3 = "fgnrs06"
+    site3 = "fgbnrs06"
     site  = "NRS06"
     site5 = "fgb06"
   } else {
