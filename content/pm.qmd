@@ -145,6 +145,8 @@ display(HTML(standardTextDict["fish-intro-PM"]))
 display(HTML(standardTextDict["fish-1-PM"]))
 display(HTML(gf.makeImage("seasonal_bar_month_2_Parrotfish_crunch.png", "rasterfish1PM")))
 
+display(HTML(standardTextDict["spacer"]))
+
 display(HTML(standardTextDict["fish-2-PM"]))
 display(HTML(gf.makeImage("fish_nighttime_activity.png", "rasterfish2PM")))
 ```
