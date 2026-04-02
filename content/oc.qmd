@@ -78,7 +78,8 @@ display(HTML(standardTextDict["conditions overview"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Soundscape Overview"]))
-display(HTML(gf.makeButtons(sites, "plot_***_HMDSeasonalSPL.jpg", "Seasons")))
+display(HTML(gf.makeButtons(sites, "plot_***_HMDSeasonalSPL.jpg", "Seasons", altText= "Line graph of seasonal median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each season is a different colored line. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
+display(HTML(standardTextDict["Seasonal condition fc"]))
 infoHtml = f'''
                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).showModal()">How was this calculated?</button>
             <dialog id="infoModal">
@@ -96,7 +97,8 @@ display(HTML(infoHtml))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["What are the latest conditions in ocean sound?"]))
-display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL")))
+display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL", altText= "Line graph of annual median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each year is a different blue line, getting darker for every additional year of data. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
+display(HTML(standardTextDict["Annual condition fc"]))
 
 ```
 
@@ -111,8 +113,12 @@ display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL")))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["sources of interest typical"]))
-display(HTML(gf.makeButtons(sites, "plot_***-63_HMDstatus.jpg", "FOI")))
-display(HTML(gf.makeButtons(sites, "plot_***-125_HMDstatus.jpg", "FOI2")))
+display(HTML(gf.makeButtons(sites, "plot_***-63_HMDstatus.jpg", "FOI", altText= "Time series plot of daily median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) for a specific frequency band(s) of interest at this site, separated by year. Background color shading (blue, purple, gold) indicates low (<25th percentile), typical (25-75th percentile), and high sound levels (>75th percentile) across the entire dataset at this frequency band(s) for comparability with annual medians, marked with horizontal black dashed lines. Pie charts on the right hand side of the graphic show the proportion of daily median sound levels that fell within each category for each year, following the same color-coding and percentile bins.")))
+
+display(HTML(standardTextDict["spacer"]))
+display(HTML(gf.makeButtons(sites, "plot_***-125_HMDstatus.jpg", "FOI2", altText= "Time series plot of daily median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) for a specific frequency band(s) of interest at this site, separated by year. Background color shading (blue, purple, gold) indicates low (<25th percentile), typical (25-75th percentile), and high sound levels (>75th percentile) across the entire dataset at this frequency band(s) for comparability with annual medians, marked with horizontal black dashed lines. Pie charts on the right hand side of the graphic show the proportion of daily median sound levels that fell within each category for each year, following the same color-coding and percentile bins.")))
+
+display(HTML(standardTextDict["FOI condition fc"]))
 
 ```
 :::
@@ -167,10 +173,11 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 display(HTML(standardTextDict["killer-whales"]))
 display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca")))
-
+display(HTML(standardTextDict["orca curve fc"]))
 
 display(HTML(standardTextDict["humpback-whales-OC"]))
 display(HTML(gf.makeImage("plot_OCNMSHumpbackWhaleDetections.jpg", "time series humpback")))
+display(HTML(standardTextDict["humpback curve fc"]))
 
 ```
 
