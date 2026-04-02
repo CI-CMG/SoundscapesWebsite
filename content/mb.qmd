@@ -149,7 +149,6 @@ display(HTML(gf.makeImage("MB01_FinalHist.png", "Seasonal Fish Choruses")))
 display(HTML(standardTextDict["fish yearly fc"]))
 
 display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.png", "daily_fish_choruses")))
-
 display(HTML(standardTextDict["Diel fish fc"]))
 ```
 ### When are the seasonal biologically-important times for whales?
@@ -163,7 +162,6 @@ display(HTML(standardTextDict["humpback-whales"]))
 display(HTML(gf.makeImage("plot_MBNMSHumpbackWhaleDetections.jpg", "time series humpback")))
 display(HTML(standardTextDict["humpback curve fc"]))
 
-display(HTML(standardTextDict["humpback-whales-boxplots"]))
 display(HTML(gf.makeButtons(humpbacksites, "plot_***HumpbackWhaleDetections.jpeg", "seasonal_humpback"))) 
 display(HTML(standardTextDict["humpback box fc"]))
 ```
