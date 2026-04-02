@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("oc03","hi00","sb09","as10","ch13")
+ONMSsites = c("as10")
 
 
 ## directories ####
@@ -256,7 +256,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #cat("Input Data - ", site, " has ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
  
   
-  #FOR NEW OC02 DATA!!!
+  # FOR NEW OC02 DATA!!!
   #ALSO MB02
   # these sites have duplicate data (two deployments overlapped) so we need to average dB values 
   # between Jan 29 2024 and March 15 2024

@@ -15,13 +15,18 @@ library(xlsx)
 
 # GET DEPTHS OF INTEREST...
 # depth = 200 # as.numeric(readline(prompt = "Receiver Depth: ")) # user input for depth
-outDir = "F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\"
-metaFile = paste0("F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\ONMSSound_IndicatorCategories.xlsx")
-lookup = as.data.frame ( read.xlsx(metaFile, sheetIndex = 1) )
+outDir = "~/GitHub/SoundscapesWebsite/" #"F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\"
+
+outDirG  =  paste0(outDir,"content/resources/") #where save graphics
+#metaFile = paste0(outDir, "F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\ONMSSound_IndicatorCategories.xlsx")
+metaFile = paste0(outDirG,"ONMSSound_IndicatorCategories.xlsx")
+#lookup = as.data.frame ( read.xlsx(metaFile, sheetIndex = 1) )
+lookup = as.data.frame ( openxlsx :: read.xlsx(metaFile, sheet  = "Summary") )
+
 colnames(lookup) = lookup[1, ]         # Set first row as column names
 lookup = as.data.frame( lookup[-1, ] ) # Remove the first row
 lookup = as.data.frame( lookup[!apply(lookup, 1, function(row) all(is.na(row))), ] )
-depthIn = as.data.frame( cbind( paste0(lookup[,3],lookup[,4]), as.numeric( as.character(gsub("~","",lookup[,19])) ) ) )
+depthIn = as.data.frame( cbind( paste0(lookup[,3],lookup[,4]), as.numeric( as.character(gsub("~","",lookup[,23])) ) ) )
 colnames(depthIn) = c("site","depth")
 depthIn$depth = as.numeric( as.character( depthIn$depth ))
 
@@ -75,7 +80,9 @@ for (depth in depthIn$depth ) {
   
   #frequencies 
   fm = seq(0.01, 0.1, by = 0.01)  # 10 Hz steps from 10 Hz to 100 Hz
+  #fm = seq(0.01, 0.435, by = 0.001)  # 1 Hz steps from 10 Hz to 435 Hz
   f  = seq(0.1, 160, by = 0.1)    # 100 Hz steps from 100 Hz to 100 kHz
+  #f  = seq(0.435, 160, by = 0.01)    # 10 Hz steps from 435 Hz to 16 kHz
   fp = c(fm, f)                   # Combine for plotting
   fWi = c(100, 500, 1000, 5000, 10000, 20000, 30000, 100000, 160000)
   
