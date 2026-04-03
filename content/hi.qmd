@@ -168,6 +168,6 @@ display(HTML(standardTextDict["Indicator description"]))
 display(HTML(standardTextDict["humpback-whales-HI"]))
 display(HTML(gf.makeImage("raster_by_site_Humpback_HIHW.png", "rasterHumpbackHI")))
 
-display(HTML(standardTextDict["hump heatmap fc"]))
+#display(HTML(standardTextDict["hump heatmap fc"]))
 ```
 :::
