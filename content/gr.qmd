@@ -137,6 +137,8 @@ display(HTML(standardTextDict["Indicator description"]))
 display(HTML(standardTextDict["NARW"]))
 display(HTML(gf.makeImage("GR01_NARW_presence.png", "daily activity", 900)))
 
+display(HTML(standardTextDict["NARW fc"]))
+
 ```
 
 ```{python}

@@ -135,6 +135,8 @@ display(HTML(standardTextDict["Indicator description"]))
 display(HTML(standardTextDict["fish-AS"]))
 display(HTML(gf.makeImage("raster_by_site_Fish_damselfish.png", "rasterfishAS")))
 
+display(HTML(standardTextDict["damselfish fc"]))
+
 ```
 
 :::

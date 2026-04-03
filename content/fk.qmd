@@ -138,7 +138,16 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 
 display(HTML(standardTextDict["goliath grouper"]))
-display(HTML(gf.makeButtonsWithLabels(GGrouperGraphs, GGrouperGraphsLabels, "FK01_***.png", "g_grouper", altTexts)))
+
+display(HTML(gf.makeButtons(sites, "FK01_Daily_Activity.png", "g_grouper")))
+display(HTML(standardTextDict["grouper daily activity fc"]))
+display(HTML(standardTextDict["spacer"]))
+
+display(HTML(gf.makeButtons(sites, "FK01_Diel_Patterns.png", "g_grouper")))
+display(HTML(standardTextDict["grouper diel pattern fc"]))
+
+
+#display(HTML(gf.makeButtonsWithLabels(GGrouperGraphs, GGrouperGraphsLabels, "FK01_***.png", "g_grouper", altTexts)))
 #gf.makeImage("FK01_diel_patterns.png", "diel patterns")
 ```
 
