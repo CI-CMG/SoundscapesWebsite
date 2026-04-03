@@ -143,7 +143,7 @@ display(HTML(gf.makeButtons(sites, "FK01_Daily_Activity.png", "g_grouper")))
 display(HTML(standardTextDict["grouper daily activity fc"]))
 display(HTML(standardTextDict["spacer"]))
 
-display(HTML(gf.makeButtons(sites, "FK01_Diel_Patterns.png", "g_grouper")))
+display(HTML(gf.makeButtons(sites, "FK01_Diel_Patterns.png", "g_grouper2")))
 display(HTML(standardTextDict["grouper diel pattern fc"]))
 
 
