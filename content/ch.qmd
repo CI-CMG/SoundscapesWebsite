@@ -153,10 +153,10 @@ display(HTML(standardTextDict["Indicator description"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
-display(HTML(gf.makeImage("CH01_Box.png", " Seasonal Fish Choruses", altText = "Boxplots of presence of boccacio rockfish and plainfin midshipman chorusing by week in the Chumash Heritage National Marine Sanctuary. Fish vocalize here seasonally, between July and October.")))
+display(HTML(gf.makeImage("CH01_Box.png", "Seasonal Fish Choruses", altText= "Boxplots of presence of boccacio rockfish and plainfin midshipman chorusing by week in the Chumash Heritage National Marine Sanctuary. Fish vocalize here seasonally, between July and October.")))
 display(HTML(standardTextDict["fish boxplot fc"]))
 display(HTML(standardTextDict["spacer"]))
-display(HTML(gf.makeImage("CH01_FinalRosePlotV2.png", " Daily Fish Choruses", altText = "Rose plots (24 hour clock) of hourly proportion of fish chorusing detected for five fish species in the Chumash Heritage National Marine Sanctuary.")))
+display(HTML(gf.makeImage("CH01_FinalRosePlotV2.png", "Daily Fish Choruses", altText= "Rose plots (24 hour clock) of hourly proportion of fish chorusing detected for five fish species in the Chumash Heritage National Marine Sanctuary.")))
 display(HTML(standardTextDict["Diel fish fc"]))
 ```
 
