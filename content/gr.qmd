@@ -135,7 +135,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 
 display(HTML(standardTextDict["NARW"]))
-display(HTML(gf.makeImage("GR01_NARW_presence.png", "daily activity", 900)))
+display(HTML(gf.makeImage("GR01_NARW_presence.png", "daily activity", 900, altText= "Bar plot of North Atlantic Right Whale daily acoustic presence by week of the year in the Greys Reef National Marine Sanctuary; whales were detected between December and February, 2019-2024.")))
 
 display(HTML(standardTextDict["NARW fc"]))
 

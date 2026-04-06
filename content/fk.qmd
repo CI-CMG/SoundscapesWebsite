@@ -139,11 +139,11 @@ display(HTML(standardTextDict["Indicator description"]))
 
 display(HTML(standardTextDict["goliath grouper"]))
 
-display(HTML(gf.makeImage("FK01_Daily_Activity.png", "g_grouper")))
+display(HTML(gf.makeImage("FK01_Daily_Activity.png", "g_grouper", altText= "Plot of total goliath grouper calls detected per day between July and October of 2023 and 2024 in the Florida Keys National Marine Sanctuary, with most calls recorded between August and September.")))
 display(HTML(standardTextDict["grouper daily activity fc"]))
 display(HTML(standardTextDict["spacer"]))
 
-display(HTML(gf.makeImage("FK01_Diel_Patterns.png", "g_grouper2")))
+display(HTML(gf.makeImage("FK01_Diel_Patterns.png", "g_grouper2", altText= "Aggregated bar plot of goliath grouper calls detected per hour of the day in 2023 and 2024 in the Florida Keys National Marine Sanctuary, with the majority of calls happening at night.")))
 display(HTML(standardTextDict["grouper diel pattern fc"]))
 
 

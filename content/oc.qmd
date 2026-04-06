@@ -172,11 +172,11 @@ display(HTML(standardTextDict["Indicator description"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["killer-whales"]))
-display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca")))
+display(HTML(gf.makeImage("plot_OC02OrcaDetections.jpg", "time series orca", altText= "Scatter plot with GAM model curves of weekly count of orca whale acoustic presence in the Olympic Coast National Marine Sanctuary, showing seasonal presence peaking in summer months.")))
 display(HTML(standardTextDict["orca curve fc"]))
 
 display(HTML(standardTextDict["humpback-whales-OC"]))
-display(HTML(gf.makeImage("plot_OCNMSHumpbackWhaleDetections.jpg", "time series humpback")))
+display(HTML(gf.makeImage("plot_OCNMSHumpbackWhaleDetections.jpg", "time series humpback", altText= "Scatter plot with GAM model curves of weekly count of humpback whale acoustic presence for song and non song calls in the Olympic Coast National Marine Sanctuary. Non-song calls peak during summer whereas song calls peak during winter.")))
 display(HTML(standardTextDict["humpback curve fc"]))
 
 ```

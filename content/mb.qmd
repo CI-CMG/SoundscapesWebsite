@@ -145,21 +145,21 @@ display(HTML(standardTextDict["Indicator description"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
-display(HTML(gf.makeImage("MB01_FinalHist.png", "Seasonal Fish Choruses")))
+display(HTML(gf.makeImage("MB01_FinalHist.png", "Seasonal Fish Choruses", altText= "Histograms of proportion of fish chorusing hours detected for five fish species by month in the Monterey Bay National Marine Sanctuary, comparing the most recent recording year (2023) to the previous year (2022).")))
 display(HTML(standardTextDict["fish yearly fc"]))
 
-display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.png", "daily_fish_choruses")))
+display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.png", "daily_fish_choruses", altText= "Rose plots (24 hour clock) of hourly proportion of fish chorusing detected for five fish species in the Monterey Bay National Marine Sanctuary.")))
 display(HTML(standardTextDict["Diel fish fc"]))
 ```
 ### When are the seasonal biologically-important times for whales?
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["MARS-whales"]))
-display(HTML(gf.makeImage("MARS_BlueFinCI.jpg", "Seasonal blue and fin")))
+display(HTML(gf.makeImage("MARS_BlueFinCI.jpg", "Seasonal blue and fin", altText= "Time series scatter plot of the MARS whale call index (a proxy for abundance) for both blue and fin whales in the Monterey Bay National Marine Sanctuary. Both species have peak seasonal presence in the summer and fall months.")))
 display(HTML(standardTextDict["blue/fin fc"]))
 
 display(HTML(standardTextDict["humpback-whales"]))
-display(HTML(gf.makeImage("plot_MBNMSHumpbackWhaleDetections.jpg", "time series humpback")))
+display(HTML(gf.makeImage("plot_MBNMSHumpbackWhaleDetections.jpg", "time series humpback", altText= "Scatter plot with GAM model curves of weekly count of humpback whale acoustic presence for song and non song calls in the Monterey Bay National Marine Sanctuary. Non-song calls peak during summer whereas song calls peak fall through spring with many more song calls than non-song calls.")))
 display(HTML(standardTextDict["humpback curve fc"]))
 
 display(HTML(standardTextDict["spacer"]))

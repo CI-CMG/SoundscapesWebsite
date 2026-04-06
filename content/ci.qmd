@@ -142,7 +142,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
 
-display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.jpg", "daily_fish_choruses")))
+display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.jpg", "daily_fish_choruses", altText= "Rose plots (24 hour clock) of hourly proportion of fish chorusing detected for five fish species in the Channel Islands National Marine Sanctuary.")))
 display(HTML(standardTextDict["Diel fish fc"]))
 ```
 
@@ -153,7 +153,7 @@ display(HTML(standardTextDict["Diel fish fc"]))
 #| echo: false
 
 display(HTML(standardTextDict["humpback-whales-CI"]))
-display(HTML(gf.makeImage("plot_CINMSHumpbackWhaleDetections.jpg", "time series humpback")))
+display(HTML(gf.makeImage("plot_CINMSHumpbackWhaleDetections.jpg", "time series humpback", altText= "Scatter plot with GAM model curves of weekly count of humpback whale acoustic presence for song and non song calls in the Channel Islands National Marine Sanctuary. Non-song calls peak during summer whereas song calls peak fall through spring with many more song calls than non-song calls.")))
 display(HTML(standardTextDict["humpback curve fc"]))
 
 ```
