@@ -149,7 +149,7 @@ display(HTML(gf.makeImage("MB01_FinalHist.png", "Seasonal Fish Choruses", altTex
 display(HTML(standardTextDict["fish yearly fc"]))
 
 display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.png", "daily_fish_choruses", altText= "Rose plots (24 hour clock) of hourly proportion of fish chorusing detected for five fish species in the Monterey Bay National Marine Sanctuary.")))
-display(HTML(standardTextDict["diel fish MB fc"]))
+display(HTML(standardTextDict["MB diel fish fc"]))
 ```
 ### When are the seasonal biologically-important times for whales?
 ```{python}
@@ -160,7 +160,7 @@ display(HTML(standardTextDict["blue/fin fc"]))
 
 display(HTML(standardTextDict["humpback-whales"]))
 display(HTML(gf.makeImage("plot_MBNMSHumpbackWhaleDetections.jpg", "time series humpback", altText= "Scatter plot with GAM model curves of weekly count of humpback whale acoustic presence for song and non song calls in the Monterey Bay National Marine Sanctuary. Non-song calls peak during summer whereas song calls peak fall through spring with many more song calls than non-song calls.")))
-display(HTML(standardTextDict["humpback curve MB fc"]))
+display(HTML(standardTextDict["MB humpback curve fc"]))
 
 display(HTML(standardTextDict["spacer"]))
 

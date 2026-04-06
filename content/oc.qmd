@@ -177,7 +177,7 @@ display(HTML(standardTextDict["orca curve fc"]))
 
 display(HTML(standardTextDict["humpback-whales-OC"]))
 display(HTML(gf.makeImage("plot_OCNMSHumpbackWhaleDetections.jpg", "time series humpback", altText= "Scatter plot with GAM model curves of weekly count of humpback whale acoustic presence for song and non song calls in the Olympic Coast National Marine Sanctuary. Non-song calls peak during summer whereas song calls peak during winter.")))
-display(HTML(standardTextDict["humpback curve OC fc"]))
+display(HTML(standardTextDict["OC humpback curve fc"]))
 
 ```
 
