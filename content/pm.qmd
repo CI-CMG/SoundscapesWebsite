@@ -134,7 +134,7 @@ display(HTML(standardTextDict["Indicator description"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["humpback-whales-PM"]))
-display(HTML(gf.makeImage("raster_by_site_Humpback_PNMS.png", "rasterHumpbackPM")))
+display(HTML(gf.makeImage("raster_by_site_Humpback_PNMS.png", "rasterHumpbackPM", 900)))
 #display(HTML(standardTextDict["hump heatmap fc"]))
 ```
 
