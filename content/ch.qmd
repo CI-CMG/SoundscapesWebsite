@@ -157,7 +157,7 @@ display(HTML(gf.makeImage("CH01_Box.png", "Seasonal Fish Choruses", altText= "Bo
 display(HTML(standardTextDict["fish boxplot fc"]))
 display(HTML(standardTextDict["spacer"]))
 display(HTML(gf.makeImage("CH01_FinalRosePlotV2.png", "Daily Fish Choruses", altText= "Rose plots (24 hour clock) of hourly proportion of fish chorusing detected for five fish species in the Chumash Heritage National Marine Sanctuary.")))
-display(HTML(standardTextDict["Diel fish fc"]))
+display(HTML(standardTextDict["diel fish CH fc"]))
 ```
 
 <!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
