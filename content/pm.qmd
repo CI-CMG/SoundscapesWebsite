@@ -135,7 +135,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 display(HTML(standardTextDict["humpback-whales-PM"]))
 display(HTML(gf.makeImage("raster_by_site_Humpback_PNMS.png", "rasterHumpbackPM", 900)))
-#display(HTML(standardTextDict["hump heatmap fc"]))
+display(HTML(standardTextDict["hump heatmap fc"]))
 ```
 
 ### When do fish contribute to the soundscape?
@@ -146,14 +146,14 @@ display(HTML(standardTextDict["fish-intro-PM"]))
 display(HTML(standardTextDict["fish-1-PM"]))
 display(HTML(gf.makeImage("seasonal_bar_month_2_Parrotfish_crunch.png", "rasterfish1PM")))
 
-#display(HTML(standardTextDict["parrotfish fc"]))
+display(HTML(standardTextDict["parrotfish fc"]))
 
 display(HTML(standardTextDict["spacer"]))
 
 display(HTML(standardTextDict["fish-2-PM"]))
 display(HTML(gf.makeImage("fish_nighttime_activity.png", "rasterfish2PM")))
 
-#display(HTML(standardTextDict["nighttime fish fc"]))
+display(HTML(standardTextDict["nighttime fish fc"]))
 ```
 
 
