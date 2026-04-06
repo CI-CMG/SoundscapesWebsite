@@ -166,8 +166,8 @@ display(HTML(standardTextDict["Indicator description"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["humpback-whales-HI"]))
-display(HTML(gf.makeImage("raster_by_site_Humpback_HIHW.png", "rasterHumpbackHI", 900)))
+display(HTML(gf.makeImage("raster_by_site_Humpback_HIHW.png", "rasterHumpbackHI", 900, altText="Heatmaps showing humpback whale detections per minute across multiple sites and years, illustrating differences between sites and seasonal changes in whale acoustic activity over time.")))
 
-#display(HTML(standardTextDict["hump heatmap fc"]))
+display(HTML(standardTextDict["hump heatmap fc"]))
 ```
 :::
