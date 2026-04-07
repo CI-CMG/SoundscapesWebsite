@@ -151,7 +151,7 @@ display(HTML(standardTextDict["parrotfish fc"]))
 display(HTML(standardTextDict["spacer"]))
 
 display(HTML(standardTextDict["fish-2-PM"]))
-display(HTML(gf.makeImage("fish_nighttime_activity.png", "rasterfish2PM")))
+display(HTML(gf.makeImage("fish_nighttime_activity.png", "rasterfish2PM", altText= "Bar plot showing total nighttime acoustic activity by month and year for two sites, PM01 and PM02. Each panel represents a year, 2019–2020, 2020–2021, 2022–2023, 2023–2024, and bars are colored by month from October to June. Nighttime activity is higher at PM02 than PM01, with seasonal variation across months and years.")))
 
 display(HTML(standardTextDict["nighttime fish fc"]))
 ```
