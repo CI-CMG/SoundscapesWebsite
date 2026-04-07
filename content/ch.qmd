@@ -154,7 +154,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #| echo: false
 display(HTML(standardTextDict["Fish Chorus"]))
 
-display(HTML(gf.makeImage("CH01_Box.png", "Seasonal Fish Choruses", altText= "Boxplots of presence of boccacio rockfish and plainfin midshipman chorusing by week in the Chumash Heritage National Marine Sanctuary. Fish vocalize here seasonally, between July and October.")))
+display(HTML(gf.makeImage("CH01_Box.png", "Seasonal Fish Choruses", altText= "Boxplots of presence of boccacio rockfish and plainfin midshipman chorusing by week in the Chumash Heritage National Marine Sanctuary, from June 2022 to November 2023. Fish vocalize here seasonally, between July and October.")))
 display(HTML(standardTextDict["fish boxplot fc"]))
 display(HTML(standardTextDict["spacer"]))
 
