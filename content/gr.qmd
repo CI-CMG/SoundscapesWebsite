@@ -40,7 +40,7 @@ for i in range(len(headerLocations)):
 ```
 
 ---
-title: "Grays Reef National Marine Sanctuary"
+title: "Gray's Reef National Marine Sanctuary"
 date: "today"
 output: 
   html_document: 

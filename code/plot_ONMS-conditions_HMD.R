@@ -1656,29 +1656,29 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       
       
       ### plot: annual threshold bars
-      pthrs = ggplot() +
-        # Threshold bands (same for all facets)
-        geom_rect(data = threshold_bands,
-                  aes(xmin = xmin, xmax = xmax, ymin = 0.4, ymax = 0.6, fill = category),
-                  color = "white") +
-        # Marker line per year- median
-        geom_vline(data = yrFQ, aes(xintercept = HMD_50), 
-                   linetype = "dashed", color = "black", linewidth = .5) +
-        # Facet by year
-        facet_wrap(~yr, ncol = 1) +  
-        # Customize scales and colors
-        scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
-        # more formatting
-        theme_void() +
-        theme( legend.position = "none",
-               plot.title = element_text(hjust = 0, size = 12),
-               plot.caption = element_text(size = 12, hjust = 1),
-               plot.subtitle = element_text(hjust = 0.5, size = 12),
-               axis.title.x = element_text(size = 14),
-               strip.text = element_text(size = 14) ) +
-        labs(title  = "Vertical dotted line\nis the annual\nmedian sound level",
-             strip.text = element_text(hjust = 0))
-      pthrs 
+      # pthrs = ggplot() +
+      #   # Threshold bands (same for all facets)
+      #   geom_rect(data = threshold_bands,
+      #             aes(xmin = xmin, xmax = xmax, ymin = 0.4, ymax = 0.6, fill = category),
+      #             color = "white") +
+      #   # Marker line per year- median
+      #   geom_vline(data = yrFQ, aes(xintercept = HMD_50), 
+      #              linetype = "dashed", color = "black", linewidth = .5) +
+      #   # Facet by year
+      #   facet_wrap(~yr, ncol = 1) +  
+      #   # Customize scales and colors
+      #   scale_fill_manual(values = setNames(threshold_bands$fill, threshold_bands$category)) +
+      #   # more formatting
+      #   theme_void() +
+      #   theme( legend.position = "none",
+      #          plot.title = element_text(hjust = 0, size = 12),
+      #          plot.caption = element_text(size = 12, hjust = 1),
+      #          plot.subtitle = element_text(hjust = 0.5, size = 12),
+      #          axis.title.x = element_text(size = 14),
+      #          strip.text = element_text(size = 14) ) +
+      #   labs(title  = "Vertical dotted line\nis the annual\nmedian sound level",
+      #        strip.text = element_text(hjust = 0))
+      # pthrs 
       
       
       ### plot: annual pie charts
