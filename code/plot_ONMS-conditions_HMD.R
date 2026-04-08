@@ -231,10 +231,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasonShift = 0
   }else if ( sidx == "southernHem") {
     season = data.frame(
-      Season = c( "Humpback", "Humpback peak", "Hurricane", "Tradewind" ),
-      Months = c("6,7,8,9,10" , "8,9,10" ,"11,12,1,2,3,4",  "5,6,7,8,9,10") ,
-      values = c(   "#56B4E9",  "#009E73", "#CC79A7", "#E69F00") )
-    seasonLabel = "Humpback = Jun-Oct, Humpback peak = Aug-Oct, Hurricane = Nov-Apr, Tradewind = May-Oct"
+      Season = c(  "Hurricane", "Tradewind", "Tradewind and Humpback" ),
+      Months = c("11,12,1,2,3,4",  "5,6,7", "8,9,10" ) ,
+      values = c(  "#CC79A7", "#E69F00",  "#009E73") )
+    seasonLabel = "Hurricane = Nov-Apr, Tradewind = May-Jul, Tradewind and Humpback Aug-Oct"
     seasonShift = 0
   }
   
