@@ -1785,9 +1785,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       pies <- dailyFQ %>%
         mutate(status = case_when(
           #is.na(HMD_50)             ~ "NA",
-          HMD_50 < q25               ~ "Low",
+          HMD_50 < q25  & HMD_50 > q01  ~ "Low",
           HMD_50 >= q25 & HMD_50 <= q75 ~ "Within Range",
-          HMD_50 > q75               ~ "High"
+          HMD_50 > q75  & HMD_50 < q99  ~ "High"
         )) %>%
         group_by(yr, status) %>%
         summarise(
@@ -1810,7 +1810,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         mutate(
           prop = n_days/n_effort
         ) %>%
-        select(1:3, 6:7)
+        select(1:3, 6:7)%>%
+        filter(!is.na(status))
       
       
       finalpies <- finalpies %>%
@@ -1837,12 +1838,14 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         dummy_row$status <- "High"
         dummy_row$prop <- 0         # Zero proportion so it doesn't show in the pie
         finalpies <- rbind(finalpies, dummy_row)
-      } else if (!"Typical" %in% finalpies$status) {
+      }
+      if (!"Typical" %in% finalpies$status) {
         dummy_row <- finalpies[1, ] # Copy the first row structure
         dummy_row$status <- "Typical"
         dummy_row$prop <- 0         # Zero proportion so it doesn't show in the pie
         finalpies <- rbind(finalpies, dummy_row)
-      } else if (!"Low" %in% finalpies$status) {
+      }
+      if (!"Low" %in% finalpies$status) {
         dummy_row <- finalpies[1, ] # Copy the first row structure
         dummy_row$status <- "Low"
         dummy_row$prop <- 0         # Zero proportion so it doesn't show in the pie
