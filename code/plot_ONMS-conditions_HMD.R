@@ -234,7 +234,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       Season = c(  "Hurricane", "Tradewind", "Tradewind and Humpback" ),
       Months = c("11,12,1,2,3,4",  "5,6,7", "8,9,10" ) ,
       values = c(  "#CC79A7", "#E69F00",  "#009E73") )
-    seasonLabel = "Hurricane = Nov-Apr, Tradewind = May-Jul, Tradewind and Humpback Aug-Oct"
+    seasonLabel = "Hurricane = Nov-Apr, Tradewind = May-Jul, Tradewind and Humpback = Aug-Oct"
     seasonShift = 0
   }
   
