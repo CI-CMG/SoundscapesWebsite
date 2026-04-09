@@ -126,8 +126,8 @@ display(HTML(standardTextDict["FOI condition fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
-
-display(HTML("Coming soon!"))
+display(HTML(standardTextDict["spacer"]))
+display(HTML("**Coming soon!**"))
 ```
 <!-- ### What are the trends in ocean noise? -->
 <!-- ```{python} -->

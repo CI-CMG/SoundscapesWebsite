@@ -129,6 +129,8 @@ display(HTML(standardTextDict["FOI condition fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
+display(HTML(standardTextDict["spacer"]))
+display(HTML("**Coming soon!**"))
 ```
 
 <!-- ### When do whales contribute to the soundscape, indicating their presence nearby? -->
