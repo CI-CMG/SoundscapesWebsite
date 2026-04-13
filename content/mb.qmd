@@ -148,6 +148,8 @@ display(HTML(standardTextDict["Fish Chorus"]))
 display(HTML(gf.makeImage("MB01_FinalHist.png", "Seasonal Fish Choruses", altText= "Histograms of proportion of fish chorusing hours detected for five fish species by month in the Monterey Bay National Marine Sanctuary, comparing the most recent recording year (2022-2023) to all previous years of data (2019-2021).")))
 display(HTML(standardTextDict["fish yearly fc"]))
 
+display(HTML(standardTextDict["spacer"]))
+
 display(HTML(gf.makeButtons(fishsites, "***_FinalRosePlotV2.png", "daily_fish_choruses", altText= "Rose plots (24 hour clock) of hourly proportion of fish chorusing detected for five fish species in the Monterey Bay National Marine Sanctuary.")))
 display(HTML(standardTextDict["MB diel fish fc"]))
 ```
