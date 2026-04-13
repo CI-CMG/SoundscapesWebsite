@@ -88,7 +88,9 @@ def makeButtons(sites, generalFormat, identifier, altText=""):
         if site == sites[0]:
             initialColor = "#BA2F00"
             
-        buttons += f'<button id="{site}{identifier}button" onclick="{site}{identifier}()" style="padding: 10px; color: white; margin: 4px 4px; background-color: {initialColor};text-transform: uppercase;">{site}</button>'
+        #buttons += f'<button id="{site}{identifier}button" onclick="{site}{identifier}()" style="padding: 10px; color: white; margin: 4px 4px; background-color: {initialColor};text-transform: uppercase;">{site}</button>'
+        buttons += f'<button id="{site}{identifier}button" onclick="{site}{identifier}()" style="padding: 10px; color: white; margin: 4px 0; background-color: {initialColor}; text-transform: uppercase; width: 150px; display: block;">{site}</button>'
+
         scripts += f"""
                     <script>
                     function {site}{identifier}() {{
@@ -102,10 +104,20 @@ def makeButtons(sites, generalFormat, identifier, altText=""):
         """
 
     # Update the return statement like this:
-    container_start = '<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">'
+    #container_start = '<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">'
+    container_start = f'<div style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px;">'
+
+    # Wrap the buttons in their own vertical column
+    button_column = f'<div style="display: flex; flex-direction: column;">{buttons}</div>'
+
+    # The image stays as it is
+    path = f'{inputDir}/{generalFormat}'.replace("***", sites[0])
+    image_html = f'<img alt="{altText}" src="{path}" width="700" id="{identifier}" onclick="this.requestFullscreen()" style="border: 1px solid #ccc;">'
+
     container_end = '</div>'
 
-    return container_start + buttons + container_end + initialImage + scripts
+    return container_start + button_column + image_html + container_end + scripts
+    #return container_start + buttons + container_end + initialImage + scripts
     #return buttons + initialImage + scripts
     
 def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifier, altTexts=[]):
