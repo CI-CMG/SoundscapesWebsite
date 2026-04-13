@@ -11,7 +11,7 @@ library(ggplot2)
 library(openxlsx)
 
 dirSS  = "F:\\SanctSound" # SANCTSOUND
-outDir = "F:\\CODE\\GitHub\\SoundscapesWebsite\\"
+outDir = "C:\\Users\\embe5980\\SoundscapesWebsite\\"
 outDirR = paste0(outDir, "content\\resources\\") #save graphics
 outDirP = paste0(outDir, "products\\onms\\")     #products
 
