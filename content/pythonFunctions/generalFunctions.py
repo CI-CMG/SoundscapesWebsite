@@ -100,7 +100,13 @@ def makeButtons(sites, generalFormat, identifier, altText=""):
                     }}
                     </script>
         """
-    return buttons + initialImage + scripts
+
+    # Update the return statement like this:
+    container_start = '<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">'
+    container_end = '</div>'
+
+    return container_start + buttons + container_end + initialImage + scripts
+    #return buttons + initialImage + scripts
     
 def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifier, altTexts=[]):
     buttons = ""
