@@ -89,7 +89,7 @@ def makeButtons(sites, generalFormat, identifier, altText=""):
             initialColor = "#BA2F00"
             
         #buttons += f'<button id="{site}{identifier}button" onclick="{site}{identifier}()" style="padding: 10px; color: white; margin: 4px 4px; background-color: {initialColor};text-transform: uppercase;">{site}</button>'
-        buttons += f'<button id="{site}{identifier}button" onclick="{site}{identifier}()" style="padding: 10px; color: white; margin: 4px 0; background-color: {initialColor}; text-transform: uppercase; width: 150px; display: block;">{site}</button>'
+        buttons += f'<button id="{site}{identifier}button" onclick="{site}{identifier}()" style="padding: 10px; color: white; margin: 4px 0; background-color: {initialColor}; text-transform: uppercase; width: 100px; display: block;">{site}</button>'
 
         scripts += f"""
                     <script>
