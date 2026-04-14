@@ -171,9 +171,9 @@ def makeButtonsWithLabels(uniqueImageIDs, buttonLabels, generalFormat, identifie
 def makeImage(imageName, identifier, width=700, altText=""):
     inputDir = "https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources"
     path = f'{inputDir}/{imageName}'
-    initialImage = f'<img alt="{altText}" src="{path}" width="{width}" id="{identifier}" onclick="this.requestFullscreen()" style="display: block; margin-left: auto; margin-right: auto">'
+    initialImage = f'<img alt="{altText}" src="{path}" width="{width}" id="{identifier}" onclick="this.requestFullscreen()" style="display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc;">'
     return initialImage
-    
+
 def addPlotly(sourceHTML):
 	return f"""
             <iframe
