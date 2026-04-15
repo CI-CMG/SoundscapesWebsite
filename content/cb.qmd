@@ -40,7 +40,7 @@ for i in range(len(headerLocations)):
 ```
 
 ---
-title: "Cordell Bank and Greater Farallones National Marine Sanctuary Soundscape Report"
+title: "Greater Farallones and Cordell Bank National Marine Sanctuaries Soundscape Report"
 date: "today"
 output: 
   html_document: 
