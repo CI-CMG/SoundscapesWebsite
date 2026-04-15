@@ -18,7 +18,7 @@ project:
 website: 
   page-navigation: true
   title: "NOAA quarto simple" 
-  site-url: "https://ci-cmg.github.io/SoundscapesWebsite"
+  site-url: https://www.soundscapemonitoring.us
   repo-url: "https://github.com/CI-CMG/SoundscapesWebsite"
   repo-actions: [source, issue]
   favicon: images/onms-logo-no-text-800.png
