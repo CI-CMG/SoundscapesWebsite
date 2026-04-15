@@ -29,7 +29,7 @@ for key in standardTextDict:
 ```
 
 ---
-title: "Ocean Sound Monitoring in U.S. National Marine Sanctuaries"
+title: "U.S. Ocean Sound Monitoring and Condition Reporting"
 date: "today"
 output: 
   html_document: 
