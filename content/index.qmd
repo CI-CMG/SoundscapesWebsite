@@ -27,7 +27,7 @@ for key in standardTextDict:
             value = value.replace("**", "</b>", 1)
         standardTextDict[key] = value
 ```
-
+ 
 ---
 title: "U.S. Ocean Sound Monitoring and Condition Reporting"
 date: "today"
