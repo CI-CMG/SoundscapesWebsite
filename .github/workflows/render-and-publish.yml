@@ -1,8 +1,14 @@
 on:
   push:
     branches: main
+  workflow_dispatch:
 
 name: Render and Publish
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build-deploy:
