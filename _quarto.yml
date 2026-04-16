@@ -68,7 +68,7 @@ website:
       - href: content/oc.qmd
         text: Olympic Coast
       - href: content/cb.qmd
-        text: Cordell Bank and Greater Farallones
+        text: Greater Farallones and Cordell Bank 
       - href: content/mb.qmd
         text: Monterey Bay
       - href: content/ch.qmd
