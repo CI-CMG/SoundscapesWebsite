@@ -146,7 +146,7 @@ display(HTML(standardTextDict["damselfish fc"]))
 display(HTML(standardTextDict["spacer"]))
 
 #display(HTML(standardTextDict["humpback-AS"]))
-display(HTML(gf.makeImage("AS_Humpback.png", "humpbackAS", 500, altText= "Humpback whale presence by month; whales were detected between August and November (June 2015–April 2016), with a data gap from April to June.")))
+display(HTML(gf.makeImage("AS_Humpback.png", "humpbackAS", 200, altText= "Humpback whale presence by month; whales were detected between August and November (June 2015–April 2016), with a data gap from April to June.")))
 
 display(HTML(standardTextDict["AS humpback fc"]))
 
