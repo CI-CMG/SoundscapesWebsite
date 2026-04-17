@@ -143,11 +143,14 @@ display(HTML(gf.makeImage("raster_by_site_Fish_damselfish.png", "rasterfishAS", 
 
 display(HTML(standardTextDict["damselfish fc"]))
 
+display(HTML(standardTextDict["spacer"]))
 
 #display(HTML(standardTextDict["humpback-AS"]))
-display(HTML(gf.makeImage("AS_Humpback.png", "humpbackAS", altText= "Humpback whale presence by month; whales were detected between August and November (June 2015–April 2016), with a data gap from April to June.")))
+display(HTML(gf.makeImage("AS_Humpback.png", "humpbackAS", 500, altText= "Humpback whale presence by month; whales were detected between August and November (June 2015–April 2016), with a data gap from April to June.")))
 
 display(HTML(standardTextDict["AS humpback fc"]))
+
+display(HTML(standardTextDict["spacer"]))
 
 #display(HTML(standardTextDict["vessel-AS"]))
 display(HTML(gf.makeImage("Vessel_NMSAS.png", "vesselAS", altText= "Heatmap of vessel detections at AS01 in Fagatele Bay, showing higher activity during daylight hours from late March to May 2023.")))
