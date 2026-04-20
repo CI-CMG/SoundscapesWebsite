@@ -27,12 +27,12 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "NRS10" 
+site  = "NRS08" 
 site = tolower(site) 
 # 
 # #add for NRS
- gcpF = "PMEL_NPSA"
- prodName = "AS" 
+ gcpF = "PMEL_NEOFFSHORE"
+ prodName = "NE" 
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
@@ -396,6 +396,7 @@ for (i in seq_along(data_chunks)) {
 cat("Processing matchGFS for chunk", i, "of", length(data_chunks), "\n")
 gps_chunks[[i]] <- matchGFS(data_chunks[[i]])
 }
+
 
 
 #add/remove lines for the number of chunks data was broken into
