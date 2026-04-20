@@ -99,7 +99,7 @@ display(HTML(standardTextDict["Seasonal condition fc"]))
 #| echo: false
 display(HTML(standardTextDict["Indicators from ocean sound"]))
 display(HTML(gf.makeImage("MB01_FinalRosePlotV2.png", "fish", altText= "Line graph of seasonal median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each season is a different colored line. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
-display(HTML(standardTextDict["MB diel fish fc"]))
+display(HTML(standardTextDict["MB diel fish HOME fc"]))
 
 display(HTML(standardTextDict["What is ocean sound? pt 2"]))
 ```

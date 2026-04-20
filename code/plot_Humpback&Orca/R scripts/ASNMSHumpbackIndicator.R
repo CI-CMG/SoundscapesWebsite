@@ -1,4 +1,4 @@
-#Second Draft of MBNMS Humpback Detection graphs
+#NRS10 Humpback Detection graphs
 
 
 # RUN this to make sure latest updates for PAMscapes
@@ -22,12 +22,14 @@ library(tidyr)
 
 library(grid)
 library(patchwork)
+if (!require("readxl")) install.packages("readxl")
+library(readxl)
 
 rm(list=ls()) 
 
 #Load in
-otherCsv <- read.csv('C:/Users/embe5980/Indicators/WCR_humpbacks_jack_orca_ss/data/OCNMS/SanctSound_OC02.csv', stringsAsFactors = FALSE)
-
+# This assumes your .Rmd or .qmd file is in the root or a standard subfolder
+otherCsv <- read_excel('C:\\Users\\embe5980\\SoundscapesWebsite\\code\\plot_Humpback&Orca\\data\\ASNMS\\NRS10_humpback_daily_det.xls')
 
 
 #Clean up! FOR BOXPLOTS
@@ -62,11 +64,11 @@ detData1 <- loadDetectionData(x=otherCsvSong,
 
 #effort detection dataset, doesnt work for making presence graphs
 detData1N <- loadDetectionData(x=otherCsvNonSong,
-                                source='csv', detectionType='auto', wide=TRUE,
-                                tz='UTC',
-                                columnMap=list(UTC='HourStart', end='HourEnd'),
-                                speciesCols='Humpback',
-                                detectedValues='1')
+                               source='csv', detectionType='auto', wide=TRUE,
+                               tz='UTC',
+                               columnMap=list(UTC='HourStart', end='HourEnd'),
+                               speciesCols='Humpback',
+                               detectedValues='1')
 
 #c('1', '0', 'N/A') for curve graph, 1 for boxplots
 
