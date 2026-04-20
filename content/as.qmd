@@ -160,6 +160,7 @@ display(HTML(standardTextDict["AS humpback fc"]))
 
 ### When does ship noise contribute to the soundscape?
 ```{python}
+#| echo: false
 
 display(HTML(standardTextDict["vessel-AS"]))
 display(HTML(gf.makeImage("Vessel_NMSAS.png", "vesselAS", altText= "Heatmap of vessel detections at AS01 in Fagatele Bay, showing higher activity during daylight hours from late March to May 2023.")))
