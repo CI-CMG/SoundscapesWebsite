@@ -55,7 +55,7 @@ for i in range(len(headerLocations)):
 ```
 
 ---
-title: "Chumash Heritage National Marine Sanctuary"
+title: "Chumash Heritage National Marine Sanctuary Soundscape Report"
 date: "today"
 output: 
   html_document: 

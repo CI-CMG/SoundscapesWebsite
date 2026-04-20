@@ -43,7 +43,7 @@ for i in range(len(headerLocations)):
 ```
 
 ---
-title: "Channel Islands National Marine Sanctuary"
+title: "Channel Islands National Marine Sanctuary Soundscape Report"
 date: "today"
 output: 
   html_document: 

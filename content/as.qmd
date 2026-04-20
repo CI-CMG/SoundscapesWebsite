@@ -42,7 +42,7 @@ for i in range(len(headerLocations)):
 ```
 
 ---
-title: "National Marine Sanctuary of American Samoa"
+title: "National Marine Sanctuary of American Samoa Soundscape Report"
 date: "today"
 output: 
   html_document: 
