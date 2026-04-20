@@ -451,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="ocean-sound-monitoring" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-monitoring">Ocean sound monitoring</h2>
-<div id="a901f589" class="cell" data-execution_count="2">
+<div id="a056c0fa" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 The <a href="https://farallones.noaa.gov/" target="_blank">Greater Farallones National Marine Sanctuary</a> (GFNMS) and the <a href="https://cordellbank.noaa.gov/" target="_blank">Cordell Bank National Marine Sanctuary</a> (CBNMS) sit offshore of California, near San Francisco, and are jointly managed. CBNMS is bordered by GFNMS which extends north, south, and east to the coast. Ocean sound monitoring began here in fall 2015 to record low-frequency, ambient sounds. This monitoring location is part of the Noise Reference Station (NRS) Network, which is a collaborative effort with ONMS, the National Marine Fisheries Service, the National Park Service, and the Pacific Marine Environmental Laboratory. This site, NRS11, is deployed near the southern border of CBNMS and its listening range extends into GFNMS. The instrument is suspended in deep water (~550m) to maximize the listening range of the hydrophone for low-frequency sounds generated within sanctuary waters.  <a href="https://pubs.aip.org/asa/jasa/article/148/2/845/959125/Seasonal-trends-and-primary-contributors-to-the" target="_blank">Baseline soundscape conditions</a> from the first years of sampling (2015-2017) described seasonal baleen whale vocalizations and ongoing vessel noise propagating from the shipping lanes leading to San Francisco and Oakland.
 <br><br> Monitoring continues at this location to capture sound associated with vessel traffic coming in/out of the Ports of San Francisco and Oakland to the south and west. It's also an area with year-round baleen whale occurrence that increases seasonally. 
@@ -459,7 +459,7 @@ The <a href="https://farallones.noaa.gov/" target="_blank">Greater Farallones Na
 </div>
 <section id="summary-of-monitoring-sites" class="level3">
 <h3 class="anchored" data-anchor-id="summary-of-monitoring-sites">Summary of monitoring sites</h3>
-<div id="b35a2a2f" class="cell" data-execution_count="3">
+<div id="3976a45f" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <img alt="" src="https://raw.githubusercontent.com/CI-CMG/SoundscapesWebsite/refs/heads/main/content/resources/CBNMSSiteMap.jpg" width="700" id="CB Site Map" onclick="this.requestFullscreen()" style="display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc;">
 </div>
@@ -502,14 +502,14 @@ The <a href="https://farallones.noaa.gov/" target="_blank">Greater Farallones Na
 </section>
 <section id="ocean-sound-conditions" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-conditions">Ocean Sound Conditions</h2>
-<div id="8d38fb18" class="cell" data-execution_count="4">
+<div id="5ca372fa" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 Soundscapes vary across years, seasons, and even within a day. Differences are driven by shifts in wind and weather patterns, migration and behavior of animals, and patterns in human activities. We track how sound levels change in different frequencies using standardized soundscape metrics to understand these changes. Seasonal and annual percentiles of all the data, a measurement of data spread with the middle 50% falling between the 25th and 75th percentile, are used to define typical conditions.
 </div>
 </div>
 <section id="what-are-the-seasonal-patterns-across-frequencies" class="level3">
 <h3 class="anchored" data-anchor-id="what-are-the-seasonal-patterns-across-frequencies">What are the seasonal patterns across frequencies?</h3>
-<div id="f90ec1eb" class="cell" data-execution_count="5">
+<div id="e6baad6c" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 Season is often a main driver of soundscape differences: wind and weather patterns shift, species migrate or change behavior, and humans change their marine activities. As shown on the graphic(s) below, we can visualize the differences by looking at the variation across <b>frequency</b> (pitch of the sound in Hertz) shown on the x-axis and <b>intensity</b> (how loud the sound is in decibels) shown on the y-axis. The colored lines represent regionally-specific oceanographic <b>seasons</b>, vertical shaded bars are the frequency ranges that a <b>sound source of interest</b> can be heard, and the black lines bound the expected range of modeled sound intensity when only <b>wind noise</b> is present.
  <br style="line-height: 1;">
@@ -553,7 +553,8 @@ Season is often a main driver of soundscape differences: wind and weather patter
                 <button style="background-color: #FFFFFF;" onclick="document.getElementById('infoModal').showModal()">How was this calculated?</button>
             <dialog id="infoModal">
                 <p>Processing raw audio files to calibrated sound levels (i.e., soundscape metrics) involves multiple steps to get a specified time frequency data product. All soundscape metrics visualized in the soundscape inventory reports are averaged from hybrid millidecade sound levels, calculated using either <a href="https://pubs.aip.org/asa/jel/article/1/1/011203/219719" target="_blank">MANTA</a> or <a href="https://github.com/lifewatch/pypam" target="_blank">PyPAM</a> software packages. Both softwares calculate mean PSD (dB re 1 µPa^2/Hz) per minute in 1-Hz wide bins using Welch’s method with a Hann window, FFT length equal to the sample rate, and 50% overlap. Following calibration based upon instrument specific sensitivities, PSD values per minute were further processed in hybrid millidecade spectral densities, which are an efficient means of storing PSD spectra from high sample rate audio files using 1-Hz values up to 435 Hz, and then millidecade wide PSD values up to one half of the sample rate (Martin et al. 2021). <br><br>
-<a href="https://github.com/TaikiSan21/PAMscapes" target="_blank">PAMscapes</a> was used to calculate hourly median hybrid milli-decade bands (loadSoundscapeData(ncFile, keepQuals = c(1,2)) and binSoundscapeData(hmddata, bin = "1hour", method = c("median")). The hourly data were then matched with an estimate of wind speed at that location using matchGFS in PAMscapes (Global Forecast System (GFS) weather model). Long-term condition plots in these reports were generated by averaging the hourly median hybrid millidecade results within different time constraints (i.e. annual, seasonal) and percentiles (e.g., 25% and 75%) for each hybrid millidecade frequency band. 
+<a href="https://github.com/TaikiSan21/PAMscapes" target="_blank">PAMscapes</a> was used to calculate hourly median hybrid milli-decade bands (loadSoundscapeData(ncFile, keepQuals = c(1,2)) and binSoundscapeData(hmddata, bin = "1hour", method = c("median")). The hourly data were then matched with an estimate of wind speed at that location using matchGFS in PAMscapes (Global Forecast System (GFS) weather model). Long-term condition plots in these reports were generated by averaging the hourly median hybrid millidecade results within different time constraints (i.e. annual, seasonal) and percentiles (e.g., 25% and 75%) for each hybrid millidecade frequency band. To demonstrate ambient sound conditions in the absence of anthropogenic and biological sound sources, an empirical model for wind-generated ocean noise was calculated for each monitoring site based on hydrophone depth and wind speed <a href="https://www.cetus.ucsd.edu/docs/publications/HildebrandJASA2021.pdf" target="_blank">(Hildebrand et al. 2021)</a>. The upper and lower boundaries visualized in the plots are based on Beaufort scale measurements of 0 (no to low wind) to 9 (strong gale).
+
 
 
 
@@ -569,7 +570,7 @@ Season is often a main driver of soundscape differences: wind and weather patter
 </section>
 <section id="how-are-ocean-sound-conditions-changing-across-years" class="level3">
 <h3 class="anchored" data-anchor-id="how-are-ocean-sound-conditions-changing-across-years">How are ocean sound conditions changing across years?</h3>
-<div id="d2aea26f" class="cell" data-execution_count="6">
+<div id="51e68847" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 We can track changes in ocean soundscape conditions and its contributors by comparing annual sound levels. Efforts to reduce noise impacts to marine animals are underway on local to global scales. Strategies can include avoidance of times and areas when sensitive species are present to reduce vulnerability (e.g., a shipping lane), changing the operation of a potentially hazardous noise source (e.g., by slowing and therefore quieting vessels) or through the design and use of alternative, quieter sources (e.g., new, quieter ship design and/or technologies). The effectiveness of these approaches, and the scales over which they are effective, can be tracked through comprehensive monitoring efforts. A focused analysis is often necessary to tease apart the multiple drivers of ocean sound levels, however, annual summaries provide initial insights to overall patterns.
 <br style="line-height: .5;">
@@ -616,7 +617,7 @@ We can track changes in ocean soundscape conditions and its contributors by comp
 </section>
 <section id="is-the-intensity-loudness-of-sound-sources-of-interest-within-typical-range" class="level3">
 <h3 class="anchored" data-anchor-id="is-the-intensity-loudness-of-sound-sources-of-interest-within-typical-range">Is the intensity (loudness) of sound sources of interest within typical range?</h3>
-<div id="8ae61506" class="cell" data-execution_count="7">
+<div id="8ea1d5f5" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 In some soundscapes, we can use specific frequencies as indicators for the presence of a source of interest (e.g. species presence and behavior). Monitoring sites are often chosen because a known source that we want to track is present and we can track this dominant sound energy contributor using their specific frequency or frequency range. For example, seasonal migration of humpback whales to Hawaiian Islands results in soundscapes dominated by their calling between 50 and 630 Hz. At sites near commercial shipping lanes, 63 and 125 Hz one-third octave level (TOL) are used as an indicator for ship noise (<a href="https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.669528/full" target="_blank">Haver et al. 2021)</a>).  At sites where snapping shrimp are present, 4,000 - 18,000 Hz can be used as an indicator of their sounds. Only frequencies that have been identified as reliable for tracking a source of interest are shown below.  <br><br>
 </div>
@@ -679,7 +680,7 @@ In some soundscapes, we can use specific frequencies as indicators for the prese
 </section>
 <section id="ocean-sound-indicators" class="level2" style="border: 1px solid black; padding: 10px; margin-bottom: 20px;">
 <h2 class="anchored" data-anchor-id="ocean-sound-indicators">Ocean Sound Indicators</h2>
-<div id="fc917e2c" class="cell" data-execution_count="8">
+<div id="499d1c7c" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 We can use long-term monitoring of ocean sound to derive and track indicators of ocean conditions. These indicators track the status and trend of habitat condition, species presence, human-use patterns, and management activities.  There are many analytical methods used to generate ocean sound indicators. Below are ocean sound indicators relevant to the sanctuary and available for <a href="https://sanctuarywatch.ioos.us/" target="_blank"> condition tracking</a>. 
 </div>
