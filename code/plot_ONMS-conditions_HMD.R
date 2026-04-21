@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("ci05")
+ONMSsites = c("ne08")
 
 
 ## directories ####
@@ -110,6 +110,18 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "ocnrs03"
     site  = "NRS03"
     site5 = "oc03"
+  } else if (site == "ac01"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    site1 = "nrs01"
+    site3 = "acnrs01"
+    site  = "NRS01"
+    site5 = "ac01"
+  } else if (site == "ne08"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    site1 = "nrs08"
+    site3 = "nenrs08"
+    site  = "NRS08"
+    site5 = "ne08"
   } else if (site == "sb09"){
     outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
     site1 = "nrs09"
@@ -440,7 +452,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     # gpsAG <- gpsAG %>%
     #   mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  } else if (site %in% c("NRS03", "NRS04", "NRS05","NRS06","NRS09","NRS10","NRS11","NRS13")){
+  } else if (site %in% c("NRS01","NRS02","NRS03", "NRS04", "NRS05","NRS06","NRS08","NRS09","NRS10","NRS11","NRS12","NRS13")){
       #(site == "NRS05"){
       gps <- gps %>%
        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
