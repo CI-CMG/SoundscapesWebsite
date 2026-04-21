@@ -51,7 +51,7 @@ editor_options:
 ---
 
 ::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"}
-## Ocean sound monitoring
+## Ocean Sound Monitoring
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["CBNMS/GFNMS"]))
