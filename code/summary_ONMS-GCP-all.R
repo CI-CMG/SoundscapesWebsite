@@ -292,7 +292,9 @@ write.csv(outputONMS, file = paste0(outDirP, "/data_gantt_ONMS-SS-NRS__gantt_", 
 
 
 #option to load the file, if you already ran and just want to plot ####
-#load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2026-02-04.Rda") )
+#load(paste0(outDirP, "/data_gantt_ONMS-SS-NRS_gantt_2026-04-01.Rda") )
+
+outputONMS$Region[outputONMS$Region == "East Coast"] <- "Eastern"
 
 # GANTT CHART  ####
 ## COLOR ####
@@ -302,7 +304,7 @@ uColors = unique(outputONMS$Region)
 region_colors <- c(
   "Pacific Islands" = "#C6E6F0",  
   "West Coast"      = "#53B0D7",  
-  "East Coast"      = "#004295", 
+  "Eastern"      = "#004295", 
   "Gulf Coast"      = "#001743") 
 
 uProject = unique(outputONMS$Project1) 
