@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("fk08")
+ONMSsites = c("ch01")
 
 
 ## directories ####
@@ -1023,8 +1023,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
  
   
   #height of FOI shading and vert lines label will change based on the length of the label
-  if (site == "mb02"){
+  if (site == "mb02" | site == "ch01"){
     label_height = 38
+  } else if (site == "fgb01"){
+    label_height = 33
+  } else if (site == "pm01" |site == "pm02"){
+    label_height = 32
   } else {
     label_height = 35
   }
