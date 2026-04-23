@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("ch01")
+ONMSsites = c("vi12")
 
 
 ## directories ####
@@ -116,6 +116,36 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "acnrs01"
     site  = "NRS01"
     site5 = "ac01"
+  } else if (site == "np02"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    site1 = "nrs02"
+    site3 = "npnrs02"
+    site  = "NRS02"
+    site5 = "np02"
+  } else if (site == "hi00"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs04"
+    site3 = "hinrs04"
+    site  = "NRS04"
+    site5 = "hi00"
+  } else if (site == "ci05"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
+    site1 = "nrs05"
+    site3 = "cinrs05"
+    site  = "NRS05"
+    site5 = "ci05"
+  } else if (site == "fgb06"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs06"
+    site3 = "fgbnrs06"
+    site  = "NRS06"
+    site5 = "fgb06"
+  } else if (site == "se07"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    site1 = "nrs07"
+    site3 = "senrs07"
+    site  = "NRS07"
+    site5 = "se07"
   } else if (site == "ne08"){
     outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
     site1 = "nrs08"
@@ -128,47 +158,35 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "sbnrs09"
     site  = "NRS09"
     site5 = "sb09"
-  } else if (site == "ci05"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
-    site1 = "nrs05"
-    site3 = "cinrs05"
-    site  = "NRS05"
-    site5 = "ci05"
-  } else if (site == "ch13"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
-    site1 = "nrs13"
-    site3 = "chnrs13"
-    site  = "NRS13"
-    site5 = "ch13"
-  } else if (site == "cb11"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
-    site1 = "nrs11"
-    site3 = "cbnrs11"
-    site  = "NRS11"
-    site5 = "cb11"
-  } else if (site == "hi00"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
-    site1 = "nrs04"
-    site3 = "hinrs04"
-    site  = "NRS04"
-    site5 = "hi00"
   } else if (site == "as10"){
     outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
     site1 = "nrs10"
     site3 = "asnrs10"
     site  = "NRS10"
     site5 = "as10"
+  } else if (site == "cb11"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs11"
+    site3 = "cbnrs11"
+    site  = "NRS11"
+    site5 = "cb11"
+  } else if (site == "vi12"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
+    site1 = "nrs12"
+    site3 = "vinrs12"
+    site  = "NRS12"
+    site5 = "vi12"
+  } else if (site == "ch13"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
+    site1 = "nrs13"
+    site3 = "chnrs13"
+    site  = "NRS13"
+    site5 = "ch13"
   }else if (site == "fk08"){
     site1 = site
     site3 = "fk08"
     site5 = site
     outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" )#products
-  } else if (site == "fgb06"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
-    site1 = "nrs06"
-    site3 = "fgbnrs06"
-    site  = "NRS06"
-    site5 = "fgb06"
   } else {
     site1 = site
     site3 = site
