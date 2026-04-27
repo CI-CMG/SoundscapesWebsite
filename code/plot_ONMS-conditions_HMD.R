@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("se07")
+ONMSsites = c("pm02")
 
 
 ## directories ####
@@ -1644,6 +1644,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       }
       
       if(substring(site, 1, 2) == "pm") {
+        dailyFQ_complete$yr[dailyFQ_complete$mth == 12] = dailyFQ_complete$yr[dailyFQ_complete$mth == 12] + seasonShift
         dailyFQ_complete$yr[dailyFQ_complete$mth == 11] = dailyFQ_complete$yr[dailyFQ_complete$mth == 11] + seasonShift
         dailyFQ_complete$yr[dailyFQ_complete$mth == 10] = dailyFQ_complete$yr[dailyFQ_complete$mth == 10] + seasonShift
       }
@@ -1663,6 +1664,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       }
       
       if(substring(site, 1, 2) == "pm") {
+        gpsFQ$yr[gpsFQ$mth == 12] = gpsFQ$yr[gpsFQ$mth == 12] + seasonShift
         gpsFQ$yr[gpsFQ$mth == 11] = gpsFQ$yr[gpsFQ$mth == 11] + seasonShift
         gpsFQ$yr[gpsFQ$mth == 10] = gpsFQ$yr[gpsFQ$mth == 10] + seasonShift
       }
@@ -1831,6 +1833,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       }
       
       if(substring(site, 1, 2) == "pm") {
+        dailyFQ$yr[dailyFQ$mth == 12] = dailyFQ$yr[dailyFQ$mth == 12] + seasonShift
         dailyFQ$yr[dailyFQ$mth == 11] = dailyFQ$yr[dailyFQ$mth == 11] + seasonShift
         dailyFQ$yr[dailyFQ$mth == 10] = dailyFQ$yr[dailyFQ$mth == 10] + seasonShift
       }
