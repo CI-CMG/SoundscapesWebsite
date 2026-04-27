@@ -1,6 +1,31 @@
 /*-- scss:defaults --*/
-
 @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
 
 $font-family: "Atkinson Hyperlegible", sans-serif;
 
+/*-- scss:rules --*/
+
+/* Expand the main container to use most of the screen width */
+.quarto-container {
+  max-width: 98% !important;
+}
+
+/* Ensure the content area fills the available grid space */
+#quarto-content {
+  max-width: 100% !important;
+}
+
+/* Override the default max-width for the main text column */
+main.content {
+  max-width: 100% !important;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+/* Optional: This forces elements to use the full screen width 
+   if you use the .column-screen class in your .qmd files */
+.column-screen {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
