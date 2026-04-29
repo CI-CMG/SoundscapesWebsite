@@ -143,7 +143,7 @@ display(HTML(standardTextDict["hump heatmap fc"]))
 #| echo: false
 display(HTML(standardTextDict["fish-intro-PM"]))
 
-display(HTML(standardTextDict["fish-1-PM"]))
+#display(HTML(standardTextDict["fish-1-PM"]))
 display(HTML(gf.makeImage("seasonal_bar_month_2_Parrotfish_crunch.png", "rasterfish1PM", altText= "Bar charts showing mean parrotfish detections per minute at two sites (PM01 and PM02) in Papahānaumokuākea National Marine Sanctuary across multiple years (2019–2020, 2020–2021, 2022–2023, 2023–2024). PM02 shows significantly higher mean detections and higher daily variability than PM01.")))
 
 display(HTML(standardTextDict["parrotfish fc"]))
