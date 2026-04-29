@@ -147,14 +147,15 @@ display(HTML(standardTextDict["damselfish fc"]))
 
 ```
 
-### When do whales contribute to the soundscape, indicating their presence nearby?
 ```{python}
 #| echo: false
 
-#display(HTML(standardTextDict["humpback-AS"]))
-display(HTML(gf.makeImage("AS_Humpback.png", "humpbackAS", 200, altText= "Humpback whale presence by month; whales were detected between August and November (June 2015–April 2016), with a data gap from April to June.")))
+#When do whales contribute to the soundscape, indicating their presence nearby?
 
-display(HTML(standardTextDict["AS humpback fc"]))
+#display(HTML(standardTextDict["humpback-AS"]))
+# display(HTML(gf.makeImage("AS_Humpback.png", "humpbackAS", 200, altText= "Humpback whale presence by month; whales were detected between August and November (June 2015–April 2016), with a data gap from April to June.")))
+# 
+# display(HTML(standardTextDict["AS humpback fc"]))
 
 ```
 
