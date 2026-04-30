@@ -139,7 +139,7 @@ display(HTML(standardTextDict["Indicator description"]))
 #display(HTML(standardTextDict["fish-intro-PM"]))
 
 display(HTML(standardTextDict["fish-AS"]))
-display(HTML(gf.makeImage("raster_by_site_Fish_damselfish.png", "rasterfishAS", altText= "Heatmap of damselfish detections at AS01 in Fagatele Bay, showing higher activity during daylight hours from late March to May 2023.")))
+display(HTML(gf.makeImage("raster_by_site_Fish_damselfish.png", "rasterfishAS", altText= "Heatmap of daytime damselfish detections at AS01 in Fagatele Bay from late March to May 2023, showing peak activity during mid-day to afternoon hours.")))
 
 display(HTML(standardTextDict["damselfish fc"]))
 
