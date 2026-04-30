@@ -160,6 +160,7 @@ display(HTML(standardTextDict["FOI condition fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
+display(HTML(standardTextDict["CMI description"]))
 ```
 
 ### How does humpback whale presence vary across the sanctuary?

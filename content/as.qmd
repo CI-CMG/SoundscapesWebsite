@@ -131,6 +131,7 @@ display(HTML(standardTextDict["FOI condition fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
+display(HTML(standardTextDict["CMI description"]))
 ```
 
 ### When do fish contribute to the soundscape?
