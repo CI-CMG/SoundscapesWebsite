@@ -127,8 +127,8 @@ display(HTML(standardTextDict["FOI condition fc"]))
 ## Ocean Sound Indicators
 ```{python}
 #| echo: false
-display(HTML(standardTextDict["Indicator description"]))
-display(HTML(standardTextDict["spacer"]))
+# display(HTML(standardTextDict["Indicator description"]))
+# display(HTML(standardTextDict["spacer"]))
 display(HTML(standardTextDict["CMI description"]))
 ```
 
