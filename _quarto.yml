@@ -19,7 +19,7 @@ project:
 
 website: 
   page-navigation: true
-  title: "NOAA quarto simple" 
+  title: "NOAA NCEI PAM Archive" 
   site-url: https://www.soundscapemonitoring.us
   repo-url: "https://github.com/CI-CMG/SoundscapesWebsite"
   repo-actions: [source, issue]
