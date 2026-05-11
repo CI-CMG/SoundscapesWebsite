@@ -18,12 +18,15 @@ project:
     - content/hi.qmd
 
 website: 
+
   page-navigation: true
   title: "NOAA NCEI PAM Archive" 
   site-url: https://www.soundscapemonitoring.us
   repo-url: "https://github.com/CI-CMG/SoundscapesWebsite"
   repo-actions: [source, issue]
   favicon: images/image.png
+  google-analytics: "G-2RBCKNMR13"
+
   
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/)."
