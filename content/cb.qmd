@@ -60,7 +60,7 @@ display(HTML(standardTextDict["CBNMS/GFNMS"]))
 ### Summary of monitoring sites
 ```{python}
 #| echo: false
-display(HTML(gf.makeImage("CBNMSSiteMap.jpg", "CB Site Map")))
+display(HTML(gf.makeImage("CBNMSSiteMap.jpg", "CB Site Map", 850)))
 
 display(HTML(htmlTable))
 ```

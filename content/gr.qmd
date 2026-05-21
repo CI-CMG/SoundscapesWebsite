@@ -62,7 +62,7 @@ display(HTML(standardTextDict["GRNMS"]))
 ```{python}
 #| echo: false
 
-display(HTML(gf.makeImage("GRNMSSiteMap.jpg", "GR Site Map")))
+display(HTML(gf.makeImage("GRNMSSiteMap.jpg", "GR Site Map", 850)))
 
 display(HTML(htmlTable))
 ```

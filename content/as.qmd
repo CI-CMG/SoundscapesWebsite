@@ -63,7 +63,7 @@ display(HTML(standardTextDict["NMSAS"]))
 ### Summary of monitoring sites
 ```{python}
 #| echo: false
-display(HTML(gf.makeImage("ASNMSSiteMap.jpg", "AS Site Map")))
+display(HTML(gf.makeImage("ASNMSSiteMap.jpg", "AS Site Map", 850)))
 
 display(HTML(htmlTable))
 ```
