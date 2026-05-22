@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("ch01")
+ONMSsites = c("ci05")
 
 
 ## directories ####
@@ -116,6 +116,36 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "acnrs01"
     site  = "NRS01"
     site5 = "ac01"
+  } else if (site == "np02"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    site1 = "nrs02"
+    site3 = "npnrs02"
+    site  = "NRS02"
+    site5 = "np02"
+  } else if (site == "hi00"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs04"
+    site3 = "hinrs04"
+    site  = "NRS04"
+    site5 = "hi00"
+  } else if (site == "ci05"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
+    site1 = "nrs05"
+    site3 = "cinrs05"
+    site  = "NRS05"
+    site5 = "ci05"
+  } else if (site == "fgb06"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs06"
+    site3 = "fgbnrs06"
+    site  = "NRS06"
+    site5 = "fgb06"
+  } else if (site == "se07"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
+    site1 = "nrs07"
+    site3 = "senrs07"
+    site  = "NRS07"
+    site5 = "se07"
   } else if (site == "ne08"){
     outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site), start = 1, stop =2),"/" ) #products
     site1 = "nrs08"
@@ -128,47 +158,35 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "sbnrs09"
     site  = "NRS09"
     site5 = "sb09"
-  } else if (site == "ci05"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
-    site1 = "nrs05"
-    site3 = "cinrs05"
-    site  = "NRS05"
-    site5 = "ci05"
-  } else if (site == "ch13"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
-    site1 = "nrs13"
-    site3 = "chnrs13"
-    site  = "NRS13"
-    site5 = "ch13"
-  } else if (site == "cb11"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
-    site1 = "nrs11"
-    site3 = "cbnrs11"
-    site  = "NRS11"
-    site5 = "cb11"
-  } else if (site == "hi00"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
-    site1 = "nrs04"
-    site3 = "hinrs04"
-    site  = "NRS04"
-    site5 = "hi00"
   } else if (site == "as10"){
     outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
     site1 = "nrs10"
     site3 = "asnrs10"
     site  = "NRS10"
     site5 = "as10"
+  } else if (site == "cb11"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
+    site1 = "nrs11"
+    site3 = "cbnrs11"
+    site  = "NRS11"
+    site5 = "cb11"
+  } else if (site == "vi12"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
+    site1 = "nrs12"
+    site3 = "vinrs12"
+    site  = "NRS12"
+    site5 = "vi12"
+  } else if (site == "ch13"){
+    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" ) #products
+    site1 = "nrs13"
+    site3 = "chnrs13"
+    site  = "NRS13"
+    site5 = "ch13"
   }else if (site == "fk08"){
     site1 = site
     site3 = "fk08"
     site5 = site
     outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" )#products
-  } else if (site == "fgb06"){
-    outDirP = paste0("Y:/soundscape_website_products/", substr(tolower(site),start = 1, stop =2),"/" )
-    site1 = "nrs06"
-    site3 = "fgbnrs06"
-    site  = "NRS06"
-    site5 = "fgb06"
   } else {
     site1 = site
     site3 = site
@@ -452,7 +470,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     # gpsAG <- gpsAG %>%
     #   mutate(across(num_range("HMD_", 2701:4995), ~ NA))
     
-  } else if (site %in% c("NRS01","NRS02","NRS03", "NRS04", "NRS05","NRS06","NRS08","NRS09","NRS10","NRS11","NRS12","NRS13")){
+  } else if (site %in% c("NRS01","NRS02","NRS03", "NRS04", "NRS05","NRS06","NRS07","NRS08","NRS09","NRS10","NRS11","NRS12","NRS13")){
       #(site == "NRS05"){
       gps <- gps %>%
        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
@@ -1380,8 +1398,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   
- 
-  
   #check to see why PM sites have strange shading - just occasional really loud sounds 
   # test = mallData %>% filter(Quantile %in% c("50%", "75%"))  %>%
   #   pivot_wider(
@@ -1390,132 +1406,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #     values_from = SoundLevel
   #   ) + 
   #   mutate (diff = mallData$"75%" - mallData$'50%')
-  
-  
-  
-  
-  
-  #INTERACTIVE PLOT
-  #changes to make to ggplot above
-  #still trying to figure out FOI vert lines and labels in plotly
-  #move geom_ribbon to after geom_lines
-  #make geom_rect y bounds: ymin = 35, ymax = 90
-  #add fill = Year to geom_line 
-  #add color = Year to geom_ribbon
-  #add ", text = paste("Year:", Year)" to each year geom_line in aes
-  #add "name = "Year", " to  scale_fill_manual and scale_color_manual
-  #then run code below
-   
-  # mallData_recent <- mallData %>%
-  #   filter(Year != oldest_year) %>%
-  #   pivot_wider(names_from = Quantile, values_from = SoundLevel)
-  # 
-  # mallData_oldest <- mallData %>%
-  #   filter(Year == oldest_year) %>%
-  #   pivot_wider(names_from = Quantile, values_from = SoundLevel)
-  # 
-  # pInt = ggplot() +
-  #   #wind model
-  #   geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windUpp,], aes(x = variable, y = value), color = "black", linewidth = 1) +
-  #   geom_line(data = mwindInfo[as.character(mwindInfo$windSpeed) == windLow,], aes(x = variable, y = value), color = "black", linewidth = 1) +
-  #   scale_x_log10(labels = label_number(),limits = (c(10,fqupper)), guide = "axis_logticks") +  # Log scale for x-axis
-  #   
-  #   scale_color_manual(name = "Year", values = rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
-  #   scale_fill_manual(name = "Year", values =  rev(colorRampPalette(c("darkblue", "lightblue"))(length(unique(summary$year))))) +
-  #   
-  #   # Add vertical lines at FOIs, label on right side
-  #   geom_vline(data = FOIs, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-  #   geom_text(data = FOIs, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
-  #   geom_rect(data = FOIs, aes(xmin = FQstart, xmax = FQend, ymin = 35, ymax = 90),
-  #             fill = "gray", alpha = 0.2) +  # Adjust alpha for transparency
-  #   
-  #   # Add vertical lines at FOIs, label on left side
-  #   geom_vline(data = FOIsL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "black",linewidth = .5) +
-  #   geom_text(data = FOIsL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
-  #   
-  #   # Add vertical set dash lines and grey shaded region at FOI ranges
-  #   #geom_vline(data = FOIsRange, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
-  #   #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
-  #   geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = 35, ymax = 90), 
-  #             fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
-  #   geom_text(data = FOIsRange, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
-  #   
-  #   # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
-  #   #geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
-  #   #geom_vline(data = FOIsRangeL, aes(xintercept = FQend, color = Label), linetype = "dotdash", color = "red",linewidth = .5) +
-  #   geom_rect(data = FOIsRangeL, aes(xmin = FQstart, xmax = FQend, ymin = 35, ymax = 90), 
-  #             fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
-  #   geom_text(data = FOIsRangeL, aes(x = FQstart, y = 40, label = Label), angle = 90, vjust = 0, hjust = 0.5, size = 4) +
-  #   
-  #   
-  #   #median HMD values- each year
-  #   geom_line(data = mallData[mallData$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, color = Year, fill = Year, text = paste("Year:", Year)), linewidth = 2) +
-  #   
-  #   #median HMD values- all data
-  #   geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel, fill = Year, text = paste("Year:", Year)), color = "black", linewidth = 1,
-  #             linetype = "dotted") +
-  #   
-  #   
-  #   # geom_ribbon(data = mallData %>% pivot_wider(names_from = Quantile, values_from = SoundLevel),
-  #   #             aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year), alpha = 0.2) +
-  #   
-  #   #for the geom_ribbons below, if data only has one year (ch01 and fk08), comment out the first geom ribbon and change alpha of second from .3 to .1
-  #   geom_ribbon(data = mallData %>%
-  #                 filter(Year != oldest_year) %>%
-  #                 pivot_wider(names_from = Quantile, values_from = SoundLevel),
-  #               aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year, color = Year),
-  #               alpha = 0.1) +
-  #   
-  #   #for the oldest year, make the shading darker since it is hard to see at alpha = .1 for lightblue
-  #   geom_ribbon(data = mallData %>% 
-  #                 filter(Year == oldest_year) %>% 
-  #                 pivot_wider(names_from = Quantile, values_from = SoundLevel),
-  #               aes(x = Frequency, ymin = `25%`, ymax = `75%`, fill = Year, color = Year), 
-  #               alpha = 0.3) + # High alpha for visibility
-  #   scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
-  #   
-  #   # Additional aesthetics
-  #   theme_minimal() +
-  #   labs(
-  #     #title = paste0(toupper(site), "(",siteInfo$`Oceanographic category`, ")"), 
-  #     caption  = caption_text,
-  #     color = legend_label,        #IF biological then change to Year*
-  #     fill = legend_label,        #IF biological then change to Year*
-  #     x = "Frequency Hz",
-  #     y = expression(paste("Sound Levels (dB re 1 ", mu, " Pa"^2, "/Hz)" ) ),
-  #     subtitle = subtitle_text) +
-  #   theme(legend.position = "right",
-  #         plot.caption = ggtext::element_markdown(hjust = 0, size = 12),
-  #         axis.title.x = element_text(size = 14),           # X-axis label size
-  #         axis.title.y = element_text(size = 14),           # Y-axis label size
-  #         axis.text = element_text(size = 14),
-  #         legend.text = element_text(size = 12),
-  #         axis.ticks.length.x = unit(0.25, "cm"), 
-  #         axis.ticks.x = element_line(color = "grey", linewidth = 0.3), 
-  #         axis.line.x = element_line(color = "grey", linewidth = 0.3)    
-  #   ) 
-  # pInt
-  # 
-  # #make plot interactive
-  # interactive_plot <- ggplotly(pInt)
-  # #, tooltip = "text"
-  # 
-  # #remove hover info over grey shading
-  # interactive_plot$x$data[[14]]$hoverinfo <- "skip"
-  # 
-  # 
-  # interactive_plot
-  
-  
-  
-  #  interactive_plot$x$layout$xaxis$type
-  # interactive_plot$x$data[[18]]$textangle <- 90  
-  
-  #figure out which trace has the grey rectangles show "trace 13" when you hover
-  # for (i in seq_along(interactive_plot$x$data)) {
-  #  cat("TRACE", i, "\n")
-  #print(interactive_plot$x$data[[i]][c("name","fill","mode","hoverinfo")])
-  #}
+
 
   
   
@@ -1626,6 +1517,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       }
       
       if(substring(site, 1, 2) == "pm") {
+        dailyFQ_complete$yr[dailyFQ_complete$mth == 12] = dailyFQ_complete$yr[dailyFQ_complete$mth == 12] + seasonShift
         dailyFQ_complete$yr[dailyFQ_complete$mth == 11] = dailyFQ_complete$yr[dailyFQ_complete$mth == 11] + seasonShift
         dailyFQ_complete$yr[dailyFQ_complete$mth == 10] = dailyFQ_complete$yr[dailyFQ_complete$mth == 10] + seasonShift
       }
@@ -1645,6 +1537,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       }
       
       if(substring(site, 1, 2) == "pm") {
+        gpsFQ$yr[gpsFQ$mth == 12] = gpsFQ$yr[gpsFQ$mth == 12] + seasonShift
         gpsFQ$yr[gpsFQ$mth == 11] = gpsFQ$yr[gpsFQ$mth == 11] + seasonShift
         gpsFQ$yr[gpsFQ$mth == 10] = gpsFQ$yr[gpsFQ$mth == 10] + seasonShift
       }
@@ -1813,6 +1706,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       }
       
       if(substring(site, 1, 2) == "pm") {
+        dailyFQ$yr[dailyFQ$mth == 12] = dailyFQ$yr[dailyFQ$mth == 12] + seasonShift
         dailyFQ$yr[dailyFQ$mth == 11] = dailyFQ$yr[dailyFQ$mth == 11] + seasonShift
         dailyFQ$yr[dailyFQ$mth == 10] = dailyFQ$yr[dailyFQ$mth == 10] + seasonShift
       }
@@ -1951,11 +1845,17 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plot_height <- 6
       } else if (num_years == 4) {
         plot_height <- 8
-      } else if (num_years == 8) {
+      } else if (num_years == 5) {
+        plot_height <- 9
+      }  else if (num_years == 6) {
+        plot_height <- 10
+      }  else if (num_years == 7) {
+        plot_height <- 12
+      }  else if (num_years == 8) {
         plot_height <- 14
       } else {
         # This covers three or more years
-        plot_height <- 12
+        plot_height <- 16
       }
       
       if (ft == "125 Hz" ){

@@ -62,7 +62,7 @@ display(HTML(standardTextDict["PNMS"]))
 ### Summary of monitoring sites
 ```{python}
 #| echo: false
-display(HTML(gf.makeImage("PMNMSSiteMap.jpg", "PM Site Map")))
+display(HTML(gf.makeImage("PMNMSSiteMap.jpg", "PM Site Map", 850)))
 
 display(HTML(htmlTable))
 ```
@@ -127,7 +127,9 @@ display(HTML(standardTextDict["FOI condition fc"]))
 ## Ocean Sound Indicators
 ```{python}
 #| echo: false
-display(HTML(standardTextDict["Indicator description"]))
+# display(HTML(standardTextDict["Indicator description"]))
+# display(HTML(standardTextDict["spacer"]))
+display(HTML(standardTextDict["CMI description"]))
 ```
 
 ### How does humpback whale presence vary across the sanctuary?
@@ -143,8 +145,8 @@ display(HTML(standardTextDict["hump heatmap fc"]))
 #| echo: false
 display(HTML(standardTextDict["fish-intro-PM"]))
 
-display(HTML(standardTextDict["fish-1-PM"]))
-display(HTML(gf.makeImage("seasonal_bar_month_2_Parrotfish_crunch.png", "rasterfish1PM", altText= "Bar charts showing mean parrotfish grazing detections per minute at two sites (PM01 and PM02) in Papahānaumokuākea National Marine Sanctuary across multiple years (2019–2020, 2020–2021, 2022–2023, 2023–2024). The charts illustrate differences between sites and seasonal variation in activity by month.")))
+#display(HTML(standardTextDict["fish-1-PM"]))
+display(HTML(gf.makeImage("seasonal_bar_month_2_Parrotfish_crunch.png", "rasterfish1PM", altText= "Bar charts showing mean parrotfish detections per minute at two sites (PM01 and PM02) in Papahānaumokuākea National Marine Sanctuary across multiple years (2019–2020, 2020–2021, 2022–2023, 2023–2024). PM02 shows significantly higher mean detections and higher daily variability than PM01.")))
 
 display(HTML(standardTextDict["parrotfish fc"]))
 

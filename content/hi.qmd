@@ -60,7 +60,7 @@ display(HTML(standardTextDict["HIHWNMS"]))
 ### Summary of monitoring sites
 ```{python}
 #| echo: false
-display(HTML(gf.makeImage("HINMSSiteMap.jpg", "HI Site Map")))
+display(HTML(gf.makeImage("HINMSSiteMap.jpg", "HI Site Map", 850)))
 
 display(HTML(htmlTable))
 ```
@@ -159,7 +159,9 @@ display(HTML(standardTextDict["FOI condition fc"]))
 ## Ocean Sound Indicators
 ```{python}
 #| echo: false
-display(HTML(standardTextDict["Indicator description"]))
+# display(HTML(standardTextDict["Indicator description"]))
+# display(HTML(standardTextDict["spacer"]))
+display(HTML(standardTextDict["CMI description"]))
 ```
 
 ### How does humpback whale presence vary across the sanctuary?
@@ -168,6 +170,6 @@ display(HTML(standardTextDict["Indicator description"]))
 display(HTML(standardTextDict["humpback-whales-HI"]))
 display(HTML(gf.makeImage("raster_by_site_Humpback_HIHW.png", "rasterHumpbackHI", 900, altText="Heatmaps showing humpback whale detections per minute across multiple sites and years, illustrating differences between sites and seasonal changes in whale acoustic activity over time.")))
 
-display(HTML(standardTextDict["hump heatmap fc"]))
+display(HTML(standardTextDict["hump heatmap HI fc"]))
 ```
 :::
