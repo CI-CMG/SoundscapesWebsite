@@ -27,19 +27,19 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "NRS08" 
+site  = "FGB01" 
 site = tolower(site) 
 # 
 # #add for NRS
- gcpF = "PMEL_NEOFFSHORE"
- prodName = "NE" 
+ # gcpF = "PMEL_NEOFFSHORE"
+ # prodName = "NE" 
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
 #dirGCP = paste0( "C:/Users/emma.beretta/Documents/ONMS/", site,"/") # for NOAA computer
 #dirGCP = paste0( "C:/Users/embe5980/ONMS/", site,"/") # for CIRES computer
-#dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
-dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
+dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
+#dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
 
 
 #SANCTSOUND DATA DIRECTORIES
@@ -56,13 +56,16 @@ dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs G
 #outDir =  "F:/CODE/GitHub/SoundscapesWebsite/" 
 #outDir =  "C:/Users/emma.beretta/Documents/SoundscapesWebsite/" #for NOAA computer
 #outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
-#outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for Emma GCP workstation
-outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
+outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for Emma GCP workstation
+#outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
 
 outDirC = paste0( outDir,"content/resources/") #context
-#outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
-outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
+outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"/" )#products
 outDirG = paste0( outDir,"report/" ) #graphics
+
+#only for NRS
+#outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
+
 
 
 # ONMS Metadata ####
@@ -82,13 +85,15 @@ cat("CHECK: Read in data for: ",
 
 ## PyPAM soundscape (Sanctsound) FILES- NEFSC-GCP ####
 # e.g. NEFSC_SBNMS_201811_SB03_20181112.nc
-  inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
-  tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
-  if (length(tmp) != 0){
-    dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
-    cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
-      "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
-  }
+  # inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
+  # tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
+  # if (length(tmp) != 0){
+  #   dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
+  #   cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
+  #     "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
+  # }
+
+  inFilesPY = character()
 
 ## ONMS Sound FILES- NCEI-GCP ####
 # e.g. ONMS_HI01_20231201_8021.1.48000_20231201_DAILY_MILLIDEC_MinRes.nc
