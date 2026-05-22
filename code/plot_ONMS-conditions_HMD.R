@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("fk06")
+ONMSsites = c("gr01")
 
 
 ## directories ####
@@ -797,7 +797,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasont$Season <- factor(seasont$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
     seasont <- season[order(seasont$Season), ]
     
-  } else if (site %in% c("fk07", "fgb01", "fk08")){
+  } else if (site %in% c("fk07", "fgb01")){
     summary2$Season <- factor(summary2$Season, levels = c("Spring", "Summer", "Fall"))
     
   }  else if ( sidx == "wssf") {
