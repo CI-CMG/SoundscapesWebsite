@@ -27,7 +27,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "FGB01" 
+site  = "fk08" 
 site = tolower(site) 
 # 
 # #add for NRS
@@ -87,14 +87,15 @@ cat("CHECK: Read in data for: ",
 ## PyPAM soundscape (Sanctsound) FILES- NEFSC-GCP ####
 # e.g. NEFSC_SBNMS_201811_SB03_20181112.nc
   # inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
-  # tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
+    inFilesPY = character()
+    tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
   # if (length(tmp) != 0){
   #   dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
   #   cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
   #     "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
   # }
 
-  inFilesPY = character()
+  
 
 ## ONMS Sound FILES- NCEI-GCP ####
 # e.g. ONMS_HI01_20231201_8021.1.48000_20231201_DAILY_MILLIDEC_MinRes.nc
@@ -116,6 +117,7 @@ cat("CHECK: Read in data for: ",
   
   #you may need to change the number of the segment where the date is getting taken from he file name below
   dysON1 = as.Date(sapply( strsplit(basename(mantaFiles), "_"), "[[", 5), format = "%Y%m%d")
+  #dysON1 = character()
   #you may need to change the number of the segment where the date is getting taken from he file name below
   dysON2 = as.Date(sapply( strsplit(basename(pypamFiles), "_"), "[[", 3), format = "%Y%m%d")
   
