@@ -32,7 +32,7 @@ rm(list=ls())
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
 
 
-ONMSsites = c("gr01")
+ONMSsites = c("cb11")
 
 
 ## directories ####
@@ -1098,7 +1098,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     labs(
        subtitle = seasonLabel,
        caption  = caption_text,
-       x = "Frequency Hz",
+       x = "Frequency (Hz)",
        y = expression(paste("Sound Levels (dB re 1 ", mu, " Pa"^2, "/Hz)" ) ) #dB re 1 uPa^2/Hz
     ) +
     # Additional aesthetics
@@ -1365,7 +1365,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       caption  = caption_text,
       color = legend_label,        #IF biological then change to Year*
       fill = legend_label,        #IF biological then change to Year*
-      x = "Frequency Hz",
+      x = "Frequency (Hz)",
       y = expression(paste("Sound Levels (dB re 1 ", mu, " Pa"^2, "/Hz)" ) ),
       subtitle = subtitle_text) +
     theme(legend.position = "right",
