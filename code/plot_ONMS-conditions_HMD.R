@@ -1849,9 +1849,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plot_height <- 12
       }  else if (num_years == 8) {
         plot_height <- 14
+      } else if (num_years == 9) {
+        plot_height <- 16
+      } else if (num_years == 10) {
+        plot_height <- 18
       } else {
         # This covers three or more years
-        plot_height <- 16
+        plot_height <- 20
       }
       
       if (ft == "125 Hz" ){
