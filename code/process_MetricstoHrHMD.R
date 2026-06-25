@@ -27,7 +27,7 @@ library(devtools)
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "gr01" 
+site  = "hi04" 
 site = tolower(site) 
 # 
 # #add for NRS
@@ -108,6 +108,7 @@ cat("CHECK: Read in data for: ",
 
   # Filter out files that end with 'netCDF.nc'
   inFilesON = inFilesON[!grepl("netCDF\\.nc$", inFilesON)]
+  inFilesON = inFilesON[!grepl("netCDF_v2\\.nc$", inFilesON)]
   
   #wierd xls coming through into nc list for some reason
   inFilesON = inFilesON[!grepl(".xls", inFilesON)]
@@ -193,9 +194,18 @@ if (length(tmp) != 0){
 
 ## CHECK FOR PROCESSED FILES ####
 #updates list of files to process
-pFile = list.files(path = (outDirP), pattern = paste0("HMDfilesProcesed_", site), full.names = T, recursive = T)
+pFile = list.files(path = (outDirP), pattern = paste0("HMDfilesProcesedv1_", site), full.names = T, recursive = T)
+
 if ( length(pFile) > 0 ) {
   load(pFile)
+  
+  #remove v1 files from HI04 so that v2 can be added
+  # v2_basenames = basename(inFiles) 
+  # 
+  # v1_targets = gsub("_v2\\.nc$", "\\.nc", v2_basenames) 
+  # 
+  # processedFilesv1 = processedFiles
+  # processedFiles = processedFiles[!processedFiles %in% v1_targets]
 
   # are there any new files to process?
   inFilesN = inFiles[!basename(inFiles) %in% processedFiles]
@@ -204,7 +214,7 @@ if ( length(pFile) > 0 ) {
 
     # read in processed data to append results
     inFileP = list.files((outDirP),
-                         pattern = paste0("HMDdata_", site, "_HourlySPL-gfs_\\d{4}-\\d{2}-\\d{2}\\.Rda$"),
+                         pattern = paste0("HMDdatav1_", site, "_HourlySPL-gfs_\\d{4}-\\d{2}-\\d{2}\\.Rda$"),
                          full.names = T, recursive = T)
     file_info = file.info(inFileP)
     load( inFileP[which.max(file_info$ctime)] )
@@ -214,6 +224,18 @@ if ( length(pFile) > 0 ) {
       rm(outData)
       #rm(gps) #fix for hi03,8, and 4 AND pm01
     }
+    
+    #remove v1 files from HI04 so that v2 can be added
+    # v1_targets <- v1_targets[1:180]
+    # 
+    # v1_date_strings_remove = sapply(strsplit(v1_targets, "_"), "[[", 5)
+    # 
+    # # Convert those strings into clean Date objects
+    # v1_dates_remove = as.Date(v1_date_strings_remove, format = "%Y%m%d")
+    # 
+    # # Drop only the old v1 data rows from the historical dataset by matching dates
+    # processedData = processedData[!as.Date(processedData$UTC) %in% v1_dates_remove, ]
+    # processedDatav1 =  processedData
 
     cat( "Processed data for ", site, ": ",
          as.character( as.Date( min( processedData$UTC))) , " to ",
@@ -278,6 +300,25 @@ if (length(inFiles) > 0) {
     
   } 
 }
+
+#had forgotten to remove 1-19 hz column in older data 
+# emma <- data_list[[180]]
+# gabbi <- data_list[[181]]
+# kaila <- data_list[[1]]
+# data_list[[1]] <- kaila
+# 
+# f =1 
+# 
+# for (f in 1:180 ){ 
+#   
+#   #bin to hourly median values
+#   cDatah_day = data_list[[f]]
+#   
+#   cDatah_day = cDatah_day[, -c(2:21)]
+#   
+#   data_list[[f]] = cDatah_day
+#   
+# } 
 
 #combine list elements after processing each day seperately and saving into different list elements
 cDatah <- rbindlist(data_list)
