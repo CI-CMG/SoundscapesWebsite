@@ -141,7 +141,7 @@ display(HTML(standardTextDict["CMI description"]))
 #display(HTML(standardTextDict["fish-intro-PM"]))
 
 display(HTML(standardTextDict["fish-AS"]))
-display(HTML(gf.makeImage("raster_by_site_Fish_damselfish.png", "rasterfishAS", altText= "Heatmap of daytime damselfish detections at AS01 in Fagatele Bay from late March to May 2023, showing peak activity during mid-day to afternoon hours.")))
+display(HTML(gf.makeImage("raster_by_site_Fish_damselfish.png", "rasterfishAS", 900, altText= "Heatmap of daytime damselfish detections at AS01 in Fagatele Bay from late March to May 2023, showing peak activity during mid-day to afternoon hours.")))
 
 display(HTML(standardTextDict["damselfish fc"]))
 
@@ -167,7 +167,7 @@ display(HTML(standardTextDict["damselfish fc"]))
 
 display(HTML(standardTextDict["vessel-AS"]))
 
-display(HTML(gf.makeImage("Vessel_NMSAS.png", "vesselAS", altText= "Heatmap of vessel detections at AS01 in Fagatele Bay, showing higher activity during daylight hours from late March to May 2023.")))
+display(HTML(gf.makeImage("Vessel_NMSAS.png", "vesselAS", 900, altText= "Heatmap of vessel detections at AS01 in Fagatele Bay, showing higher activity during daylight hours from late March to May 2023.")))
 
 display(HTML(standardTextDict["AS vessel fc"]))
 ```
