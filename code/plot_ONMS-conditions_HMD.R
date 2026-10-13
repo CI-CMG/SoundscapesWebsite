@@ -23,6 +23,7 @@ library(ggtext)
 library(plotly)
 library(viridis)
 library(ggpp)
+library(cowplot)
 
 
 
@@ -31,17 +32,18 @@ rm(list=ls())
 #SITES ####
 # ONMSsites = c("sb01", "sb03", "hi01", "hi03", "hi04", "hi08", "pm01", "pm02", "fgb01", "fk01", "fk05", "fk06", "fk08", "as01", "mb01", "mb02", "oc02")
 # NRSsites "oc03", "hi00","ci05","sb09","as10","cb11","ch13","fgb06" 
+#NMFS NE #site names: "cox01","cox03","ns02","ns05","ns08","ustr06","ustr09","ne08"
+# "CINMS_B"
 
-
-ONMSsites = c("hi04")
-
+ONMSsites = c("wea_hua")
 
 ## directories ####
 #outDir   =  "C:/Users/embe5980/SoundscapesWebsite/" # Emma local git repo 
 #outDir   =  "F:/CODE/GitHub/SoundscapesWebsite/" # your local git repo 
 #outDir   =  "/Users/quca3108/SoundscapesWebsite/" # Quincy local git repo
-outDir = "X:/Emma_Beretta/SoundscapesWebsite/" #for GCP workstation remote desktop Emma
+outDir = "X:/Emma_Beretta/SoundscapesWebsiteDev/" #for GCP workstation remote desktop Emma
 #outDir   = "~/GitHub/SoundscapesWebsite/" #GCP WW
+#outDir   = "~/GitHub/SoundscapesWebsiteDev/" #GCP WW
 
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
@@ -57,7 +59,7 @@ project = "ONMS"
 # fqIn2 = "TOL_500" # wind model comparison- wind dominated frequency
 # fqIn2name = "500 Hz" # wind model comparison- wind dominated frequency
 ab2 = 0 #threshold for dB above a reference value
-windUpp = 22.6 #which wind model result to show on plot
+
 windLow = 1 #which wind model result to show on plot
 windH = 10 #wind speeds categories
 windL = 5 #wind speeds categories
@@ -103,6 +105,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   suppressWarnings ( rm(gps, outData) )
   cat("Processing... ", ONMSsites[uu],"\n" )
   site =  ONMSsites[uu]
+  
+  
+  if (site == "cinms_b" |site == "ci01"){
+    windUpp = 15.5
+  } else {
+    windUpp = 22.6 }
   
   #renaming for NRS sites
   if (site == "oc03") {
@@ -188,6 +196,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     site3 = "fk08"
     site5 = site
     outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" )#products
+  }else if (site == "cox01" || site == "cox03" || site == "ns02" || site == "ns05" || site == "ns08" || site == "ustr06" || site == "ustr09") {
+    site1 = site
+    site3 = paste0("ne", site)
+    site5 = "ne"
+    outDirP = paste0("Y:/soundscape_website_products/ne/" )#products
+  } else if (site == "wea_hua"){
+    site1 = site
+    site3 = "ncwea_hua"
+    site5 = site
+    outDirP = paste0( outDir,"products/", substr(tolower(site), start = 1, stop =2),"/" )#products
   } else {
     site1 = site
     site3 = site
@@ -206,11 +224,24 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
   } else if (substr(site, 1,5) == "NRS06"){
     FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,3), ]
-   } else {
+  } else if (site == "b"){
+    FOIs = FOI [ FOI$Sanctuary == "ci", ]
+  } else {
     FOIs = FOI [ FOI$Sanctuary == substr(site5, 1,2), ]
   }
   
-  FOIs <- FOIs [FOIs$Site == toupper(site5) | is.na(FOIs$Site), ]
+#  if (site == "cox01"){
+#    FOIs <- FOIs [FOI$Site == toupper(site) | is.na(FOIs$Site), ]  
+#  } else {
+#  FOIs <- FOIs [FOIs$Site == toupper(site5) | is.na(FOIs$Site), ]
+#  }
+  
+  
+  if (site5 == "ne") {
+    FOIs <- FOIs[FOIs$Site == toupper(site1) | is.na(FOIs$Site), ]
+  } else {
+    FOIs <- FOIs[FOIs$Site == toupper(site5) | is.na(FOIs$Site), ]
+  }
   
   ##frequency(s) to track
   #any rows with blank site column apply to all sites in NMS, any rows with just on site apply only to that site
@@ -262,7 +293,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasonShift = 0
   }else if ( sidx == "southernHem") {
     season = data.frame(
-      Season = c(  "Hurricane", "Tradewind", "Tradewind & Humpback" ),
+      Season = c(  "Hurricane", "Tradewind", "Tradewind\n& Humpback" ),
       Months = c("11,12,1,2,3,4",  "5,6,7", "8,9,10" ) ,
       values = c(  "#CC79A7", "#E69F00",  "#009E73") )
     seasonLabel = "Hurricane = Nov-Apr, Tradewind = May-Jul, Tradewind & Humpback = Aug-Oct"
@@ -280,11 +311,6 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     gps = outData
     rm(outData)
   }
-  
-  st = as.Date( min(gps$UTC) )
-  ed = as.Date( max(gps$UTC) )
-  udays = length( unique(as.Date(gps$UTC)) )
-  #cat("Input Data - ", site, " has ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
  
   
   # FOR NEW OC02 DATA!!!
@@ -346,35 +372,30 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # }
   
   
-  #removing HMD_20 from SS data so that it lines up with ONMS data
-  # if(site == "sb03"){
-  #   gps = gps[, -c(2:22)]
-  # }
-  # else if(siteInfo$`SanctSound Portal` != 'no'){
-  #   gps = gps[, -2]
-  # }
-  
-  #for GR01! Removing HMD_20 until we can fix data quality matrix to have 20 Hz ONMS data
+  #extra dataset in archive
   # if (site == "gr01"){
-  # gps = gps[, -2]
+  # 
+  #   gps = gps[-(17533:21468),]
+  # 
+  #   outData = gps
+  #   save(outData, file = paste0(outDirP, "HMDdata_", tolower(site), "_HourlySPL-gfs_", DC, ".Rda") )
   # }
-   
-  # #for SB03! forgot to remove HMD_0-19 during processing
-  # if (site == "sb03"){
-  # gps = gps[, -c(2:22)]
-  # }
+ 
   
   
-  #MB02: remove HMD_0-20
-  if (site == "mb02"){
-  gps = gps[, -c(2:22)]
-  }
   
-  #remove 2018 from all data for hi01 b/c only 1 day of recording
-  # if(site == "hi01"){
-  #   gps = gps %>%
-  #     filter(yr != 2018)
-  # }
+  
+ if(site == 'as01'){
+  gps <- gps %>%
+    mutate(UTC = as.POSIXct(UTC, origin = "1970-01-01", tz = "UTC")) %>%
+    filter(!(as.Date(UTC) %in% as.Date(c("2023-05-27", "2024-07-21"))))
+ }
+  
+  st = as.Date( min(gps$UTC) )
+  ed = as.Date( max(gps$UTC) )
+  udays = length( unique(as.Date(gps$UTC)) )
+  cat("Input Data - ", site, " has ", udays, " unique days (", as.character(st), " to ",as.character(ed), ")\n")
+  
   
   Fq = as.numeric( as.character( gsub("HMD_", "",  colnames(gps)[grep("HMD", colnames(gps))] ) ))
 
@@ -446,32 +467,38 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # edAG = as.Date( max(gpsAG$UTC) )
   # udaysAG = length( unique(as.Date(gpsAG$UTC)) )
   
-
-  
+  if (site %in% c("ci04", "mb01", "mb02", "oc02")){
+    gps <- gps %>%
+          mutate(across(num_range("HMD_", 0:19), ~ NA))
+  } else if (site %in% c("cinms_b", "wea_hua")){
+    gps <- gps %>%
+      mutate(across(num_range("HMD_", 80076:90053), ~ NA))
+  }
   
   #Removing frequencies that have instrument issues that were not marked in data quality matrix
   #DIPS at ~3k Hz. They vary by site.
 
- if (site == "ch01"){
-    
-    #for seasonal 
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2627:4300), ~ NA))
-    
-    #for annual
-    # gpsAG <- gpsAG %>%
-    #   mutate(across(num_range("HMD_", 2627:4300), ~ NA))
-    
-  } else if (site == "mb05"){
-    
-    #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2701:4995), ~ NA))
-    
-    # gpsAG <- gpsAG %>%
-    #   mutate(across(num_range("HMD_", 2701:4995), ~ NA))
-    
-  } else if (site %in% c("NRS01","NRS02","NRS03", "NRS04", "NRS05","NRS06","NRS07","NRS08","NRS09","NRS10","NRS11","NRS12","NRS13")){
+ # if (site == "ch01"){
+ #    
+ #    #for seasonal 
+ #    gps <- gps %>%
+ #      mutate(across(num_range("HMD_", 2627:4300), ~ NA))
+ #    
+ #    #for annual
+ #    # gpsAG <- gpsAG %>%
+ #    #   mutate(across(num_range("HMD_", 2627:4300), ~ NA))
+ #    
+ #  } else if (site == "mb05"){
+ #    
+ #    #make those columns na
+ #    gps <- gps %>%
+ #      mutate(across(num_range("HMD_", 2701:4995), ~ NA))
+ #    
+ #    # gpsAG <- gpsAG %>%
+ #    #   mutate(across(num_range("HMD_", 2701:4995), ~ NA))
+ #    
+ #  } else
+  if (site %in% c("NRS01","NRS02","NRS03", "NRS04", "NRS05","NRS06","NRS07","NRS08","NRS09","NRS10","NRS11","NRS12","NRS13")){
       #(site == "NRS05"){
       gps <- gps %>%
        mutate(across(num_range("HMD_", 1249:1252), ~ NA))
@@ -479,34 +506,40 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
      # gpsAG <- gpsAG %>%
       # mutate(across(num_range("HMD_", 1249:1252), ~ NA))
 
-      
-  } else if (site == "fgb01" | site == "fk08"){
-    
-    #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2500:3900), ~ NA))
-    
-    
-  } else if (site == "gr01" | site == "fk01"){
-    
-    #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2800:4200), ~ NA))
-    
-    
-  }else if (site == "fk05"){
-    
-    #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2100:3900), ~ NA))
-    
-  } else if (site == "sb01" | site == "sb03"){
-    
-    #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2900:4300), ~ NA))
-    
+
   } 
+  #else if (site == "fgb01" | site == "fk08"){
+ #    
+ #    #make those columns na
+ #    gps <- gps %>%
+ #      mutate(across(num_range("HMD_", 2500:3900), ~ NA))
+ #    
+ #    
+ #  } else if (site == "gr01" | site == "fk01"){
+ #    
+ #    #make those columns na
+ #    gps <- gps %>%
+ #      mutate(across(num_range("HMD_", 2800:4200), ~ NA))
+ #    
+ #    
+ #  }else if (site == "fk05"){
+ #    
+ #    #make those columns na
+ #    gps <- gps %>%
+ #      mutate(across(num_range("HMD_", 2100:3900), ~ NA))
+ #    
+ #  } else if (site == "sb01" | site == "sb03" ){
+ #    
+ #    #make those columns na
+ #    gps <- gps %>%
+ #      mutate(across(num_range("HMD_", 2900:4300), ~ NA))
+ #  } else 
+  
+  if (site == "cox01" || site == "cox03" || site == "ns02" || site == "ns05" || site == "ns08" || site == "ustr06" || site == "ustr09"){
+    #make those columns na
+     gps <- gps %>%
+     mutate(across(num_range("HMD_", 2900:4000), ~ NA))
+  }
     
   
   
@@ -607,56 +640,56 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   gpsAG = gps %>%
     filter(yr %in% years_to_keep)
   
-  
-  #removing dips that are specific to certain seasons and years
-  if (site == "mb01"){
-    
-    #make those columns na
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 3115:4330), 
-                    ~ if_else(Season != "Post-Upwelling", NA_real_, .)))
-    
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 3115:4330), ~ NA))
-    
-  } else if (site == "mb02"){
-    
-    #for all seasons
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 3270:4330), ~ NA))
-    
-    #for 2023 and 2024 higher dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 3270:4330), 
-                    ~ if_else(yr != 2022, NA_real_, .)))
-    
-    #for 2022 lower dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 1912:2567), 
-                    ~ if_else(yr == 2022, NA_real_, .)))
-    
-  } else if (site == "ci04"){
-    
-    #for winter and post-upwelling lower dip
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 2175:2567), 
-                    ~ if_else(Season != "Upwelling", NA_real_, .)))
-    
-    #for upwelling higher dip
-    gps <- gps %>%
-      mutate(across(num_range("HMD_", 3115:4330), 
-                    ~ if_else(Season == "Upwelling", NA_real_, .)))
-    
-    #for 2023 and 2022 lower dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 2175:2567), 
-                    ~ if_else(yr != 2024, NA_real_, .)))
-    
-    #for 2024 higher dip
-    gpsAG <- gpsAG %>%
-      mutate(across(num_range("HMD_", 3115:4330), 
-                    ~ if_else(yr == 2024, NA_real_, .)))
-  } 
+  # 
+  # #removing dips that are specific to certain seasons and years
+  # if (site == "mb01"){
+  #   
+  #   #make those columns na
+  #   gps <- gps %>%
+  #     mutate(across(num_range("HMD_", 3115:4330), 
+  #                   ~ if_else(Season != "Post-Upwelling", NA_real_, .)))
+  #   
+  #   gpsAG <- gpsAG %>%
+  #     mutate(across(num_range("HMD_", 3115:4330), ~ NA))
+  #   
+  # } else if (site == "mb02"){
+  #   
+  #   #for all seasons
+  #   gps <- gps %>%
+  #     mutate(across(num_range("HMD_", 3270:4330), ~ NA))
+  #   
+  #   #for 2023 and 2024 higher dip
+  #   gpsAG <- gpsAG %>%
+  #     mutate(across(num_range("HMD_", 3270:4330), 
+  #                   ~ if_else(yr != 2022, NA_real_, .)))
+  #   
+  #   #for 2022 lower dip
+  #   gpsAG <- gpsAG %>%
+  #     mutate(across(num_range("HMD_", 1912:2567), 
+  #                   ~ if_else(yr == 2022, NA_real_, .)))
+  #   
+  # } else if (site == "ci04"){
+  #   
+  #   #for winter and post-upwelling lower dip
+  #   gps <- gps %>%
+  #     mutate(across(num_range("HMD_", 2175:2567), 
+  #                   ~ if_else(Season != "Upwelling", NA_real_, .)))
+  #   
+  #   #for upwelling higher dip
+  #   gps <- gps %>%
+  #     mutate(across(num_range("HMD_", 3115:4330), 
+  #                   ~ if_else(Season == "Upwelling", NA_real_, .)))
+  #   
+  #   #for 2023 and 2022 lower dip
+  #   gpsAG <- gpsAG %>%
+  #     mutate(across(num_range("HMD_", 2175:2567), 
+  #                   ~ if_else(yr != 2024, NA_real_, .)))
+  #   
+  #   #for 2024 higher dip
+  #   gpsAG <- gpsAG %>%
+  #     mutate(across(num_range("HMD_", 3115:4330), 
+  #                   ~ if_else(yr == 2024, NA_real_, .)))
+  # } 
   
   
   stAG = as.Date( min(gpsAG$UTC) )
@@ -740,7 +773,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       axis.title.y = element_text(size = 14),
       axis.text.y = element_text(size = 14),
       axis.text.x = element_text(size = 14, hjust = 1, angle = 30),  
-      plot.subtitle = element_text(size = 14),
+      plot.subtitle = element_text(size = 12),
       legend.text = element_text(size = 12),
       plot.caption = ggtext::element_markdown(hjust = 0, size = 11),
       legend.position = "right" 
@@ -789,7 +822,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasont <- season[order(seasont$Season), ]
     
   } else if(site == "ch01"){
-    summary2$Season <- factor(summary2$Season, levels = c("Post-Upwelling"))
+    #summary2$Season <- factor(summary2$Season, levels = c("Post-Upwelling"))
     
   } else if (sidx == "upwelling") {
     summary2$Season <- factor(summary2$Season, levels = c("Upwelling", "Post-Upwelling", "Winter"))
@@ -810,6 +843,13 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     seasont <- season[order(seasont$Season), ]
   }
   
+  
+  if(substr(site, 1, 2) == "pm" | substr(site, 1, 2) == "hi"){
+    legend_label2 = "Humpback\nSeason"
+  } else {
+    legend_label2 = "Season"
+  }
+  
   p2 = ggplot(summary2, aes(x = as.character(year), y = dy, fill = as.factor(Season))) +
     geom_col(position = "dodge", width = .3) +  # Use dodge to separate bars for each year within the same month
     #coord_flip()+ 
@@ -819,7 +859,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
                          " unique days: ", as.character(st), " to ", as.character(ed)), #, "\n", seasonLabel),
       x = "",      
       y = "Days",      
-      fill = "Season") +
+      fill = legend_label2) +
     scale_fill_manual(values = seasont$values) +
     theme_minimal() +
     theme(
@@ -839,68 +879,93 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   #(2) WIND category ####
-  gps$wind_category = NA
-  gps <- gps %>%
-    mutate(wind_category = case_when(
-      is.na(windMag) ~ NA_character_,
-      windMag < windL ~ "low",
-      windMag >= windL & windV <= windH ~ "med",
-      windMag > windH ~ "high"
-    ))
-  # Calculate the counts for wind each category
-  category_counts = gps %>%
-    count(wind_category) %>%
-    mutate(label = paste(wind_category, ":", n))
-  subtitle_text <- paste(category_counts$label, collapse = ", ")
-  windInfo = windModel[tolower(windModel$si) == site3,]
-  colnums = suppressWarnings(as.numeric(colnames(windInfo)))
- # widx = which(!is.na(colnums) & colnums == max(Fq))
- # windInfo = windInfo[,1:widx] #wind noise by frequency (columns) and speed (rows)
-  
-  #re-structure for ggplot
-  mwindInfo = reshape2::melt(windInfo, id.vars = c("windSpeed"), measure.vars = colnames(windInfo)[4:ncol(windInfo)])
-  mwindInfo$variable = as.numeric( as.character(mwindInfo$variable ))
- 
-   ## wind bar
-  gps$wind_category <- factor(gps$wind_category, levels = c("low", "med", "high"))
- 
-   # Create the horizontal stacked bar plot with the counts of wind speed categories
-  l = ggplot(gps, aes(x = "", fill = wind_category)) +
-    geom_bar(stat = "count", position = position_stack(reverse = TRUE)) +  # Stacked bar chart
-    coord_flip() +  # Flip the coordinates to make it horizontal
-    facet_wrap(~yr, ncol = 1)+
-    ggtitle("Percent time in different wind speed categories ") +  # Add the main title
-    theme_minimal() +
-    labs(x = NULL, y = NULL,
-         subtitle = paste0("low <", windL, " | med ", windL,"-",windH, " | high >",windH, "m/s")) +  # Remove x-axis label
-    theme(
-      plot.title = element_text(hjust = 0, size = 16),  # Align the title to the left
-      plot.subtitle = element_text(hjust = 0, size = 14),
-      strip.text  = element_text(size = 14),
-      axis.text.y = element_blank(),
-      axis.text.x = element_blank(),  # Remove x-axis labels (now categories will appear below)
-      axis.ticks.x = element_blank(),  # Remove x-axis ticks
-      axis.title.x = element_blank(),  # Remove x-axis title
-      legend.position = "bottom",  # Position the legend at the bottom
-      legend.title = element_blank(),  # Optional: remove legend title
-      legend.text = element_text(size = 12)  # Optional: adjust legend text size
-    ) +
-    #scale_x_discrete(labels = category_counts$wind_category) +  # Place the category labels under the plot
-    scale_fill_manual(values = c("low" = "blue",  "med" = "orange", "high" = "red") )
-  l
-  #save figure ####
-  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_HMDwindSpeed.jpg"), plot = l , width = 10, height = 12, dpi = 300)
-  
-  
+ #  gps$wind_category = NA
+ #  gps <- gps %>%
+ #    mutate(wind_category = case_when(
+ #      is.na(windMag) ~ NA_character_,
+ #      windMag < windL ~ "low",
+ #      windMag >= windL & windV <= windH ~ "med",
+ #      windMag > windH ~ "high"
+ #    ))
+ #  # Calculate the counts for wind each category
+ #  category_counts = gps %>%
+ #    count(wind_category) %>%
+ #    mutate(label = paste(wind_category, ":", n))
+ #  subtitle_text <- paste(category_counts$label, collapse = ", ")
+ #  
+ #  if (site3 == 'cinms_b'){
+ #    site3 = 'cisiob'
+ #  }
+ #  
+ #  windInfo = windModel[tolower(windModel$si) == site3,]
+ #  colnums = suppressWarnings(as.numeric(colnames(windInfo)))
+ # # widx = which(!is.na(colnums) & colnums == max(Fq))
+ # # windInfo = windInfo[,1:widx] #wind noise by frequency (columns) and speed (rows)
+ #  
+ #  #re-structure for ggplot
+ #  mwindInfo = reshape2::melt(windInfo, id.vars = c("windSpeed"), measure.vars = colnames(windInfo)[4:ncol(windInfo)])
+ #  mwindInfo$variable = as.numeric( as.character(mwindInfo$variable ))
+ # 
+ #   ## wind bar
+ #  gps$wind_category <- factor(gps$wind_category, levels = c("low", "med", "high"))
+ # 
+ #   # Create the horizontal stacked bar plot with the counts of wind speed categories
+ #  l = ggplot(gps, aes(x = "", fill = wind_category)) +
+ #    geom_bar(stat = "count", position = position_stack(reverse = TRUE)) +  # Stacked bar chart
+ #    coord_flip() +  # Flip the coordinates to make it horizontal
+ #    facet_wrap(~yr, ncol = 1)+
+ #    ggtitle("Percent time in different wind speed categories ") +  # Add the main title
+ #    theme_minimal() +
+ #    labs(x = NULL, y = NULL,
+ #         subtitle = paste0("low <", windL, " | med ", windL,"-",windH, " | high >",windH, "m/s")) +  # Remove x-axis label
+ #    theme(
+ #      plot.title = element_text(hjust = 0, size = 16),  # Align the title to the left
+ #      plot.subtitle = element_text(hjust = 0, size = 14),
+ #      strip.text  = element_text(size = 14),
+ #      axis.text.y = element_blank(),
+ #      axis.text.x = element_blank(),  # Remove x-axis labels (now categories will appear below)
+ #      axis.ticks.x = element_blank(),  # Remove x-axis ticks
+ #      axis.title.x = element_blank(),  # Remove x-axis title
+ #      legend.position = "bottom",  # Position the legend at the bottom
+ #      legend.title = element_blank(),  # Optional: remove legend title
+ #      legend.text = element_text(size = 12)  # Optional: adjust legend text size
+ #    ) +
+ #    #scale_x_discrete(labels = category_counts$wind_category) +  # Place the category labels under the plot
+ #    scale_fill_manual(values = c("low" = "blue",  "med" = "orange", "high" = "red") )
+ #  l
+ #  #save figure ####
+ #  ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_HMDwindSpeed.jpg"), plot = l , width = 10, height = 12, dpi = 300)
+ #  
+ #  
   
   
   #(3) SEASONAL CONDITION PLOT ####
-  caption_text = paste0(
-    "<b>",toupper(site) , " </b> (", siteInfo$`Oceanographic category`, ")<br>",
+  
+  if (substr(site3, 1, 2) == "hi" |substr(site3, 1, 2) == "pm"){
+    seasonType = "Humpback Seasons:"
+  } else {
+    seasonType = "Seasons:"}
+  
+  caption_text1 = paste0(
+    "<b>", seasonType, "</b> ",seasonLabel, "<br>",
     "<b>Vertical lines and grey shaded areas</b> indicate frequencies for sounds of interest in this soundscape<br>",
-    "<b>Black lines</b> are modeled wind noise at this depth [", windLow, " m/s & ", windUpp, " m/s]<br>",
+    "<b>Black lines</b> are modeled wind noise at this site's depth, lower bound = ", windLow, " m/s & upper bound = ", windUpp, " m/s<br>",
     "<b>Dotted sound level curve</b> is the median for all data<br>",
     "<b>Solid sound level curves and colored shaded areas</b> are the seasonal medians and 25th-75th percentiles for all data")
+  
+  
+  if ( siteInfo$`Oceanographic category` == 'coastal-shallow'){
+    e_type = "shallow coastal"
+  } else if( siteInfo$`Oceanographic category` == 'coastal-deep'){
+    e_type = "deep coastal"
+  } else if( siteInfo$`Oceanographic category` == 'offshore-deep'){
+    e_type = "deep offshore"
+  } else if( siteInfo$`Oceanographic category` == 'offshore-shallow'){
+    e_type = "shallow offshore"
+  } 
+  
+  header_text1 = paste0(
+    "<b>Recording Site ", toupper(site) , "</b>, a ", e_type, " environment")
   
   
   # PERCENTILES for all the data ####
@@ -1027,24 +1092,68 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     
   } else if (site == "ci04"){
     
-    mALL <- mALL %>%
-      mutate(SoundLevel = ifelse(
-        (Frequency >= 2175 & Frequency <= 2567) & (Quantile == "50%"),
-        NA, 
-        SoundLevel
-      ))
+    # mALL <- mALL %>%
+    #   mutate(SoundLevel = ifelse(
+    #     (Frequency >= 2175 & Frequency <= 2567) & (Quantile == "50%"),
+    #     NA, 
+    #     SoundLevel
+    #   ))
+    # 
+    # mALL <- mALL %>%
+    #   mutate(SoundLevel = ifelse(
+    #     (Frequency >= 3115 & Frequency <= 4330) & (Quantile == "50%"),
+    #     NA, 
+    #     SoundLevel
+    #   ))
   } 
  
   
   #height of FOI shading and vert lines label will change based on the length of the label
-  if (site == "mb02" | site == "ch01"){
+  if (site %in% c("mb02", "ch01") ){
     label_height = 38
   } else if (site == "fgb01"){
     label_height = 33
   } else if (site == "pm01" |site == "pm02"){
     label_height = 32
-  } else {
-    label_height = 35
+  } else if (site == 'ci01'){
+    label_height = 41
+    }else {
+    label_height = 36
+  }
+  
+  #standardizing the y axis for all sites within one sanctuary page
+  if(tolower(substr(site3, 1, 2)) == 'ci'){
+    y_max = 110
+  }else if(tolower(substr(site3, 1, 2)) == 'hi'){
+    y_max = 101
+  }else if(tolower(substr(site3, 1, 2)) == 'sb'){
+    y_max = 105
+  }else if(tolower(substr(site3, 1, 3)) == 'fgb'){
+    y_max = 115
+  }else if(tolower(substr(site3, 1, 2)) == 'gr'){
+    y_max = 85
+  }else if(tolower(substr(site3, 1, 2)) == 'fk'){
+    y_max = 85
+  }else if(tolower(substr(site3, 1, 2)) == 'oc'){
+    y_max = 105
+  }else if(tolower(substr(site3, 1, 2)) == 'mb'){
+    y_max = 85
+  }else if(tolower(substr(site3, 1, 2)) == 'ch'){
+    y_max = 105
+  }else if(tolower(substr(site3, 1, 2)) == 'pm'){
+    y_max = 90
+  }else if(tolower(substr(site3, 1, 2)) == 'as'){
+    y_max = 102
+  }else if(tolower(substr(site3, 1, 2)) == 'ne'){
+    y_max = 105
+  }else if(tolower(substr(site3, 1, 2)) == 'cb'){
+    y_max = 105
+  }else if(tolower(substr(site3, 1, 2)) == 'np'){
+    y_max = 105
+  }else if(tolower(substr(site3, 1, 2)) == 'nc'){
+    y_max = 95
+  }else{
+    y_max = NA
   }
   
   
@@ -1069,7 +1178,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   #  geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "grey50",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
-    geom_text(data = FOIsRange, aes(x = FQstart, y = label_height, label = Label), color = "black", angle = 90, vjust = 1, hjust = 0.45, size = 4) +
+    geom_text(data = FOIsRange, aes(x = FQstart, y = label_height, label = Label), color = "black", angle = 90, vjust = 1, hjust = 0.35, size = 4) +
    
     # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
    # geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "grey50",linewidth = .5) +
@@ -1095,16 +1204,19 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     scale_fill_manual (values  = seasont$values ) +
     
     labs(
-       subtitle = seasonLabel,
-       caption  = caption_text,
+       title = header_text1,
+       caption  = caption_text1,
+       fill = legend_label2,
+       color = legend_label2,
        x = "Frequency (Hz)",
        y = expression(paste("Sound Levels (dB re 1 ", mu, " Pa"^2, "/Hz)" ) ) #dB re 1 uPa^2/Hz
     ) +
     # Additional aesthetics
-    scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
+    scale_y_continuous(limits = c(30, y_max)) +  # use to manually scale y minimum so vert line labels are visible
     theme_minimal()+
     theme(legend.position = "right",
           plot.caption = ggtext::element_markdown(hjust = 0, size = 12),
+          plot.title = ggtext::element_markdown(hjust = 0, size = 14),
           axis.title.x = element_text(size = 14),           
           axis.title.y = element_text(size = 14), 
           legend.text = element_text(size = 12),
@@ -1115,14 +1227,26 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     )
   
   p
+  
   separator <- grid.rect(gp = gpar(fill = "black"), height = unit(2, "pt"), width = unit(1, "npc"))
-  # arranged_plot = grid.arrange(p, separator, l, heights =c(4, 0.05, 0.8))
-  arranged_plot = grid.arrange(p, separator, p2, heights =c(4, 0.1, 1))
-  ## save figure ####
-  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDSeasonalSPL.jpg"), plot = arranged_plot, width = 10, height = 12, dpi = 300)
   
+  watermark <- textGrob(
+    "© 2026 soundscapemonitoring.us",
+    rot = 270,                     
+    gp = gpar(fontsize = 9, col = "grey50")
+  )
   
+  arranged_plot <- grid.arrange(
+    p, separator, p2, watermark,
+    layout_matrix = rbind(c(1, 4),
+                          c(2, 2),   
+                          c(3, 4)),
+    heights = c(4, 0.1, 1),
+    widths  = c(20, 1)
+  )
   
+  ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDSeasonalSPL.jpg"),
+         plot = arranged_plot, width = 10, height = 12, dpi = 300)
   
   
   
@@ -1130,7 +1254,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   # truncates data to peak season for biological sites (Pacific Island Region Sanctuaries) - all plots after this are peak season (early, peak, late) only!!!
   subtitle_text <- if (sidx == "biological" & substr(site, 1, 2) == "hi"){
     #"*Each line represents that year's humpback season which includes Early (Dec of previous year-Jan), Peak (Feb-Mar), \nand Late (Apr-May) seasons." 
-    "*Humpback Year includes data from Dec of previous year through May of the given year. Humpback season excludes data from\n the Non season (Jun-Nov)."
+    "*Humpback Year includes data from Dec of previous year through May of the given year. Humpback season excludes\n data from the Non season (Jun-Nov)."
   } else if (sidx == "biological" & substr(site, 1, 2) == "pm"){
     "*Humpback Year includes data from Oct - Dec of previous year through Jul of the given year."
   } else NULL
@@ -1201,7 +1325,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     ## re-save effort figure ####
     ggsave(filename = paste0(outDirGe, "/plot_", toupper(site), "_HMDEffort.jpg"), plot = p1, width = 10, height = 4, dpi = 300)
   
-    gpsAG = gpsAGAll
+    #gpsAG = gpsAGAll
   } else {
     gpsAGAll = gpsAG
     my_subtitle = "all data" 
@@ -1211,18 +1335,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   
   if (my_subtitle == "(humpback season)"){
-    caption_text = paste0(
-      "<b>",toupper(site) , " </b> (", siteInfo$`Oceanographic category`, ")<br>",
+    caption_text2 = paste0(
       "<b>Vertical lines and grey shaded areas</b> indicate frequencies for sounds of interest in this soundscape<br>",
-      "<b>Black lines</b> are modeled wind noise at this depth [", windLow, " m/s & ", windUpp, " m/s]<br>",
+      "<b>Black lines</b> are modeled wind noise at this site's depth, lower bound = ", windLow, " m/s & upper bound = ", windUpp, " m/s<br>",
       "<b>Dotted sound level curve</b> is the median for humpback season<br>",
       "<b>Solid sound level curves and blue shaded areas</b> are the annual medians and 25th-75th percentiles for humpback season") # for ", my_subtitle)
     
   } else {
-    caption_text = paste0(
-      "<b>",toupper(site) , " </b> (", siteInfo$`Oceanographic category`, ")<br>",
+    caption_text2 = paste0(
       "<b>Vertical lines and grey shaded areas</b> indicate frequencies for sounds of interest in this soundscape<br>",
-      "<b>Black lines</b> are modeled wind noise at this depth [", windLow, " m/s & ", windUpp, " m/s]<br>",
+      "<b>Black lines</b> are modeled wind noise at this site's depth, lower bound = ", windLow, " m/s & upper bound = ", windUpp, " m/s<br>",
       "<b>Dotted sound level curve</b> is the median for ",my_subtitle, "<br>",
       "<b>Solid sound level curves and blue shaded areas</b> are the annual medians and 25th-75th percentiles for ", my_subtitle) # for ", my_subtitle)
     
@@ -1284,12 +1406,12 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     
   } else if (site == "ci04"){
   
-  mALL <- mALL %>%
-    mutate(SoundLevel = ifelse(
-      (Frequency >= 2175 & Frequency <= 2567) & (Quantile == "50%"),
-      NA, 
-      SoundLevel
-    ))
+  # mALL <- mALL %>%
+  #   mutate(SoundLevel = ifelse(
+  #     (Frequency >= 2175 & Frequency <= 2567) & (Quantile == "50%"),
+  #     NA, 
+  #     SoundLevel
+  #   ))
   
   }
   
@@ -1323,7 +1445,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #geom_vline(data = FOIsRange, aes(xintercept = FQend, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
     geom_rect(data = FOIsRange, aes(xmin = FQstart, xmax = FQend, ymin = -Inf, ymax = Inf), 
               fill = "gray", alpha = 0.2)+  # Adjust alpha for transparency
-    geom_text(data = FOIsRange, aes(x = FQstart, y = label_height, label = Label), angle = 90, vjust = 1, hjust = 0.45, size = 4) +
+    geom_text(data = FOIsRange, aes(x = FQstart, y = label_height, label = Label), angle = 90, vjust = 1, hjust = 0.35, size = 4) +
     
     # Add vertical set dash lines and grey shaded region at FOI ranges, label on left
     #geom_vline(data = FOIsRangeL, aes(xintercept = FQstart, color = Label), linetype = "dashed", color = "red",linewidth = .5) +
@@ -1355,20 +1477,22 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
     #median HMD values- all data
     geom_line(data = mALL[mALL$Quantile == "50%",], aes(x = Frequency, y = SoundLevel), color = "black", linewidth = 1,
               linetype = "dotted") +
-    scale_y_continuous(limits = c(30, NA)) +  # use to manually scale y minimum so vert line labels are visible
+    scale_y_continuous(limits = c(30, y_max)) +  # use to manually scale y minimum so vert line labels are visible
     
     # Additional aesthetics
     theme_minimal() +
     labs(
       #title = paste0(toupper(site), "(",siteInfo$`Oceanographic category`, ")"), 
-      caption  = caption_text,
+      caption  = caption_text2,
       color = legend_label,        #IF biological then change to Year*
       fill = legend_label,        #IF biological then change to Year*
       x = "Frequency (Hz)",
       y = expression(paste("Sound Levels (dB re 1 ", mu, " Pa"^2, "/Hz)" ) ),
-      subtitle = subtitle_text) +
+      subtitle = subtitle_text,
+      title = header_text1) +
     theme(legend.position = "right",
           plot.caption = ggtext::element_markdown(hjust = 0, size = 12),
+          plot.title = ggtext::element_markdown(hjust = 0, size = 14),
           axis.title.x = element_text(size = 14),           # X-axis label size
           axis.title.y = element_text(size = 14),           # Y-axis label size
           axis.text = element_text(size = 14),
@@ -1382,7 +1506,16 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   
   separator <- grid.rect(gp = gpar(fill = "black"), height = unit(2, "pt"), width = unit(1, "npc"))
   # arranged_plot = grid.arrange(p, separator, l, heights =c(4, 0.05, 0.8))
-  pYear = grid.arrange(p, separator, p1, heights =c(4, 0.1, 1.3)) #make height of last graph larger when legend gets cut off  b/c of too many data years. default is 1
+  #pYear = grid.arrange(p, separator, p1, heights =c(4, 0.1, 1.3)) #make height of last graph larger when legend gets cut off  b/c of too many data years. default is 1
+  
+  pYear <- grid.arrange(
+    p, separator, p1, watermark,
+    layout_matrix = rbind(c(1, 4),
+                          c(2, 2),   
+                          c(3, 4)),
+    heights = c(4, 0.1, 1),
+    widths  = c(20, 1)
+  )
   
   ### save figure ####
   ggsave(filename = paste0(outDirG, "/plot_", toupper(site), "_HMDYearSPL.jpg"), plot = pYear, width = 10, height = 12, dpi = 300)
@@ -1415,21 +1548,60 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
   }
   
   
+#adding watermark to credit our website
+  add_watermark <- function(plot_obj) {
+    ggdraw(plot_obj) +
+      draw_label(
+        "© 2026 soundscapemonitoring.us",
+        x = 0.99, y = 0.2,
+        angle = 270,
+        size = 7,
+        color = grey(0.5),
+        hjust = 0.5, vjust = 1
+      )
+  }
+  
+  
+  if (site5 == "as10" && grepl("Humpback Whale", FOIst$Label[tt])) {
+    hmd_columns_foi = grep("HMD", colnames(gps))
+    gps_foi_season = gps %>% filter(mth %in% 7:12)
+    
+    foi_quantiles = apply(gps_foi_season[, hmd_columns_foi, drop = FALSE], 2, quantile,
+                          probs = c(0.99, 0.90, 0.75, 0.50, 0.25, 0.10, .01), na.rm = TRUE)
+    
+    FOIall = as.data.frame(foi_quantiles)
+    FOIall$Quantile = rownames(FOIall)
+    FOIall$Year = "all"
+    hmd_columns_foi2 = grep("HMD", colnames(FOIall))
+    mALL_foi = reshape2::melt(FOIall, id.vars = c("Quantile","Year"), measure.vars = hmd_columns_foi2)
+    mALL_foi$variable = as.numeric(as.character(gsub("HMD_", "", mALL_foi$variable)))
+    colnames(mALL_foi) = c("Quantile", "Year", "Frequency", "SoundLevel")
+    mALL_foi$FrequencyName = paste0("HMD_", mALL_foi$Frequency)
+  }
+  
+
+ 
+  
+  
   if ( nrow(FOIst) > 0 ) {
     for (tt in 1: nrow(FOIst) ){ # tt = 1       tt = 2
+      
+      mALL_thresh <- if (site5 == "as10" && grepl("Humpback Whale", FOIst$Label[tt])) mALL_foi else mALL
       
       #check to see if the FOI is broad band
       if (FOIst$FQstart [tt] == FOIst$FQend [tt] ){
         ftN = paste0("HMD_", FOIst$FQstart [tt]) #fqIn
         ft = FOIst$`Decidecade.(TOL)`[tt]
-        cols_to_select = c("UTC", "yr", "windMag",ftN )
+        cols_to_select = c("UTC", "yr", 
+         #                  "windMag",
+                           ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         wspeeds = unique( (windModel$windSpeed) )
-        gpsFQ$closest_windMag = wspeeds[pmax(1, findInterval(gpsFQ$windMag, wspeeds)+1)]
+        #gpsFQ$closest_windMag = wspeeds[pmax(1, findInterval(gpsFQ$windMag, wspeeds)+1)]
         
         #Thresholds from all data percentiles
-        mALL$FrequencyName = paste0("HMD_", mALL$Frequency)
-        thresholds = mALL[mALL$FrequencyName == ftN,]
+        mALL_thresh$FrequencyName = paste0("HMD_", mALL_thresh$Frequency)
+        thresholds = mALL_thresh[mALL_thresh$FrequencyName == ftN,]
         threshold_min  = thresholds$SoundLevel[thresholds$Quantile == "1%"]
         threshold_mid  = thresholds$SoundLevel[thresholds$Quantile == "50%"]
         threshold_up   = thresholds$SoundLevel[thresholds$Quantile  == "75%"]
@@ -1455,7 +1627,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         hmdn =  as.numeric( gsub("HMD_", "", colnames(gps)[hmdc]) )
         idx = hmdc[( hmdn >= FOIst$FQstart[tt] & hmdn <= FOIst$FQend [tt] ) ]
         ftN = colnames(gps)[idx]
-        cols_to_select = c("UTC", "yr", "windMag", ftN )
+        cols_to_select = c("UTC", "yr", 
+         #                  "windMag", 
+                           ftN )
         gpsFQ = gps %>% select(all_of(cols_to_select))
         tmpBB = gpsFQ %>% select(all_of(ftN))
         
@@ -1464,8 +1638,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         
         # thresholds for typical-- BB 
         # calculate a BB measurement for TOL FQ- unlog, sum, re-log
-        mALL$FrequencyName = paste0("HMD_", mALL$Frequency)
-        thresholds = mALL[mALL$FrequencyName %in% ftN, ]
+        mALL_thresh$FrequencyName = paste0("HMD_", mALL_thresh$Frequency)
+        thresholds = mALL_thresh[mALL_thresh$FrequencyName %in% ftN, ]
         thresholds2 <- thresholds %>%
           group_by(Quantile) %>%
           summarise(
@@ -1490,7 +1664,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           HMD_25 = quantile(SpecBand, 0.25, na.rm = TRUE),
           HMD_50 = quantile(SpecBand, 0.50, na.rm = TRUE),
           HMD_75 = quantile(SpecBand, 0.75, na.rm = TRUE),
-          windspeed = quantile(windMag, 0.50, na.rm = TRUE),
+          #windspeed = quantile(windMag, 0.50, na.rm = TRUE),
           count_above_threshold   = sum(SpecBand > q75, na.rm = TRUE),
           percent_above_threshold = sum(SpecBand > q75, na.rm = TRUE) / 
             sum(!is.na(SpecBand)) * 100
@@ -1518,11 +1692,27 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         dailyFQ_complete$yr[dailyFQ_complete$mth == 10] = dailyFQ_complete$yr[dailyFQ_complete$mth == 10] + seasonShift
       }
       
+      if (site5 == "as10" && grepl("Humpback Whale", FOIst$Label[tt])) {
+        dailyFQ_complete <- dailyFQ_complete %>% filter(mth %in% 7:12)
+      }
+      
       
       # make labels for graphics (changed below for HI)
-      monthly_sequence = seq.Date(as.Date("2021-01-01"), as.Date("2021-12-01"), by = "month")
-      month_names_seq  = format(monthly_sequence, "%b")  # Extracts full month names
-      days_of_year_for_months = yday(monthly_sequence)
+      # monthly_sequence = seq.Date(as.Date("2021-01-01"), as.Date("2021-12-01"), by = "month")
+      # month_names_seq  = format(monthly_sequence, "%b")  # Extracts full month names
+      # days_of_year_for_months = yday(monthly_sequence)
+      
+      if (site5 == "as10" && grepl("Humpback Whale", FOIst$Label[tt])) {
+        monthly_sequence = seq.Date(as.Date("2021-07-01"), as.Date("2021-12-01"), by = "month")
+        month_names_seq  = format(monthly_sequence, "%b")
+        days_of_year_for_months = yday(monthly_sequence)
+        x_limits = c(182, 365)
+      } else {
+        monthly_sequence = seq.Date(as.Date("2021-01-01"), as.Date("2021-12-01"), by = "month")
+        month_names_seq  = format(monthly_sequence, "%b")
+        days_of_year_for_months = yday(monthly_sequence)
+        x_limits = c(0, 365)
+      }
       
       ### annual status
       gpsFQ$yr = year(gpsFQ$UTC)
@@ -1538,6 +1728,10 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         gpsFQ$yr[gpsFQ$mth == 10] = gpsFQ$yr[gpsFQ$mth == 10] + seasonShift
       }
       
+      if (site5 == "as10" && grepl("Humpback Whale", FOIst$Label[tt])) {
+        gpsFQ <- gpsFQ %>% filter(mth %in% 7:12)
+      }
+     
       
       yrFQ = gpsFQ %>% group_by(yr) %>%
         summarise(
@@ -1707,6 +1901,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         dailyFQ$yr[dailyFQ$mth == 10] = dailyFQ$yr[dailyFQ$mth == 10] + seasonShift
       }
       
+      if (site5 == "as10" && grepl("Humpback Whale", FOIst$Label[tt])) {
+        dailyFQ <- dailyFQ %>% filter(mth %in% 7:12)
+      }
       
       
       # without NA on pies and as proportions
@@ -1854,8 +2051,9 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       } else if (num_years == 10) {
         plot_height <- 18
       } else {
-        # This covers three or more years
+        # This covers nine or more years
         plot_height <- 20
+
       }
       
       if (ft == "125 Hz" ){
@@ -1909,7 +2107,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
           
           geom_line() +
           facet_wrap(~yr, ncol = 1)+
-          scale_x_continuous(limits = c(0,365), breaks = days_of_year_for_months, labels = month_names_seq) +
+          scale_x_continuous(limits = x_limits, breaks = days_of_year_for_months, labels = month_names_seq) +
           labs(
             title    = paste0("Are sound levels at ", toupper(site)," typical for ", ft, ",\nan indicator of ", FOIst$Label[tt], "?" ) , 
             #subtitle =  paste0(toupper(site), " (",siteInfo$`Oceanographic category`, ")"), #toupper(site),
@@ -1932,11 +2130,8 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
       
         
         #with pies that show off effort, directly comparable across years. out of 365. na/off effort is blank part of pie
-        # plg2 = plg + pthrs + pie + plot_layout(ncol = 3, widths = c(2, .7, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
-        # plg2
-        
-        #with pies that show off effort, directly comparable across years. out of 365. na/off effort is blank part of pie
         plg2 = plg + pie + plot_layout(ncol = 2, widths = c(2, 1))  #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        plg2 <- add_watermark(plg2)
         plg2
         
         ft = str_remove(ft, " Hz TOL| Hz")
@@ -2019,6 +2214,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         # plg2
         
         plg2 = plg + pie + plot_layout(ncol = 2, widths = c(2, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        plg2 <- add_watermark(plg2)
         plg2
         
         ft = str_remove(ft, " Hz TOL| Hz")
@@ -2097,6 +2293,7 @@ for (uu in 1:length(ONMSsites)) { # uu = 1
         plg
         
         plg2 = plg + pie + plot_layout(ncol = 2, widths = c(2, 1)) #plg = grid.arrange(plg, pthrs, nrow = 1, widths = c(2, 1))
+        plg2 <- add_watermark(plg2)
         plg2
         
         ft = str_remove(ft, " Hz TOL| Hz")

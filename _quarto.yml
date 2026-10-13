@@ -2,6 +2,7 @@ project:
   type: website
   resources:
     - CNAME
+    - "content/resources/"
   render:
     - content/index.qmd
     - content/sb.qmd
@@ -16,6 +17,9 @@ project:
     - content/pm.qmd
     - content/as.qmd
     - content/hi.qmd
+    - content/ne.qmd
+    - content/np.qmd
+    - content/nc.qmd
 
 website: 
 
@@ -56,10 +60,15 @@ website:
       - href: https://www.pmel.noaa.gov/acoustics/noaanps-ocean-noise-reference-station-network
         target: _blank
         text: NOAA Noise Reference Station Network
+      - href: https://sanctsound.ioos.us/sounds.html
+        target: _blank
+        text: Sanctuary Sound Library
       - text: <br>
       - text: <b>Eastern Region</b>
       - href: content/sb.qmd
         text: Stellwagen Bank
+      - href: content/ne.qmd
+        text: New England
       - href: content/fgb.qmd
         text: Flower Garden Banks
       - href: content/gr.qmd
@@ -67,9 +76,15 @@ website:
       - href: content/fk.qmd
         text: Florida Keys
       - text: <br>
+      - text: <b>Alaska Region</b>
+      - href: content/np.qmd
+        text: Gulf of Alaska
+      - text: <br>
       - text: <b>West Coast Region</b>
       - href: content/oc.qmd
         text: Olympic Coast
+      - href: content/nc.qmd
+        text: Humboldt Coast
       - href: content/cb.qmd
         text: Greater Farallones and Cordell Bank 
       - href: content/mb.qmd

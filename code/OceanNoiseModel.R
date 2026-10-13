@@ -15,7 +15,8 @@ library(xlsx)
 
 # GET DEPTHS OF INTEREST...
 # depth = 200 # as.numeric(readline(prompt = "Receiver Depth: ")) # user input for depth
-outDir = "~/GitHub/SoundscapesWebsite/" #"F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\"
+#outDir = "~/GitHub/SoundscapesWebsiteDev/" #"F:\\CODE\\GitHub\\SoundscapeScenes\\NCEI summary\\"
+outDir   =  "C:/Users/embe5980/SoundscapesWebsiteDev/"
 
 outDirG  =  paste0(outDir,"content/resources/") #where save graphics
 outDirC  =  paste0(outDir,"context/") #where to get context

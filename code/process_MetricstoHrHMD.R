@@ -10,7 +10,13 @@
 # RUN this to make sure latest updates for PAMscapes
 devtools::install_github('TaikiSan21/PAMscapes')
 
+# make sure you have Rtools installed
+if(!require('devtools')) install.packages('devtools')
+# install from GitHub
+devtools::install_github('TaikiSan21/PAMmisc')
 
+
+library(PAMmisc)
 library(PAMscapes)
 library(lubridate)
 library(dplyr)
@@ -24,28 +30,38 @@ library(devtools)
 
 
 
+
 # SET UP PARAMS ####
 rm(list=ls()) 
 DC = Sys.Date()
-site  = "hi04" 
+site  = "gr01" 
 site = tolower(site) 
 # 
 # #add for NRS
- # gcpF = "PMEL_NEOFFSHORE"
- # prodName = "NE" 
+ # gcpF = "PMEL_OSP" #"PMEL_NEOFFSHORE"
+ # prodName = "NP" #"NE" 
+
+#add for NMFS
+ # prodName = "NE"
+ # gcpF = "NEFSC_MA-RI" # "NEFSC_GOM" #"NEFSC_MA-RI"
+
+
 
 # LOCAL DATA DIRECTORIES ####
 #dirGCP = paste0( "/Users/quca3108/ONMS/", site,"/") # NCEI GCP min HMD netCDFs
 #dirGCP = paste0( "C:/Users/emma.beretta/Documents/ONMS/", site,"/") # for NOAA computer
 #dirGCP = paste0( "C:/Users/embe5980/ONMS/", site,"/") # for CIRES computer
 dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP workstation
-#dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #nmfs GCP HMD netCDFs
+#dirGCP = paste0( "E:/mbarc_cencal/products/sound_level_metrics/", site,"/")
+#dirGCP = paste0( "E:/mbarc_socal/products/sound_level_metrics/mbarc_socal/", site,"/") # for GCP workstation - SITE SIOB 
+#dirGCP = paste0( "W:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/",gcpF,"/") #NRS GCP HMD netCDFs
+#dirGCP = paste0( "V:/DETECTOR_OUTPUT/PYTHON_SOUNDSCAPE_PYPAM/Raw/",gcpF,"/") #NEFSC GCP HMD netCDFs
 
 
 #SANCTSOUND DATA DIRECTORIES
 #for when sanctsound data is in different directory than ONMS data: grnms, sbnms, hihwnms
 #dirGCPSS = paste0( "M:/FATESD/PASSIVE_ACOUSTIC_DATA_ANALYSIS/SANCTSOUND_SBNMS/SB01") # for GCP workstation - SBNMS
-#dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/gr01") # for GCP workstation - SBNMS (same data as above directory but pulling from NCEI. aditional folder to get to hmd data so if using this directory will need to adjust code looking for file path)
+dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/gr01") # for GCP workstation - GRNMS (same data as above directory but pulling from NCEI. aditional folder to get to hmd data so if using this directory will need to adjust code looking for file path)
 #dirGCPSS = paste0( "X:/Emma_Beretta/HI01SanctSound") # for GCP workstation - HI01
 #dirGCPSS = paste0("E:/onms/products/sound_level_metrics/mb05/onms_mb05_20220425_20220621_hmd") #to get MB05_01
 #dirGCPSS = paste0("E:/sanctsound/products/sound_level_metrics/", site,"/") 
@@ -56,7 +72,10 @@ dirGCP = paste0( "E:/onms/products/sound_level_metrics/", site,"/") # for GCP wo
 #outDir =  "F:/CODE/GitHub/SoundscapesWebsite/" 
 #outDir =  "C:/Users/emma.beretta/Documents/SoundscapesWebsite/" #for NOAA computer
 #outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
-outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for Emma GCP workstation
+outDir =  "X:/Emma_Beretta/SoundscapesWebsiteDev/" #for Emma GCP workstation
+#outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
+#outDir =  "C:/Users/embe5980/SoundscapesWebsite/" #for CIRES computer
+#outDir =  "X:/Emma_Beretta/SoundscapesWebsite/" #for Emma GCP workstation
 #outDir =  "C:/Users/pam_user/Documents/GitHub/SoundscapesWebsite/" #Samara GCP WW
 
 outDirC = paste0( outDir,"content/resources/") #context
@@ -64,7 +83,7 @@ outDirP = paste0( outDir,"products/", substr(tolower(site),start = 1, stop =2),"
 outDirG = paste0( outDir,"report/" ) #graphics
 
 
-#Only for NRS
+#Only for NRS and NMFS
 #outDirP = paste0( "Y:/soundscape_website_products/", substr(tolower(prodName),start = 1, stop =2),"/" ) #onms gcp folder #old NRS path paste0( outDir,"products/", substr(tolower(prodName),start = 1, stop =2),"/" )#NRS products
 
 
@@ -86,16 +105,15 @@ cat("CHECK: Read in data for: ",
 
 ## PyPAM soundscape (Sanctsound) FILES- NEFSC-GCP ####
 # e.g. NEFSC_SBNMS_201811_SB03_20181112.nc
-  # inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
-    inFilesPY = character()
-    tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
-  # if (length(tmp) != 0){
-  #   dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
-  #   cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
-  #     "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
-  # }
+   inFilesPY = list.files(dirGCPSS, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
+   #  inFilesPY = character()
+     tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
+  if (length(tmp) != 0){
+    dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
+    cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
+      "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
+  }
 
-  
 
 ## ONMS Sound FILES- NCEI-GCP ####
 # e.g. ONMS_HI01_20231201_8021.1.48000_20231201_DAILY_MILLIDEC_MinRes.nc
@@ -113,31 +131,50 @@ cat("CHECK: Read in data for: ",
   #wierd xls coming through into nc list for some reason
   inFilesON = inFilesON[!grepl(".xls", inFilesON)]
   
-  mantaFiles = inFilesON[grepl("MinRes\\.nc$", inFilesON)]  # Files ending with '_MinRes.nc'
-  pypamFiles = inFilesON[!grepl("MinRes\\.nc$", inFilesON)]  # All other .nc files
+  mantaFiles = inFilesON[grepl("MinRes_v2\\.nc$", inFilesON)]  # Files ending with '_MinRes.nc'
+  pypamFiles = inFilesON[!grepl("MinRes_v2\\.nc$", inFilesON)]  # All other .nc files
   
   #you may need to change the number of the segment where the date is getting taken from he file name below
   dysON1 = as.Date(sapply( strsplit(basename(mantaFiles), "_"), "[[", 5), format = "%Y%m%d")
   #dysON1 = character()
   #you may need to change the number of the segment where the date is getting taken from he file name below
-  dysON2 = as.Date(sapply( strsplit(basename(pypamFiles), "_"), "[[", 3), format = "%Y%m%d")
+  dysON2 = as.Date(sapply( strsplit(basename(pypamFiles), "_"), "[[", 4), format = "%Y%m%d")
   
+  
+  #for ch01 
+  # pypamFiles2 = pypamFiles[615:726]
+  # dysON22 = as.Date(sapply( strsplit(basename(pypamFiles2), "_"), "[[", 4), format = "%Y%m%d")
+  # dysON2 = c(dysON2, dysON22)
+  
+  
+  #For the SIO formatted netcdf files (CINMS_B and HUA_WEA)
+  # dysON1 <- as.Date(
+  #      sub("\\.nc$", "", sapply(strsplit(basename(mantaFiles), "_"), "[[", 8)),
+  #     format = "%y%m%d")
+  # dysON2 <- as.Date(
+  #   sub("\\.nc$", "", sapply(strsplit(basename(pypamFiles), "_"), "[[", 8)),
+  #   format = "%y%m%d")
+
   dysON = c(dysON1, dysON2)
   
   #for newer sites without manta data:
   #dysON =  dysON2
   
-  #for newer sites without pypam data:
+  #for older sites without pypam data:
   #dysON =  dysON1
   
   # Output summary
   cat("Found ", length(inFilesON), "NCEI files for ", site, "(", as.character(min(dysON, na.rm = T)), " to ", as.character(max(dysON, na.rm = T)), 
       ") with", sum(duplicated(dysON)), "duplicated days\n")
   
+ 
 
 ## NMFS-GCP NRS sound files
 #PMEL_CINMS_201410_NRS05_20141018.nc
 if ( substr(site,start = 1, stop =3) == "nrs"){
+inFilesPY = list.files(dirGCP, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
+
+
 inFilesPY = list.files(dirGCP, pattern = "_[0-9]{8}\\.nc$", recursive = T, full.names = T)
 tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
 if (length(tmp) != 0){
@@ -147,6 +184,21 @@ if (length(tmp) != 0){
 }
 inFiles = inFilesPY
 }
+  
+## NMFS-GCP NEFSC sound files  
+if ( substr(gcpF,start = 1, stop =5) == "NEFSC"){
+   # inFilesPY_a = list.files(dirGCP, pattern = c(gcpF,"_[0-9]{6}_",toupper(site),"_[0-9]{8}\\.nc$"), recursive = T, full.names = T)
+    inFilesPY_a = list.files(dirGCP, pattern = c(toupper(site),"_[0-9]{8}\\.nc$"), recursive = T, full.names = T)
+    inFilesPY = grep(pattern = "_[0-9]{8}\\.nc$", x = inFilesPY_a, value = TRUE)
+    tmp = sapply( strsplit(basename(inFilesPY), "[.]"), "[[", 1)
+    if (length(tmp) != 0){
+      dysPy = as.Date(sapply( strsplit(tmp, "_"), "[", 5),format = "%Y%m%d")
+      cat("Found ", length(inFilesPY), "PyPAM files for ", site, "(", as.character( min(dysPy , na.rm = T) ), " to ", as.character(max(dysPy , na.rm = T)),
+          "with", sum( duplicated(dysPy)), "duplicated days\n (if NA for date range fix line 59)\n")
+    }
+    inFiles = inFilesPY
+  }
+  
 
 #For SB03 since new data has different naming convention
 # inFilesON = list.files(dirGCP, pattern = "MinRes.nc", recursive = T, full.names = T)
@@ -194,7 +246,7 @@ if (length(tmp) != 0){
 
 ## CHECK FOR PROCESSED FILES ####
 #updates list of files to process
-pFile = list.files(path = (outDirP), pattern = paste0("HMDfilesProcesedv1_", site), full.names = T, recursive = T)
+pFile = list.files(path = (outDirP), pattern = paste0("HMDfilesProcesed_", site), full.names = T, recursive = T)
 
 if ( length(pFile) > 0 ) {
   load(pFile)
@@ -214,7 +266,7 @@ if ( length(pFile) > 0 ) {
 
     # read in processed data to append results
     inFileP = list.files((outDirP),
-                         pattern = paste0("HMDdatav1_", site, "_HourlySPL-gfs_\\d{4}-\\d{2}-\\d{2}\\.Rda$"),
+                         pattern = paste0("HMDdata_", site, "_HourlySPL-gfs_\\d{4}-\\d{2}-\\d{2}\\.Rda$"),
                          full.names = T, recursive = T)
     file_info = file.info(inFileP)
     load( inFileP[which.max(file_info$ctime)] )
@@ -224,6 +276,7 @@ if ( length(pFile) > 0 ) {
       rm(outData)
       #rm(gps) #fix for hi03,8, and 4 AND pm01
     }
+    
     
     #remove v1 files from HI04 so that v2 can be added
     # v1_targets <- v1_targets[1:180]
@@ -301,24 +354,20 @@ if (length(inFiles) > 0) {
   } 
 }
 
-#had forgotten to remove 1-19 hz column in older data 
-# emma <- data_list[[180]]
-# gabbi <- data_list[[181]]
-# kaila <- data_list[[1]]
-# data_list[[1]] <- kaila
-# 
-# f =1 
-# 
-# for (f in 1:180 ){ 
-#   
-#   #bin to hourly median values
-#   cDatah_day = data_list[[f]]
-#   
-#   cDatah_day = cDatah_day[, -c(2:21)]
-#   
-#   data_list[[f]] = cDatah_day
-#   
-# } 
+
+#  f =1 
+
+#if some data (manta) has bins 0-19 but others (pypam) doesnt
+for (f in 1:737 ){
+
+  #bin to hourly median values
+  cDatah_day = data_list[[f]]
+
+  cDatah_day = cDatah_day[, -c(2:21)]
+
+  data_list[[f]] = cDatah_day
+
+}
 
 #combine list elements after processing each day seperately and saving into different list elements
 cDatah <- rbindlist(data_list)
@@ -338,6 +387,66 @@ cDatah = setDF(cDatah)
 #THIS?
 #cDatah = as.data.frame(cDatah)
 
+
+# 
+# if (site == "hi04"){
+# #processed/outdata for hi04 was missing wind data and new deployment had flipped coords
+# cDatah2 = outData[8419:16488, 1:2164]
+# cDatah = cDatah2[4303:8070,]
+# }
+# 
+# if (site == "hi01"){
+#   #processed/outdata for hi04 was missing wind data and new deployment had flipped coords
+#   cDatah2 = outData[19579:23394, 1:2163]
+#   cDatah = cDatah2
+# }
+# 
+# if (site == "pm01"){
+#   #processed/outdata for hi04 was missing wind data and new deployment had flipped coords
+#   cDatah2 = outData[12992:19783, 1:2164]
+#   cDatah = cDatah2
+# }
+# 
+# if (site == "fgb01"){
+#   #processed/outdata for hi04 was missing wind data and new deployment had flipped coords
+#   cDatah2 = outData[1704:5279, 1:2164]
+#   cDatah = cDatah2
+# }
+# 
+# if (site == "sb03"){
+#   #processed/outdata for hi04 was missing wind data and new deployment had flipped coords
+#   cDatah2 = outData[43064:50527, 1:2163]
+#   cDatah = cDatah2
+# }
+# 
+# if (site == "fk05"){
+#   #processed/outdata for hi04 was missing wind data and new deployment had flipped coords
+#   cDatah2 = outData[15187:19098, 1:2164]
+#   cDatah = cDatah2
+# }
+# 
+# if (site == "fk06"){
+#   #processed/outdata for hi04 was missing wind data and new deployment had flipped coords
+#   cDatah2 = outData[3022:12141, 1:2164]
+#   cDatah = cDatah2
+# }
+# 
+# # so far only necessary for certain pypam deplyments for site %in% c("hi01", "hi04", "hi03", "hi08", "as01", "pm01")
+# if (site != "as01" & (cDatah$Latitude[1] < 0 | cDatah$Longitude[1] > 0)){
+# cDatah$Latitude1 = cDatah$Latitude
+# cDatah$Latitude = cDatah$Longitude
+# cDatah$Longitude = cDatah$Latitude1
+# cDataht = cDatah[,1:2164]
+# #cDataht = cDatah[,1:1397]
+# cDatah = cDataht
+# }
+# 
+# if (site == "hi04"){
+# cDatah1 = cDatah2[1:4302,]
+# 
+# cDataht = rbind(cDatah1, cDatah)
+# cDatah = cDataht
+# }
 
 # old way to process with rbind, will crash if >2000 days of data to process
 # # PROCESS ONMS Sound FILES ####
@@ -400,6 +509,7 @@ cDatah = setDF(cDatah)
 
 
 # #(ALT GET WIND) 
+# cDatah <- outData[,-c(8:14)]
 # only if already ran previously but the SPL data were inaccurate!
 # inWind = "F:/ONMS/SS_Manta/data_hi01_HourlySPL-gfs_2025-07-01.Rda"
 # load( inWind[1] ) # names(outData)
@@ -430,7 +540,7 @@ day_chunks <- split(unique_days, ceiling(seq_along(unique_days) / chunk_size_day
 
 # Split the full dataset by matching on those date chunks
 data_chunks <- lapply(day_chunks, function(days) {
-  filter(cDatah, as.Date(UTC) %in% days)
+  dplyr::filter(cDatah, as.Date(UTC) %in% days)
 })
 
 # Check result
@@ -443,9 +553,28 @@ gps_chunks <- list()  # store wind-matched results
 #loop through chunks!
 for (i in seq_along(data_chunks)) {
 cat("Processing matchGFS for chunk", i, "of", length(data_chunks), "\n")
-gps_chunks[[i]] <- matchGFS(data_chunks[[i]])
+gps_chunks[[i]] <- matchGFS(data_chunks[[i]]
+                        #    , opendap=TRUE
+                            )
 }
+ # i = i +1
 
+# what PAMscapes expects internally
+# PAMscapes:::matchGFS  # or find the source on GitHub and search for "360" or "lon"
+# test <- matchGFS(data_chunks[[1]][1, ])
+
+
+# # Test just the first 2 rows to see the underlying error if matchGFS chunk gets stuck
+# test_chunk <- head(data_chunks[[1]], 2)
+# 
+# # Try running it with verbose downloading if your version supports it, 
+# # or just wrap it in a try-catch to see if it times out.
+# tryCatch({
+#   test_res <- matchGFS(test_chunk)
+#   print("Success! Server is up.")
+# }, error = function(e) {
+#   message("Network/Server Error caught: ", e$message)
+# })
 
 
 #add/remove lines for the number of chunks data was broken into
@@ -463,6 +592,45 @@ gps_chunks[[i]] <- matchGFS(data_chunks[[i]])
 #put chunks back together
 gps <- dplyr::bind_rows(gps_chunks)
 
+
+# 
+# pFileSS = "X:/Emma_Beretta/SoundscapesWebsiteDev/products/sb/HMDdataOLD_sb03_HourlySPL-gfs_2026-08-03.Rda"
+# 
+# 
+#   load(pFileSS)
+#   
+#   SSData = outData[1: , ]
+
+
+
+#if not calculating wind
+gps <- cDatah
+
+# 
+# #FOR HI04, recombine new data with old
+# processedData = outData
+# processedData = processedData[1:8418,]
+# #processedData = processedData[1:19578,] HI01?
+# 
+# #PM01
+# processedData = outData
+# processedData = processedData[1:12991,]
+# 
+# #FGB01
+# processedData = outData
+# processedData = processedData[1:5593,]
+# 
+# #SB03
+# processedData = outData
+# processedData = processedData[1:43063,]
+# 
+# #FK01
+# processedData = outData
+# processedData = processedData[1:14041,]
+# 
+# #FK05
+# processedData = outData
+# processedData = processedData[1:15186,]
 
 
 #SKIP IF YOU ALREADY GOT WIND USING CHUNKS

@@ -8,9 +8,11 @@ import os
 import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
 
-sites = ["CI01","CI04","NRS05"]# "SIOB"
+sites = ["CI01","CI04", "CINMS_B", "NRS05"]# "SIOB"
 sitesFOI = ["CI01"]
+sitesFOIB = ["CI01","CI04", "NRS05"]# "SIOB"
 sitesFOI2 = ["NRS05"]
+sitesFOI3 = ["CINMS_B"]
 fishsites = ["CI01","CI04"]
 
 # input table for standard text
@@ -81,7 +83,9 @@ display(HTML(standardTextDict["conditions overview"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["Soundscape Overview"]))
-display(HTML(gf.makeButtons(sites, "plot_***_HMDSeasonalSPL.jpg", "Seasons", altText= "Line graph of seasonal median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each season is a different colored line. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
+display(HTML(gf.makePlotlyButtonsWithLabels(sites, sites, "plot_***_interactiveSeasonalSPL.html", "InteractiveSeasonalSPL")))
+
+#display(HTML(gf.makeButtons(sites, "plot_***_HMDSeasonalSPL.jpg", "Seasons", altText= "Line graph of seasonal median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each season is a different colored line. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
 display(HTML(standardTextDict["Seasonal condition fc"]))
 infoHtml = f'''
                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).showModal()">How was this calculated?</button>
@@ -100,7 +104,9 @@ display(HTML(infoHtml))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["What are the latest conditions in ocean sound?"]))
-display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL", altText= "Line graph of annual median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each year is a different blue line, getting darker for every additional year of data. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
+display(HTML(gf.makePlotlyButtonsWithLabels(sites, sites, "plot_***_interactiveAnnualSPL.html", "InteractiveAnnualSPL")))
+
+# display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL", altText= "Line graph of annual median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each year is a different blue line, getting darker for every additional year of data. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
 display(HTML(standardTextDict["Annual condition fc"]))
 
 ```
@@ -116,7 +122,11 @@ display(HTML(standardTextDict["Annual condition fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["sources of interest typical"]))
-display(HTML(gf.makeButtons(sites, "plot_***-40-48_HMDstatus.jpg", "FOI", altText= "Time series plot of daily median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) for a specific frequency band(s) of interest at this site, separated by year. Background color shading (blue, purple, gold) indicates low (<25th percentile), typical (25-75th percentile), and high sound levels (>75th percentile) across the entire dataset at this frequency band(s) for comparability with annual medians, marked with horizontal black dashed lines. Pie charts on the right hand side of the graphic show the proportion of daily median sound levels that fell within each category for each year, following the same color-coding and percentile bins.")))
+display(HTML(gf.makeButtons(sitesFOIB, "plot_***-40-48_HMDstatus.jpg", "FOI", altText= "Time series plot of daily median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) for a specific frequency band(s) of interest at this site, separated by year. Background color shading (blue, purple, gold) indicates low (<25th percentile), typical (25-75th percentile), and high sound levels (>75th percentile) across the entire dataset at this frequency band(s) for comparability with annual medians, marked with horizontal black dashed lines. Pie charts on the right hand side of the graphic show the proportion of daily median sound levels that fell within each category for each year, following the same color-coding and percentile bins.")))
+
+display(HTML(standardTextDict["spacer"]))
+
+display(HTML(gf.makeButtons(sitesFOI3, "plot_***-63_HMDstatus.jpg", "FOI4", altText= "Time series plot of daily median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) for a specific frequency band(s) of interest at this site, separated by year. Background color shading (blue, purple, gold) indicates low (<25th percentile), typical (25-75th percentile), and high sound levels (>75th percentile) across the entire dataset at this frequency band(s) for comparability with annual medians, marked with horizontal black dashed lines. Pie charts on the right hand side of the graphic show the proportion of daily median sound levels that fell within each category for each year, following the same color-coding and percentile bins.")))
 
 display(HTML(standardTextDict["spacer"]))
 
@@ -158,6 +168,22 @@ display(HTML(standardTextDict["CI humpback curve fc"]))
 
 ```
 
+### When are we hearing vessel presence?
+
+```{python}
+#| echo: false
+
+display(HTML(standardTextDict["vessel-CI"]))
+display(HTML(gf.makeImage("Ship_Wind_Animation_SPL_Hourly.gif", "CI vessels gif", altText= "")))
+display(HTML(standardTextDict["CI vessels fc"]))
+
+display(HTML(standardTextDict["spacer"]))
+
+display(HTML(standardTextDict["vessel2-CI"]))
+display(HTML(gf.makeImage("SB_Channel_noise.png", "CI vessels graph", altText= "")))
+display(HTML(standardTextDict["CI vessels2 fc"]))
+
+```
 
 
 <!-- When do whales contribute to the soundscape, indicating their presence nearby? -->

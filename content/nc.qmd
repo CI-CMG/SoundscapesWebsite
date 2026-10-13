@@ -1,0 +1,196 @@
+```{python}
+#| include: false
+import pandas as pd
+from datetime import date
+from tabulate import tabulate
+from IPython.display import display, HTML, Image
+import os
+import ipywidgets as widgets
+from pythonFunctions import generalFunctions as gf
+import plotly.io as pio
+pio.renderers.default = "notebook_connected"
+
+sites = ["WEA_HUA"]
+sitesFOI = [""]
+sitesFOI2 = [""]
+
+# input table for standard text
+inputDir = os.path.normpath(os.path.join(os.getcwd(), "resources"))
+metaFile = os.path.join(inputDir, "ONMSSound_IndicatorCategories.xlsx")
+metadata = pd.read_excel(metaFile, sheet_name="Summary", header=1)
+lookup = [row for index, row in metadata.iterrows() if row.iloc[4] in sites]
+dicts = [l.to_dict() for l in lookup]
+df = pd.read_excel(metaFile, sheet_name="Standard Report Text", engine_kwargs={'keep_links': True})
+
+standardTextDict = pd.Series(df.iloc[:, 3].values, index=df.iloc[:, 1]).to_dict()
+for key in standardTextDict:
+    value = standardTextDict[key]
+    if isinstance(value, str):  # Only process if it's a string
+        while "**" in value:
+            value = value.replace("**", "<b>", 1)
+            value = value.replace("**", "</b>", 1)
+
+# input table for site information
+df1 = pd.read_excel(metaFile, sheet_name="NC")
+for col in df1.select_dtypes(include=["datetime64[ns]"]).columns:
+    df1[col] = df1[col].dt.date  # or .dt.strftime('%Y-%m-%d') for custom format
+summaryTable = [list(df1.columns.values)]  # keeps column names as-is, with spaces
+summaryTable.extend(df1.values.tolist())
+htmlTable = '<div style="overflow-x: scroll;">' + tabulate(summaryTable, tablefmt="unsafehtml") + '</div>'
+headerLocations = [i for i in range(len(htmlTable)) if htmlTable.startswith("<th>", i)]
+headerSizes = ["200","200","200","200","200","200","200","200","200","200","200"]
+for i in range(len(headerLocations)):
+  htmlTable = htmlTable[:headerLocations[i]] + f'<th style="width:{headerSizes[i]}px"' + htmlTable[headerLocations[i]+4:]
+```
+
+---
+title: "Humboldt Coast Soundscape Report"
+date: "today"
+output: 
+  html_document: 
+    fig_caption: true
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"}
+## Ocean Sound Monitoring
+
+```{python}
+#| echo: false
+display(HTML(standardTextDict["NC"]))
+```
+
+### Summary of monitoring sites
+
+```{python}
+#| echo: false
+display(HTML(gf.makeImage("HumboldtSiteMap.jpg", "NE Site Map", 850)))
+
+display(HTML(htmlTable))
+```
+:::
+
+::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"}
+## Ocean Sound Conditions
+
+```{python}
+#| echo: false
+display(HTML(standardTextDict["conditions overview"]))
+```
+
+### What are the seasonal patterns across frequencies?
+
+```{python}
+#| echo: false
+display(HTML(standardTextDict["Soundscape Overview"]))
+
+display(HTML(gf.makePlotlyButtonsWithLabels(sites, sites, "plot_***_interactiveSeasonalSPL.html", "InteractiveSeasonalSPL")))
+#display(HTML(gf.makeButtons(sites, "plot_***_HMDSeasonalSPL.jpg", "Seasons", altText= "Line graph of seasonal median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each season is a different colored line. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
+display(HTML(standardTextDict["Seasonal condition fc"]))
+infoHtml = f'''
+                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).showModal()">How was this calculated?</button>
+            <dialog id="infoModal">
+                <p>{standardTextDict['How was this calculated?']}</p>
+                <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal&#39;).close()">
+                    Close
+                </button>
+            </dialog>
+                
+'''
+display(HTML(infoHtml))
+```
+
+### How are ocean sound conditions changing across years?
+
+```{python}
+#| echo: false
+display(HTML(standardTextDict["What are the latest conditions in ocean sound?"]))
+
+display(HTML(gf.makePlotlyButtonsWithLabels(sites, sites, "plot_***_interactiveAnnualSPL.html", "InteractiveAnnualSPL")))
+#display(HTML(gf.makeButtons(sites, "plot_***_HMDYearSPL.jpg", "YearSPL", altText= "Line graph of annual median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) across a range of frequencies (~10 to ~24,000 hertz) for all data at a given monitoring site, with annual recording effort represented by a bar graph underneath. Each year is a different blue line, getting darker for every additional year of data. Modeled ambient sound levels from wind are shown as solid black lines. Frequency bands indicative of a sound source of interest are highlighted in semi-transparent gray and labeled; peak frequencies of interest for some fish species are labeled with vertical dashed lines and labeled by species.")))
+display(HTML(standardTextDict["Annual condition fc"]))
+
+```
+
+<!-- ### How often are sources of interest likely present? -->
+
+<!-- ```{python} -->
+
+<!-- #| echo: false -->
+
+<!-- display(HTML(standardTextDict["sources of interest likely present"])) -->
+
+<!-- display(HTML(gf.makeButtons(sites, "plot_***_AboveWind.jpg", "SourcePresent"))) -->
+
+<!-- ``` -->
+
+### Is the intensity (loudness) of sound sources of interest within typical range?
+
+```{python}
+#| echo: false
+display(HTML(standardTextDict["sources of interest typical"]))
+display(HTML(gf.makeButtons(sites, "plot_***-18-25_HMDstatus.jpg", "FOI", altText= "Time series plot of daily median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) for a specific frequency band(s) of interest at this site, separated by year. Background color shading (blue, purple, gold) indicates low (<25th percentile), typical (25-75th percentile), and high sound levels (>75th percentile) across the entire dataset at this frequency band(s) for comparability with annual medians, marked with horizontal black dashed lines. Pie charts on the right hand side of the graphic show the proportion of daily median sound levels that fell within each category for each year, following the same color-coding and percentile bins.")))
+
+#display(HTML(standardTextDict["spacer"]))
+
+#display(HTML(gf.makeButtons(sites, "plot_***-30000-70000_HMDstatus.jpg", "FOI2", altText= "Time series plot of daily median sound levels (sound intensity measured by mean-square pressure in microPascal per Hertz) for a specific frequency band(s) of interest at this site, separated by year. Background color shading (blue, purple, gold) indicates low (<25th percentile), typical (25-75th percentile), and high sound levels (>75th percentile) across the entire dataset at this frequency band(s) for comparability with annual medians, marked with horizontal black dashed lines. Pie charts on the right hand side of the graphic show the proportion of daily median sound levels that fell within each category for each year, following the same color-coding and percentile bins.")))
+
+display(HTML(standardTextDict["FOI condition fc"]))
+```
+:::
+
+::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"}
+## Ocean Sound Indicators
+
+```{python}
+#| echo: false
+display(HTML(standardTextDict["Indicator description"]))
+display(HTML(standardTextDict["spacer"]))
+display(HTML("Coming soon!"))
+```
+
+<!-- ### How much noise from large vessels may be interfering with whale communication? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["large vessels interfer"])) -->
+<!-- display(HTML(gf.makeButtons(["SB01", "SBO3"], "plot_***_AISMonthAbove.jpg", "SoundLevelVariance"))) -->
+<!-- infoHtml3 = f''' -->
+<!--         <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).showModal()">Table of Results</button> -->
+<!--             <dialog id="infoModal3"> -->
+<!--                 {gf.makeButtons(["SB01", "SBO3"], "table_***_AISMonthAbove.jpg", "AISMonthlyTables")} -->
+<!--                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal3&#39;).close()"> -->
+<!--                     Close -->
+<!--                 </button> -->
+<!--             </dialog> -->
+<!-- ''' -->
+<!-- display(HTML(infoHtml3)) -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AISMonthAbove.jpg -->
+<!-- ``` -->
+<!-- ### How does the level of traffic change conditions? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- display(HTML(standardTextDict["level of traffic"])) -->
+<!-- display(HTML(gf.makeButtons(["SB01", "SBO3"], "plot_***_AIShist.jpg", "Histogram"))) -->
+<!-- infoHtml4 = f''' -->
+<!--         <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).showModal()">Table of Results</button> -->
+<!--             <dialog id="infoModal4"> -->
+<!--                 {gf.makeButtons(["SB01", "SBO3"], "table_***_AIShist.jpg", "AISHistTables")} -->
+<!--                 <button style="background-color: #FFFFFF;" onclick="document.getElementById(&#39;infoModal4&#39;).close()"> -->
+<!--                     Close -->
+<!--                 </button> -->
+<!--             </dialog> -->
+<!-- ''' -->
+<!-- display(HTML(infoHtml4)) -->
+<!-- # NEED TO ADD BUTTON: "See Table Results" table_***_AIShist.jpg -->
+<!-- ``` -->
+
+<!-- ### When do right whales contribute to the soundscape, indicating their presence nearby? -->
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- #display(HTML(standardTextDict["North Atlantic Right whales"])) -->
+<!-- #display(HTML(gf.embedMapViewer("https://apps-nefsc.fisheries.noaa.gov/pacm/#/narw"))) -->
+<!-- ``` -->
+<!-- ::: -->
+

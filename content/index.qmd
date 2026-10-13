@@ -53,13 +53,13 @@ display(HTML(standardTextDict["What is ocean sound?"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["When, where, & why are we listening?"]))
-display(HTML(gf.embedMapViewer("https://www.ncei.noaa.gov/maps/passive-acoustic-data/?fullMap=true&monitoringProgram=ONMS&monitoringProgram=NRS")))
+display(HTML(gf.embedMapViewer("https://www.ncei.noaa.gov/maps/passive-acoustic-data/?fullMap=true&monitoringProgram=ONMS&monitoringProgram=NRS&monitoringProgram=NMFS")))
 ```
-### NOAA underwater sound data available through NCEI Passive Acoustic Data Archive, summarized in these reports  
+### Underwater sound data available through NCEI Passive Acoustic Data Archive, summarized in these reports  
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["gantt"]))
-display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt", altText= "Gantt chart showing time periods that U.S. sound data are stored in NOAA’s NCEI repository and presented in this report, labeled by monitoring site and color-coded by monitoring project. Time periods begin in 2014 and go through the present.")))
+display(HTML(gf.makeImage("gantt_ONMS-SS-NRS.jpg","Gantt", 1200, altText= "Gantt chart showing time periods that U.S. sound data are stored in NOAA’s NCEI repository and presented in this report, labeled by monitoring site and color-coded by monitoring project. Time periods begin in 2014 and go through the present.")))
 #| display(HTML(gf.makeImage("map_ONMS.jpg","Gantt")))
 display(HTML(standardTextDict["gantt fc"]))
 ```
@@ -86,6 +86,21 @@ display(HTML(gf.makeImage("sanctsound_amplitude_frequency.png", "amp&freqInfogra
 display(HTML(standardTextDict["SS how do we measure sound fc"]))
 ```
 
+
+```{python}
+#| echo: false
+
+display(HTML(standardTextDict["spacer"]))
+display(HTML(standardTextDict["UnderstandingSpectrograms"]))
+
+display(HTML(gf.makeImage("website_spectrogram.png", "spectrogramInfographic", 900, altText= "Infographic showing spectrogram that highlights unique calls by species including dolphins, humpback whales, snapping shrimp and minke whale.")))
+display(HTML(standardTextDict["spectrogram fc"]))
+```
+
+
+:::
+
+::: {style="border: 1px solid black; padding: 10px; margin-bottom: 20px;"}
 
 ### Ocean Sound Conditions
 ```{python}
