@@ -7,8 +7,6 @@ from IPython.display import display, HTML, Image
 import os
 import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
-import plotly.io as pio
-pio.renderers.default = "notebook_connected"
 
 sites = ["WEA_HUA"]
 sitesFOI = [""]
