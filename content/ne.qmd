@@ -7,8 +7,6 @@ from IPython.display import display, HTML, Image
 import os
 import ipywidgets as widgets
 from pythonFunctions import generalFunctions as gf
-import plotly.io as pio
-pio.renderers.default = "notebook_connected"
 
 sites = ["NRS08", "COX01", "COX03", "NS02", "NS05", "NS08", "USTR06", "USTR09"]
 sitesFOI = ["COX01", "COX03", "NS02", "NS08"]
