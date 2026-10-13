@@ -148,7 +148,7 @@ display(HTML(standardTextDict["FOI condition fc"]))
 #| echo: false
 display(HTML(standardTextDict["Indicator description"]))
 display(HTML(standardTextDict["spacer"]))
-display(HTML("Coming soon!"))
+display(HTML("**Coming soon!**"))
 ```
 
 <!-- ### How much noise from large vessels may be interfering with whale communication? -->
