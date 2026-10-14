@@ -97,10 +97,10 @@ website:
       - text: <b>Pacific Islands Region</b>
       - href: content/pm.qmd
         text: Papahānaumokuākea
-      - href: content/as.qmd
-        text: American Samoa
       - href: content/hi.qmd
         text: Hawaiian Islands Humpback Whale
+      - href: content/as.qmd
+        text: American Samoa
 
 format:
   html:
