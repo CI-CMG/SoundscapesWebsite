@@ -160,7 +160,7 @@ display(HTML(standardTextDict["MB diel fish fc"]))
 ```{python}
 #| echo: false
 display(HTML(standardTextDict["MARS-whales"]))
-display(HTML(gf.makeImage("MARS_BlueFinCI.jpg", "Seasonal blue and fin", altText= "Time series scatter plot of the MARS whale call index (a proxy for abundance) for both blue and fin whales in the Monterey Bay National Marine Sanctuary. Both species have peak seasonal presence in the summer and fall months.")))
+display(HTML(gf.makeImage("BFHdaily.png", "Seasonal blue and fin", altText= "Time series scatter plot of the MARS whale call index (a proxy for abundance) for both blue and fin whales in the Monterey Bay National Marine Sanctuary. Both species have peak seasonal presence in the summer and fall months.")))
 display(HTML(standardTextDict["blue/fin fc"]))
 
 display(HTML(standardTextDict["humpback-whales"]))
