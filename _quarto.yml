@@ -69,10 +69,10 @@ website:
         text: Stellwagen Bank
       - href: content/ne.qmd
         text: New England
-      - href: content/fgb.qmd
-        text: Flower Garden Banks
       - href: content/gr.qmd
         text: Gray's Reef
+      - href: content/fgb.qmd
+        text: Flower Garden Banks
       - href: content/fk.qmd
         text: Florida Keys
       - text: <br>
